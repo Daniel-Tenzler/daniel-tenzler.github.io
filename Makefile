@@ -9,9 +9,13 @@ install:
 	@echo "Installing npm dependencies..."
 	npm install
 
-build: build prepare
+all: build prepare
+
+build:
 	@echo "Building Remix SPA..."
 	npm run build
+
+prepare:
 	@echo "Preparing public/ directory for GitHub Pages..."
 	rm -rf $(PUBLIC_DIR) && mkdir -p $(PUBLIC_DIR)
 	cp -R $(BUILD_DIR)/* $(PUBLIC_DIR)/

@@ -1,0 +1,1 @@
+import{j as i}from"./jsx-runtime-0DLF9kdB.js";function n(){return i.jsxs("main",{children:[i.jsx("h1",{children:"Hello, world!"}),i.jsx("p",{children:"This is your minimal Remix app in JavaScript."})]})}export{n as default};
