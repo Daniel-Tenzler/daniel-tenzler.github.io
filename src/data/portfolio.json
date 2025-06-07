@@ -1,0 +1,36 @@
+{
+    "projects": [{
+            "id": "personal-website",
+            "title": "Personal Website & Blog",
+            "description": "A modern personal website and blog built with Astro and React, featuring a responsive design and interactive components.",
+            "technologies": ["Astro", "React", "Emotion", "Tailwind CSS"],
+            "image": "/images/projects/personal-website.png",
+            "githubUrl": "https://github.com/danieltenz/danieltenz.github.io",
+            "liveUrl": "https://danieltenz.github.io",
+            "featured": true,
+            "date": "2024-03"
+        },
+        {
+            "id": "project-2",
+            "title": "Project 2",
+            "description": "Description of your second project. This is a placeholder that you can update with your actual project details.",
+            "technologies": ["Technology 1", "Technology 2"],
+            "image": "/images/projects/project-2.png",
+            "githubUrl": "https://github.com/danieltenz/project-2",
+            "liveUrl": "https://project-2.example.com",
+            "featured": false,
+            "date": "2024-02"
+        },
+        {
+            "id": "project-3",
+            "title": "Project 3",
+            "description": "Description of your third project. This is a placeholder that you can update with your actual project details.",
+            "technologies": ["Technology 1", "Technology 2", "Technology 3"],
+            "image": "/images/projects/project-3.png",
+            "githubUrl": "https://github.com/danieltenz/project-3",
+            "liveUrl": "https://project-3.example.com",
+            "featured": false,
+            "date": "2024-01"
+        }
+    ]
+}

@@ -1,4 +1,4 @@
-import { DarkModeProvider } from '../../context/DarkModeContext.jsx';
+import { DarkModeProvider } from '../../../context/DarkModeContext.jsx';
 import DarkModeToggle from './DarkModeToggle.jsx';
 import StyledBox from './StyledBox.jsx';
 

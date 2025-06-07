@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useDarkMode } from '../../context/DarkModeContext';
+import { useDarkMode } from '../../../context/DarkModeContext';
 import PropTypes from 'prop-types';
 
 const Box = styled.div`

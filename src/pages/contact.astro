@@ -1,0 +1,42 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import ContactForm from '../components/jsx/contact/ContactForm';
+import SocialLinks from '../components/jsx/contact/SocialLinks';
+---
+
+<MainLayout title="Contact Me" description="Get in touch with Daniel Tenzler">
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold mb-8">Get in Touch</h1>
+    <p class="mb-8">
+      Have a question or want to work together? Feel free to reach out using the form below or connect with me on social media.
+    </p>
+    
+    <ContactForm client:load />
+    <SocialLinks client:load />
+  </div>
+</MainLayout>
+
+<style>
+  /* Add any additional styles here */
+  :global(.bg-accent) {
+    background-color: var(--accent);
+  }
+  :global(.bg-accent-dark) {
+    background-color: var(--accent-dark);
+  }
+  :global(.text-accent) {
+    color: var(--accent);
+  }
+  :global(.border-accent) {
+    border-color: var(--accent);
+  }
+  :global(.ring-accent) {
+    --tw-ring-color: var(--accent);
+  }
+  :global(.focus\:border-accent:focus) {
+    border-color: var(--accent);
+  }
+  :global(.focus\:ring-accent:focus) {
+    --tw-ring-color: var(--accent);
+  }
+</style> 
