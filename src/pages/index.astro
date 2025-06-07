@@ -1,55 +1,72 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import GridBackground from '../components/jsx/GridBackground.jsx';
-import DarkModeApp from '../components/jsx/DarkModeApp.jsx';
-import BaseHead from '../components/astro/BaseHead.astro';
-import Footer from '../components/astro/Footer.astro';
-import Header from '../components/astro/Header.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts.js';
+import MainLayout from '../layouts/MainLayout.astro';
+import GridBackground from '../components/jsx/gridBackground/GridBackground.jsx';
+import DarkModeApp from '../components/jsx/darkMode/DarkModeApp.jsx';
+import HeroSection from '../components/jsx/home/HeroSection.jsx';
+import LatestPostsSection from '../components/jsx/home/LatestPostsSection.jsx';
+import AboutSection from '../components/jsx/home/AboutSection.jsx';
+import { getCollection } from 'astro:content';
+
+const latestPosts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 2)
+	.map(post => ({
+		title: post.data.title,
+		description: post.data.description,
+		pubDate: post.data.pubDate,
+		heroImage: post.data.heroImage,
+		slug: post.id,
+		readTime: post.data.readTime,
+		tags: post.data.tags
+	}));
+
+const aboutParagraphs = [
+	"I specialize in full-stack web development, with a focus on modern JavaScript frameworks and tools. My goal is to create performant, accessible, and user-friendly web applications.",
+	"When I'm not coding, you can find me writing technical articles, contributing to open source projects, or exploring new technologies to stay at the forefront of web development."
+];
 ---
 
-<!doctype html>
-<html lang="en">
+<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<GridBackground client:load />
+	<DarkModeApp client:load />
+	
+	<div class="max-w-4xl mx-auto">
+		<HeroSection 
+			client:load
+			title="👋 Hi, I'm Daniel Tenzler"
+			description="I'm a software developer passionate about building modern web applications and sharing knowledge through writing."
+		/>
 
-	<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<LatestPostsSection 
+			client:load
+			posts={latestPosts}
+		/>
 
-	<body>
-		<DarkModeApp client:load />
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template.
-				This template serves as a lightweight, minimally-styled starting point for anyone looking
-				to build a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>
-					Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code>
-				</li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+		<AboutSection 
+			client:load
+			paragraphs={aboutParagraphs}
+		/>
+	</div>
+</MainLayout>
+
+<style>
+	:global(.bg-accent) {
+		background-color: var(--accent);
+	}
+	:global(.bg-accent-dark) {
+		background-color: var(--accent-dark);
+	}
+	:global(.text-accent) {
+		color: var(--accent);
+	}
+	:global(.hover\:text-accent:hover) {
+		color: var(--accent);
+	}
+	:global(.hover\:bg-accent-dark:hover) {
+		background-color: var(--accent-dark);
+	}
+	:global(.focus\:ring-accent:focus) {
+		--tw-ring-color: var(--accent);
+	}
+</style>

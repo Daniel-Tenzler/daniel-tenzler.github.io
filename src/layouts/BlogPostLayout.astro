@@ -1,0 +1,222 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BlogPost from "../components/jsx/blog/BlogPost";
+import Footer from '../components/jsx/footer/Footer';
+import Header from "../components/jsx/header/Header";
+
+type Props = {
+	title: string;
+	description: string;
+	pubDate: Date;
+	updatedDate?: Date;
+	heroImage?: string;
+	coverImage?: string;
+	readTime?: string;
+	tags?: string[];
+	author?: string;
+};
+
+const {
+	title,
+	description,
+	pubDate,
+	updatedDate,
+	heroImage,
+	coverImage,
+	readTime,
+	tags,
+	author,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	</head>
+	<body>
+		<div class="min-h-screen flex flex-col">
+			<Header client:load />
+			<main class="flex-grow">
+				<BlogPost
+					client:load
+					title={title}
+					pubDate={pubDate}
+					updatedDate={updatedDate}
+					heroImage={heroImage}
+					readTime={readTime}
+					tags={tags}
+					author={author}
+				>
+					<div class="prose">
+						<slot />
+					</div>
+				</BlogPost>
+			</main>
+			<Footer client:load />
+		</div>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--accent: #2337ff;
+		--accent-dark: #000d8a;
+		--black: 15, 18, 25;
+		--gray: 96, 115, 159;
+		--gray-light: 229, 233, 240;
+		--gray-dark: 34, 41, 57;
+		--gray-gradient: rgba(var(--gray-light), 50%), #fff;
+	}
+
+	body {
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		margin: 0;
+		padding: 0;
+		background: linear-gradient(var(--gray-gradient)) no-repeat;
+		background-size: 100% 600px;
+		color: rgb(var(--gray-dark));
+		font-size: 20px;
+		line-height: 1.7;
+	}
+
+	main {
+		width: 720px;
+		max-width: calc(100% - 2em);
+		margin: auto;
+		padding: 3em 1em;
+	}
+
+	@media (max-width: 720px) {
+		body {
+			font-size: 18px;
+		}
+		main {
+			padding: 1em;
+		}
+	}
+</style>
+
+<style>
+	.prose {
+		max-width: 65ch;
+		color: rgb(var(--gray-dark));
+	}
+
+	.prose :global(h1) {
+		color: rgb(var(--gray-dark));
+		font-weight: 800;
+		font-size: 2.25em;
+		margin-top: 0;
+		margin-bottom: 0.8888889em;
+		line-height: 1.1111111;
+	}
+
+	.prose :global(h2) {
+		color: rgb(var(--gray-dark));
+		font-weight: 700;
+		font-size: 1.5em;
+		margin-top: 2em;
+		margin-bottom: 1em;
+		line-height: 1.3333333;
+	}
+
+	.prose :global(h3) {
+		color: rgb(var(--gray-dark));
+		font-weight: 600;
+		font-size: 1.25em;
+		margin-top: 1.6em;
+		margin-bottom: 0.6em;
+		line-height: 1.6;
+	}
+
+	.prose :global(p) {
+		margin-top: 1.25em;
+		margin-bottom: 1.25em;
+	}
+
+	.prose :global(a) {
+		color: var(--accent);
+		text-decoration: underline;
+		font-weight: 500;
+	}
+
+	.prose :global(strong) {
+		color: rgb(var(--gray-dark));
+		font-weight: 600;
+	}
+
+	.prose :global(code) {
+		color: rgb(var(--gray-dark));
+		font-weight: 600;
+		font-size: 0.875em;
+	}
+
+	.prose :global(pre) {
+		color: rgb(var(--gray-light));
+		background-color: rgb(var(--gray-dark));
+		overflow-x: auto;
+		font-size: 0.875em;
+		line-height: 1.7142857;
+		margin-top: 1.7142857em;
+		margin-bottom: 1.7142857em;
+		border-radius: 0.375rem;
+		padding: 0.8571429em 1.1428571em;
+	}
+
+	.prose :global(blockquote) {
+		font-weight: 500;
+		font-style: italic;
+		color: rgb(var(--gray-dark));
+		border-left-width: 0.25rem;
+		border-left-color: rgb(var(--gray-light));
+		quotes: "\201C" "\201D" "\2018" "\2019";
+		margin-top: 1.6em;
+		margin-bottom: 1.6em;
+		padding-left: 1em;
+	}
+
+	.prose :global(ul) {
+		margin-top: 1.25em;
+		margin-bottom: 1.25em;
+		list-style-type: disc;
+		padding-left: 1.625em;
+	}
+
+	.prose :global(ol) {
+		margin-top: 1.25em;
+		margin-bottom: 1.25em;
+		list-style-type: decimal;
+		padding-left: 1.625em;
+	}
+
+	.prose :global(li) {
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+	}
+
+	.prose :global(img) {
+		margin-top: 2em;
+		margin-bottom: 2em;
+		border-radius: 0.375rem;
+		display: block;
+		margin-left: 50%;
+		transform: translateX(-50%);
+		width: 100vw;
+		max-width: 70vw;
+		position: relative;
+		left: 50%;
+		right: 50%;
+		margin: 0 auto;
+	}
+
+	.prose :global(hr) {
+		margin-top: 3em;
+		margin-bottom: 3em;
+		border-color: rgb(var(--gray-light));
+	}
+</style>
