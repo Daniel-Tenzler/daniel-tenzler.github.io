@@ -37,28 +37,52 @@ const Headline = styled.h2`
   text-align: center;
 `;
 
+const Description = styled.p`
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+`;
+
+const RepositoryInfo = styled.div`
+  background-color: rgba(160, 160, 160, 0.25);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+`;
+
 export default function GitHubStats({ metadata, commitCount }) {
   return (
     <>
       <Headline>Repository Statistics</Headline>
-      <StatsContainer>
-        {metadata.stars > 0 && <StatItem>
-          <StatValue>{metadata.stars}</StatValue>
-          <StatLabel>Stars</StatLabel>
-        </StatItem>}
-        {metadata.forks > 0 &&<StatItem>
-          <StatValue>{metadata.forks}</StatValue>
-          <StatLabel>Forks</StatLabel>
-        </StatItem>}
-        {commitCount > 0 && <StatItem>
-          <StatValue>{commitCount}</StatValue>
-          <StatLabel>Commits</StatLabel>
-        </StatItem>}
-        <StatItem>
-          <StatValue>{new Date(metadata.lastUpdated).toLocaleDateString()}</StatValue>
-          <StatLabel>Last Updated</StatLabel>
-        </StatItem>
-      </StatsContainer>
+      <Description>{metadata.description}</Description>
+      <RepositoryInfo>
+        <StatsContainer>
+          {metadata.stars > 0 && (
+            <StatItem>
+              <StatValue>{metadata.stars}</StatValue>
+              <StatLabel>Stars</StatLabel>
+            </StatItem>
+          )}
+          {metadata.forks > 0 && (
+            <StatItem>
+              <StatValue>{metadata.forks}</StatValue>
+              <StatLabel>Forks</StatLabel>
+            </StatItem>
+          )}
+          {commitCount > 0 && (
+            <StatItem>
+              <StatValue>{commitCount}</StatValue>
+              <StatLabel>Commits</StatLabel>
+            </StatItem>
+          )}
+          <StatItem>
+            <StatValue>{new Date(metadata.lastUpdated).toLocaleDateString()}</StatValue>
+            <StatLabel>Last Updated</StatLabel>
+          </StatItem>
+        </StatsContainer>
+      </RepositoryInfo>
     </>
   );
 }
