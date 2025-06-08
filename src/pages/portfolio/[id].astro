@@ -1,0 +1,49 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getPortfolioItems } from '../../data/portfolio';
+
+export const getStaticPaths = async () => {
+  const items = await getPortfolioItems();
+  return items.map(item => ({
+    params: { id: item.id },
+    props: { item },
+  }));
+};
+
+const { item } = Astro.props;
+---
+
+<MainLayout title={`${item.title} | Portfolio | Daniel Tenz`}>
+  <main class="container mx-auto px-4 py-8">
+    <article class="max-w-4xl mx-auto">
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">{item.title}</h1>
+        <div class="flex gap-4 mb-4">
+          {item.technologies.map((tech) => (
+            <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">{tech}</span>
+          ))}
+        </div>
+        <div class="flex gap-4">
+          {item.githubUrl && (
+            <a href={item.githubUrl} target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">
+              View on GitHub
+            </a>
+          )}
+          {item.liveUrl && (
+            <a href={item.liveUrl} target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">
+              Live Demo
+            </a>
+          )}
+        </div>
+      </header>
+
+      {item.image && (
+        <img src={item.image} alt={item.title} class="w-full rounded-lg shadow-lg mb-8" />
+      )}
+
+      <div class="prose max-w-none">
+        <p class="text-lg">{item.description}</p>
+      </div>
+    </article>
+  </main>
+</MainLayout> 

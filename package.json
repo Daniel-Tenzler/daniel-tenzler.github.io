@@ -1,7 +1,9 @@
 {
     "name": "personal-website-daniel-tenzler",
     "type": "module",
+    "license": "MIT",
     "version": "0.0.1",
+    "private": true,
     "scripts": {
         "dev": "astro dev",
         "build": "astro build",
@@ -27,13 +29,18 @@
         "react-dom": "^19.1.0",
         "react-markdown": "^10.1.0",
         "styled-components": "^6.1.18",
-        "typescript": "^5.8.3"
+        "typescript": "^5.8.3",
+        "yaml": "2.4.2"
     },
     "devDependencies": {
+        "@babel/core": "^7.27.4",
+        "@babel/plugin-transform-react-jsx-self": "^7.27.1",
+        "@babel/plugin-transform-react-jsx-source": "^7.27.1",
         "@babel/preset-react": "^7.27.1",
         "@emotion/babel-plugin": "^11.13.5",
         "@typescript-eslint/parser": "^8.33.0",
         "babel-plugin-styled-components": "^2.1.4",
+        "convert-source-map": "1.9.0",
         "eslint": "^9.28.0",
         "eslint-config-prettier": "^10.1.5",
         "eslint-plugin-astro": "^1.3.1",
@@ -44,5 +51,8 @@
     },
     "eslintIgnore": [
         "dist/"
-    ]
+    ],
+    "resolutions": {
+        "convert-source-map": "1.9.0"
+    }
 }

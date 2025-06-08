@@ -7,6 +7,8 @@ import HeroSection from '../components/jsx/home/HeroSection.jsx';
 import LatestPostsSection from '../components/jsx/home/LatestPostsSection.jsx';
 import AboutSection from '../components/jsx/home/AboutSection.jsx';
 import { getCollection } from 'astro:content';
+import portfolioData from '../data/portfolio.json';
+import PortfolioPreview from '../components/jsx/home/PortfolioPreview';
 
 const latestPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -25,6 +27,8 @@ const aboutParagraphs = [
 	"I specialize in full-stack web development, with a focus on modern JavaScript frameworks and tools. My goal is to create performant, accessible, and user-friendly web applications.",
 	"When I'm not coding, you can find me writing technical articles, contributing to open source projects, or exploring new technologies to stay at the forefront of web development."
 ];
+
+const featuredProjects = portfolioData.projects.filter(project => project.featured);
 ---
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -34,8 +38,13 @@ const aboutParagraphs = [
 	<div class="max-w-4xl mx-auto">
 		<HeroSection 
 			client:load
-			title="👋 Hi, I'm Daniel Tenzler"
-			description="I'm a software developer passionate about building modern web applications and sharing knowledge through writing."
+			title="[STILL UNDER CONSTRUCTION]"
+			description="A lot of the content on this page is only for testing purposes and partly or fully ai generated."
+		/>
+
+		<PortfolioPreview
+			client:load
+			projects={featuredProjects}
 		/>
 
 		<LatestPostsSection 

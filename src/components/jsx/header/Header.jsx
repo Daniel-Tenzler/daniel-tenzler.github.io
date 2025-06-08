@@ -96,6 +96,7 @@ export default class Header extends React.Component {
             </Logo>
             <NavLinks>
               <NavLink href="/">Home</NavLink>
+              <NavLink href="/portfolio">Portfolio</NavLink>
               <NavLink href="/blog">Blog</NavLink>
               <NavLink href="/contact">Contact</NavLink>
             </NavLinks>
