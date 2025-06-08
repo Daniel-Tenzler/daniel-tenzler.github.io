@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import BlogPostCard from './BlogPostCard';
@@ -18,10 +19,31 @@ const PostWrapper = styled.div`
   gap: 1rem;
 `;
 
-const BlogPostGrid = ({ posts }) => {
+const NoPostsMessage = styled.p`
+  text-align: center;
+  color: #4B5563;
+  font-size: 1.125rem;
+  margin: 2rem 0;
+`;
+
+const BlogPostGrid = ({ posts, selectedTags }) => {
+  const filteredPosts = selectedTags.length > 0
+    ? posts.filter(post => 
+        selectedTags.every(tag => post.data.tags?.includes(tag))
+      )
+    : posts;
+
+  if (filteredPosts.length === 0) {
+    return (
+      <NoPostsMessage>
+        No posts found with the selected tags.
+      </NoPostsMessage>
+    );
+  }
+
   return (
     <GridSection>
-      {posts.map((post) => (
+      {filteredPosts.map((post) => (
         <PostWrapper key={post.id}>
           {post.data.heroImage && (
             <div>
@@ -56,7 +78,8 @@ BlogPostGrid.propTypes = {
         tags: PropTypes.arrayOf(PropTypes.string)
       }).isRequired
     })
-  ).isRequired
+  ).isRequired,
+  selectedTags: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default BlogPostGrid; 

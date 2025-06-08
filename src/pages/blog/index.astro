@@ -2,18 +2,19 @@
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import MainLayout from '../../layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
-import BlogHeader from '../../components/jsx/blog/BlogHeader';
-import BlogPostGrid from '../../components/jsx/blog/BlogPostGrid';
+import BlogContainer from '../../components/jsx/blog/BlogContainer';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+// Get all unique tags from posts
+const allTags = [...new Set(posts.flatMap(post => post.data.tags || []))].sort();
 ---
 
 <MainLayout title={`Blog - ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
 	<div class="max-w-4xl mx-auto">
-		<BlogHeader client:load />
-		<BlogPostGrid client:load posts={posts} />
+		<BlogContainer client:load posts={posts} allTags={allTags} />
 	</div>
 </MainLayout>
 
