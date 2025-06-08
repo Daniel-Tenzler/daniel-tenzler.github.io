@@ -6,9 +6,11 @@ import DarkModeApp from '../components/jsx/darkMode/DarkModeApp.jsx';
 import HeroSection from '../components/jsx/home/HeroSection.jsx';
 import LatestPostsSection from '../components/jsx/home/LatestPostsSection.jsx';
 import AboutSection from '../components/jsx/home/AboutSection.jsx';
+import GitHubStats from '../components/jsx/GitHubStats.jsx';
 import { getCollection } from 'astro:content';
 import portfolioData from '../data/portfolio.json';
 import PortfolioPreview from '../components/jsx/home/PortfolioPreview';
+import { getRepoMetadata, getCommitCount } from '../lib/github.js';
 
 const latestPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -29,6 +31,10 @@ const aboutParagraphs = [
 ];
 
 const featuredProjects = portfolioData.projects.filter(project => project.featured);
+
+// Fetch GitHub data
+const metadata = await getRepoMetadata();
+const commitCount = await getCommitCount();
 ---
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -40,6 +46,12 @@ const featuredProjects = portfolioData.projects.filter(project => project.featur
 			client:load
 			title="[STILL UNDER CONSTRUCTION]"
 			description="A lot of the content on this page is only for testing purposes and partly or fully ai generated."
+		/>
+
+		<GitHubStats
+			client:load
+			metadata={metadata}
+			commitCount={commitCount}
 		/>
 
 		<PortfolioPreview
