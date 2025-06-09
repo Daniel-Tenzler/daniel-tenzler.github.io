@@ -4,12 +4,14 @@
     "license": "MIT",
     "version": "0.0.1",
     "private": true,
+    "homepage": "https://danieltenz.github.io/",
     "scripts": {
         "dev": "astro dev",
         "build": "astro build",
         "preview": "astro preview",
         "astro": "astro",
-        "deploy": "npm run build && npx gh-pages -d dist",
+        "clean": "rm -rf dist",
+        "deploy": "npm run build && touch dist/.nojekyll && npx gh-pages -d dist -b gh-pages",
         "eslint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro"
     },
     "dependencies": {

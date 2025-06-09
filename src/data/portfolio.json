@@ -8,7 +8,7 @@
             "githubUrl": "https://github.com/danieltenz/danieltenz.github.io",
             "liveUrl": "https://danieltenz.github.io",
             "featured": true,
-            "date": "2024-03"
+            "date": "2025-05"
         },
         {
             "id": "project-2",
@@ -16,10 +16,10 @@
             "description": "Description of your second project. This is a placeholder that you can update with your actual project details.",
             "technologies": ["Technology 1", "Technology 2"],
             "image": "/blog-placeholder-about.jpg",
-            "githubUrl": "https://github.com/danieltenz/project-2",
-            "liveUrl": "https://project-2.example.com",
+            "githubUrl": "",
+            "liveUrl": "",
             "featured": true,
-            "date": "2024-02"
+            "date": "2025-05"
         },
         {
             "id": "project-3",
@@ -27,8 +27,8 @@
             "description": "Description of your third project. This is a placeholder that you can update with your actual project details.",
             "technologies": ["Technology 1", "Technology 2", "Technology 3"],
             "image": "/blog-placeholder-about.jpg",
-            "githubUrl": "https://github.com/danieltenz/project-3",
-            "liveUrl": "https://project-3.example.com",
+            "githubUrl": "",
+            "liveUrl": "",
             "featured": true,
             "date": "2024-01"
         }
