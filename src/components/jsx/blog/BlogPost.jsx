@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import { COLORS, getRgbaColor } from '../../../consts/Colors';
 import BlogPostHeader from './BlogPostHeader';
 import BlogPostContent from './BlogPostContent';
 
@@ -21,7 +22,7 @@ const HeroImage = styled.img`
   height: 400px;
   object-fit: cover;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px ${getRgbaColor(COLORS.black, 0.1)}, 0 2px 4px ${getRgbaColor(COLORS.black, 0.06)};
 `;
 
 export default function BlogPost({

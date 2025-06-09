@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import { COLORS } from '../../../consts/Colors';
 import TagFilter from './TagFilter';
 
 const HeaderSection = styled.section`
@@ -11,11 +12,12 @@ const Title = styled.h1`
   font-size: 2.25rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
+  color: ${COLORS.black};
 `;
 
 const Description = styled.p`
   font-size: 1.25rem;
-  color: #4B5563;
+  color: ${COLORS.gray};
   margin-bottom: 2rem;
 `;
 

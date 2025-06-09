@@ -1,6 +1,7 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../../consts';
+import { COLORS, getRgbaColor } from '../../consts/Colors';
 ---
 
 <header>
@@ -46,8 +47,8 @@ import { SITE_TITLE } from '../../consts';
 	header {
 		margin: 0;
 		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		background: ${COLORS.white};
+		box-shadow: 0 2px 8px ${getRgbaColor(COLORS.black, 0.05)};
 	}
 	h2 {
 		margin: 0;
@@ -65,13 +66,13 @@ import { SITE_TITLE } from '../../consts';
 	}
 	nav a {
 		padding: 1em 0.5em;
-		color: var(--black);
+		color: ${getRgbaColor(COLORS.black)};
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
 	}
 	nav a.active {
 		text-decoration: none;
-		border-bottom-color: var(--accent);
+		border-bottom-color: ${COLORS.accent};
 	}
 	.social-links,
 	.social-links a {

@@ -1,79 +1,90 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
 `;
 
 const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 1.5rem;
 `;
 
 const Label = styled.label`
   display: block;
-  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
   font-weight: 500;
-  color: #374151;
-  margin-bottom: 0.25rem;
+  color: ${COLORS.black};
 `;
 
 const Input = styled.input`
-  margin-top: 0.25rem;
-  display: block;
   width: 100%;
+  padding: 0.75rem;
+  border: 1px solid ${getRgbaColor(COLORS.grayLight)};
   border-radius: 0.375rem;
-  border: 1px solid #d1d5db;
-  padding: 0.5rem 0.75rem;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  background: ${COLORS.white};
+  color: ${COLORS.black};
+  font-size: 1rem;
+  transition: all 0.2s ease;
 
   &:focus {
     outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(35, 55, 255, 0.1);
+    border-color: ${COLORS.accent};
+    box-shadow: 0 0 0 2px ${getRgbaColor(COLORS.accent, 0.2)};
+  }
+
+  &::placeholder {
+    color: ${COLORS.gray};
   }
 `;
 
 const TextArea = styled.textarea`
-  margin-top: 0.25rem;
-  display: block;
   width: 100%;
+  padding: 0.75rem;
+  border: 1px solid ${getRgbaColor(COLORS.grayLight)};
   border-radius: 0.375rem;
-  border: 1px solid #d1d5db;
-  padding: 0.5rem 0.75rem;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  background: ${COLORS.white};
+  color: ${COLORS.black};
+  font-size: 1rem;
+  min-height: 150px;
   resize: vertical;
+  transition: all 0.2s ease;
 
   &:focus {
     outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(35, 55, 255, 0.1);
+    border-color: ${COLORS.accent};
+    box-shadow: 0 0 0 2px ${getRgbaColor(COLORS.accent, 0.2)};
+  }
+
+  &::placeholder {
+    color: ${COLORS.gray};
   }
 `;
 
 const SubmitButton = styled.button`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  border: 1px solid transparent;
+  padding: 0.75rem 1.5rem;
+  background: ${COLORS.accent};
+  color: ${COLORS.white};
+  border: none;
   border-radius: 0.375rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
-  color: white;
-  background-color: var(--accent);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   cursor: pointer;
+  transition: all 0.2s ease;
 
   &:hover {
-    background-color: var(--accent-dark);
+    background: ${COLORS.accentDark};
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(35, 55, 255, 0.1);
+    box-shadow: 0 0 0 2px ${getRgbaColor(COLORS.accent, 0.2)};
+  }
+
+  &:disabled {
+    background: ${getRgbaColor(COLORS.grayLight)};
+    cursor: not-allowed;
   }
 `;
 

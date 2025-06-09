@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const StatsContainer = styled.div`
   display: flex;
   gap: 4rem;
   padding: 1.5rem;
-  background-color: rgba(160, 160, 160, 0.45);
+  background-color: ${getRgbaColor(COLORS.grayLight, 0.45)};
   border-radius: 8px;
   margin: 1rem 0;
   justify-content: space-between;
@@ -22,23 +23,23 @@ const StatItem = styled.div`
 const StatValue = styled.span`
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--color-text-primary);
+  color: ${COLORS.black};
 `;
 
 const StatLabel = styled.span`
   font-size: 0.875rem;
-  color: var(--color-text-secondary);
+  color: ${COLORS.gray};
 `;
 
 const Headline = styled.h2`
   font-size: 1.5rem;
-  color: var(--color-text-primary);
+  color: ${COLORS.black};
   margin-bottom: 1rem;
   text-align: center;
 `;
 
 const Description = styled.p`
-  color: var(--color-text-secondary);
+  color: ${COLORS.gray};
   text-align: center;
   margin: 1rem 0;
   font-size: 1rem;
@@ -46,7 +47,7 @@ const Description = styled.p`
 `;
 
 const RepositoryInfo = styled.div`
-  background-color: rgba(160, 160, 160, 0.25);
+  background-color: ${getRgbaColor(COLORS.grayLight, 0.25)};
   border-radius: 8px;
   padding: 1rem;
   margin: 1rem 0;

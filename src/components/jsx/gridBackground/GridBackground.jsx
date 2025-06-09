@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
+import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const Canvas = styled.canvas`
   position: fixed;
@@ -33,6 +34,7 @@ export default function GridBackground() {
       const maxLineWidth = 1.5;
       const minLineWidth = 0.5;
       const maxEffectDist = 200;
+      const gridColor = getRgbaColor(COLORS.black, 0.1);
 
       for (let x = 0; x <= width; x += spacing) {
         const dist = Math.abs(mousePosRef.current.x - x);
@@ -42,7 +44,7 @@ export default function GridBackground() {
         ctx.moveTo(x, 0);
         ctx.lineTo(x, height);
         ctx.lineWidth = lineWidth;
-        ctx.strokeStyle = 'rgba(0,0,0,0.1)';
+        ctx.strokeStyle = gridColor;
         ctx.stroke();
       }
 
@@ -54,7 +56,7 @@ export default function GridBackground() {
         ctx.moveTo(0, y);
         ctx.lineTo(width, y);
         ctx.lineWidth = lineWidth;
-        ctx.strokeStyle = 'rgba(0,0,0,0.1)';
+        ctx.strokeStyle = gridColor;
         ctx.stroke();
       }
 

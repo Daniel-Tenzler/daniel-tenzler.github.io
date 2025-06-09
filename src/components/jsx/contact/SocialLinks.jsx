@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { COLORS } from '../../../consts/Colors';
 
 const Container = styled.div`
   margin-top: 3rem;
@@ -9,6 +10,7 @@ const Title = styled.h2`
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
+  color: ${COLORS.black};
 `;
 
 const LinksContainer = styled.div`
@@ -17,11 +19,12 @@ const LinksContainer = styled.div`
 `;
 
 const SocialLink = styled.a`
-  color: #9ca3af;
+  color: ${COLORS.gray};
   text-decoration: none;
+  transition: color 0.2s ease;
 
   &:hover {
-    color: #6b7280;
+    color: ${COLORS.black};
   }
 `;
 

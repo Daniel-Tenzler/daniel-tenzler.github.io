@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: ${getRgbaColor(COLORS.white, 0.8)};
   backdrop-filter: blur(4px);
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid ${getRgbaColor(COLORS.grayLight)};
 `;
 
 const Nav = styled.nav`
@@ -35,7 +36,7 @@ const Logo = styled.a`
   flex-shrink: 0;
   font-size: 1.25rem;
   font-weight: 700;
-  color: #111827;
+  color: ${COLORS.black};
   text-decoration: none;
 `;
 
@@ -50,15 +51,16 @@ const NavLinks = styled.div`
 `;
 
 const NavLink = styled.a`
-  color: #111827;
+  color: ${COLORS.black};
   padding: 0.5rem 0.75rem;
   border-radius: 0.375rem;
   font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
+  transition: color 0.2s ease;
 
   &:hover {
-    color: #4b5563;
+    color: ${COLORS.gray};
   }
 `;
 
@@ -68,11 +70,12 @@ const MobileMenuButton = styled.button`
   justify-content: center;
   padding: 0.5rem;
   border-radius: 0.375rem;
-  color: #9ca3af;
+  color: ${COLORS.gray};
+  transition: all 0.2s ease;
   
   &:hover {
-    color: #6b7280;
-    background-color: #f3f4f6;
+    color: ${COLORS.black};
+    background-color: ${getRgbaColor(COLORS.grayLight)};
   }
 
   @media (min-width: 640px) {

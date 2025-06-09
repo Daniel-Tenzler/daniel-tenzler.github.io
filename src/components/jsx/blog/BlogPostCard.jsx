@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const Card = styled.a`
   display: block;
-  background: white;
+  background: ${COLORS.white};
   border-radius: 0.5rem;
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px ${getRgbaColor(COLORS.black, 0.1)};
   transition: all 0.2s ease;
   text-decoration: none;
   color: inherit;
 
   &:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px ${getRgbaColor(COLORS.black, 0.1)};
     transform: translateY(-2px);
   }
 `;
@@ -26,18 +27,18 @@ const Title = styled.h3`
   margin: 0 0 0.5rem;
   font-size: 1.25rem;
   font-weight: 600;
-  color: rgb(var(--gray-dark));
+  color: ${COLORS.black};
   transition: color 0.2s ease;
 
   ${Card}:hover & {
-    color: var(--accent);
+    color: ${COLORS.accent};
   }
 `;
 
 const Description = styled.p`
   margin: 0 0 1rem;
   font-size: 0.875rem;
-  color: rgb(var(--gray));
+  color: ${COLORS.gray};
 `;
 
 const Meta = styled.div`
@@ -45,7 +46,7 @@ const Meta = styled.div`
   align-items: center;
   gap: 1rem;
   font-size: 0.875rem;
-  color: rgb(var(--gray));
+  color: ${COLORS.gray};
 `;
 
 const Tags = styled.div`
@@ -57,8 +58,8 @@ const Tags = styled.div`
 
 const Tag = styled.span`
   padding: 0.25rem 0.75rem;
-  background: rgb(var(--gray-light));
-  color: rgb(var(--gray-dark));
+  background: ${getRgbaColor(COLORS.grayLight)};
+  color: ${COLORS.black};
   border-radius: 9999px;
   font-size: 0.75rem;
 `;

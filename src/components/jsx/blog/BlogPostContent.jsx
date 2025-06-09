@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const ContentContainer = styled.div`
   max-width: 65ch;
   margin: 0 auto;
-  color: rgb(var(--gray-dark));
+  color: ${COLORS.black};
 
   h1 {
-    color: rgb(var(--gray-dark));
+    color: ${COLORS.black};
     font-weight: 800;
     font-size: 2.25em;
     margin-top: 0;
@@ -17,7 +18,7 @@ const ContentContainer = styled.div`
   }
 
   h2 {
-    color: rgb(var(--gray-dark));
+    color: ${COLORS.black};
     font-weight: 700;
     font-size: 1.5em;
     margin-top: 2em;
@@ -26,7 +27,7 @@ const ContentContainer = styled.div`
   }
 
   h3 {
-    color: rgb(var(--gray-dark));
+    color: ${COLORS.black};
     font-weight: 600;
     font-size: 1.25em;
     margin-top: 1.6em;
@@ -40,25 +41,25 @@ const ContentContainer = styled.div`
   }
 
   a {
-    color: var(--accent);
+    color: ${COLORS.accent};
     text-decoration: underline;
     font-weight: 500;
   }
 
   strong {
-    color: rgb(var(--gray-dark));
+    color: ${COLORS.black};
     font-weight: 600;
   }
 
   code {
-    color: rgb(var(--gray-dark));
+    color: ${COLORS.black};
     font-weight: 600;
     font-size: 0.875em;
   }
 
   pre {
-    color: rgb(var(--gray-light));
-    background-color: rgb(var(--gray-dark));
+    color: ${getRgbaColor(COLORS.grayLight)};
+    background-color: ${getRgbaColor(COLORS.grayDark)};
     overflow-x: auto;
     font-size: 0.875em;
     line-height: 1.7142857;
@@ -71,9 +72,9 @@ const ContentContainer = styled.div`
   blockquote {
     font-weight: 500;
     font-style: italic;
-    color: rgb(var(--gray-dark));
+    color: ${COLORS.black};
     border-left-width: 0.25rem;
-    border-left-color: rgb(var(--gray-light));
+    border-left-color: ${getRgbaColor(COLORS.grayLight)};
     quotes: "\201C""\201D""\2018""\2019";
     margin-top: 1.6em;
     margin-bottom: 1.6em;
@@ -112,7 +113,7 @@ const ContentContainer = styled.div`
   hr {
     margin-top: 3em;
     margin-bottom: 3em;
-    border-color: rgb(var(--gray-light));
+    border-color: ${getRgbaColor(COLORS.grayLight)};
   }
 `;
 

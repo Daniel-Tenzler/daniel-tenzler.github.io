@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import { COLORS } from '../../../consts/Colors';
 import BlogPostCard from '../blog/BlogPostCard';
 
 const Section = styled.section`
@@ -11,6 +12,7 @@ const Title = styled.h2`
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
+  color: ${COLORS.black};
 `;
 
 const PostsGrid = styled.div`
@@ -29,13 +31,13 @@ const ViewAllLink = styled.div`
 `;
 
 const Link = styled.a`
-  color: var(--accent);
+  color: ${COLORS.accent};
   font-weight: 500;
   text-decoration: none;
   transition: color 0.2s ease;
 
   &:hover {
-    color: var(--accent-dark);
+    color: ${COLORS.accentDark};
   }
 `;
 

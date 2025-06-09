@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const HeaderContainer = styled.header`
   margin-bottom: 2rem;
@@ -13,14 +14,14 @@ const MetaContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   font-size: 0.875rem;
-  color: rgb(var(--gray));
+  color: ${COLORS.gray};
   margin-bottom: 1rem;
 `;
 
 const Title = styled.h1`
   font-size: 2.25rem;
   font-weight: 800;
-  color: rgb(var(--gray-dark));
+  color: ${COLORS.black};
   margin-bottom: 1rem;
   line-height: 1.1;
 `;
@@ -35,15 +36,15 @@ const TagsContainer = styled.div`
 
 const Tag = styled.span`
   padding: 0.25rem 0.75rem;
-  background: rgb(var(--gray-light));
-  color: rgb(var(--gray-dark));
+  background: ${getRgbaColor(COLORS.grayLight)};
+  color: ${COLORS.black};
   border-radius: 9999px;
   font-size: 0.75rem;
 `;
 
 const UpdateInfo = styled.div`
   font-size: 0.875rem;
-  color: rgb(var(--gray));
+  color: ${COLORS.gray};
   font-style: italic;
 `;
 

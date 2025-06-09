@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const Section = styled.section`
   padding: 4rem 0;
@@ -13,6 +14,7 @@ const Title = styled.h2`
   font-size: 1.875rem;
   font-weight: 700;
   margin-bottom: 2rem;
+  color: ${COLORS.black};
 `;
 
 const Grid = styled.div`
@@ -31,17 +33,17 @@ const Grid = styled.div`
 `;
 
 const ProjectCard = styled.div`
-  background-color: rgba(172, 172, 172, 0.6);
+  background-color: ${getRgbaColor(COLORS.grayLight, 0.6)};
   border-radius: 0.5rem;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px ${getRgbaColor(COLORS.black, 0.1)};
   transition: all 0.3s ease;
   transform: translateY(20px);
   animation: fadeInUp 0.5s ease forwards;
   cursor: pointer;
   
   &:hover {
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px ${getRgbaColor(COLORS.black, 0.1)};
     transform: translateY(-5px);
   }
 
@@ -76,10 +78,11 @@ const ProjectTitle = styled.h3`
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  color: ${COLORS.black};
 `;
 
 const Description = styled.p`
-  color: var(--text-secondary);
+  color: ${COLORS.gray};
   margin-bottom: 1rem;
 `;
 
@@ -92,9 +95,10 @@ const TechStack = styled.div`
 
 const TechTag = styled.span`
   padding: 0.25rem 0.75rem;
-  background-color: var(--bg-tag);
+  background-color: ${getRgbaColor(COLORS.grayLight)};
   border-radius: 9999px;
   font-size: 0.875rem;
+  color: ${COLORS.black};
 `;
 
 const Links = styled.div`
@@ -103,12 +107,12 @@ const Links = styled.div`
 `;
 
 const Link = styled.a`
-  color: var(--accent);
+  color: ${COLORS.accent};
   text-decoration: none;
   transition: color 0.2s ease;
   
   &:hover {
-    color: var(--accent-dark);
+    color: ${COLORS.accentDark};
   }
 `;
 

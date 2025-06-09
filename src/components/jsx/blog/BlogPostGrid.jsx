@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import { COLORS } from '../../../consts/Colors';
 import BlogPostCard from './BlogPostCard';
 import HeroImage from './HeroImage';
 
@@ -21,7 +22,7 @@ const PostWrapper = styled.div`
 
 const NoPostsMessage = styled.p`
   text-align: center;
-  color: #4B5563;
+  color: ${COLORS.gray};
   font-size: 1.125rem;
   margin: 2rem 0;
 `;

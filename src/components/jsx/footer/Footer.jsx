@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const StyledFooter = styled.footer`
-  background-color: white;
-  border-top: 1px solid #e5e7eb;
+  background-color: ${COLORS.white};
+  border-top: 1px solid ${getRgbaColor(COLORS.grayLight)};
 `;
 
 const FooterContainer = styled.div`
@@ -30,7 +31,7 @@ const FooterContent = styled.div`
 
 const Copyright = styled.div`
   font-size: 0.875rem;
-  color: #6b7280;
+  color: ${COLORS.gray};
 `;
 
 const SocialLinks = styled.div`
@@ -39,11 +40,12 @@ const SocialLinks = styled.div`
 `;
 
 const SocialLink = styled.a`
-  color: #9ca3af;
+  color: ${COLORS.gray};
   text-decoration: none;
+  transition: color 0.2s ease;
 
   &:hover {
-    color: #6b7280;
+    color: ${COLORS.black};
   }
 `;
 

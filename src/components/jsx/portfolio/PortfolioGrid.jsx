@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const Grid = styled.div`
   display: grid;
@@ -17,9 +18,9 @@ const Grid = styled.div`
 `;
 
 const Card = styled.article`
-  background: white;
+  background: ${COLORS.white};
   border-radius: 0.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px ${getRgbaColor(COLORS.black, 0.1)};
   overflow: hidden;
   transition: transform 0.3s ease;
   
@@ -42,14 +43,15 @@ const CardTitle = styled.h2`
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  color: ${COLORS.black};
   
   a:hover & {
-    color: var(--accent);
+    color: ${COLORS.accentDark};
   }
 `;
 
 const CardDescription = styled.p`
-  color: #4B5563;
+  color: ${COLORS.gray};
   margin-bottom: 1rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -64,11 +66,11 @@ const TechContainer = styled.div`
 `;
 
 const TechTag = styled.span`
-  background: #F3F4F6;
+  background: ${getRgbaColor(COLORS.grayLight)};
   padding: 0.25rem 0.5rem;
   border-radius: 9999px;
   font-size: 0.875rem;
-  color: #374151;
+  color: ${COLORS.black};
 `;
 
 export default function PortfolioGrid({ items }) {
