@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 import BlogHeader from './BlogHeader';
 import BlogPostGrid from './BlogPostGrid';
+
+const Container = styled.div`
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+`;
 
 const BlogContainer = ({ posts, allTags }) => {
   const [selectedTags, setSelectedTags] = useState([]);
@@ -33,7 +40,7 @@ const BlogContainer = ({ posts, allTags }) => {
   };
 
   return (
-    <>
+    <Container>
       <BlogHeader
         allTags={allTags}
         selectedTags={selectedTags}
@@ -43,7 +50,7 @@ const BlogContainer = ({ posts, allTags }) => {
         posts={posts}
         selectedTags={selectedTags}
       />
-    </>
+    </Container>
   );
 };
 

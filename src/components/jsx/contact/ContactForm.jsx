@@ -91,10 +91,10 @@ const SubmitButton = styled.button`
 export default class ContactForm extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const formData = new window.FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    
+
     try {
       // Here you would typically send the form data to your backend
       // For now, we'll just log it and show a success message

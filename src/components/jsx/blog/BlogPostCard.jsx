@@ -72,13 +72,13 @@ const formatDate = (date) => {
   });
 };
 
-export default function BlogPostCard({ 
-  title, 
-  description, 
-  pubDate, 
+export default function BlogPostCard({
+  title,
+  description,
+  pubDate,
   slug,
   readTime,
-  tags 
+  tags
 }) {
   return (
     <Card href={`/blog/${slug}/`}>

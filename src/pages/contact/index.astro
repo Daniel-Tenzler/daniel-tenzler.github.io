@@ -1,0 +1,10 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import ContactContainer from '../../components/jsx/contact/ContactContainer';
+import GridBackground from '../../components/jsx/gridBackground/GridBackground';
+---
+
+<MainLayout title="Contact Me" description="Get in touch with Daniel Tenzler">
+	<GridBackground client:load />
+  <ContactContainer client:load />
+</MainLayout>

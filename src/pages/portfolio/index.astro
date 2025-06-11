@@ -1,7 +1,7 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
 import { getPortfolioItems } from '../../data/portfolio';
-import PortfolioGrid from '../../components/jsx/portfolio/PortfolioGrid';
+import PortfolioOverview from '../../components/jsx/portfolio/PortfolioOverview';
 import GridBackground from '../../components/jsx/gridBackground/GridBackground';
 
 const portfolioItems = await getPortfolioItems();
@@ -9,8 +9,5 @@ const portfolioItems = await getPortfolioItems();
 
 <MainLayout title="Portfolio | Daniel Tenzler">
 	<GridBackground client:load />
-  <main class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-8">My Portfolio</h1>
-    <PortfolioGrid client:load items={portfolioItems} />
-  </main>
+  <PortfolioOverview client:load items={portfolioItems} />
 </MainLayout> 

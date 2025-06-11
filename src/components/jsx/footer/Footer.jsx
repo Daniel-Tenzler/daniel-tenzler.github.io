@@ -57,7 +57,7 @@ const SocialIcon = styled.svg`
 export default class Footer extends React.Component {
   render() {
     const currentYear = new Date().getFullYear();
-    
+
     return (
       <StyledFooter>
         <FooterContainer>

@@ -47,7 +47,7 @@ export default function BlogPost({
           />
         </HeroImageContainer>
       )}
-      
+
       <BlogPostHeader
         title={title}
         pubDate={pubDate}
@@ -56,7 +56,7 @@ export default function BlogPost({
         author={author}
         tags={tags}
       />
-      
+
       <BlogPostContent>
         {children}
       </BlogPostContent>
