@@ -11,74 +11,16 @@ Inside of your Astro project, you'll see the following folders and files:
 ├── src/
 │   ├── components/     # React and Astro components
 │   ├── content/        # Blog posts and portfolio data
+│   ├── consts/         # Global consts for components
 │   ├── layouts/        # Page layouts and templates
-│   ├── lib/           # Utility functions and API clients
-│   ├── pages/         # Route pages
-│   └── styles/        # Global styles and theme
+│   ├── lib/            # Utility functions and API clients
+│   ├── pages/          # Route pages
+│   └── styles/         # Global styles and theme
 ├── astro.config.mjs
 ├── README.md
 ├── package.json
 └── tsconfig.json
 ```
-
-## 🎯 Implementation Status
-
-### Project Setup ✅
-- Initialized Astro project with React and JavaScript
-- Configured Yarn as package manager
-- Installed core dependencies (styled-components, axios, react-query, prop-types)
-- Set up Astro config for GitHub Pages
-- Added essential configuration files
-
-### Folder Structure ✅
-- Created organized directory structure
-- Set up global styles and theme configuration
-- Implemented consistent layouts
-- Added header with navigation
-- Created footer with social links
-
-### Content and Data 🚧
-- [ ] Portfolio data structure
-- [ ] Blog post content
-- [ ] Custom frontmatter fields
-- [ ] Blog page templates
-- [ ] Layout refinements
-
-### Pages 🚧
-- [ ] Portfolio grid homepage
-- [ ] Portfolio item pages
-- [ ] Blog overview with tag filtering
-- [ ] Individual blog post pages
-- [ ] URL-based tag filtering
-
-### Integrations 🚧
-- [ ] GitHub API integration
-- [ ] Supabase analytics
-- [ ] Sentry error monitoring
-- [ ] Formspree contact form
-
-### Contact Form 🚧
-- [ ] Form implementation
-- [ ] Client-side validation
-- [ ] Form submission handling
-
-### Design and Accessibility 🚧
-- [ ] Dark mode theming
-- [ ] Responsive design
-- [ ] Interactive animations
-- [ ] Accessibility improvements
-- [ ] Lighthouse a11y optimization
-
-### Performance and SEO 🚧
-- [ ] Image optimization
-- [ ] Bundle size optimization
-- [ ] SEO enhancements
-- [ ] Lighthouse performance optimization
-
-### Stretch Goals 🚧
-- [ ] React components in blog markdown
-- [ ] RSS feed
-- [ ] Social sharing previews
 
 ## 🧞 Commands
 

@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts.js';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts/SiteData.js';
 import MainLayout from '../layouts/MainLayout.astro';
 import GridBackground from '../components/jsx/gridBackground/GridBackground.jsx';
 import DarkModeApp from '../components/jsx/darkMode/DarkModeApp.jsx';
@@ -18,7 +18,7 @@ const latestPosts = (await getCollection('blog'))
 	.map(post => ({
 		title: post.data.title,
 		description: post.data.description,
-		pubDate: post.data.pubDate,
+		pubDate: new Date(post.data.pubDate),
 		heroImage: post.data.heroImage,
 		slug: post.id,
 		readTime: post.data.readTime,
@@ -39,7 +39,7 @@ const commitCount = await getCommitCount();
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<GridBackground client:load />
-	<DarkModeApp client:load />
+	<!-- <DarkModeApp client:load /> -->
 	
 	<div class="max-w-4xl mx-auto">
 		<HeroSection 
