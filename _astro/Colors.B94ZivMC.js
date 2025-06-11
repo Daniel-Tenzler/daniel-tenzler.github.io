@@ -1,0 +1,1 @@
+const f=t=>{if(!t||typeof t!="string")return"";const a=t.replace("#",""),n=parseInt(a,16),r=n>>16&255,c=n>>8&255,e=n&255;return`${r}, ${c}, ${e}`},o=(t,a=1)=>`rgba(${f(t)}, ${a})`,g={accent:"#2337ff",accentDark:"#000d8a",black:"#0f1219",gray:"#60739f",grayLight:"#e5e9f0",grayDark:"#222939",white:"#ffffff"};export{g as C,o as g};
