@@ -118,13 +118,9 @@ const ContentContainer = styled.div`
 `;
 
 export default function BlogPostContent({ children }) {
-  return (
-    <ContentContainer>
-      {children}
-    </ContentContainer>
-  );
+	return <ContentContainer>{children}</ContentContainer>;
 }
 
 BlogPostContent.propTypes = {
-  children: PropTypes.node.isRequired
-}; 
+	children: PropTypes.node.isRequired,
+};

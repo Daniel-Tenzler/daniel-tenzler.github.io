@@ -1,36 +1,37 @@
 {
-    "projects": [{
-            "id": "personal-website",
-            "title": "Personal Website & Blog",
-            "description": "A modern personal website and blog built with Astro and React, featuring a responsive design and interactive components.",
-            "technologies": ["Astro", "React", "Emotion"],
-            "image": "/blog-placeholder-about.jpg",
-            "githubUrl": "https://github.com/danieltenz/danieltenz.github.io",
-            "liveUrl": "https://danieltenz.github.io",
-            "featured": true,
-            "date": "2025-05"
-        },
-        {
-            "id": "project-2",
-            "title": "Project 2",
-            "description": "Description of your second project. This is a placeholder that you can update with your actual project details.",
-            "technologies": ["Technology 1", "Technology 2"],
-            "image": "/blog-placeholder-about.jpg",
-            "githubUrl": "",
-            "liveUrl": "",
-            "featured": true,
-            "date": "2025-05"
-        },
-        {
-            "id": "project-3",
-            "title": "Project 3",
-            "description": "Description of your third project. This is a placeholder that you can update with your actual project details.",
-            "technologies": ["Technology 1", "Technology 2", "Technology 3"],
-            "image": "/blog-placeholder-about.jpg",
-            "githubUrl": "",
-            "liveUrl": "",
-            "featured": true,
-            "date": "2025-05"
-        }
-    ]
+	"projects": [
+		{
+			"id": "personal-website",
+			"title": "Personal Website & Blog",
+			"description": "A modern personal website and blog built with Astro and React, featuring a responsive design and interactive components.",
+			"technologies": ["Astro", "React", "Emotion"],
+			"image": "/blog-placeholder-about.jpg",
+			"githubUrl": "https://github.com/danieltenz/danieltenz.github.io",
+			"liveUrl": "https://danieltenz.github.io",
+			"featured": true,
+			"date": "2025-05"
+		},
+		{
+			"id": "project-2",
+			"title": "Project 2",
+			"description": "Description of your second project. This is a placeholder that you can update with your actual project details.",
+			"technologies": ["Technology 1", "Technology 2"],
+			"image": "/blog-placeholder-about.jpg",
+			"githubUrl": "",
+			"liveUrl": "",
+			"featured": true,
+			"date": "2025-05"
+		},
+		{
+			"id": "project-3",
+			"title": "Project 3",
+			"description": "Description of your third project. This is a placeholder that you can update with your actual project details.",
+			"technologies": ["Technology 1", "Technology 2", "Technology 3"],
+			"image": "/blog-placeholder-about.jpg",
+			"githubUrl": "",
+			"liveUrl": "",
+			"featured": true,
+			"date": "2025-05"
+		}
+	]
 }
