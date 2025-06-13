@@ -3,16 +3,18 @@ import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import babelParser from '@babel/eslint-parser';
+import astro from 'eslint-plugin-astro';
+import astroParser from 'astro-eslint-parser';
 
 /** @type {import("eslint").Config[]} */
 export default [
     js.configs.recommended,
 
     {
-        ignores: ['dist/**', 'node_modules/**', '.vscode/**', '.git/**', '.astro/**', '**/*.astro'],
+        ignores: ['dist/**', 'node_modules/**', '.vscode/**', '.git/**', '**/*.astro'],
     },
 
-    // JS/TS files (including React)
+    // JS/JSX
     {
         files: ['**/*.{js,jsx,ts,tsx}'],
         plugins: {
@@ -46,6 +48,11 @@ export default [
                 queueMicrotask: 'readonly',
             },
         },
+        settings: {
+            react: {
+                version: 'detect',
+            },
+        },
         rules: {
             'react/react-in-jsx-scope': 'off',
             'react/jsx-uses-react': 'off',
@@ -69,6 +76,39 @@ export default [
             'react/no-array-index-key': 'warn',
             ...reactPlugin.configs.recommended.rules,
             ...jsxA11y.configs.recommended.rules,
+        },
+    },
+
+    {
+        files: ['**/*.astro'],
+        plugins: {
+            astro,
+        },
+        languageOptions: {
+            parser: astroParser,
+            parserOptions: {
+                parser: babelParser,
+                requireConfigFile: false,
+                babelOptions: {
+                    presets: ['@babel/preset-react'],
+                },
+                extraFileExtensions: ['.astro'],
+                ecmaVersion: 2021,
+                sourceType: 'module',
+            },
+            globals: {
+                Astro: 'readonly',
+            },
+        },
+        settings: {
+            // Optional Astro-specific settings
+        },
+        rules: {
+            ...astro.configs.recommended.rules,
+            // You can customize Astro rules here
+            'no-unused-vars': 'off',
+            '@typescript-eslint/no-unsafe-member-access': 'off',
+            '@typescript-eslint/no-unsafe-assignment': 'off'
         },
     },
 ];
