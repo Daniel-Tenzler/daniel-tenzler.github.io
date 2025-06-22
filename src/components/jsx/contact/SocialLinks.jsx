@@ -40,7 +40,7 @@ export default class SocialLinks extends React.Component {
 				<Title>Connect on Social Media</Title>
 				<LinksContainer>
 					<SocialLink
-						href="https://github.com/danieltenz"
+						href="https://github.com/daniel-tenzler"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
@@ -54,7 +54,7 @@ export default class SocialLinks extends React.Component {
 						</SocialIcon>
 					</SocialLink>
 					<SocialLink
-						href="https://linkedin.com/in/danieltenz"
+						href="https://linkedin.com/in/daniel-tenzler"
 						target="_blank"
 						rel="noopener noreferrer"
 					>

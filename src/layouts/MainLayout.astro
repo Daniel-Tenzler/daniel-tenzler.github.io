@@ -1,4 +1,5 @@
 ---
+import BaseHead from "../components/astro/BaseHead.astro";
 import Footer from "../components/jsx/footer/Footer";
 import Header from "../components/jsx/header/Header";
 import { COLORS } from "../consts/Colors";
@@ -15,11 +16,39 @@ const { title, description = "Daniel Tenzler's personal website and blog" } =
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <BaseHead 
+      title={title}
+      description={description}
+      image="/blog-placeholder-1.jpg"
+      structuredData={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": title,
+        "description": description,
+        "url": Astro.url.href,
+        "author": {
+          "@type": "Person",
+          "name": "Daniel Tenzler",
+          "url": "https://daniel-tenzler.github.io"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Daniel Tenzler",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "/favicon.svg"
+          }
+        },
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Daniel Tenzler",
+          "jobTitle": "Software Developer",
+          "url": "https://daniel-tenzler.github.io"
+        },
+        "dateModified": new Date().toISOString(),
+        "inLanguage": "en-US"
+      }}
+    />
   </head>
   <body>
     <div class="min-h-screen flex flex-col">
