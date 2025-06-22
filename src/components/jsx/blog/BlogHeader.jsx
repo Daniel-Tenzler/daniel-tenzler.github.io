@@ -12,12 +12,12 @@ const Title = styled.h1`
 	font-size: 2.25rem;
 	font-weight: bold;
 	margin-bottom: 1.5rem;
-	color: ${COLORS.black};
+	color: ${COLORS.grayLight};
 `;
 
 const Description = styled.p`
 	font-size: 1.25rem;
-	color: ${COLORS.gray};
+	color: ${COLORS.offWhite};
 	margin-bottom: 2rem;
 `;
 

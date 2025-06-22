@@ -18,9 +18,9 @@ const Grid = styled.div`
 `;
 
 const Card = styled.article`
-	background: ${COLORS.white};
+	background: ${COLORS.cardSurfaceBackground};
 	border-radius: 0.5rem;
-	box-shadow: 0 4px 6px ${getRgbaColor(COLORS.black, 0.1)};
+	box-shadow: 0 4px 6px ${getRgbaColor(COLORS.cardSurfaceBackground, 0.1)};
 	overflow: hidden;
 	transition: transform 0.3s ease;
 
@@ -43,15 +43,15 @@ const CardTitle = styled.h2`
 	font-size: 1.25rem;
 	font-weight: 600;
 	margin-bottom: 0.5rem;
-	color: ${COLORS.black};
+	color: ${COLORS.white};
 
 	a:hover & {
-		color: ${COLORS.accentDark};
+		color: ${COLORS.offWhite};
 	}
 `;
 
 const CardDescription = styled.p`
-	color: ${COLORS.gray};
+	color: ${COLORS.grayLight};
 	margin-bottom: 1rem;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
@@ -66,11 +66,11 @@ const TechContainer = styled.div`
 `;
 
 const TechTag = styled.span`
-	background: ${getRgbaColor(COLORS.grayLight)};
-	padding: 0.25rem 0.5rem;
+	padding: 0.25rem 0.75rem;
+	background-color: ${getRgbaColor(COLORS.black, 0.5)};
 	border-radius: 9999px;
 	font-size: 0.875rem;
-	color: ${COLORS.black};
+	color: ${COLORS.offWhite};
 `;
 
 export default function PortfolioGrid({ items }) {

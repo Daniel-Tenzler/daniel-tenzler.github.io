@@ -7,7 +7,7 @@ const StatsContainer = styled.div`
 	display: flex;
 	gap: 4rem;
 	padding: 1.5rem;
-	background-color: ${getRgbaColor(COLORS.grayLight, 0.45)};
+	background-color: ${getRgbaColor(COLORS.cardSurfaceBackground)};
 	border-radius: 8px;
 	margin: 1rem 0;
 	justify-content: space-between;
@@ -23,42 +23,33 @@ const StatItem = styled.div`
 const StatValue = styled.span`
 	font-size: 1.5rem;
 	font-weight: bold;
-	color: ${COLORS.black};
+	color: ${COLORS.white};
 `;
 
 const StatLabel = styled.span`
 	font-size: 0.875rem;
-	color: ${COLORS.gray};
+	color: ${COLORS.offWhite};
 `;
 
-const Headline = styled.h2`
-	font-size: 1.5rem;
-	color: ${COLORS.black};
+const Title = styled.h2`
+	font-size: 1.875rem;
+	font-weight: 700;
 	margin-bottom: 1rem;
-	text-align: center;
+	color: ${COLORS.grayLight};
 `;
 
 const Description = styled.p`
-	color: ${COLORS.gray};
-	text-align: center;
+	color: ${COLORS.offWhite};
 	margin: 1rem 0;
 	font-size: 1rem;
 	line-height: 1.5;
 `;
 
-const RepositoryInfo = styled.div`
-	background-color: ${getRgbaColor(COLORS.grayLight, 0.25)};
-	border-radius: 8px;
-	padding: 1rem;
-	margin: 1rem 0;
-`;
-
 export default function GitHubStats({ metadata, commitCount }) {
 	return (
 		<>
-			<Headline>Repository Statistics</Headline>
+			<Title>Repository Statistics</Title>
 			<Description>{metadata.description}</Description>
-			<RepositoryInfo>
 				<StatsContainer>
 					{metadata.stars > 0 && (
 						<StatItem>
@@ -85,7 +76,6 @@ export default function GitHubStats({ metadata, commitCount }) {
 						<StatLabel>Last Updated</StatLabel>
 					</StatItem>
 				</StatsContainer>
-			</RepositoryInfo>
 		</>
 	);
 }

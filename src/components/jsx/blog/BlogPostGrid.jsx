@@ -22,7 +22,7 @@ const PostWrapper = styled.div`
 
 const NoPostsMessage = styled.p`
 	text-align: center;
-	color: ${COLORS.gray};
+	color: ${COLORS.white};
 	font-size: 1.125rem;
 	margin: 2rem 0;
 `;

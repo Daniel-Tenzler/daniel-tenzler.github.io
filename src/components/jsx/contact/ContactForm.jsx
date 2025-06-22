@@ -15,7 +15,7 @@ const Label = styled.label`
 	display: block;
 	margin-bottom: 0.5rem;
 	font-weight: 500;
-	color: ${COLORS.black};
+	color: ${COLORS.white};
 `;
 
 const Input = styled.input`
@@ -23,15 +23,15 @@ const Input = styled.input`
 	padding: 0.75rem;
 	border: 1px solid ${getRgbaColor(COLORS.grayLight)};
 	border-radius: 0.375rem;
-	background: ${COLORS.white};
+	background: ${COLORS.offWhite};
 	color: ${COLORS.black};
 	font-size: 1rem;
 	transition: all 0.2s ease;
 
 	&:focus {
 		outline: none;
-		border-color: ${COLORS.accent};
-		box-shadow: 0 0 0 2px ${getRgbaColor(COLORS.accent, 0.2)};
+		border-color: ${COLORS.semiSurfacePrimary};
+		box-shadow: 0 0 0 6px ${getRgbaColor(COLORS.semiSurfacePrimary, 0.2)};
 	}
 
 	&::placeholder {
@@ -44,7 +44,7 @@ const TextArea = styled.textarea`
 	padding: 0.75rem;
 	border: 1px solid ${getRgbaColor(COLORS.grayLight)};
 	border-radius: 0.375rem;
-	background: ${COLORS.white};
+	background: ${COLORS.offWhite};
 	color: ${COLORS.black};
 	font-size: 1rem;
 	min-height: 150px;
@@ -53,8 +53,8 @@ const TextArea = styled.textarea`
 
 	&:focus {
 		outline: none;
-		border-color: ${COLORS.accent};
-		box-shadow: 0 0 0 2px ${getRgbaColor(COLORS.accent, 0.2)};
+		border-color: ${COLORS.semiSurfacePrimary};
+		box-shadow: 0 0 0 2px ${getRgbaColor(COLORS.semiSurfacePrimary, 0.2)};
 	}
 
 	&::placeholder {
@@ -64,7 +64,7 @@ const TextArea = styled.textarea`
 
 const SubmitButton = styled.button`
 	padding: 0.75rem 1.5rem;
-	background: ${COLORS.accent};
+	background: ${COLORS.cardSurfaceBackground};
 	color: ${COLORS.white};
 	border: none;
 	border-radius: 0.375rem;
@@ -74,16 +74,16 @@ const SubmitButton = styled.button`
 	transition: all 0.2s ease;
 
 	&:hover {
-		background: ${COLORS.accentDark};
+		background: ${COLORS.surfaceBlend1};
 	}
 
 	&:focus {
 		outline: none;
-		box-shadow: 0 0 0 2px ${getRgbaColor(COLORS.accent, 0.2)};
+		box-shadow: 0 0 0 2px ${getRgbaColor(COLORS.semiSurfacePrimary, 0.2)};
 	}
 
 	&:disabled {
-		background: ${getRgbaColor(COLORS.grayLight)};
+		background: ${getRgbaColor(COLORS.semiSurfacePrimary)};
 		cursor: not-allowed;
 	}
 `;

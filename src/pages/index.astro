@@ -48,12 +48,6 @@ const commitCount = await getCommitCount();
 			description="A lot of the content on this page is only for testing purposes and partly or fully ai generated."
 		/>
 
-		<GitHubStats
-			client:load
-			metadata={metadata}
-			commitCount={commitCount}
-		/>
-
 		<PortfolioPreview
 			client:load
 			projects={featuredProjects}
@@ -67,6 +61,12 @@ const commitCount = await getCommitCount();
 		<AboutSection 
 			client:load
 			paragraphs={aboutParagraphs}
+		/>
+		
+		<GitHubStats
+			client:load
+			metadata={metadata}
+			commitCount={commitCount}
 		/>
 	</div>
 </MainLayout>

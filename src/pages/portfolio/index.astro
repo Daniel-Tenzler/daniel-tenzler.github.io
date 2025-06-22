@@ -1,13 +1,13 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
 import { getPortfolioItems } from '../../data/portfolio';
 import PortfolioOverview from '../../components/jsx/portfolio/PortfolioOverview';
 import GridBackground from '../../components/jsx/gridBackground/GridBackground';
+import PortfolioLayout from '../../layouts/PortfolioLayout.astro';
 
 const portfolioItems = await getPortfolioItems();
 ---
 
-<MainLayout title="Portfolio | Daniel Tenzler">
+<PortfolioLayout title="Portfolio | Daniel Tenzler">
 	<GridBackground client:load />
   <PortfolioOverview client:load items={portfolioItems} />
-</MainLayout> 
+</PortfolioLayout> 

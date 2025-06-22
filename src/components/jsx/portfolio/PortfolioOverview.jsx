@@ -4,9 +4,7 @@ import styled from '@emotion/styled';
 import PortfolioGrid from './PortfolioGrid';
 
 const StyledMain = styled.main`
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 2rem 1rem;
+	max-width: 90%;
 `;
 
 const StyledHeading = styled.h1`

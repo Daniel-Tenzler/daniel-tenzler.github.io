@@ -1,7 +1,7 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
 import Project from '../../components/jsx/portfolio/Project';
 import { getPortfolioItems } from '../../data/portfolio';
+import PortfolioLayout from '../../layouts/PortfolioLayout.astro';
 
 export const getStaticPaths = async () => {
   const items = await getPortfolioItems();
@@ -14,6 +14,6 @@ export const getStaticPaths = async () => {
 const { item } = Astro.props;
 ---
 
-<MainLayout title={`${item.title} | Portfolio | Daniel Tenz`}>
+<PortfolioLayout title={`${item.title} | Portfolio | Daniel Tenz`}>
     <Project client:load item={item} />
-</MainLayout> 
+</PortfolioLayout> 

@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const ContentContainer = styled.div`
-  max-width: 65ch;
+  max-width: 85ch;
   margin: 0 auto;
-  color: ${COLORS.black};
+  color: ${COLORS.white};
 
   h1 {
-    color: ${COLORS.black};
+    color: ${COLORS.white};
     font-weight: 800;
     font-size: 2.25em;
     margin-top: 0;
@@ -18,7 +18,7 @@ const ContentContainer = styled.div`
   }
 
   h2 {
-    color: ${COLORS.black};
+    color: ${COLORS.white};
     font-weight: 700;
     font-size: 1.5em;
     margin-top: 2em;
@@ -27,7 +27,7 @@ const ContentContainer = styled.div`
   }
 
   h3 {
-    color: ${COLORS.black};
+    color: ${COLORS.white};
     font-weight: 600;
     font-size: 1.25em;
     margin-top: 1.6em;
@@ -41,25 +41,25 @@ const ContentContainer = styled.div`
   }
 
   a {
-    color: ${COLORS.accent};
+    color: ${COLORS.white};
     text-decoration: underline;
     font-weight: 500;
   }
 
   strong {
-    color: ${COLORS.black};
+    color: ${COLORS.white};
     font-weight: 600;
   }
 
   code {
-    color: ${COLORS.black};
+    color: ${COLORS.white};
     font-weight: 600;
     font-size: 0.875em;
   }
 
   pre {
-    color: ${getRgbaColor(COLORS.grayLight)};
-    background-color: ${getRgbaColor(COLORS.grayDark)};
+    color: ${getRgbaColor(COLORS.white)};
+    background-color: ${getRgbaColor(COLORS.white)};
     overflow-x: auto;
     font-size: 0.875em;
     line-height: 1.7142857;
@@ -72,9 +72,9 @@ const ContentContainer = styled.div`
   blockquote {
     font-weight: 500;
     font-style: italic;
-    color: ${COLORS.black};
+    color: ${COLORS.white};
     border-left-width: 0.25rem;
-    border-left-color: ${getRgbaColor(COLORS.grayLight)};
+    border-left-color: ${getRgbaColor(COLORS.white)};
     quotes: "\201C""\201D""\2018""\2019";
     margin-top: 1.6em;
     margin-bottom: 1.6em;
@@ -113,7 +113,7 @@ const ContentContainer = styled.div`
   hr {
     margin-top: 3em;
     margin-bottom: 3em;
-    border-color: ${getRgbaColor(COLORS.grayLight)};
+    border-color: ${getRgbaColor(COLORS.white)};
   }
 `;
 

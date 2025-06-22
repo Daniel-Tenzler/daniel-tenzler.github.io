@@ -5,16 +5,16 @@ import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const Card = styled.a`
 	display: block;
-	background: ${COLORS.white};
+	background: ${COLORS.cardSurfaceBackground};
 	border-radius: 0.5rem;
 	overflow: hidden;
-	box-shadow: 0 1px 3px ${getRgbaColor(COLORS.black, 0.1)};
+	box-shadow: 0 1px 3px ${getRgbaColor(COLORS.cardSurfaceBackground, 0.1)};
 	transition: all 0.2s ease;
 	text-decoration: none;
 	color: inherit;
 
 	&:hover {
-		box-shadow: 0 4px 6px ${getRgbaColor(COLORS.black, 0.1)};
+		box-shadow: 0 4px 6px ${getRgbaColor(COLORS.cardSurfaceBackground, 0.1)};
 		transform: translateY(-2px);
 	}
 `;
@@ -27,18 +27,18 @@ const Title = styled.h3`
 	margin: 0 0 0.5rem;
 	font-size: 1.25rem;
 	font-weight: 600;
-	color: ${COLORS.black};
+	color: ${COLORS.grayLight};
 	transition: color 0.2s ease;
 
 	${Card}:hover & {
-		color: ${COLORS.accent};
+		color: ${COLORS.offWhite};
 	}
 `;
 
 const Description = styled.p`
 	margin: 0 0 1rem;
 	font-size: 0.875rem;
-	color: ${COLORS.gray};
+	color: ${COLORS.grayLight};
 `;
 
 const Meta = styled.div`
@@ -46,7 +46,7 @@ const Meta = styled.div`
 	align-items: center;
 	gap: 1rem;
 	font-size: 0.875rem;
-	color: ${COLORS.gray};
+	color: ${COLORS.offWhite};
 `;
 
 const Tags = styled.div`
@@ -58,7 +58,7 @@ const Tags = styled.div`
 
 const Tag = styled.span`
 	padding: 0.25rem 0.75rem;
-	background: ${getRgbaColor(COLORS.grayLight)};
+	background: ${getRgbaColor(COLORS.white)};
 	color: ${COLORS.black};
 	border-radius: 9999px;
 	font-size: 0.75rem;

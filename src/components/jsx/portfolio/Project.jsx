@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const Container = styled.main`
 	max-width: 1280px;
@@ -14,7 +15,7 @@ const Article = styled.article`
 `;
 
 const Header = styled.header`
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 `;
 
 const Title = styled.h1`
@@ -30,10 +31,11 @@ const TechList = styled.div`
 `;
 
 const TechTag = styled.span`
-	background-color: #e5e7eb;
 	padding: 0.25rem 0.75rem;
+	background-color: ${getRgbaColor(COLORS.black, 0.5)};
 	border-radius: 9999px;
 	font-size: 0.875rem;
+	color: ${COLORS.offWhite};
 `;
 
 const LinkContainer = styled.div`
@@ -42,7 +44,7 @@ const LinkContainer = styled.div`
 `;
 
 const StyledLink = styled.a`
-	color: #2563eb;
+	color: ${COLORS.white};
 	text-decoration: none;
 	&:hover {
 		text-decoration: underline;
@@ -82,15 +84,6 @@ const Project = ({ item }) => {
 								rel="noopener noreferrer"
 							>
 								View on GitHub
-							</StyledLink>
-						)}
-						{item.liveUrl && (
-							<StyledLink
-								href={item.liveUrl}
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								Live Demo
 							</StyledLink>
 						)}
 					</LinkContainer>

@@ -9,10 +9,10 @@ const Section = styled.section`
 `;
 
 const Title = styled.h2`
-	font-size: 1.5rem;
+	font-size: 1.875rem;
 	font-weight: 700;
-	margin-bottom: 1.5rem;
-	color: ${COLORS.black};
+	margin-bottom: 2rem;
+	color: ${COLORS.grayLight};
 `;
 
 const PostsGrid = styled.div`
@@ -31,13 +31,13 @@ const ViewAllLink = styled.div`
 `;
 
 const Link = styled.a`
-	color: ${COLORS.accent};
+	color: ${COLORS.white};
 	font-weight: 500;
 	text-decoration: none;
 	transition: color 0.2s ease;
 
 	&:hover {
-		color: ${COLORS.accentDark};
+		color: ${COLORS.grayLight};
 	}
 `;
 

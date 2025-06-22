@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const StyledFooter = styled.footer`
-	background-color: ${COLORS.white};
-	border-top: 1px solid ${getRgbaColor(COLORS.grayLight)};
+	background-color: ${COLORS.semiSurfacePrimary};
+	border-top: 1px solid ${getRgbaColor(COLORS.surfaceBlend1)};
 `;
 
 const FooterContainer = styled.div`
@@ -31,7 +31,7 @@ const FooterContent = styled.div`
 
 const Copyright = styled.div`
 	font-size: 0.875rem;
-	color: ${COLORS.gray};
+	color: ${COLORS.grayLight};
 `;
 
 const SocialLinks = styled.div`
@@ -40,18 +40,19 @@ const SocialLinks = styled.div`
 `;
 
 const SocialLink = styled.a`
-	color: ${COLORS.gray};
+	color: ${COLORS.grayLight};
 	text-decoration: none;
 	transition: color 0.2s ease;
 
 	&:hover {
-		color: ${COLORS.black};
+		color: ${COLORS.gray};
 	}
 `;
 
 const SocialIcon = styled.svg`
 	height: 1.5rem;
 	width: 1.5rem;
+	margin-left: 5px;
 `;
 
 export default class Footer extends React.Component {
@@ -81,7 +82,7 @@ export default class Footer extends React.Component {
 								</SocialIcon>
 							</SocialLink>
 							<SocialLink
-								href="https://linkedin.com/in/daniel-tenzler"
+								href="https://www.linkedin.com/in/daniel-patrick-tenzler-89a44a319/"
 								target="_blank"
 								rel="noopener noreferrer"
 							>

@@ -14,14 +14,14 @@ const MetaContainer = styled.div`
 	justify-content: center;
 	gap: 1rem;
 	font-size: 0.875rem;
-	color: ${COLORS.gray};
+	color: ${COLORS.offWhite};
 	margin-bottom: 1rem;
 `;
 
 const Title = styled.h1`
 	font-size: 2.25rem;
 	font-weight: 800;
-	color: ${COLORS.black};
+	color: ${COLORS.grayLight};
 	margin-bottom: 1rem;
 	line-height: 1.1;
 `;
@@ -36,15 +36,15 @@ const TagsContainer = styled.div`
 
 const Tag = styled.span`
 	padding: 0.25rem 0.75rem;
-	background: ${getRgbaColor(COLORS.grayLight)};
-	color: ${COLORS.black};
+	background-color: ${getRgbaColor(COLORS.black, 0.5)};
 	border-radius: 9999px;
-	font-size: 0.75rem;
+	font-size: 0.875rem;
+	color: ${COLORS.offWhite};
 `;
 
 const UpdateInfo = styled.div`
 	font-size: 0.875rem;
-	color: ${COLORS.gray};
+	color: ${COLORS.white};
 	font-style: italic;
 `;
 

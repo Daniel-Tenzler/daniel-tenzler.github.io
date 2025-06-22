@@ -3,14 +3,16 @@ import styled from '@emotion/styled';
 import { COLORS } from '../../../consts/Colors';
 
 const Container = styled.div`
-	margin-top: 3rem;
+	margin-top: 2rem;
+	align-self: center;
+	justify-self: center;
 `;
 
 const Title = styled.h2`
 	font-size: 1.25rem;
 	font-weight: 600;
 	margin-bottom: 1rem;
-	color: ${COLORS.black};
+	color: ${COLORS.offWhite};
 `;
 
 const LinksContainer = styled.div`
@@ -19,18 +21,19 @@ const LinksContainer = styled.div`
 `;
 
 const SocialLink = styled.a`
-	color: ${COLORS.gray};
+	color: ${COLORS.offWhite};
 	text-decoration: none;
 	transition: color 0.2s ease;
 
 	&:hover {
-		color: ${COLORS.black};
+		color: ${COLORS.gray};
 	}
 `;
 
 const SocialIcon = styled.svg`
 	height: 1.5rem;
 	width: 1.5rem;
+	margin-left: 5px;
 `;
 
 export default class SocialLinks extends React.Component {
@@ -54,7 +57,7 @@ export default class SocialLinks extends React.Component {
 						</SocialIcon>
 					</SocialLink>
 					<SocialLink
-						href="https://linkedin.com/in/daniel-tenzler"
+						href="https://www.linkedin.com/in/daniel-patrick-tenzler-89a44a319/"
 						target="_blank"
 						rel="noopener noreferrer"
 					>

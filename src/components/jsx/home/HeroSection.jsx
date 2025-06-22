@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { COLORS, getRgbaColor } from '../../../consts/Colors';
 
 const Section = styled.section`
-	margin-bottom: 3rem;
+	margin-bottom: 1rem;
 `;
 
 const Title = styled.h1`
@@ -15,7 +15,7 @@ const Title = styled.h1`
 
 const Description = styled.p`
 	font-size: 1.25rem;
-	color: ${COLORS.gray};
+	color: ${COLORS.grayLight};
 	margin-bottom: 2rem;
 `;
 
@@ -33,17 +33,17 @@ const PrimaryButton = styled.a`
 	font-weight: 500;
 	border-radius: 0.375rem;
 	color: ${COLORS.white};
-	background-color: ${COLORS.accent};
+	background-color: ${COLORS.accentDark};
 	text-decoration: none;
 	transition: background-color 0.2s ease;
 
 	&:hover {
-		background-color: ${COLORS.accentDark};
+		background-color: ${COLORS.accent};
 	}
 
 	&:focus {
 		outline: none;
-		box-shadow: 0 0 0 2px ${COLORS.accent};
+		box-shadow: 0 0 0 2px ${COLORS.accentDark};
 	}
 `;
 
@@ -51,22 +51,22 @@ const SecondaryButton = styled.a`
 	display: inline-flex;
 	align-items: center;
 	padding: 0.75rem 1.5rem;
-	border: 1px solid ${getRgbaColor(COLORS.grayLight)};
+	border: 1px solid ${getRgbaColor(COLORS.surfaceBlend1)};
 	font-size: 1rem;
 	font-weight: 500;
 	border-radius: 0.375rem;
-	color: ${COLORS.black};
-	background-color: ${COLORS.white};
+	color: ${COLORS.white};
+	background-color: ${COLORS.cardSurfaceBackground};
 	text-decoration: none;
 	transition: background-color 0.2s ease;
 
 	&:hover {
-		background-color: ${getRgbaColor(COLORS.grayLight)};
+		background-color: ${getRgbaColor(COLORS.semiSurfacePrimary)};
 	}
 
 	&:focus {
 		outline: none;
-		box-shadow: 0 0 0 2px ${COLORS.accent};
+		box-shadow: 0 0 0 2px ${COLORS.semiSurfacePrimary};
 	}
 `;
 
