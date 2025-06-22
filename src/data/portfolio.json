@@ -1,36 +1,23 @@
 {
     "projects": [{
-            "id": "personal-website",
-            "title": "Personal Website & Blog",
-            "description": "A modern personal website and blog built with Astro and React, featuring a responsive design and interactive components.",
-            "technologies": ["Astro", "React", "Emotion"],
-            "image": "/blog-placeholder-about.jpg",
-            "githubUrl": "https://github.com/daniel-tenzler/daniel-tenzler.github.io",
-            "liveUrl": "https://daniel-tenzler.github.io",
-            "featured": true,
-            "date": "2025-05"
-        },
-        {
-            "id": "project-2",
-            "title": "Project 2",
-            "description": "Description of your second project. This is a placeholder that you can update with your actual project details.",
-            "technologies": ["Technology 1", "Technology 2"],
-            "image": "/blog-placeholder-about.jpg",
-            "githubUrl": "",
-            "liveUrl": "",
-            "featured": true,
-            "date": "2025-05"
-        },
-        {
-            "id": "project-3",
-            "title": "Project 3",
-            "description": "Description of your third project. This is a placeholder that you can update with your actual project details.",
-            "technologies": ["Technology 1", "Technology 2", "Technology 3"],
-            "image": "/blog-placeholder-about.jpg",
-            "githubUrl": "",
-            "liveUrl": "",
-            "featured": true,
-            "date": "2025-05"
-        }
-    ]
+        "id": "personal-website",
+        "title": "Personal Website & Blog",
+        "description": "A modern personal website and blog built with Astro and React, featuring a responsive design and interactive components. Currently, the project is nothing more than a personal small website used for testing interesting ideas and honing my skills.",
+        "technologies": ["Astro", "React", "Emotion"],
+        "image": "/blog-placeholder-about.jpg",
+        "githubUrl": "https://github.com/daniel-tenzler/daniel-tenzler.github.io",
+        "liveUrl": "https://daniel-tenzler.github.io",
+        "featured": true,
+        "date": "2025-05"
+    }, {
+        "id": "task-set-generator",
+        "title": "Task Set Generator for evaluating distributed, real-time scheduling algorithms",
+        "description": "My Bachelors thesis project. This software generates task set with configurable boundaries for the purpose of testing novel scheduling algorithms.",
+        "technologies": ["Java", "Google-OR-Tools", "ILP"],
+        "image": "/blog-placeholder-2.jpg",
+        "githubUrl": "https://github.com/Daniel-Tenzler/TaskSetGenerator",
+        "liveUrl": "",
+        "featured": true,
+        "date": "2024-06"
+    }]
 }

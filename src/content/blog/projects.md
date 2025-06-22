@@ -3,7 +3,7 @@ title: 'Collection of Project Ideas'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
 heroImage: '/blog-placeholder-3.jpg'
-tags: ['web development', 'astro', 'javascript']
+tags: ['web dev', 'astro', 'js', 'app dev', 'jsx']
 ---
 
 Unfortunately, i am not very diligent about following through on interesting or entrigueing ideas, and even worse at documenting them when they come to mind. Which is why i want to keep track of them in case i ever find the time or motivation to tackle some of them.

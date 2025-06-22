@@ -58,10 +58,10 @@ const Tags = styled.div`
 
 const Tag = styled.span`
 	padding: 0.25rem 0.75rem;
-	background: ${getRgbaColor(COLORS.white)};
-	color: ${COLORS.black};
+	background-color: ${getRgbaColor(COLORS.black, 0.5)};
 	border-radius: 9999px;
-	font-size: 0.75rem;
+	font-size: 0.875rem;
+	color: ${COLORS.offWhite};
 `;
 
 const formatDate = (date) => {
