@@ -203,7 +203,9 @@ export default class Header extends React.Component {
 							aria-expanded={isMobileMenuOpen}
 							onClick={this.toggleMobileMenu}
 						>
-							<span className="sr-only" />
+							<span className="sr-only">
+								{isMobileMenuOpen ? 'Menü schließen' : 'Menü öffnen'}
+							</span>
 							<MenuIcon
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -234,9 +236,9 @@ export default class Header extends React.Component {
 						<MobileNavLink href="/blog" onClick={this.toggleMobileMenu}>
 							Blog
 						</MobileNavLink>
-						<MobileNavLink href="/contact" onClick={this.toggleMobileMenu}>
+						{/* <MobileNavLink href="/contact" onClick={this.toggleMobileMenu}>
 							Contact
-						</MobileNavLink>
+						</MobileNavLink> */}
 					</MobileMenu>
 				</Nav>
 			</StyledHeader>
