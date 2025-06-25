@@ -4,22 +4,27 @@ import MainLayout from 'src/layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 import BlogContainer from 'src/components/jsx/blog/BlogContainer/BlogContainer';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import ContentContainer from 'src/components/jsx/ContentContainer/ContentContainer';
 
 const posts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.map(post => ({
+	.map((post) => ({
 		...post,
 		data: {
 			...post.data,
-			pubDate: new Date(post.data.pubDate)
-		}
+			pubDate: new Date(post.data.pubDate),
+		},
 	}));
 
 // Get all unique tags from posts
-const allTags = [...new Set(posts.flatMap(post => post.data.tags || []))].sort();
+const allTags = [
+	...new Set(posts.flatMap((post) => post.data.tags || [])),
+].sort();
 ---
 
 <MainLayout title={`Blog - ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
 	<GridBackground client:load />
-	<BlogContainer client:load posts={posts} allTags={allTags} />
+	<ContentContainer client:load>
+		<BlogContainer client:load posts={posts} allTags={allTags} />
+	</ContentContainer>
 </MainLayout>

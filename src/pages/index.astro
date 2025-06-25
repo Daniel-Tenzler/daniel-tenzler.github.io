@@ -10,26 +10,29 @@ import { getCollection } from 'astro:content';
 import portfolioData from 'src/data/portfolio.json';
 import PortfolioPreview from 'src/components/jsx/home/PortfolioPreview/PortfolioPreview';
 import { getRepoMetadata, getCommitCount } from 'src/lib/github.js';
+import ContentContainer from 'src/components/jsx/ContentContainer/ContentContainer';
 
 const latestPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.slice(0, 2)
-	.map(post => ({
+	.map((post) => ({
 		title: post.data.title,
 		description: post.data.description,
 		pubDate: new Date(post.data.pubDate),
 		heroImage: post.data.heroImage,
 		slug: post.id,
 		readTime: post.data.readTime,
-		tags: post.data.tags
+		tags: post.data.tags,
 	}));
 
 const aboutParagraphs = [
-	"I specialize in full-stack web development, with a focus on modern JavaScript frameworks and tools. My goal is to create performant, accessible, and user-friendly web applications.",
-	"When I'm not coding, you can find me writing technical articles, contributing to open source projects, or exploring new technologies to stay at the forefront of web development."
+	'I specialize in full-stack web development, with a focus on modern JavaScript frameworks and tools. My goal is to create performant, accessible, and user-friendly web applications.',
+	"When I'm not coding, you can find me writing technical articles, contributing to open source projects, or exploring new technologies to stay at the forefront of web development.",
 ];
 
-const featuredProjects = portfolioData.projects.filter(project => project.featured);
+const featuredProjects = portfolioData.projects.filter(
+	(project) => project.featured
+);
 
 // Fetch GitHub data
 const metadata = await getRepoMetadata();
@@ -39,35 +42,26 @@ const commitCount = await getCommitCount();
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<GridBackground client:load />
 	<!-- <DarkModeApp client:load /> -->
-	
-	<div class="max-w-4xl mx-auto">
-		<HeroSection 
+
+	<ContentContainer client:load>
+		<HeroSection
 			client:load
 			title="Personal Website 22062025/0.1"
 			description="Hey, im Daniel. Welcome to my personal website currently hosted at github-pages. A lot of the content on this page is only for testing purposes and partly or fully ai generated."
 		/>
 
-		<PortfolioPreview
-			client:load
-			projects={featuredProjects}
-		/>
+		<PortfolioPreview client:load projects={featuredProjects} />
 
-		<LatestPostsSection 
-			client:load
-			posts={latestPosts}
-		/>
+		<LatestPostsSection client:load posts={latestPosts} />
 
-		<AboutSection 
-			client:load
-			paragraphs={aboutParagraphs}
-		/>
-		
+		<AboutSection client:load paragraphs={aboutParagraphs} />
+
 		<GitHubStats
 			client:load
 			metadata={metadata}
 			commitCount={commitCount}
 		/>
-	</div>
+	</ContentContainer>
 </MainLayout>
 
 <style>
