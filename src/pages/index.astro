@@ -1,16 +1,15 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts/SiteData.js';
-import MainLayout from '../layouts/MainLayout.astro';
-import GridBackground from '../components/jsx/gridBackground/GridBackground.jsx';
-import DarkModeApp from '../components/jsx/darkMode/DarkModeApp.jsx';
-import HeroSection from '../components/jsx/home/HeroSection.jsx';
-import LatestPostsSection from '../components/jsx/home/LatestPostsSection.jsx';
-import AboutSection from '../components/jsx/home/AboutSection.jsx';
-import GitHubStats from '../components/jsx/home/GitHubStats.jsx';
+import { SITE_TITLE, SITE_DESCRIPTION } from 'src/consts/SiteData.js';
+import MainLayout from 'src/layouts/MainLayout.astro';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground.jsx';
+import HeroSection from 'src/components/jsx/home/HeroSection/HeroSection.jsx';
+import LatestPostsSection from 'src/components/jsx/home/LatestPostsSection/LatestPostsSection.jsx';
+import AboutSection from 'src/components/jsx/home/AboutSection/AboutSection.jsx';
+import GitHubStats from 'src/components/jsx/home/GitHubStats/GitHubStats.jsx';
 import { getCollection } from 'astro:content';
-import portfolioData from '../data/portfolio.json';
-import PortfolioPreview from '../components/jsx/home/PortfolioPreview';
-import { getRepoMetadata, getCommitCount } from '../lib/github.js';
+import portfolioData from 'src/data/portfolio.json';
+import PortfolioPreview from 'src/components/jsx/home/PortfolioPreview/PortfolioPreview';
+import { getRepoMetadata, getCommitCount } from 'src/lib/github.js';
 
 const latestPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())

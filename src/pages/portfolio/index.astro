@@ -1,8 +1,8 @@
 ---
-import { getPortfolioItems } from '../../data/portfolio';
-import PortfolioOverview from '../../components/jsx/portfolio/PortfolioOverview';
-import GridBackground from '../../components/jsx/gridBackground/GridBackground';
-import PortfolioLayout from '../../layouts/PortfolioLayout.astro';
+import { getPortfolioItems } from 'src/data/portfolio';
+import PortfolioOverview from 'src/components/jsx/portfolio/PortfolioOverview/PortfolioOverview';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import PortfolioLayout from 'src/layouts/PortfolioLayout.astro';
 
 const portfolioItems = await getPortfolioItems();
 ---

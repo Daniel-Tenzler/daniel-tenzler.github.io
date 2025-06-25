@@ -1,7 +1,7 @@
 ---
-import Project from '../../components/jsx/portfolio/Project';
-import { getPortfolioItems } from '../../data/portfolio';
-import PortfolioLayout from '../../layouts/PortfolioLayout.astro';
+import Project from 'src/components/jsx/portfolio/Project/Project';
+import { getPortfolioItems } from 'src/data/portfolio';
+import PortfolioLayout from 'src/layouts/PortfolioLayout.astro';
 
 export const getStaticPaths = async () => {
   const items = await getPortfolioItems();

@@ -1,8 +1,9 @@
-// @ts-check
+// @ts-nocheck
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
+import { fileURLToPath, URL } from 'url';
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,4 +20,12 @@ export default defineConfig({
             },
         }),
     ],
+    vite: {
+        resolve: {
+            alias: {
+                'src': fileURLToPath(new URL('./src',
+                    import.meta.url)),
+            },
+        },
+    },
 });

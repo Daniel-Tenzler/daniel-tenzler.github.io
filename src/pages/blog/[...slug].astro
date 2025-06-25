@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import { render } from 'astro:content';
-import { SITE_TITLE } from '../../consts/SiteData';
-import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+import { SITE_TITLE } from 'src/consts/SiteData';
+import BlogPostLayout from 'src/layouts/BlogPostLayout.astro';
 import type { CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {

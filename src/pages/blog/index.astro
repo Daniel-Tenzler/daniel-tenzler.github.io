@@ -1,9 +1,9 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts/SiteData';
-import MainLayout from '../../layouts/MainLayout.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from 'src/consts/SiteData';
+import MainLayout from 'src/layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
-import BlogContainer from '../../components/jsx/blog/BlogContainer';
-import GridBackground from '../../components/jsx/gridBackground/GridBackground';
+import BlogContainer from 'src/components/jsx/blog/BlogContainer/BlogContainer';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
 
 const posts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
