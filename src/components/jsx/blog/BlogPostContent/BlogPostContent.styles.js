@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
-export const ContentContainer = styled.div`
+export const ContentContainer = styled.div `
   max-width: 85ch;
   margin: 0 auto;
   color: ${COLORS.white};

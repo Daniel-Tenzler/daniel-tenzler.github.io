@@ -8,6 +8,7 @@ import {
 	CardTitle,
 	CardDescription,
 	TechContainer,
+	StyledLinkArea,
 	TechTag,
 } from './PortfolioGrid.styles';
 
@@ -15,7 +16,7 @@ export default function PortfolioGrid({ items }) {
 	return (
 		<Grid>
 			{items.map((item) => (
-				<a key={item.id} href={`/portfolio/${item.id}`}>
+				<StyledLinkArea key={item.id} href={`/portfolio/${item.id}`}>
 					<Card>
 						{item.image && <CardImage src={item.image} alt={item.title} />}
 						<CardContent>
@@ -31,7 +32,7 @@ export default function PortfolioGrid({ items }) {
 							</TechContainer>
 						</CardContent>
 					</Card>
-				</a>
+				</StyledLinkArea>
 			))}
 		</Grid>
 	);
