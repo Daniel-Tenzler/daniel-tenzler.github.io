@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import { fileURLToPath, URL } from 'url';
+import babel from '@rollup/plugin-babel';
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,5 +28,19 @@ export default defineConfig({
                     import.meta.url)),
             },
         },
+        plugins: [
+            babel({
+                babelHelpers: 'bundled',
+                extensions: ['.js', '.jsx', '.ts', '.tsx'],
+                include: ['src/**/*'],
+                plugins: [
+                    ['@emotion', {
+                        autoLabel: 'always',
+                        labelFormat: '[dirname]-[filename]',
+                        sourceMap: true,
+                    }]
+                ]
+            })
+        ]
     },
 });

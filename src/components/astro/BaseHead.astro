@@ -15,9 +15,12 @@ const { title, description, image = '/blog-placeholder-1.jpg', structuredData } 
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#000000">
 <link
 	rel="alternate"
 	type="application/rss+xml"
@@ -26,9 +29,7 @@ const { title, description, image = '/blog-placeholder-1.jpg', structuredData } 
 />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Font preloads -->
-<link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
-<link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
+
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

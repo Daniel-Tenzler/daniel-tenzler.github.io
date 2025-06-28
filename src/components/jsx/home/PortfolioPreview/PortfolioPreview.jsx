@@ -50,7 +50,7 @@ const PortfolioPreview = ({ projects }) => {
 										rel="noopener noreferrer"
 										onClick={(e) => e.stopPropagation()}
 									>
-										GitHub
+										GitHub - {project.title}
 									</Link>
 								)}
 								{project.liveUrl && (
@@ -60,7 +60,7 @@ const PortfolioPreview = ({ projects }) => {
 										rel="noopener noreferrer"
 										onClick={(e) => e.stopPropagation()}
 									>
-										Live Demo
+										Live Demo - {project.title}
 									</Link>
 								)}
 							</Links>
