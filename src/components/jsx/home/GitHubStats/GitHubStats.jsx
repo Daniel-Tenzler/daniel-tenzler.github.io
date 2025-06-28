@@ -14,32 +14,32 @@ export default function GitHubStats({ metadata, commitCount }) {
 		<>
 			<Title>Repository Statistics</Title>
 			<Description>{metadata.description}</Description>
-				<StatsContainer>
-					{metadata.stars > 0 && (
-						<StatItem>
-							<StatValue>{metadata.stars}</StatValue>
-							<StatLabel>Stars</StatLabel>
-						</StatItem>
-					)}
-					{metadata.forks > 0 && (
-						<StatItem>
-							<StatValue>{metadata.forks}</StatValue>
-							<StatLabel>Forks</StatLabel>
-						</StatItem>
-					)}
-					{commitCount > 0 && (
-						<StatItem>
-							<StatValue>{commitCount}</StatValue>
-							<StatLabel>Commits</StatLabel>
-						</StatItem>
-					)}
+			<StatsContainer>
+				{metadata.stars > 0 && (
 					<StatItem>
-						<StatValue>
-							{new Date(metadata.lastUpdated).toLocaleDateString()}
-						</StatValue>
-						<StatLabel>Last Updated</StatLabel>
+						<StatValue>{metadata.stars}</StatValue>
+						<StatLabel>Stars</StatLabel>
 					</StatItem>
-				</StatsContainer>
+				)}
+				{metadata.forks > 0 && (
+					<StatItem>
+						<StatValue>{metadata.forks}</StatValue>
+						<StatLabel>Forks</StatLabel>
+					</StatItem>
+				)}
+				{commitCount > 0 && (
+					<StatItem>
+						<StatValue>{commitCount}</StatValue>
+						<StatLabel>Commits</StatLabel>
+					</StatItem>
+				)}
+				<StatItem>
+					<StatValue>
+						{new Date(metadata.lastUpdated).toLocaleDateString()}
+					</StatValue>
+					<StatLabel>Last Updated</StatLabel>
+				</StatItem>
+			</StatsContainer>
 		</>
 	);
 }

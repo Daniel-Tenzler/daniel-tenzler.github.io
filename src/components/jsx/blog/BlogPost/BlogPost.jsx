@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BlogPostHeader from 'src/components/jsx/blog/BlogPostHeader/BlogPostHeader';
 import BlogPostContent from 'src/components/jsx/blog/BlogPostContent/BlogPostContent';
-import {
-	Article,
-	HeroImageContainer,
-	HeroImage,
-} from './BlogPost.styles';
+import { Article, HeroImageContainer, HeroImage } from './BlogPost.styles';
 
 export default function BlogPost({
 	title,

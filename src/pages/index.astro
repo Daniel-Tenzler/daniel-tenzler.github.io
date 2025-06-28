@@ -5,6 +5,7 @@ import GridBackground from 'src/components/jsx/gridBackground/GridBackground/Gri
 import HeroSection from 'src/components/jsx/home/HeroSection/HeroSection.jsx';
 import LatestPostsSection from 'src/components/jsx/home/LatestPostsSection/LatestPostsSection.jsx';
 import AboutSection from 'src/components/jsx/home/AboutSection/AboutSection.jsx';
+import JourneySection from 'src/components/jsx/home/JourneySection/JourneySection.jsx';
 import GitHubStats from 'src/components/jsx/home/GitHubStats/GitHubStats.jsx';
 import { getCollection } from 'astro:content';
 import portfolioData from 'src/data/portfolio.json';
@@ -55,6 +56,8 @@ const commitCount = await getCommitCount();
 		<LatestPostsSection client:load posts={latestPosts} />
 
 		<AboutSection client:load paragraphs={aboutParagraphs} />
+
+		<JourneySection client:visible />
 
 		<GitHubStats
 			client:load

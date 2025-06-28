@@ -5,6 +5,8 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import babelParser from '@babel/eslint-parser';
 import astro from 'eslint-plugin-astro';
 import astroParser from 'astro-eslint-parser';
+import prettierPlugin from 'eslint-plugin-prettier';
+import prettierConfig from 'eslint-config-prettier';
 
 /** @type {import("eslint").Config[]} */
 export default [
@@ -27,6 +29,7 @@ export default [
 			react: reactPlugin,
 			'react-hooks': reactHooksPlugin,
 			'jsx-a11y': jsxA11y,
+			prettier: prettierPlugin,
 		},
 		languageOptions: {
 			parser: babelParser,
@@ -82,8 +85,10 @@ export default [
 			'react/no-array-index-key': 'warn',
 			...reactPlugin.configs.recommended.rules,
 			...jsxA11y.configs.strict.rules,
+			...prettierPlugin.configs.recommended.rules,
 		},
 	},
+	prettierConfig,
 
 	{
 		files: ['**/*.astro'],

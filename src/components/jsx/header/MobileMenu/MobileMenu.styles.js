@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
-export const MobileMenuButton = styled.button `
+export const MobileMenuButton = styled.button`
 	position: relative;
 	overflow: hidden;
 	display: inline-flex;
@@ -60,10 +60,12 @@ export const MobileMenuButton = styled.button `
 	-webkit-tap-highlight-color: transparent;
 `;
 
-export const MenuIcon = styled.svg `
+export const MenuIcon = styled.svg`
 	height: 1.5rem;
 	width: 1.5rem;
-	transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	transition:
+		transform 0.3s ease-in-out,
+		opacity 0.3s ease-in-out;
 	color: ${COLORS.white};
 
 	& .top-bar {
@@ -82,7 +84,7 @@ export const MenuIcon = styled.svg `
 	}
 `;
 
-export const MobileMenu = styled.div `
+export const MobileMenu = styled.div`
 	display: ${(props) => (props.isOpen ? 'block' : 'none')};
 	position: absolute;
 	top: 100%;
@@ -101,7 +103,7 @@ export const MobileMenu = styled.div `
 	}
 `;
 
-export const MobileNavLink = styled.a `
+export const MobileNavLink = styled.a`
 	display: block;
 	color: ${COLORS.white};
 	padding: 0.75rem 1rem;
@@ -117,7 +119,7 @@ export const MobileNavLink = styled.a `
 	}
 `;
 
-export const SrOnly = styled.span `
+export const SrOnly = styled.span`
 	position: absolute !important;
 	width: 1px !important;
 	height: 1px !important;

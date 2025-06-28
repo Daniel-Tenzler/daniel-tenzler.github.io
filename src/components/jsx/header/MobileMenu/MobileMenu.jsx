@@ -32,9 +32,7 @@ export default class MobileMenuComponent extends React.Component {
 					aria-expanded={isMobileMenuOpen}
 					onClick={this.toggleMobileMenu}
 				>
-					<SrOnly>
-						{isMobileMenuOpen ? 'Menü schließen' : 'Menü öffnen'}
-					</SrOnly>
+					<SrOnly>{isMobileMenuOpen ? 'Menü schließen' : 'Menü öffnen'}</SrOnly>
 					<MenuIcon
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -49,7 +47,9 @@ export default class MobileMenuComponent extends React.Component {
 							strokeWidth={2}
 							d="M4 6h16"
 							style={{
-								transform: isMobileMenuOpen ? 'rotate(45deg) translateY(6px)' : 'none',
+								transform: isMobileMenuOpen
+									? 'rotate(45deg) translateY(6px)'
+									: 'none',
 							}}
 						/>
 						<path

@@ -30,3 +30,7 @@ pnpm-debug.log*
 # Cursor
 .cursor
 /.cursorignore
+
+# Gemini
+GEMINI.md
+.gemini

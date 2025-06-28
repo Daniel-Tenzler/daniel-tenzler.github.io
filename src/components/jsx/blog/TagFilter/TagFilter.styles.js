@@ -20,9 +20,13 @@ export const TagButton = styled.button`
 
 	&:hover {
 		background: ${(props) =>
-			props.active ? COLORS.accentDark : getRgbaColor(COLORS.semiSurfacePrimary)};
+			props.active
+				? COLORS.accentDark
+				: getRgbaColor(COLORS.semiSurfacePrimary)};
 		border-color: ${(props) =>
-			props.active ? COLORS.accentDark : getRgbaColor(COLORS.semiSurfacePrimary)};
+			props.active
+				? COLORS.accentDark
+				: getRgbaColor(COLORS.semiSurfacePrimary)};
 	}
 
 	&:focus {

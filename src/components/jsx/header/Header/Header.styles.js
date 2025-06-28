@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
-export const StyledHeader = styled.header `
+export const StyledHeader = styled.header`
 	position: sticky;
 	top: 0;
 	z-index: 50;
@@ -10,7 +10,7 @@ export const StyledHeader = styled.header `
 	border-bottom: 1px solid ${getRgbaColor(COLORS.surfaceBlend1)};
 `;
 
-export const Nav = styled.nav `
+export const Nav = styled.nav`
 	max-width: 56rem;
 	margin: 0 auto;
 	padding: 0 1rem;
@@ -24,14 +24,14 @@ export const Nav = styled.nav `
 	}
 `;
 
-export const NavContainer = styled.div `
+export const NavContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	height: 4rem;
 	align-items: center;
 `;
 
-export const Logo = styled.a `
+export const Logo = styled.a`
 	flex-shrink: 0;
 	font-size: 1.25rem;
 	font-weight: 700;
@@ -47,10 +47,9 @@ export const Logo = styled.a `
 	}
 
 	-webkit-tap-highlight-color: transparent;
-
 `;
 
-export const NavLinks = styled.div `
+export const NavLinks = styled.div`
 	display: none;
 	margin-left: 1.5rem;
 	gap: 2rem;
@@ -60,7 +59,7 @@ export const NavLinks = styled.div `
 	}
 `;
 
-export const NavLink = styled.a `
+export const NavLink = styled.a`
 	color: ${COLORS.grayLight};
 	padding: 0.5rem 0.75rem;
 	border-radius: 0.375rem;
@@ -73,4 +72,3 @@ export const NavLink = styled.a `
 		color: ${COLORS.gray};
 	}
 `;
-

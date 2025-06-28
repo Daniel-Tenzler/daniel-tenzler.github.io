@@ -22,6 +22,7 @@ export const Content = styled.div`
 export const Paragraph = styled.p`
 	color: ${COLORS.white};
 	margin-bottom: 1rem;
+	font-size: 16px;
 
 	&:first-child {
 		margin-top: 0;

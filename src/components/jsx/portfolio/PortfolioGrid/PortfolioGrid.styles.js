@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
-export const Grid = styled.div `
+export const Grid = styled.div`
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: 1.5rem;
@@ -15,7 +15,7 @@ export const Grid = styled.div `
 	}
 `;
 
-export const Card = styled.article `
+export const Card = styled.article`
 	background: ${COLORS.cardSurfaceBackground};
 	border-radius: 0.5rem;
 	box-shadow: 0 4px 6px ${getRgbaColor(COLORS.cardSurfaceBackground, 0.1)};
@@ -27,17 +27,17 @@ export const Card = styled.article `
 	}
 `;
 
-export const CardImage = styled.img `
+export const CardImage = styled.img`
 	width: 100%;
 	height: 12rem;
 	object-fit: cover;
 `;
 
-export const CardContent = styled.div `
+export const CardContent = styled.div`
 	padding: 1.5rem;
 `;
 
-export const CardTitle = styled.h2 `
+export const CardTitle = styled.h2`
 	font-size: 1.25rem;
 	font-weight: 600;
 	margin-bottom: 0.5rem;
@@ -48,7 +48,7 @@ export const CardTitle = styled.h2 `
 	}
 `;
 
-export const CardDescription = styled.p `
+export const CardDescription = styled.p`
 	color: ${COLORS.grayLight};
 	margin-bottom: 1rem;
 	display: -webkit-box;
@@ -57,13 +57,13 @@ export const CardDescription = styled.p `
 	overflow: hidden;
 `;
 
-export const TechContainer = styled.div `
+export const TechContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.5rem;
 `;
 
-export const TechTag = styled.span `
+export const TechTag = styled.span`
 	padding: 0.25rem 0.75rem;
 	background-color: ${getRgbaColor(COLORS.black, 0.5)};
 	border-radius: 9999px;
@@ -71,6 +71,6 @@ export const TechTag = styled.span `
 	color: ${COLORS.offWhite};
 `;
 
-export const StyledLinkArea = styled.span `
+export const StyledLinkArea = styled.span`
 	text-decoration: none;
 `;
