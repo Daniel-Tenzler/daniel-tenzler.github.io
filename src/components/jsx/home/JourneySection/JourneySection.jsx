@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { journeyData } from 'src/data/journey.js';
 import {
 	TimelineContainer,
 	TimelineWrapper,
@@ -55,7 +54,7 @@ JourneySection.propTypes = {
 };
 
 JourneySection.defaultProps = {
-	data: journeyData,
+	data: null,
 };
 
 export default JourneySection;

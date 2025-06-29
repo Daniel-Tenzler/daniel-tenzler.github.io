@@ -13,7 +13,7 @@ export const GridSection = styled.section`
 export const PostWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 0.5rem;
 `;
 
 export const NoPostsMessage = styled.p`

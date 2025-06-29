@@ -71,6 +71,6 @@ export const TechTag = styled.span`
 	color: ${COLORS.offWhite};
 `;
 
-export const StyledLinkArea = styled.span`
+export const StyledLinkArea = styled.a`
 	text-decoration: none;
 `;
