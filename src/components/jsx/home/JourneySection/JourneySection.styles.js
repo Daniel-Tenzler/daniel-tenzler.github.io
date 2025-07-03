@@ -37,9 +37,9 @@ export const TimelineLine = styled.div`
 	bottom: 43px;
 	left: 0;
 	height: 4px;
-	width: 100%;
-	background-color: #ddd; /* A solid color for the line */
-	/* The fade effect using a CSS mask */
+	width: 96%;
+	background-color: ${getRgbaColor(COLORS.white, 0.7)};
+
 	-webkit-mask-image: linear-gradient(
 		to right,
 		transparent,
@@ -60,16 +60,20 @@ export const TimelineItem = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	flex: 0 0 250px;
+	flex: 0 0 500px;
 	position: relative;
 	width: 200px;
 	z-index: 1;
+
+	@media (max-width: 720px) {
+		flex: 0 0 250px;
+	}
 `;
 
 export const TimelineContent = styled.div`
 	text-align: center;
 	margin-bottom: 30px;
-	height: 280px;
+	min-height: 200px;
 	width: 90%;
 	display: flex;
 	flex-direction: column;
@@ -79,6 +83,7 @@ export const TimelineContent = styled.div`
 	transition: all 0.3s ease-in-out;
 	position: relative;
 	z-index: 1;
+	align-items: center;
 
 	&:hover {
 		position: absolute;
@@ -101,8 +106,9 @@ export const TimelineMarker = styled.div`
 	width: 15px;
 	height: 15px;
 	border-radius: 50%;
-	background-color: ${({ type }) => (type === 'job' ? '#3498db' : '#9b59b6')};
-	border: 3px solid #fff;
+	background-color: ${({ type }) =>
+		type === 'job' ? COLORS.accent : COLORS.accentDark};
+	border: 3px solid ${COLORS.white};
 	z-index: 1;
 `;
 
@@ -120,7 +126,7 @@ export const TimelineTitle = styled.h3`
 
 export const TimelineDate = styled.p`
 	font-style: italic;
-	color: #777;
+	color: ${COLORS.offWhite};
 	height: auto;
 	white-space: nowrap;
 	overflow: hidden;
@@ -132,6 +138,7 @@ export const TimelineDate = styled.p`
 
 export const TimelineDescription = styled.p`
 	height: 6.5em;
+	width: 300px;
 	margin: 0;
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
@@ -140,4 +147,18 @@ export const TimelineDescription = styled.p`
 	text-overflow: ellipsis;
 	transition: all 0.3s ease-in-out;
 	font-size: 16px;
+
+	@media (max-width: 720px) {
+		width: 250px;
+	}
+`;
+
+export const StyledJourneyLink = styled.a`
+	display: inline-block;
+	color: ${COLORS.white};
+	text-decoration: none;
+	margin-top: 5px;
+	&:hover {
+		color: ${COLORS.offWhite};
+	}
 `;

@@ -1,0 +1,34 @@
+---
+import MainLayout from 'src/layouts/MainLayout.astro';
+import { journeyData } from 'src/data/journey/journey.js';
+import { getEntry } from 'astro:content';
+import ContentContainer from 'src/components/jsx/ContentContainer/ContentContainer.jsx';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import JourneyDetailsPageContent from 'src/components/jsx/journey/JourneyDetailsPageContent/JourneyDetailsPageContent.jsx';
+
+export function getStaticPaths() {
+	const journeyItems = journeyData.filter((item) => item.id && item.link);
+	return journeyItems.map((item) => ({
+		params: { id: item.id },
+		props: { item },
+	}));
+}
+
+const { item } = Astro.props;
+const journeyEntry = await getEntry('journey', item.id);
+
+if (!journeyEntry) {
+	throw new Error(`Journey entry not found for id: ${item.id}`);
+}
+
+const { Content } = await journeyEntry.render();
+---
+
+<MainLayout title={`${item.title} | My Journey`}>
+	<GridBackground client:load />
+	<ContentContainer client:load>
+		<JourneyDetailsPageContent client:load item={item}>
+			<Content />
+		</JourneyDetailsPageContent>
+	</ContentContainer>
+</MainLayout>

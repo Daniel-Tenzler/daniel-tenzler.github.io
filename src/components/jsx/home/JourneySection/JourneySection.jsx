@@ -11,6 +11,7 @@ import {
 	TimelineTitle,
 	TimelineDate,
 	TimelineDescription,
+	StyledJourneyLink,
 } from './JourneySection.styles.js';
 
 const JourneySection = ({ data }) => {
@@ -20,16 +21,16 @@ const JourneySection = ({ data }) => {
 			<TimelineWrapper>
 				<TimelineScrollArea>
 					<TimelineLine />
-					{data.map((item, index) => (
-						<TimelineItem key={index}>
+					{data.map((item) => (
+						<TimelineItem key={item.id}>
 							<TimelineContent>
 								<TimelineTitle>{item.title}</TimelineTitle>
 								<TimelineDate>{item.date}</TimelineDate>
 								<TimelineDescription>{item.description}</TimelineDescription>
 								{item.link && (
-									<a href={item.link} target="_blank" rel="noopener noreferrer">
-										Learn More
-									</a>
+									<StyledJourneyLink href={item.link}>
+										Details
+									</StyledJourneyLink>
 								)}
 							</TimelineContent>
 							<TimelineMarker type={item.type} />
@@ -44,6 +45,7 @@ const JourneySection = ({ data }) => {
 JourneySection.propTypes = {
 	data: PropTypes.arrayOf(
 		PropTypes.shape({
+			id: PropTypes.string.isRequired,
 			title: PropTypes.string.isRequired,
 			description: PropTypes.string.isRequired,
 			date: PropTypes.string.isRequired,
