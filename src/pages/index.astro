@@ -13,6 +13,9 @@ import PortfolioPreview from 'src/components/jsx/home/PortfolioPreview/Portfolio
 import { getRepoMetadata, getCommitCount } from 'src/lib/github.js';
 import ContentContainer from 'src/components/jsx/ContentContainer/ContentContainer';
 import { journeyData } from 'src/data/journey/journey.js';
+import SettingsPanel from 'src/components/jsx/settingsPanel/SettingsPanel';
+import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
+import DarkModeToggle from 'src/components/jsx/darkMode/DarkModeToggle/DarkModeToggle.jsx';
 
 const latestPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -42,30 +45,30 @@ const commitCount = await getCommitCount();
 ---
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<GridBackground client:load />
-	<!-- <DarkModeApp client:load /> -->
+	<ThemeWrapper client:load>
+		<GridBackground client:load />
+		<SettingsPanel client:load>
+			<DarkModeToggle client:load />
+		</SettingsPanel>
 
-	<ContentContainer client:load>
-		<HeroSection
-			client:load
-			title="Daniel Tenzler - Astro/React Github-Pages Website"
-			description="Hey, I'm Daniel. I am a Junior Web & Native App Software Developer. This website serves as my personal portfolio and playground."
-		/>
+		<ContentContainer client:load>
+			<HeroSection
+				client:load
+				title="Daniel Tenzler - Astro/React Github-Pages Website"
+				description="Hey, I'm Daniel. I am a Junior Web & Native App Software Developer. This website serves as my personal portfolio and playground."
+			/>
 
-		<PortfolioPreview client:load projects={featuredProjects} />
+			<PortfolioPreview client:load projects={featuredProjects} />
 
-		<LatestPostsSection client:load posts={latestPosts} />
+			<LatestPostsSection client:load posts={latestPosts} />
 
-		<AboutSection client:load paragraphs={aboutParagraphs} />
+			<AboutSection client:load paragraphs={aboutParagraphs} />
 
-		<JourneySection client:visible data={journeyData} />
+			<JourneySection client:visible data={journeyData} />
 
-		<GitHubStats
-			client:load
-			metadata={metadata}
-			commitCount={commitCount}
-		/>
-	</ContentContainer>
+			<GitHubStats client:load metadata={metadata} commitCount={commitCount} />
+		</ContentContainer>
+	</ThemeWrapper>
 </MainLayout>
 
 <style>

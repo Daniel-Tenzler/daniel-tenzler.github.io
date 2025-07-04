@@ -4,6 +4,10 @@ import { render } from 'astro:content';
 import { SITE_TITLE } from 'src/consts/SiteData';
 import BlogPostLayout from 'src/layouts/BlogPostLayout.astro';
 import type { CollectionEntry } from 'astro:content';
+import SettingsPanel from 'src/components/jsx/settingsPanel/SettingsPanel';
+import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
+import DarkModeToggle from 'src/components/jsx/darkMode/DarkModeToggle/DarkModeToggle.jsx';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
@@ -26,5 +30,11 @@ const title = `${post.data.title} - ${SITE_TITLE}`;
 ---
 
 <BlogPostLayout {...post.data} title={title}>
+	<ThemeWrapper client:load>
+		<GridBackground client:load />
+		<SettingsPanel client:load>
+			<DarkModeToggle client:load />
+		</SettingsPanel>
 	<Content />
+	</ThemeWrapper>
 </BlogPostLayout>

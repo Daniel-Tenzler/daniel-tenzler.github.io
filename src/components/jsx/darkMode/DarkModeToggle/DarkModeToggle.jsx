@@ -1,11 +1,42 @@
-import { useDarkMode } from 'src/components/jsx/context/DarkModeContext.jsx';
+/* eslint-disable no-undef */
+import React, { useEffect, useState } from 'react';
+import { Switch, ToggleWrapper } from './DarkModeToggle.styles';
 
-export default function DarkModeToggle() {
-	const { darkMode, setDarkMode } = useDarkMode();
+const DarkModeToggle = () => {
+	const [isDark, setIsDark] = useState(true);
+
+	useEffect(() => {
+		const storedTheme = localStorage.getItem('theme');
+		if (storedTheme) {
+			setIsDark(storedTheme === 'dark');
+		} else {
+			setIsDark(true);
+			localStorage.setItem('theme', 'dark');
+		}
+	}, []);
+
+	const toggleTheme = () => {
+		const newTheme = isDark ? 'light' : 'dark';
+		setIsDark(!isDark);
+		localStorage.setItem('theme', newTheme);
+		window.dispatchEvent(new Event('themeChange'));
+	};
 
 	return (
-		<button onClick={() => setDarkMode(!darkMode)}>
-			Switch to {darkMode ? 'Light' : 'Dark'} Mode
-		</button>
+		<ToggleWrapper
+			onClick={toggleTheme}
+			aria-label="Toggle dark mode"
+			type="button"
+		>
+			<span role="img" aria-label="sun">
+				☀️
+			</span>
+			<Switch isDark={isDark} />
+			<span role="img" aria-label="moon">
+				🌙
+			</span>
+		</ToggleWrapper>
 	);
-}
+};
+
+export default DarkModeToggle;

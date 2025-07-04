@@ -2,6 +2,10 @@
 import Project from 'src/components/jsx/portfolio/Project/Project';
 import { getPortfolioItems } from 'src/data/portfolio/portfolio';
 import PortfolioLayout from 'src/layouts/PortfolioLayout.astro';
+import SettingsPanel from 'src/components/jsx/settingsPanel/SettingsPanel';
+import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
+import DarkModeToggle from 'src/components/jsx/darkMode/DarkModeToggle/DarkModeToggle.jsx';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
 
 export const getStaticPaths = async () => {
   const items = await getPortfolioItems();
@@ -15,5 +19,11 @@ const { item } = Astro.props;
 ---
 
 <PortfolioLayout title={`${item.title} | Portfolio | Daniel Tenz`}>
+	<ThemeWrapper client:load>
+		<GridBackground client:load />
+		<SettingsPanel client:load>
+			<DarkModeToggle client:load />
+		</SettingsPanel>
     <Project client:load item={item} />
+		</ThemeWrapper>
 </PortfolioLayout> 
