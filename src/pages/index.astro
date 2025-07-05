@@ -10,7 +10,7 @@ import GitHubStats from 'src/components/jsx/home/GitHubStats/GitHubStats.jsx';
 import { getCollection } from 'astro:content';
 import portfolioData from 'src/data/portfolio/portfolio.json';
 import PortfolioPreview from 'src/components/jsx/home/PortfolioPreview/PortfolioPreview';
-import { getRepoMetadata, getCommitCount } from 'src/lib/github.js';
+import { getRepoMetadata, getCommitCount, fetchRepositories, getLanguageStats, fetchRepositoryStats } from 'src/lib/github.js';
 import ContentContainer from 'src/components/jsx/ContentContainer/ContentContainer';
 import { journeyData } from 'src/data/journey/journey.js';
 import SettingsPanel from 'src/components/jsx/settingsPanel/SettingsPanel';
@@ -42,6 +42,11 @@ const featuredProjects = portfolioData.projects.filter(
 // Fetch GitHub data
 const metadata = await getRepoMetadata();
 const commitCount = await getCommitCount();
+
+const username = 'daniel-tenzler';
+const repos = await fetchRepositories(username);
+const languageStats = getLanguageStats(repos);
+// const repoStats = await fetchRepositoryStats(username);
 ---
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -64,9 +69,9 @@ const commitCount = await getCommitCount();
 
 			<AboutSection client:load paragraphs={aboutParagraphs} />
 
-			<JourneySection client:visible data={journeyData} />
+			<JourneySection client:only="react" data={journeyData} />
 
-			<GitHubStats client:load metadata={metadata} commitCount={commitCount} />
+			<GitHubStats client:load metadata={metadata} commitCount={commitCount} languageStats={languageStats} />
 		</ContentContainer>
 	</ThemeWrapper>
 </MainLayout>

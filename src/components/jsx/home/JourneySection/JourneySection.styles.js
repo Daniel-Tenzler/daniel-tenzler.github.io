@@ -1,19 +1,32 @@
 import styled from '@emotion/styled';
 import { COLORS, getRgbaColor } from 'src/consts/Colors';
+import { keyframes } from '@emotion/react';
 
-export const TimelineContainer = styled.section`
+const fadeIn = keyframes `
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+`;
+
+export const TimelineContainer = styled.section `
 	margin: 2rem auto;
 	width: 100%;
 `;
 
-export const TimelineWrapper = styled.div`
+export const TimelineWrapper = styled.div `
 	overflow-x: auto;
 	position: relative;
 	scrollbar-width: none;
 	-ms-overflow-style: none;
+	padding: 0 20px;
+
 	&::-webkit-scrollbar {
 		display: none;
 	}
+
 	background: radial-gradient(
 		ellipse at center,
 		${getRgbaColor(COLORS.white, 0.02)} 0%,
@@ -24,20 +37,29 @@ export const TimelineWrapper = styled.div`
 	border-radius: 20px;
 `;
 
-export const TimelineScrollArea = styled.div`
-	display: inline-flex; /* Makes the container as wide as its content */
-	position: relative;
-	padding: 20px 20px 40px 20px;
-	gap: 20px;
-	min-width: 100%;
-`;
+export const TimelineScrollArea = styled.div(({ $isMobile }) => ({
+    display: 'inline-flex',
+    position: 'relative',
+    justifyContent: 'center',
+    padding: '20px 20px 40px 20px',
+    gap: '120px',
+    minWidth: '100%',
 
-export const TimelineLine = styled.div`
+    ...($isMobile && {
+        minWidth: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '85%',
+        gap: '20px',
+    }),
+}));
+
+export const TimelineLine = styled.div `
 	position: absolute;
 	bottom: 43px;
 	left: 0;
 	height: 4px;
-	width: 96%;
+	width: ${({ $isMobile }) => ($isMobile ? '100%' : '96%')};
 	background-color: ${getRgbaColor(COLORS.white, 0.7)};
 
 	-webkit-mask-image: linear-gradient(
@@ -56,7 +78,7 @@ export const TimelineLine = styled.div`
 	);
 `;
 
-export const TimelineItem = styled.div`
+export const TimelineItem = styled.div `
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -65,14 +87,14 @@ export const TimelineItem = styled.div`
 	width: 200px;
 	z-index: 1;
 
-	@media (max-width: 720px) {
+	@media (max-width: 1000px) {
 		flex: 0 0 250px;
+		width: auto;
 	}
 `;
 
-export const TimelineContent = styled.div`
+export const TimelineContent = styled.div `
 	text-align: center;
-	margin-bottom: 30px;
 	min-height: 200px;
 	width: 90%;
 	display: flex;
@@ -84,23 +106,25 @@ export const TimelineContent = styled.div`
 	position: relative;
 	z-index: 1;
 	align-items: center;
+	animation: ${fadeIn} 0.5s ease;
+	margin: 0 3rem;
+	margin-bottom: 30px;
 
 	&:hover {
 		position: absolute;
-		transform: scale(1.05);
+		transform: scale(1.02);
 		background: radial-gradient(
 			ellipse at center,
-			${getRgbaColor(COLORS.white, 0.1)} 0%,
-			${getRgbaColor(COLORS.white, 0.03)} 50%,
+			${getRgbaColor(COLORS.white, 0.05)} 0%,
+			${getRgbaColor(COLORS.white, 0.02)} 50%,
 			${getRgbaColor(COLORS.white, 0.01)} 100%
 		);
-		backdrop-filter: blur(5px);
-		border: 1px solid ${getRgbaColor(COLORS.white, 0.1)};
-		box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+		backdrop-filter: blur(3px);
+		box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
 	}
 `;
 
-export const TimelineMarker = styled.div`
+export const TimelineMarker = styled.div `
 	position: absolute;
 	bottom: -6px;
 	width: 15px;
@@ -112,7 +136,7 @@ export const TimelineMarker = styled.div`
 	z-index: 1;
 `;
 
-export const TimelineTitle = styled.h3`
+export const TimelineTitle = styled.h3 `
 	height: 3.6em;
 	margin: 0 0 0.5rem 0;
 	display: -webkit-box;
@@ -124,7 +148,7 @@ export const TimelineTitle = styled.h3`
 	font-size: 20px;
 `;
 
-export const TimelineDate = styled.p`
+export const TimelineDate = styled.p `
 	font-style: italic;
 	color: ${COLORS.offWhite};
 	height: auto;
@@ -136,7 +160,7 @@ export const TimelineDate = styled.p`
 	font-size: 16px;
 `;
 
-export const TimelineDescription = styled.p`
+export const TimelineDescription = styled.p `
 	height: 6.5em;
 	width: 300px;
 	margin: 0;
@@ -153,12 +177,40 @@ export const TimelineDescription = styled.p`
 	}
 `;
 
-export const StyledJourneyLink = styled.a`
+export const StyledJourneyLink = styled.a `
 	display: inline-block;
 	color: ${COLORS.white};
 	text-decoration: none;
 	margin-top: 5px;
 	&:hover {
+		color: ${COLORS.offWhite};
+	}
+`;
+
+export const ArrowNavWrapper = styled.div `
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	margin-top: 1rem;
+`;
+
+export const ArrowButton = styled.button `
+	background: none;
+	border: none;
+	color: ${COLORS.white};
+	font-size: 2rem;
+	cursor: pointer;
+	padding: 0.5rem 1.2rem;
+	border-radius: 50%;
+	transition:
+		background 0.2s,
+		color 0.2s,
+		opacity 0.2s;
+	opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+	pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
+	-webkit-tap-highlight-color: transparent;
+	&:hover {
+		background: ${getRgbaColor(COLORS.white, 0.01)};
 		color: ${COLORS.offWhite};
 	}
 `;

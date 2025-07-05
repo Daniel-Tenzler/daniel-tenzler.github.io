@@ -7,9 +7,12 @@ import {
 	StatLabel,
 	Title,
 	Description,
+	LanguageList,
+	LanguageListItem,
+	LanguageStatsSection,
 } from './GitHubStats.styles';
 
-export default function GitHubStats({ metadata, commitCount }) {
+export default function GitHubStats({ metadata, commitCount, languageStats }) {
 	return (
 		<>
 			<Title>Repository Statistics</Title>
@@ -40,6 +43,23 @@ export default function GitHubStats({ metadata, commitCount }) {
 					<StatLabel>Last Updated</StatLabel>
 				</StatItem>
 			</StatsContainer>
+			{languageStats && (
+				<LanguageStatsSection>
+					<Description>
+						Language Statistics for all of my Repos (taken from Github)
+					</Description>
+					<LanguageList>
+						{Object.entries(languageStats.languages).map(([lang, count]) => (
+							<LanguageListItem key={lang}>
+								<StatItem>
+									<StatValue>{count}</StatValue>
+									<StatLabel>{lang}</StatLabel>
+								</StatItem>
+							</LanguageListItem>
+						))}
+					</LanguageList>
+				</LanguageStatsSection>
+			)}
 		</>
 	);
 }
@@ -51,5 +71,6 @@ GitHubStats.propTypes = {
 		description: PropTypes.string.isRequired,
 		lastUpdated: PropTypes.string.isRequired,
 	}).isRequired,
+	languageStats: PropTypes.any,
 	commitCount: PropTypes.number.isRequired,
 };
