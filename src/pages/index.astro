@@ -31,8 +31,8 @@ const latestPosts = (await getCollection('blog'))
 	}));
 
 const aboutParagraphs = [
-	'I specialize in full-stack web development, with a focus on modern JavaScript frameworks and tools. My goal is to create performant, accessible, and user-friendly web applications.',
-	"When I'm not coding, you can find me writing technical articles, contributing to open source projects, or exploring new technologies to stay at the forefront of web development.",
+	'I specialize in full-stack web development, with a focus on modern JS/TS frameworks and tools. My goal is to create performant, accessible, and user-friendly web applications.',
+	"I use this website in my off-hours for testing new web technologies and tools.",
 ];
 
 const featuredProjects = portfolioData.projects.filter(
@@ -59,8 +59,8 @@ const languageStats = getLanguageStats(repos);
 		<ContentContainer client:load>
 			<HeroSection
 				client:load
-				title="Daniel Tenzler - Astro/React Github-Pages Website"
-				description="Hey, I'm Daniel. I am a Junior Web & Native App Software Developer. This website serves as my personal portfolio and playground."
+				title="Daniel Tenzler — Junior Software Developer"
+				description="Hi, I'm Daniel — a Junior Web & Native App Developer. This website is my personal portfolio and development playground."
 			/>
 
 			<PortfolioPreview client:load projects={featuredProjects} />

@@ -57,22 +57,24 @@ const JourneySection = ({ data }) => {
 					))}
 				</TimelineScrollArea>
 			</TimelineWrapper>
-			<ArrowNavWrapper>
-				<ArrowButton
-					onClick={handleBack}
-					disabled={!canGoBack}
-					aria-label="Previous"
-				>
-					&larr;
-				</ArrowButton>
-				<ArrowButton
-					onClick={handleForward}
-					disabled={!canGoForward}
-					aria-label="Next"
-				>
-					&rarr;
-				</ArrowButton>
-			</ArrowNavWrapper>
+			{data.length > 2 && (
+				<ArrowNavWrapper>
+					<ArrowButton
+						onClick={handleBack}
+						disabled={!canGoBack}
+						aria-label="Previous"
+					>
+						&larr;
+					</ArrowButton>
+					<ArrowButton
+						onClick={handleForward}
+						disabled={!canGoForward}
+						aria-label="Next"
+					>
+						&rarr;
+					</ArrowButton>
+				</ArrowNavWrapper>
+			)}
 		</TimelineContainer>
 	);
 };
