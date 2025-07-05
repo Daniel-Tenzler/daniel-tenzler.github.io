@@ -28,9 +28,9 @@ const allTags = [
 <MainLayout title={`Blog - ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
 	<ThemeWrapper client:load>
 		<GridBackground client:load />
-		<SettingsPanel client:load>
+		<!-- <SettingsPanel client:load>
 			<DarkModeToggle client:load />
-		</SettingsPanel>
+		</SettingsPanel> -->
 	<ContentContainer client:load>
 		<BlogContainer client:load posts={posts} allTags={allTags} />
 	</ContentContainer>

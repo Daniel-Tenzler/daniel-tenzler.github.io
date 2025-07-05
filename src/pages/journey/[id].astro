@@ -30,9 +30,9 @@ const { Content } = await journeyEntry.render();
 <MainLayout title={`${item.title} | My Journey`}>
 	<ThemeWrapper client:load>
 		<GridBackground client:load />
-		<SettingsPanel client:load>
+		<!-- <SettingsPanel client:load>
 			<DarkModeToggle client:load />
-		</SettingsPanel>
+		</SettingsPanel> -->
 	<ContentContainer client:load>
 		<JourneyDetailsPageContent client:load item={item}>
 			<Content />

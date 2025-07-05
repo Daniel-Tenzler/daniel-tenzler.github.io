@@ -19,7 +19,6 @@ const ThemeWrapper = ({ children }) => {
 			if (e.key === 'theme') {
 				setIsDark(e.newValue === 'dark');
 			}
-			console.log('Theme changed');
 		};
 		window.addEventListener('storage', handleStorage);
 
@@ -27,7 +26,6 @@ const ThemeWrapper = ({ children }) => {
 		const handleThemeChange = () => {
 			const storedTheme = localStorage.getItem('theme');
 			setIsDark(storedTheme === 'dark');
-			console.log('Theme changed');
 		};
 		window.addEventListener('themeChange', handleThemeChange);
 

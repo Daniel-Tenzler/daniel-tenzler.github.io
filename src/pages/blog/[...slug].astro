@@ -32,9 +32,9 @@ const title = `${post.data.title} - ${SITE_TITLE}`;
 <BlogPostLayout {...post.data} title={title}>
 	<ThemeWrapper client:load>
 		<GridBackground client:load />
-		<SettingsPanel client:load>
+		<!-- <SettingsPanel client:load>
 			<DarkModeToggle client:load />
-		</SettingsPanel>
+		</SettingsPanel> -->
 	<Content />
 	</ThemeWrapper>
 </BlogPostLayout>

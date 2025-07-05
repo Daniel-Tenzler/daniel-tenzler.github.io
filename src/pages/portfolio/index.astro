@@ -13,9 +13,9 @@ const portfolioItems = await getPortfolioItems();
 <PortfolioLayout title="Portfolio | Daniel Tenzler">
 	<ThemeWrapper client:load>
 		<GridBackground client:load />
-		<SettingsPanel client:load>
+		<!-- <SettingsPanel client:load>
 			<DarkModeToggle client:load />
-		</SettingsPanel>
+		</SettingsPanel> -->
   <PortfolioOverview client:load items={portfolioItems} />
 	</ThemeWrapper>
 </PortfolioLayout> 

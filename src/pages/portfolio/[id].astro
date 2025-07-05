@@ -21,9 +21,9 @@ const { item } = Astro.props;
 <PortfolioLayout title={`${item.title} | Portfolio | Daniel Tenz`}>
 	<ThemeWrapper client:load>
 		<GridBackground client:load />
-		<SettingsPanel client:load>
+		<!-- <SettingsPanel client:load>
 			<DarkModeToggle client:load />
-		</SettingsPanel>
+		</SettingsPanel> -->
     <Project client:load item={item} />
 		</ThemeWrapper>
 </PortfolioLayout> 
