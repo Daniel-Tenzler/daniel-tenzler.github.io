@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { COLORS, getRgbaColor } from 'src/consts/Colors';
 import { keyframes } from '@emotion/react';
 
-const fadeIn = keyframes `
+const fadeIn = keyframes`
 	from {
 		opacity: 0;
 	}
@@ -11,12 +11,12 @@ const fadeIn = keyframes `
 	}
 `;
 
-export const TimelineContainer = styled.section `
+export const TimelineContainer = styled.section`
 	margin: 2rem auto;
 	width: 100%;
 `;
 
-export const TimelineWrapper = styled.div `
+export const TimelineWrapper = styled.div`
 	overflow-x: auto;
 	position: relative;
 	scrollbar-width: none;
@@ -38,23 +38,23 @@ export const TimelineWrapper = styled.div `
 `;
 
 export const TimelineScrollArea = styled.div(({ $isMobile }) => ({
-    display: 'inline-flex',
-    position: 'relative',
-    justifyContent: 'center',
-    padding: '20px 20px 40px 20px',
-    gap: '120px',
-    minWidth: '100%',
+	display: 'inline-flex',
+	position: 'relative',
+	justifyContent: 'center',
+	padding: '20px 20px 40px 20px',
+	gap: '120px',
+	minWidth: '100%',
 
-    ...($isMobile && {
-        minWidth: 0,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '85%',
-        gap: '20px',
-    }),
+	...($isMobile && {
+		minWidth: 0,
+		justifyContent: 'center',
+		alignItems: 'center',
+		width: '85%',
+		gap: '20px',
+	}),
 }));
 
-export const TimelineLine = styled.div `
+export const TimelineLine = styled.div`
 	position: absolute;
 	bottom: 43px;
 	left: 0;
@@ -78,7 +78,7 @@ export const TimelineLine = styled.div `
 	);
 `;
 
-export const TimelineItem = styled.div `
+export const TimelineItem = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -93,7 +93,7 @@ export const TimelineItem = styled.div `
 	}
 `;
 
-export const TimelineContent = styled.div `
+export const TimelineContent = styled.div`
 	text-align: center;
 	min-height: 200px;
 	width: 90%;
@@ -110,21 +110,23 @@ export const TimelineContent = styled.div `
 	margin: 0 3rem;
 	margin-bottom: 30px;
 
-	&:hover {
-		position: absolute;
-		transform: scale(1.02);
-		background: radial-gradient(
-			ellipse at center,
-			${getRgbaColor(COLORS.white, 0.05)} 0%,
-			${getRgbaColor(COLORS.white, 0.02)} 50%,
-			${getRgbaColor(COLORS.white, 0.01)} 100%
-		);
-		backdrop-filter: blur(3px);
-		box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+	@media (min-width: 1001px) {
+		&:hover {
+			position: absolute;
+			transform: scale(1.02);
+			background: radial-gradient(
+				ellipse at center,
+				${getRgbaColor(COLORS.white, 0.05)} 0%,
+				${getRgbaColor(COLORS.white, 0.02)} 50%,
+				${getRgbaColor(COLORS.white, 0.01)} 100%
+			);
+			backdrop-filter: blur(3px);
+			box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+		}
 	}
 `;
 
-export const TimelineMarker = styled.div `
+export const TimelineMarker = styled.div`
 	position: absolute;
 	bottom: -6px;
 	width: 15px;
@@ -136,7 +138,7 @@ export const TimelineMarker = styled.div `
 	z-index: 1;
 `;
 
-export const TimelineTitle = styled.h3 `
+export const TimelineTitle = styled.h3`
 	height: 3.6em;
 	margin: 0 0 0.5rem 0;
 	display: -webkit-box;
@@ -148,7 +150,7 @@ export const TimelineTitle = styled.h3 `
 	font-size: 20px;
 `;
 
-export const TimelineDate = styled.p `
+export const TimelineDate = styled.p`
 	font-style: italic;
 	color: ${COLORS.offWhite};
 	height: auto;
@@ -160,7 +162,7 @@ export const TimelineDate = styled.p `
 	font-size: 16px;
 `;
 
-export const TimelineDescription = styled.p `
+export const TimelineDescription = styled.p`
 	height: 6.5em;
 	width: 300px;
 	margin: 0;
@@ -177,24 +179,24 @@ export const TimelineDescription = styled.p `
 	}
 `;
 
-export const StyledJourneyLink = styled.a `
+export const StyledJourneyLink = styled.a`
 	display: inline-block;
 	color: ${COLORS.white};
 	text-decoration: none;
-	margin-top: 5px;
+	margin-top: 10px;
 	&:hover {
 		color: ${COLORS.offWhite};
 	}
 `;
 
-export const ArrowNavWrapper = styled.div `
+export const ArrowNavWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	gap: 2rem;
 	margin-top: 1rem;
 `;
 
-export const ArrowButton = styled.button `
+export const ArrowButton = styled.button`
 	background: none;
 	border: none;
 	color: ${COLORS.white};
