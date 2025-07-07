@@ -2,7 +2,7 @@
 title: 'Collection of Project Ideas'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
-heroImage: '/blog-placeholder-3.jpg'
+heroImage: '/blog-placeholder-4.jpg'
 tags: ['web dev', 'astro', 'js', 'app dev', 'jsx']
 ---
 
@@ -10,7 +10,7 @@ Unfortunately, i am not very diligent about following through on interesting or 
 
 So here is the (hopefully) not-so-final list of project ideas i have.
 
-## Web dev 
+## Web dev
 
 - Page burn effect for image state changes
 
@@ -21,7 +21,6 @@ So here is the (hopefully) not-so-final list of project ideas i have.
 - Git repo visualization for react apps
 
 - POE regex builder
-
 
 ## App dev
 
