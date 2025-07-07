@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
 	Section,
@@ -17,6 +17,14 @@ import {
 } from './PortfolioPreview.styles';
 
 const PortfolioPreview = ({ projects }) => {
+	const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			setIsLargeScreen(window.innerWidth >= 1000);
+		}
+	}, []);
+
 	const handleCardClick = (id) => {
 		window.location.href = `/portfolio/${id}`;
 	};
@@ -32,7 +40,18 @@ const PortfolioPreview = ({ projects }) => {
 						onClick={() => handleCardClick(project.id)}
 					>
 						<ImageContainer>
-							<ProjectImage src={project.image} alt={project.title} />
+							<picture>
+								<source
+									srcSet={project.image.replace(/\.jpg$/i, '.webp')}
+									type="image/webp"
+								/>
+								<source srcSet={project.image} type="image/jpeg" />
+								<ProjectImage
+									src={project.image}
+									alt={project.title}
+									{...(isLargeScreen ? { fetchpriority: 'high' } : {})}
+								/>
+							</picture>
 						</ImageContainer>
 						<Content>
 							<ProjectTitle>{project.title}</ProjectTitle>
