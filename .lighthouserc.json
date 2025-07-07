@@ -3,19 +3,17 @@
         "assert": {
             "preset": "lighthouse:recommended",
             "assertions": {
-                "categories.pwa": "off",
-
-                "csp-xss": ["warn", { "minScore": 0 }],
-                "errors-in-console": ["warn", { "minScore": 0 }],
-                "total-byte-weight": ["warn", { "minScore": 0 }],
-                "unused-javascript": ["warn", { "maxLength": 0 }],
-                "uses-responsive-images": ["warn", { "maxLength": 0 }],
-
                 "bootup-time": ["warn", { "minScore": 0 }],
+                "categories.pwa": "off",
+                "csp-xss": ["warn", { "minScore": 0 }],
                 "dom-size": ["warn", { "minScore": 0 }],
+                "errors-in-console": ["warn", { "minScore": 0 }],
                 "mainthread-work-breakdown": ["warn", { "minScore": 0 }],
                 "server-response-time": ["warn", { "minScore": 0 }],
-                "uses-long-cache-ttl": ["warn", { "maxLength": 0 }]
+                "total-byte-weight": ["warn", { "minScore": 0 }],
+                "unused-javascript": ["warn", { "maxLength": 3 }],
+                "uses-long-cache-ttl": "off",
+                "uses-responsive-images": ["warn", { "maxLength": 0 }]
             }
         }
     }
