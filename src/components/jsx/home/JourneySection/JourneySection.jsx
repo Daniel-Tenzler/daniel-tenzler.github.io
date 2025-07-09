@@ -20,11 +20,11 @@ import { useIsMobile } from './useIsMobile.js';
 const JourneySection = ({ data }) => {
 	const [startIndex, setStartIndex] = useState(0);
 	let itemsToShow = 2;
-	const canGoBack = startIndex > 0;
-	const canGoForward = startIndex + itemsToShow < data.length;
-
 	const isMobile = useIsMobile();
 	if (isMobile) itemsToShow = 1;
+
+	const canGoBack = startIndex > 0;
+	const canGoForward = startIndex + itemsToShow < data.length;
 
 	const handleBack = () => {
 		if (canGoBack) setStartIndex(startIndex - itemsToShow);
@@ -57,7 +57,7 @@ const JourneySection = ({ data }) => {
 					))}
 				</TimelineScrollArea>
 			</TimelineWrapper>
-			{data.length > 2 && (
+			{(data.length > 2 || (isMobile && data.length > 1)) && (
 				<ArrowNavWrapper>
 					<ArrowButton
 						onClick={handleBack}

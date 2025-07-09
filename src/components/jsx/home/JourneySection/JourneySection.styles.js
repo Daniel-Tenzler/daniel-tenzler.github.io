@@ -22,6 +22,8 @@ export const TimelineWrapper = styled.div`
 	scrollbar-width: none;
 	-ms-overflow-style: none;
 	padding: 0 20px;
+	display: flex;
+	justify-content: center;
 
 	&::-webkit-scrollbar {
 		display: none;
@@ -33,7 +35,7 @@ export const TimelineWrapper = styled.div`
 		${getRgbaColor(COLORS.white, 0.01)} 50% ${getRgbaColor(COLORS.white, 0.001)}
 			100%
 	);
-	backdrop-filter: blur(1px);
+	/* backdrop-filter: blur(1px); */
 	border-radius: 20px;
 `;
 
@@ -120,7 +122,7 @@ export const TimelineContent = styled.div`
 				${getRgbaColor(COLORS.white, 0.02)} 50%,
 				${getRgbaColor(COLORS.white, 0.01)} 100%
 			);
-			backdrop-filter: blur(3px);
+			/* backdrop-filter: blur(3px); */
 			box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
 		}
 	}
