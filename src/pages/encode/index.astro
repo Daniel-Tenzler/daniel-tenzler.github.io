@@ -1,0 +1,13 @@
+---
+import MainLayout from 'src/layouts/MainLayout.astro';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
+import UrlEncoder from 'src/components/jsx/urlEncoder/UrlEncoder';
+---
+
+<MainLayout title="Contact Me" description="Get in touch with Daniel Tenzler">
+	<ThemeWrapper client:load>
+		<GridBackground client:load />
+	<UrlEncoder></UrlEncoder>
+	</ThemeWrapper>
+</MainLayout>
