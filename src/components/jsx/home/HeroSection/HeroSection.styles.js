@@ -1,28 +1,29 @@
 import styled from '@emotion/styled';
 import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
-export const Section = styled.section`
+export const Section = styled.section `
 	margin-bottom: 1rem;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h1 `
 	font-size: 2.25rem;
 	font-weight: 700;
 	margin-bottom: 1.5rem;
+	margin-top: 0.5rem;
 `;
 
-export const Description = styled.p`
+export const Description = styled.p `
 	font-size: 1.25rem;
 	color: ${COLORS.grayLight};
 	margin-bottom: 2rem;
 `;
 
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div `
 	display: flex;
 	gap: 1rem;
 `;
 
-export const PrimaryButton = styled.a`
+export const PrimaryButton = styled.a `
 	display: inline-flex;
 	align-items: center;
 	padding: 0.75rem 1.5rem;
@@ -45,7 +46,7 @@ export const PrimaryButton = styled.a`
 	}
 `;
 
-export const SecondaryButton = styled.a`
+export const SecondaryButton = styled.a `
 	display: inline-flex;
 	align-items: center;
 	padding: 0.75rem 1.5rem;

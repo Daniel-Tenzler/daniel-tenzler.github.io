@@ -40,6 +40,7 @@ export const Title = styled.h4 `
 	font-weight: 700;
 	margin-bottom: 1rem;
 	color: ${COLORS.grayLight};
+	justify-self: center;
 `;
 
 export const Description = styled.p `
@@ -47,6 +48,7 @@ export const Description = styled.p `
 	margin: 1rem 0;
 	font-size: 1rem;
 	line-height: 1.5;
+	justify-self: center;
 `;
 
 export const LanguageList = styled('ul')

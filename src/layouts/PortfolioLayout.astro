@@ -111,15 +111,17 @@ const { title, description = "Daniel Tenzler's personal website and blog" } =
 
 		background-size: cover;
 		color: rgb(var(--gray-light));
-		font-size: 20px;
+		font-size: 16px;
 		line-height: 1.7;
 	}
 
 	main {
-		width: 80%;
+		width: 85%;
 		max-width: calc(100% - 2em);
 		margin: auto;
-		padding: 2em 1em;
+		padding: 1em 1em;
+		min-height: calc(100vh - (201px + 2rem));
+		overflow: auto;
 
 		@media (max-width: 700px) {
 			width: 90%;
@@ -129,7 +131,7 @@ const { title, description = "Daniel Tenzler's personal website and blog" } =
 
 	@media (max-width: 720px) {
 		body {
-			font-size: 18px;
+			font-size: 16px;
 		}
 		main {
 			padding: 1em;

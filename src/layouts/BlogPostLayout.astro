@@ -141,7 +141,7 @@ const {
 		);
 		background-size: 100% 100%;
 		color: rgb(var(--gray-light));
-		font-size: 20px;
+		font-size: 16px;
 		line-height: 1.7;
 	}
 
@@ -149,12 +149,14 @@ const {
 		width: 920px;
 		max-width: calc(100% - 2em);
 		margin: auto;
-		padding: 3em 1em;
+		padding: 2em 1em;
+		min-height: calc(100vh - (201px + 4rem));
+		overflow: auto;
 	}
 
 	@media (max-width: 720px) {
 		body {
-			font-size: 18px;
+			font-size: 16px;
 		}
 		main {
 			padding: 1em;

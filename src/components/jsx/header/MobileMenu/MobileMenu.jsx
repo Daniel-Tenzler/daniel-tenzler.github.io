@@ -5,6 +5,7 @@ import {
 	SrOnly,
 	MobileMenu,
 	MobileNavLink,
+	NavlinkCard,
 } from './MobileMenu.styles';
 
 export default class MobileMenuComponent extends React.Component {
@@ -76,16 +77,18 @@ export default class MobileMenuComponent extends React.Component {
 				</MobileMenuButton>
 				<MobileMenu isOpen={isMobileMenuOpen} id="mobile-menu">
 					<MobileNavLink href="/" onClick={this.toggleMobileMenu}>
-						Home
+						<NavlinkCard>Home</NavlinkCard>
 					</MobileNavLink>
 					<MobileNavLink href="/portfolio" onClick={this.toggleMobileMenu}>
-						Portfolio
+						<NavlinkCard>Portfolio</NavlinkCard>
 					</MobileNavLink>
 					<MobileNavLink href="/blog" onClick={this.toggleMobileMenu}>
-						Blog
+						<NavlinkCard>Blog</NavlinkCard>
 					</MobileNavLink>
 					{/* <MobileNavLink href="/contact" onClick={this.toggleMobileMenu}>
+					<NavlinkCard>
 						Contact
+						</NavlinkCard>
 					</MobileNavLink> */}
 				</MobileMenu>
 			</>

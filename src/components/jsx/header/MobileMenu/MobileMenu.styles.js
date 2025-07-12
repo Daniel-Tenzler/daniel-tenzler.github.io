@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
-export const MobileMenuButton = styled.button`
+export const MobileMenuButton = styled.button `
 	position: relative;
 	overflow: hidden;
 	display: inline-flex;
@@ -60,7 +60,7 @@ export const MobileMenuButton = styled.button`
 	-webkit-tap-highlight-color: transparent;
 `;
 
-export const MenuIcon = styled.svg`
+export const MenuIcon = styled.svg `
 	height: 1.5rem;
 	width: 1.5rem;
 	transition:
@@ -84,7 +84,7 @@ export const MenuIcon = styled.svg`
 	}
 `;
 
-export const MobileMenu = styled.div`
+export const MobileMenu = styled.div `
 	display: ${(props) => (props.isOpen ? 'block' : 'none')};
 	position: absolute;
 	top: 100%;
@@ -103,15 +103,16 @@ export const MobileMenu = styled.div`
 	}
 `;
 
-export const MobileNavLink = styled.a`
+export const MobileNavLink = styled.a `
 	display: block;
 	color: ${COLORS.white};
 	padding: 0.75rem 1rem;
 	border-radius: 0.375rem;
-	font-size: 0.875rem;
+	font-size: 1.1rem;
 	font-weight: 500;
 	text-decoration: none;
 	transition: all 0.2s ease;
+	-webkit-tap-highlight-color: transparent; /* for removing the highlight */
 
 	&:hover {
 		color: ${COLORS.grayLight};
@@ -119,14 +120,25 @@ export const MobileNavLink = styled.a`
 	}
 `;
 
-export const SrOnly = styled.span`
-	position: absolute !important;
-	width: 1px !important;
-	height: 1px !important;
-	padding: 0 !important;
-	margin: -1px !important;
-	overflow: hidden !important;
-	clip: rect(0, 0, 0, 0) !important;
-	white-space: nowrap !important;
-	border: 0 !important;
+export const NavlinkCard = styled.div `
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: ${COLORS.cardSurfaceBackground};
+	width: fit-content;
+	padding: 0.6rem 1.5rem;
+	border-radius: 99px;
+	box-shadow: 2px 2px 4px ${COLORS.cardSurfaceBackground};
+`;
+
+export const SrOnly = styled.span `
+position: absolute!important;
+width: 1 px!important;
+height: 1 px!important;
+padding: 0!important;
+margin: -1 px!important;
+overflow: hidden!important;
+clip: rect(0, 0, 0, 0) !important;
+white - space: nowrap!important;
+border: 0!important;
 `;
