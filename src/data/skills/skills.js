@@ -1,0 +1,33 @@
+export const skillsData = {
+    Languages: [
+        'JavaScript',
+        'TypeScript',
+        'HTML',
+        'CSS',
+        'Python',
+        'SQL',
+        'DQL',
+        'Kotlin',
+        'Swift',
+        'Java',
+    ],
+    'Frameworks & Libraries': [
+        'React',
+        'Node.js',
+        'Symfony',
+        'Astro',
+        'Compose',
+        'Doctrine',
+    ],
+    Databases: ['PostgreSQL', 'MySQL'],
+    'Tools & Platforms': [
+        'Git',
+        'GitHub',
+        'Docker',
+        'Webpack',
+        'Vite',
+        'Figma',
+        'Jira',
+    ],
+    Testing: ['Jest', 'PHPUnit'],
+};
