@@ -1,18 +1,16 @@
 import styled from '@emotion/styled';
 import { COLORS } from 'src/consts/Colors';
 
-export const Section = styled.section`
+export const Section = styled.section `
 	margin-bottom: 3rem;
 `;
 
-export const Title = styled.h2`
-	font-size: 1.875rem;
-	font-weight: 700;
+export const Title = styled.h2 `
 	margin-bottom: 2rem;
 	color: ${COLORS.grayLight};
 `;
 
-export const PostsGrid = styled.div`
+export const PostsGrid = styled.div `
 	display: grid;
 	gap: 2rem;
 	grid-template-columns: 1fr;
@@ -22,12 +20,12 @@ export const PostsGrid = styled.div`
 	}
 `;
 
-export const ViewAllLink = styled.div`
-	margin-top: 1.5rem;
+export const ViewAllLink = styled.div `
+	margin-top: 1rem;
 	text-align: center;
 `;
 
-export const Link = styled.a`
+export const Link = styled.a `
 	color: ${COLORS.white};
 	font-weight: 500;
 	text-decoration: none;

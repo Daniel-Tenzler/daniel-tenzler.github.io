@@ -14,6 +14,7 @@ import {
 	StyledJourneyLink,
 	ArrowNavWrapper,
 	ArrowButton,
+	Title,
 } from './JourneySection.styles.js';
 import { useIsMobile } from './useIsMobile.js';
 
@@ -36,7 +37,7 @@ const JourneySection = ({ data }) => {
 
 	return (
 		<TimelineContainer>
-			<h2>My Developer Journey</h2>
+			<Title>Journey / Experience</Title>
 			<TimelineWrapper $isMobile={isMobile}>
 				<TimelineScrollArea $isMobile={isMobile}>
 					<TimelineLine $isMobile={isMobile} />

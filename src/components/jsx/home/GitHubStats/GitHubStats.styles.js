@@ -35,9 +35,7 @@ export const StatLabel = styled.span `
 	color: ${COLORS.offWhite};
 `;
 
-export const Title = styled.h4 `
-	font-size: 1.875rem;
-	font-weight: 700;
+export const Title = styled.h2 `
 	margin-bottom: 1rem;
 	color: ${COLORS.grayLight};
 	justify-self: center;

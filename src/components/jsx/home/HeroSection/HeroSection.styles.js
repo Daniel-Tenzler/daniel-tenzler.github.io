@@ -6,7 +6,7 @@ export const Section = styled.section `
 `;
 
 export const Title = styled.h1 `
-	font-size: 2.25rem;
+	font-size: 1.85rem;
 	font-weight: 700;
 	margin-bottom: 1.5rem;
 	margin-top: 0.5rem;
