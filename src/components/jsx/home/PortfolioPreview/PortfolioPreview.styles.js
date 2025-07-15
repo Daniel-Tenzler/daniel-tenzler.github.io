@@ -1,20 +1,20 @@
 import styled from '@emotion/styled';
 import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
-export const Section = styled.section `
+export const Section = styled.section`
 	padding: 1rem 0;
 	width: 100%;
 	max-width: 100%;
 	margin: 0 auto;
 `;
 
-export const Title = styled.h2 `
+export const Title = styled.h2`
 	margin-bottom: 2rem;
 	color: ${COLORS.grayLight};
 	margin-top: 0.5rem;
 `;
 
-export const Grid = styled.div `
+export const Grid = styled.div`
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: 1.5rem;
@@ -29,7 +29,7 @@ export const Grid = styled.div `
 	}
 `;
 
-export const ProjectCard = styled.div `
+export const ProjectCard = styled.div`
 	background-color: ${getRgbaColor(COLORS.cardSurfaceBackground, 0.9)};
 	border-radius: 0.5rem;
 	overflow: hidden;
@@ -56,41 +56,41 @@ export const ProjectCard = styled.div `
 	}
 `;
 
-export const ImageContainer = styled.div `
+export const ImageContainer = styled.div`
 	position: relative;
 	height: 12rem;
 `;
 
-export const ProjectImage = styled.img `
+export const ProjectImage = styled.img`
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 `;
 
-export const Content = styled.div `
+export const Content = styled.div`
 	padding: 1.5rem;
 `;
 
-export const ProjectTitle = styled.h3 `
+export const ProjectTitle = styled.h3`
 	font-size: 1.25rem;
 	font-weight: 600;
 	margin-bottom: 0.5rem;
 	color: ${COLORS.offWhite};
 `;
 
-export const Description = styled.p `
+export const Description = styled.p`
 	color: ${COLORS.grayLight};
 	margin-bottom: 1rem;
 `;
 
-export const TechStack = styled.div `
+export const TechStack = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.5rem;
 	margin-bottom: 1rem;
 `;
 
-export const TechTag = styled.span `
+export const TechTag = styled.span`
 	padding: 0.25rem 0.75rem;
 	background-color: ${getRgbaColor(COLORS.black, 0.5)};
 	border-radius: 9999px;
@@ -98,12 +98,12 @@ export const TechTag = styled.span `
 	color: ${COLORS.offWhite};
 `;
 
-export const Links = styled.div `
+export const Links = styled.div`
 	display: flex;
 	gap: 1rem;
 `;
 
-export const Link = styled.a `
+export const Link = styled.a`
 	color: ${COLORS.white};
 	text-decoration: none;
 	transition: color 0.2s ease;

@@ -5,6 +5,7 @@ export const Grid = styled.div`
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: 1.5rem;
+	padding: 0rem 1rem;
 
 	@media (min-width: 768px) {
 		grid-template-columns: repeat(2, 1fr);
@@ -35,6 +36,7 @@ export const CardImage = styled.img`
 
 export const CardContent = styled.div`
 	padding: 1.5rem;
+	height: 18rem;
 `;
 
 export const CardTitle = styled.h2`
