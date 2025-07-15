@@ -34,3 +34,6 @@ pnpm-debug.log*
 # Gemini
 GEMINI.md
 .gemini
+
+# Kiro
+.kiro
