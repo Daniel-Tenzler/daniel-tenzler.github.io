@@ -27,13 +27,11 @@ const BlogPostGrid = ({ posts, selectedTags }) => {
 			{filteredPosts.map((post) => (
 				<PostWrapper key={post.id}>
 					{post.data.heroImage && (
-						<div>
-							<HeroImage
-								client:load
-								src={post.data.heroImage}
-								alt={post.data.title}
-							/>
-						</div>
+						<HeroImage
+							client:load
+							src={post.data.heroImage}
+							alt={post.data.title}
+						/>
 					)}
 					<BlogPostCard
 						client:load
@@ -43,6 +41,7 @@ const BlogPostGrid = ({ posts, selectedTags }) => {
 						slug={post.id}
 						readTime={post.data.readTime}
 						tags={post.data.tags}
+						noTopBorderRadius={true}
 					/>
 				</PostWrapper>
 			))}

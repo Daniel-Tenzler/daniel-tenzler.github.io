@@ -25,9 +25,10 @@ export default function BlogPostCard({
 	slug,
 	readTime,
 	tags,
+	noTopBorderRadius,
 }) {
 	return (
-		<Card href={`/blog/${slug}/`}>
+		<Card href={`/blog/${slug}/`} $noTopBorderRadius={noTopBorderRadius}>
 			<Content>
 				<Title>{title}</Title>
 				<Description>{description}</Description>
@@ -54,4 +55,9 @@ BlogPostCard.propTypes = {
 	slug: PropTypes.string.isRequired,
 	readTime: PropTypes.string,
 	tags: PropTypes.arrayOf(PropTypes.string),
+	noTopBorderRadius: PropTypes.bool,
+};
+
+BlogPostCard.defaultProps = {
+	noTopBorderRadius: false,
 };
