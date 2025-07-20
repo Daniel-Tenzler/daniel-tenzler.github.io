@@ -8,14 +8,7 @@ import {
 	Tag,
 	UpdateInfo,
 } from './BlogPostHeader.styles';
-
-const formatDate = (date) => {
-	return new Date(date).toLocaleDateString('en-US', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-	});
-};
+import { formatDate } from 'src/infrastructure/dateUtils';
 
 export default function BlogPostHeader({
 	title,

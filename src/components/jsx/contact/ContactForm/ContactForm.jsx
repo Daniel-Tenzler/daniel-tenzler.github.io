@@ -16,8 +16,6 @@ export default class ContactForm extends React.Component {
 		const data = Object.fromEntries(formData.entries());
 
 		try {
-			// Here you would typically send the form data to your backend
-			// For now, we'll just log it and show a success message
 			console.log('Form data:', data);
 			window.alert('Thank you for your message! I will get back to you soon.');
 			e.target.reset();
