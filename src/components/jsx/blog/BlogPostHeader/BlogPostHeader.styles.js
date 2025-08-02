@@ -17,7 +17,7 @@ export const MetaContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-	font-size: 2.25rem;
+	font-size: 2rem;
 	font-weight: 800;
 	color: ${COLORS.grayLight};
 	margin-bottom: 1rem;

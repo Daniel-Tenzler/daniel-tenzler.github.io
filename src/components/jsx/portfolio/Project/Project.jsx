@@ -42,6 +42,17 @@ const Project = ({ item }) => {
 				<Description>
 					<p>{item.description}</p>
 				</Description>
+				<LinkContainer>
+					{item.githubUrl && (
+						<StyledLink
+							href={item.githubUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							View on GitHub
+						</StyledLink>
+					)}
+				</LinkContainer>
 			</Article>
 		</Container>
 	);

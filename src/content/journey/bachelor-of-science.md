@@ -17,7 +17,7 @@
 
 - **Programming Project at the Department of Electrical energy storage technologies**: Designed and developed a frontend application for the analysis and visualization of large-scale datasets.
 
-- **Project on Symbolic Artificial Intelligence**: Created a competitive chess agent using alpha-beta pruning and dynamic step search algorithms.
+- **Project on Symbolic Artificial Intelligence**: Created a competitive chess agent using alpha-beta pruning, dynamic step search algorithms and combined heuristics.
 
 - **Agent Technologies – Fundamentals and Applications**: Developed self-interested and cooperative agents in Kotlin, exploring multi-agent system behaviors.
 

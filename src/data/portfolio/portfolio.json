@@ -21,6 +21,17 @@
 			"liveUrl": "",
 			"featured": true,
 			"date": "2024-06"
+		},
+		{
+			"id": "js-sensor-backend",
+			"title": "Simple backend for a Raspberry Pi mounting a DHT22 sensor",
+			"description": "A simple backend that provides a REST API for a Raspberry Pi mounting a DHT22 sensor as well as a simply frontend to display the data.",
+			"technologies": ["Node.js", "Supabase"],
+			"image": "/blog-placeholder-5.jpg",
+			"githubUrl": "https://github.com/Daniel-Tenzler/sensor-backend",
+			"liveUrl": "",
+			"featured": true,
+			"date": "2024-06"
 		}
 	]
 }
