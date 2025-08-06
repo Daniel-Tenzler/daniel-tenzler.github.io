@@ -2,7 +2,12 @@ import { useEffect } from 'react';
 
 const AUTO_CLOSE_DELAY = 5000; // 5 seconds
 
-export const usePanelHover = (panelRef, setIsHovered, timerRef, isHovered) => {
+export default function usePanelHover(
+	panelRef,
+	setIsHovered,
+	timerRef,
+	isHovered
+) {
 	// Use native mouseenter/mouseleave to avoid bubbling issues
 	useEffect(() => {
 		const node = panelRef.current;
@@ -61,4 +66,4 @@ export const usePanelHover = (panelRef, setIsHovered, timerRef, isHovered) => {
 			if (timerRef.current) clearTimeout(timerRef.current);
 		};
 	}, [isHovered, setIsHovered, timerRef]);
-};
+}
