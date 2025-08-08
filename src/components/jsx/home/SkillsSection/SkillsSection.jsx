@@ -7,9 +7,17 @@ import {
 	SkillsTrack,
 	SkillBubble,
 } from './SkillsSection.styles';
+import { useScrollAnimation } from './Hooks/useScrollAnimation';
 
 export default function SkillsSection({ skills }) {
 	const [isMobile, setIsMobile] = useState(false);
+	const {
+		firstTrackRef,
+		secondTrackRef,
+		handlePointerDown,
+		handlePointerMove,
+		endDrag,
+	} = useScrollAnimation(isMobile);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -32,21 +40,49 @@ export default function SkillsSection({ skills }) {
 	const duplicatedFirstHalf = [...firstHalf, ...firstHalf];
 	const duplicatedSecondHalf = [...secondHalf, ...secondHalf];
 
+	const buildKeyed = (items, prefix) => {
+		const countsByLabel = new Map();
+		return items.map((label) => {
+			const nextCount = (countsByLabel.get(label) || 0) + 1;
+			countsByLabel.set(label, nextCount);
+			return { key: `${prefix}-${label}-${nextCount}`, label };
+		});
+	};
+
+	const firstTrackItems = isMobile
+		? buildKeyed(duplicatedFirstHalf, 'first-mobile')
+		: buildKeyed(duplicatedSkills, 'first-desktop');
+
+	const secondTrackItems = buildKeyed(duplicatedSecondHalf, 'second-mobile');
+
 	return (
 		<Section>
 			<Title>Technologies & Skills</Title>
 			<SkillsContainer>
-				<SkillsTrack>
-					{(isMobile ? duplicatedFirstHalf : duplicatedSkills).map(
-						(skill, index) => (
-							<SkillBubble key={index}>{skill}</SkillBubble>
-						)
-					)}
+				<SkillsTrack
+					ref={firstTrackRef}
+					onPointerDown={(e) => handlePointerDown(e, 'first')}
+					onPointerMove={handlePointerMove}
+					onPointerUp={endDrag}
+					onPointerCancel={endDrag}
+					onPointerLeave={endDrag}
+				>
+					{firstTrackItems.map((item) => (
+						<SkillBubble key={item.key}>{item.label}</SkillBubble>
+					))}
 				</SkillsTrack>
 				{isMobile && (
-					<SkillsTrack reverse>
-						{duplicatedSecondHalf.map((skill, index) => (
-							<SkillBubble key={index}>{skill}</SkillBubble>
+					<SkillsTrack
+						reverse
+						ref={secondTrackRef}
+						onPointerDown={(e) => handlePointerDown(e, 'second')}
+						onPointerMove={handlePointerMove}
+						onPointerUp={endDrag}
+						onPointerCancel={endDrag}
+						onPointerLeave={endDrag}
+					>
+						{secondTrackItems.map((item) => (
+							<SkillBubble key={item.key}>{item.label}</SkillBubble>
 						))}
 					</SkillsTrack>
 				)}

@@ -1,24 +1,5 @@
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
 import { COLORS, getRgbaColor } from 'src/consts/Colors';
-
-const scroll = keyframes`
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-`;
-
-const scrollReverse = keyframes`
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-`;
 
 export const Section = styled.section`
 	margin-bottom: 3rem;
@@ -40,9 +21,10 @@ export const SkillsContainer = styled.div`
 export const SkillsTrack = styled.div`
 	display: inline-block;
 	white-space: nowrap;
-	animation: ${({ reverse }) => (reverse ? scrollReverse : scroll)} 60s linear
-		infinite;
 	padding-top: ${({ reverse }) => (reverse ? '15px' : '0')};
+	will-change: transform;
+	cursor: grab;
+	touch-action: pan-y;
 `;
 
 export const SkillBubble = styled.span`
