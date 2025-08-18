@@ -1,0 +1,1 @@
+import{r as i}from"./index.DatCARk7.js";function r(e=768){const[t,s]=i.useState(typeof window<"u"?window.innerWidth<e:!1);return i.useEffect(()=>{function n(){s(window.innerWidth<e)}return n(),window.addEventListener("resize",n),()=>window.removeEventListener("resize",n)},[e]),t}export{r as u};
