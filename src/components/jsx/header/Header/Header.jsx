@@ -8,6 +8,7 @@ import {
 	NavLink,
 } from './Header.styles';
 import MobileMenuComponent from '../MobileMenu/MobileMenu';
+import ScrollProgressBar from '../../ui/ScrollProgressBar/ScrollProgressBar';
 
 export default class Header extends React.Component {
 	render() {
@@ -25,6 +26,7 @@ export default class Header extends React.Component {
 						<MobileMenuComponent />
 					</NavContainer>
 				</Nav>
+				<ScrollProgressBar client:load />
 			</StyledHeader>
 		);
 	}
