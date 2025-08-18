@@ -16,7 +16,7 @@ import {
 	ArrowButton,
 	Title,
 } from './JourneySection.styles.js';
-import { useIsMobile } from './useIsMobile.js';
+import { useIsMobile } from 'src/hooks/useIsMobile.js';
 
 const JourneySection = ({ data }) => {
 	const [startIndex, setStartIndex] = useState(0);

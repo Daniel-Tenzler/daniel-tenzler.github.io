@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
 	Section,
@@ -8,9 +8,10 @@ import {
 	SkillBubble,
 } from './SkillsSection.styles';
 import { useScrollAnimation } from './Hooks/useScrollAnimation';
+import { useIsMobile } from 'src/hooks/useIsMobile';
 
 export default function SkillsSection({ skills }) {
-	const [isMobile, setIsMobile] = useState(false);
+	const isMobile = useIsMobile(600);
 	const {
 		firstTrackRef,
 		secondTrackRef,
@@ -18,17 +19,6 @@ export default function SkillsSection({ skills }) {
 		handlePointerMove,
 		endDrag,
 	} = useScrollAnimation(isMobile);
-
-	useEffect(() => {
-		const handleResize = () => {
-			setIsMobile(window.innerWidth < 600);
-		};
-
-		window.addEventListener('resize', handleResize);
-		handleResize();
-
-		return () => window.removeEventListener('resize', handleResize);
-	}, []);
 
 	const allSkills = Object.values(skills).flat();
 	const duplicatedSkills = [...allSkills, ...allSkills];

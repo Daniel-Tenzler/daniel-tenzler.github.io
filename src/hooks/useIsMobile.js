@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 
-export function useIsMobile(breakpoint = 1000) {
+/**
+ * @param {number} breakpoint - The breakpoint in pixels (default: 768)
+ * @returns {boolean} - True if viewport is below breakpoint
+ */
+export function useIsMobile(breakpoint = 768) {
     const [isMobile, setIsMobile] = useState(
         typeof window !== 'undefined' ? window.innerWidth < breakpoint : false
     );
@@ -9,6 +13,9 @@ export function useIsMobile(breakpoint = 1000) {
         function handleResize() {
             setIsMobile(window.innerWidth < breakpoint);
         }
+
+        // Set initial value
+        handleResize();
 
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
