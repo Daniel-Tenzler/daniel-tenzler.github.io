@@ -79,7 +79,7 @@ export const ContentContainer = styled.div`
 
   pre {
     color: ${getRgbaColor(COLORS.WHITE_FFFFFF)};
-    background-color: ${getRgbaColor(COLORS.WHITE_FFFFFF)};
+    background-color: ${getRgbaColor(COLORS.BLACK_0F1219, 0.92)};
     overflow-x: auto;
     font-size: 0.875em;
     line-height: 1.7142857;

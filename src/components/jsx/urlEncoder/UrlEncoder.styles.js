@@ -29,10 +29,10 @@ export const InputField = styled.input`
 	transition: border-color 0.2s ease;
 	resize: vertical;
 
-	&:focus,
-	&:active {
-		border-color: ${COLORS.GRAY_303030};
-		outline: none;
+	&:focus-visible {
+		border-color: ${COLORS.WHITE_BFBFBF};
+		outline: 2px solid ${COLORS.WHITE_BFBFBF};
+		outline-offset: 2px;
 	}
 
 	@media (max-width: 768px) {

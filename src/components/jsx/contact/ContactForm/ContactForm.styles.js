@@ -20,7 +20,7 @@ export const Label = styled.label`
 export const Input = styled.input`
 	width: 100%;
 	padding: 0.75rem;
-	border: 1px solid ${getRgbaColor(COLORS.GRAY_E5E9F0)};
+	border: 1px solid ${COLORS.GRAY_383838};
 	border-radius: 0.375rem;
 	background: ${COLORS.WHITE_BFBFBF};
 	color: ${COLORS.BLACK_0F1219};

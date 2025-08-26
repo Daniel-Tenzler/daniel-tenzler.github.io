@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
 	TimelineContainer,
@@ -19,7 +19,7 @@ import { useIsMobile } from 'src/hooks/useIsMobile.js';
 const JourneySection = ({ data }) => {
 	const isMobile = useIsMobile();
 
-	const items = useMemo(() => data, [data]);
+	const items = Array.isArray(data) ? data : [];
 
 	return (
 		<TimelineContainer>

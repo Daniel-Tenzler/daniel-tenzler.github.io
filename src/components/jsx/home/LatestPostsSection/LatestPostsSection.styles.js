@@ -30,8 +30,20 @@ export const Link = styled.a`
 	font-weight: 500;
 	text-decoration: none;
 	transition: color 0.2s ease;
+	text-underline-offset: 2px;
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
 
 	&:hover {
 		color: ${COLORS.GRAY_E5E9F0};
+		text-decoration: underline;
+	}
+
+	&:focus-visible {
+		outline: 2px solid currentColor;
+		outline-offset: 2px;
+		text-decoration: underline;
 	}
 `;
