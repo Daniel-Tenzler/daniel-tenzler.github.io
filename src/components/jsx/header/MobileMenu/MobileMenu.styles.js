@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
-export const MobileMenuButton = styled.button `
+export const MobileMenuButton = styled.button`
 	position: relative;
 	overflow: hidden;
 	display: inline-flex;
@@ -10,19 +10,19 @@ export const MobileMenuButton = styled.button `
 	width: 3rem;
 	height: 3rem;
 	border-radius: 50%;
-	color: ${COLORS.white};
-	background-color: ${COLORS.outerSurfaceBackground};
+	color: ${COLORS.WHITE_FFFFFF};
+	background-color: ${COLORS.GRAY_474747};
 	transition: all 0.2s ease;
 	cursor: pointer;
 	border: 2px solid transparent;
 
 	&:hover {
-		color: ${COLORS.grayLight};
-		background-color: ${getRgbaColor(COLORS.semiSurfacePrimary)};
+		color: ${COLORS.GRAY_E5E9F0};
+		background-color: ${getRgbaColor(COLORS.GRAY_303030)};
 	}
 
 	&[aria-expanded='true'] {
-		color: ${COLORS.accent};
+		color: ${COLORS.BLUE_2337FF};
 	}
 
 	@media (min-width: 640px) {
@@ -46,7 +46,7 @@ export const MobileMenuButton = styled.button `
 	&[aria-expanded='true']::before {
 		transform: scale(1);
 		opacity: 1;
-		border-color: ${COLORS.surfaceBlend1};
+		border-color: ${COLORS.GRAY_383838};
 	}
 
 	&:focus {
@@ -60,13 +60,13 @@ export const MobileMenuButton = styled.button `
 	-webkit-tap-highlight-color: transparent;
 `;
 
-export const MenuIcon = styled.svg `
+export const MenuIcon = styled.svg`
 	height: 1.5rem;
 	width: 1.5rem;
 	transition:
 		transform 0.3s ease-in-out,
 		opacity 0.3s ease-in-out;
-	color: ${COLORS.white};
+	color: ${COLORS.WHITE_FFFFFF};
 
 	& .top-bar {
 		transform-origin: center;
@@ -84,28 +84,28 @@ export const MenuIcon = styled.svg `
 	}
 `;
 
-export const MobileMenu = styled.div `
+export const MobileMenu = styled.div`
 	display: ${(props) => (props.isOpen ? 'block' : 'none')};
 	position: absolute;
 	top: 100%;
 	left: 0;
 	right: 0;
-	background-color: ${getRgbaColor(COLORS.semiSurfacePrimary, 0.8)};
+	background-color: ${getRgbaColor(COLORS.GRAY_303030, 0.8)};
 	backdrop-filter: blur(4px);
 	z-index: 9999;
-	border-bottom: 1px solid ${getRgbaColor(COLORS.surfaceBlend2)};
+	border-bottom: 1px solid ${getRgbaColor(COLORS.GRAY_404040)};
 	padding: 1rem;
-	box-shadow: 0 4px 6px -1px ${getRgbaColor(COLORS.black, 0.1)};
-	color: ${COLORS.white};
+	box-shadow: 0 4px 6px -1px ${getRgbaColor(COLORS.BLACK_0F1219, 0.1)};
+	color: ${COLORS.WHITE_FFFFFF};
 
 	@media (min-width: 640px) {
 		display: none;
 	}
 `;
 
-export const MobileNavLink = styled.a `
+export const MobileNavLink = styled.a`
 	display: block;
-	color: ${COLORS.white};
+	color: ${COLORS.WHITE_FFFFFF};
 	padding: 0.75rem 1rem;
 	border-radius: 0.375rem;
 	font-size: 1.1rem;
@@ -115,23 +115,23 @@ export const MobileNavLink = styled.a `
 	-webkit-tap-highlight-color: transparent; /* for removing the highlight */
 
 	&:hover {
-		color: ${COLORS.grayLight};
-		background-color: ${getRgbaColor(COLORS.grayDark)};
+		color: ${COLORS.GRAY_E5E9F0};
+		background-color: ${getRgbaColor(COLORS.GRAY_222939)};
 	}
 `;
 
-export const NavlinkCard = styled.div `
+export const NavlinkCard = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	background-color: ${COLORS.cardSurfaceBackground};
+	background-color: ${COLORS.GRAY_292929};
 	width: fit-content;
 	padding: 0.6rem 1.5rem;
 	border-radius: 99px;
-	box-shadow: 2px 2px 4px ${COLORS.cardSurfaceBackground};
+	box-shadow: 2px 2px 4px ${COLORS.GRAY_292929};
 `;
 
-export const SrOnly = styled.span `
+export const SrOnly = styled.span`
 position: absolute!important;
 width: 1 px!important;
 height: 1 px!important;

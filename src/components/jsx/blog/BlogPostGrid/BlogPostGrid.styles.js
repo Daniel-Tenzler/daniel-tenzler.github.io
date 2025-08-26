@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { COLORS } from 'src/consts/Colors';
 
-export const GridSection = styled.section `
+export const GridSection = styled.section`
 	display: grid;
 	gap: 2rem;
 
@@ -10,7 +10,7 @@ export const GridSection = styled.section `
 	}
 `;
 
-export const PostWrapper = styled.div `
+export const PostWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 0;
@@ -23,9 +23,9 @@ export const PostWrapper = styled.div `
 	}
 `;
 
-export const NoPostsMessage = styled.p `
+export const NoPostsMessage = styled.p`
 	text-align: center;
-	color: ${COLORS.white};
+	color: ${COLORS.WHITE_FFFFFF};
 	font-size: 1.125rem;
 	margin: 2rem 0;
 `;

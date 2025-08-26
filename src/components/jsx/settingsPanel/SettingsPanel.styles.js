@@ -10,8 +10,8 @@ export const StyledPanel = styled.div`
 	left: 0;
 	width: ${PANEL_WIDTH}px;
 	height: 120px;
-	background: ${COLORS.semiSurfacePrimary};
-	color: ${COLORS.semiSurfacePrimary};
+	background: ${COLORS.GRAY_303030};
+	color: ${COLORS.GRAY_303030};
 	box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
 	border-radius: 0 8px 8px 0;
 	z-index: 10000;

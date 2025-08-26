@@ -1,16 +1,16 @@
 import styled from '@emotion/styled';
 import { COLORS } from 'src/consts/Colors';
 
-export const Section = styled.section `
+export const Section = styled.section`
 	margin-bottom: 3rem;
 `;
 
-export const Title = styled.h2 `
+export const Title = styled.h2`
 	margin-bottom: 2rem;
-	color: ${COLORS.grayLight};
+	color: ${COLORS.GRAY_E5E9F0};
 `;
 
-export const PostsGrid = styled.div `
+export const PostsGrid = styled.div`
 	display: grid;
 	gap: 2rem;
 	grid-template-columns: 1fr;
@@ -20,18 +20,18 @@ export const PostsGrid = styled.div `
 	}
 `;
 
-export const ViewAllLink = styled.div `
+export const ViewAllLink = styled.div`
 	margin-top: 1rem;
 	text-align: center;
 `;
 
-export const Link = styled.a `
-	color: ${COLORS.white};
+export const Link = styled.a`
+	color: ${COLORS.WHITE_FFFFFF};
 	font-weight: 500;
 	text-decoration: none;
 	transition: color 0.2s ease;
 
 	&:hover {
-		color: ${COLORS.grayLight};
+		color: ${COLORS.GRAY_E5E9F0};
 	}
 `;

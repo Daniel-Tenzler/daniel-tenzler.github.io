@@ -1,14 +1,13 @@
-/* eslint-disable prettier/prettier */
 export default {
-    presets: ['@babel/preset-react'],
-    plugins: [
-        [
-            '@emotion',
-            {
-                autoLabel: 'always',
-                labelFormat: '[dirname]-[filename]',
-                sourceMap: true,
-            },
-        ],
-    ],
+	presets: ['@babel/preset-react'],
+	plugins: [
+		[
+			'@emotion',
+			{
+				autoLabel: 'always',
+				labelFormat: '[dirname]-[filename]',
+				sourceMap: true,
+			},
+		],
+	],
 };

@@ -7,13 +7,13 @@ export const Section = styled.section`
 
 export const Title = styled.h2`
 	margin-bottom: 2rem;
-	color: ${COLORS.grayLight};
+	color: ${COLORS.GRAY_E5E9F0};
 `;
 
 export const SkillsContainer = styled.div`
-	background-color: ${COLORS.cardSurfaceBackground};
+	background-color: ${COLORS.GRAY_292929};
 	border-radius: 0.5rem;
-	box-shadow: 0 1px 2px ${getRgbaColor(COLORS.black, 0.05)};
+	box-shadow: 0 1px 2px ${getRgbaColor(COLORS.BLACK_0F1219, 0.05)};
 	overflow: hidden;
 	padding: 1.5rem 0;
 `;
@@ -31,9 +31,9 @@ export const SkillBubble = styled.span`
 	display: inline-block;
 	padding: 0.5rem 1rem;
 	margin: 0 0.5rem;
-	background-color: ${getRgbaColor(COLORS.black, 0.3)};
+	background-color: ${getRgbaColor(COLORS.BLACK_0F1219, 0.3)};
 	border-radius: 9999px;
 	font-size: 0.875rem;
-	color: ${COLORS.white};
+	color: ${COLORS.WHITE_FFFFFF};
 	font-weight: 500;
 `;

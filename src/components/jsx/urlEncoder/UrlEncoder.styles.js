@@ -13,8 +13,8 @@ export const Container = styled.div`
 `;
 
 export const InputField = styled.input`
-	background-color: ${COLORS.outerSurfaceBackground};
-	color: ${COLORS.white};
+	background-color: ${COLORS.GRAY_474747};
+	color: ${COLORS.WHITE_FFFFFF};
 	padding: 0.75em;
 	max-width: 90%;
 	width: 900px;
@@ -31,7 +31,7 @@ export const InputField = styled.input`
 
 	&:focus,
 	&:active {
-		border-color: ${COLORS.semiSurfacePrimary};
+		border-color: ${COLORS.GRAY_303030};
 		outline: none;
 	}
 
@@ -56,11 +56,11 @@ export const ButtonContainer = styled.div`
 `;
 
 const BaseButton = styled.button`
-	color: ${COLORS.offWhite};
+	color: ${COLORS.WHITE_BFBFBF};
 	padding: 0.75em 2em;
 	border: none;
 	border-radius: 8px;
-	background-color: ${COLORS.surfaceBlend1};
+	background-color: ${COLORS.GRAY_383838};
 	font-weight: 500;
 	font-size: 0.95rem;
 	cursor: pointer;
@@ -70,17 +70,17 @@ const BaseButton = styled.button`
 		box-shadow 0.2s ease;
 
 	&:hover {
-		background-color: ${COLORS.grayDark};
+		background-color: ${COLORS.GRAY_222939};
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	}
 
 	&:active {
-		background-color: ${COLORS.surfaceBlend1};
+		background-color: ${COLORS.GRAY_383838};
 		box-shadow: none;
 	}
 
 	&:focus-visible {
-		outline: 2px solid ${COLORS.grayDark};
+		outline: 2px solid ${COLORS.GRAY_222939};
 		outline-offset: 2px;
 	}
 
@@ -91,8 +91,6 @@ const BaseButton = styled.button`
 	}
 `;
 
-export const DecodeButton = styled(BaseButton)`
-`;
+export const DecodeButton = styled(BaseButton)``;
 
-export const EncodeButton = styled(BaseButton)`
-`;
+export const EncodeButton = styled(BaseButton)``;

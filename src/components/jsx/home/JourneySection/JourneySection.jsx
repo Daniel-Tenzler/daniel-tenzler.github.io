@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
 	TimelineContainer,
@@ -12,28 +12,14 @@ import {
 	TimelineDate,
 	TimelineDescription,
 	StyledJourneyLink,
-	ArrowNavWrapper,
-	ArrowButton,
 	Title,
 } from './JourneySection.styles.js';
 import { useIsMobile } from 'src/hooks/useIsMobile.js';
 
 const JourneySection = ({ data }) => {
-	const [startIndex, setStartIndex] = useState(0);
-	let itemsToShow = 2;
 	const isMobile = useIsMobile();
-	if (isMobile) itemsToShow = 1;
 
-	const canGoBack = startIndex > 0;
-	const canGoForward = startIndex + itemsToShow < data.length;
-
-	const handleBack = () => {
-		if (canGoBack) setStartIndex(startIndex - itemsToShow);
-	};
-
-	const handleForward = () => {
-		if (canGoForward) setStartIndex(startIndex + itemsToShow);
-	};
+	const items = useMemo(() => data, [data]);
 
 	return (
 		<TimelineContainer>
@@ -41,8 +27,9 @@ const JourneySection = ({ data }) => {
 			<TimelineWrapper $isMobile={isMobile}>
 				<TimelineScrollArea $isMobile={isMobile}>
 					<TimelineLine $isMobile={isMobile} />
-					{data.slice(startIndex, startIndex + itemsToShow).map((item) => (
+					{items.map((item) => (
 						<TimelineItem key={item.id}>
+							<TimelineMarker type={item.type} />
 							<TimelineContent>
 								<TimelineTitle>{item.title}</TimelineTitle>
 								<TimelineDate>{item.date}</TimelineDate>
@@ -53,29 +40,10 @@ const JourneySection = ({ data }) => {
 									</StyledJourneyLink>
 								)}
 							</TimelineContent>
-							<TimelineMarker type={item.type} />
 						</TimelineItem>
 					))}
 				</TimelineScrollArea>
 			</TimelineWrapper>
-			{(data.length > 2 || (isMobile && data.length > 1)) && (
-				<ArrowNavWrapper>
-					<ArrowButton
-						onClick={handleBack}
-						disabled={!canGoBack}
-						aria-label="Previous"
-					>
-						&larr;
-					</ArrowButton>
-					<ArrowButton
-						onClick={handleForward}
-						disabled={!canGoForward}
-						aria-label="Next"
-					>
-						&rarr;
-					</ArrowButton>
-				</ArrowNavWrapper>
-			)}
 		</TimelineContainer>
 	);
 };

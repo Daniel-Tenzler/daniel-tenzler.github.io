@@ -26,7 +26,7 @@ export default function GridBackground() {
 			const maxLineWidth = 2.0;
 			const minLineWidth = 0.5;
 			const maxEffectDist = 200;
-			const gridColor = getRgbaColor(COLORS.offWhite, 0.1);
+			const gridColor = getRgbaColor(COLORS.WHITE_BFBFBF, 0.1);
 
 			for (let x = 0; x <= width; x += spacing) {
 				const dist = Math.abs(mousePosRef.current.x - x);

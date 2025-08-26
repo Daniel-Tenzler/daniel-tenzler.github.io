@@ -12,14 +12,14 @@ export const MetaContainer = styled.div`
 	justify-content: center;
 	gap: 1rem;
 	font-size: 0.875rem;
-	color: ${COLORS.offWhite};
+	color: ${COLORS.WHITE_BFBFBF};
 	margin-bottom: 1rem;
 `;
 
 export const Title = styled.h1`
 	font-size: 2rem;
 	font-weight: 800;
-	color: ${COLORS.grayLight};
+	color: ${COLORS.GRAY_E5E9F0};
 	margin-bottom: 1rem;
 	line-height: 1.1;
 `;
@@ -34,14 +34,14 @@ export const TagsContainer = styled.div`
 
 export const Tag = styled.span`
 	padding: 0.25rem 0.75rem;
-	background-color: ${getRgbaColor(COLORS.black, 0.5)};
+	background-color: ${getRgbaColor(COLORS.BLACK_0F1219, 0.5)};
 	border-radius: 9999px;
 	font-size: 0.875rem;
-	color: ${COLORS.offWhite};
+	color: ${COLORS.WHITE_BFBFBF};
 `;
 
 export const UpdateInfo = styled.div`
 	font-size: 0.875rem;
-	color: ${COLORS.white};
+	color: ${COLORS.WHITE_FFFFFF};
 	font-style: italic;
 `;

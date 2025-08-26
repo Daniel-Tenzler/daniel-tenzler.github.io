@@ -11,7 +11,7 @@ export const Title = styled.h2`
 	font-size: 1.25rem;
 	font-weight: 600;
 	margin-bottom: 1rem;
-	color: ${COLORS.offWhite};
+	color: ${COLORS.WHITE_BFBFBF};
 `;
 
 export const LinksContainer = styled.div`
@@ -20,12 +20,12 @@ export const LinksContainer = styled.div`
 `;
 
 export const SocialLink = styled.a`
-	color: ${COLORS.offWhite};
+	color: ${COLORS.WHITE_BFBFBF};
 	text-decoration: none;
 	transition: color 0.2s ease;
 
 	&:hover {
-		color: ${COLORS.gray};
+		color: ${COLORS.GRAY_60739F};
 	}
 `;
 

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { COLORS, getRgbaColor } from 'src/consts/Colors';
 import { keyframes } from '@emotion/react';
 
-const fadeIn = keyframes `
+const fadeIn = keyframes`
 	from {
 		opacity: 0;
 	}
@@ -11,24 +11,25 @@ const fadeIn = keyframes `
 	}
 `;
 
-export const TimelineContainer = styled.section `
+export const TimelineContainer = styled.section`
 	margin: 2rem auto;
 	width: 100%;
 `;
 
-export const Title = styled.h2 `
+export const Title = styled.h2`
 	margin: 0.5rem auto;
 	width: 100%;
 `;
 
-export const TimelineWrapper = styled.div `
-	overflow-x: auto;
+export const TimelineWrapper = styled.div`
+	overflow-y: auto;
 	position: relative;
 	scrollbar-width: none;
 	-ms-overflow-style: none;
-	padding: 0 20px;
+	padding: 20px;
 	display: flex;
 	justify-content: center;
+	max-height: 700px;
 
 	&::-webkit-scrollbar {
 		display: none;
@@ -36,48 +37,52 @@ export const TimelineWrapper = styled.div `
 
 	background: radial-gradient(
 		ellipse at center,
-		${getRgbaColor(COLORS.white, 0.02)} 0%,
-		${getRgbaColor(COLORS.white, 0.01)} 50% ${getRgbaColor(COLORS.white, 0.001)}
-			100%
+		${getRgbaColor(COLORS.WHITE_FFFFFF, 0.02)} 0%,
+		${getRgbaColor(COLORS.WHITE_FFFFFF, 0.01)} 50%
+			${getRgbaColor(COLORS.WHITE_FFFFFF, 0.001)} 100%
 	);
 	/* backdrop-filter: blur(1px); */
 	border-radius: 20px;
 `;
 
 export const TimelineScrollArea = styled.div(({ $isMobile }) => ({
-    display: 'inline-flex',
-    position: 'relative',
-    justifyContent: 'center',
-    padding: '20px 20px 40px 20px',
-    gap: '120px',
-    minWidth: '100%',
+	display: 'flex',
+	flexDirection: 'column',
+	position: 'relative',
+	alignItems: 'flex-start',
+	// shared x-position for line and markers
+	['--line-x']: '30px',
+	['--gutter']: '30px',
+	['--marker-size']: '15px',
+	padding: '20px 20px 20px calc(var(--line-x) + var(--gutter))',
+	gap: '40px',
+	width: '100%',
 
-    ...($isMobile && {
-        minWidth: 0,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '85%',
-        gap: '20px',
-    }),
+	...($isMobile && {
+		['--line-x']: '24px',
+		['--gutter']: '24px',
+		padding: '10px 10px 10px calc(var(--line-x) + var(--gutter))',
+		gap: '24px',
+	}),
 }));
 
-export const TimelineLine = styled.div `
+export const TimelineLine = styled.div`
 	position: absolute;
-	bottom: 43px;
-	left: 0;
-	height: 4px;
-	width: ${({ $isMobile }) => ($isMobile ? '100%' : '96%')};
-	background-color: ${getRgbaColor(COLORS.white, 0.7)};
+	top: 0;
+	left: var(--line-x);
+	width: 4px;
+	height: 100%;
+	background-color: ${getRgbaColor(COLORS.WHITE_FFFFFF, 0.7)};
 
 	-webkit-mask-image: linear-gradient(
-		to right,
+		to bottom,
 		transparent,
 		black 10%,
 		black 90%,
 		transparent
 	);
 	mask-image: linear-gradient(
-		to right,
+		to bottom,
 		transparent,
 		black 10%,
 		black 90%,
@@ -85,47 +90,38 @@ export const TimelineLine = styled.div `
 	);
 `;
 
-export const TimelineItem = styled.div `
+export const TimelineItem = styled.div`
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	flex: 0 0 500px;
+	flex-direction: row;
+	align-items: flex-start;
 	position: relative;
-	width: 200px;
 	z-index: 1;
-
-	@media (max-width: 1000px) {
-		flex: 0 0 250px;
-		width: auto;
-	}
 `;
 
-export const TimelineContent = styled.div `
-	text-align: center;
-	min-height: 200px;
-	width: 90%;
+export const TimelineContent = styled.div`
+	text-align: left;
+	min-height: 120px;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
-	padding: 1rem;
+	padding: 1rem 1rem 1rem 2rem;
 	border-radius: 12px;
 	background: transparent;
 	transition: all 0.3s ease-in-out;
 	position: relative;
 	z-index: 1;
-	align-items: center;
+	align-items: flex-start;
 	animation: ${fadeIn} 0.5s ease;
-	margin: 0 3rem;
-	margin-bottom: 30px;
+	margin: 0;
 
 	@media (min-width: 1001px) {
 		&:hover {
-			position: absolute;
-			transform: scale(1.02);
+			transform: scale(1.01);
 			background: radial-gradient(
 				ellipse at center,
-				${getRgbaColor(COLORS.white, 0.05)} 0%,
-				${getRgbaColor(COLORS.white, 0.02)} 50%,
-				${getRgbaColor(COLORS.white, 0.01)} 100%
+				${getRgbaColor(COLORS.WHITE_FFFFFF, 0.05)} 0%,
+				${getRgbaColor(COLORS.WHITE_FFFFFF, 0.02)} 50%,
+				${getRgbaColor(COLORS.WHITE_FFFFFF, 0.01)} 100%
 			);
 			/* backdrop-filter: blur(3px); */
 			box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
@@ -133,37 +129,34 @@ export const TimelineContent = styled.div `
 	}
 `;
 
-export const TimelineMarker = styled.div `
+export const TimelineMarker = styled.div`
 	position: absolute;
-	bottom: -6px;
-	width: 15px;
-	height: 15px;
+	left: calc(2px + (-1 * var(--gutter)));
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: var(--marker-size);
+	height: var(--marker-size);
 	border-radius: 50%;
 	background-color: ${({ type }) =>
-		type === 'job' ? COLORS.accent : COLORS.accentDark};
-	border: 3px solid ${COLORS.white};
-	z-index: 1;
+		type === 'job' ? COLORS.BLUE_2337FF : COLORS.BLUE_000D8A};
+	border: 3px solid ${COLORS.WHITE_FFFFFF};
+	z-index: 2;
 `;
 
-export const TimelineTitle = styled.h3 `
-	height: 3.6em;
+export const TimelineTitle = styled.h3`
 	margin: 0 0 0.5rem 0;
 	display: -webkit-box;
-	-webkit-line-clamp: 2;
+	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	transition: all 0.3s ease-in-out;
 	font-size: 18px;
-
-	@media (max-width: 720px) {
-		height: 4.6em;
-	}
 `;
 
-export const TimelineDate = styled.p `
+export const TimelineDate = styled.p`
 	font-style: italic;
-	color: ${COLORS.offWhite};
+	color: ${COLORS.WHITE_BFBFBF};
 	height: auto;
 	white-space: nowrap;
 	overflow: hidden;
@@ -173,44 +166,41 @@ export const TimelineDate = styled.p `
 	font-size: 16px;
 `;
 
-export const TimelineDescription = styled.p `
-	height: 6.5em;
-	width: 300px;
+export const TimelineDescription = styled.p`
 	margin: 0;
 	display: -webkit-box;
-	-webkit-line-clamp: 3;
+	-webkit-line-clamp: 5;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	transition: all 0.3s ease-in-out;
 	font-size: 16px;
-
-	@media (max-width: 720px) {
-		width: 250px;
-	}
 `;
 
-export const StyledJourneyLink = styled.a `
+export const StyledJourneyLink = styled.a`
 	display: inline-block;
-	color: ${COLORS.white};
+	color: ${COLORS.WHITE_F1F1F1};
+	font-size: 15px;
 	text-decoration: none;
 	margin-top: 10px;
 	&:hover {
-		color: ${COLORS.offWhite};
+		color: ${COLORS.WHITE_BFBFBF};
+		-webkit-box-shadow: 0px 0px 26px 7px rgba(0, 0, 0, 0.1);
+		box-shadow: 0px 0px 26px 7px rgba(0, 0, 0, 0.1);
 	}
 `;
 
-export const ArrowNavWrapper = styled.div `
+export const ArrowNavWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	gap: 2rem;
 	margin-top: 1rem;
 `;
 
-export const ArrowButton = styled.button `
+export const ArrowButton = styled.button`
 	background: none;
 	border: none;
-	color: ${COLORS.white};
+	color: ${COLORS.WHITE_FFFFFF};
 	font-size: 2rem;
 	cursor: pointer;
 	padding: 0.5rem 1.2rem;
@@ -223,7 +213,7 @@ export const ArrowButton = styled.button `
 	pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
 	-webkit-tap-highlight-color: transparent;
 	&:hover {
-		background: ${getRgbaColor(COLORS.white, 0.01)};
-		color: ${COLORS.offWhite};
+		background: ${getRgbaColor(COLORS.WHITE_FFFFFF, 0.01)};
+		color: ${COLORS.WHITE_BFBFBF};
 	}
 `;

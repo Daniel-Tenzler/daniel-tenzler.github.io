@@ -30,10 +30,10 @@ export const TechList = styled.div`
 
 export const TechTag = styled.span`
 	padding: 0.25rem 0.75rem;
-	background-color: ${getRgbaColor(COLORS.black, 0.5)};
+	background-color: ${getRgbaColor(COLORS.BLACK_0F1219, 0.5)};
 	border-radius: 9999px;
 	font-size: 0.875rem;
-	color: ${COLORS.offWhite};
+	color: ${COLORS.WHITE_BFBFBF};
 `;
 
 export const LinkContainer = styled.div`
@@ -42,7 +42,7 @@ export const LinkContainer = styled.div`
 `;
 
 export const StyledLink = styled.a`
-	color: ${COLORS.white};
+	color: ${COLORS.WHITE_FFFFFF};
 	text-decoration: none;
 	&:hover {
 		text-decoration: underline;

@@ -5,9 +5,9 @@ export const StyledHeader = styled.header`
 	position: sticky;
 	top: 0;
 	z-index: 50;
-	background-color: ${getRgbaColor(COLORS.semiSurfacePrimary, 0.8)};
+	background-color: ${getRgbaColor(COLORS.GRAY_303030, 0.8)};
 	backdrop-filter: blur(4px);
-	border-bottom: 1px solid ${getRgbaColor(COLORS.surfaceBlend1)};
+	border-bottom: 1px solid ${getRgbaColor(COLORS.GRAY_383838)};
 `;
 
 export const Nav = styled.nav`
@@ -35,7 +35,7 @@ export const Logo = styled.a`
 	flex-shrink: 0;
 	font-size: 1.25rem;
 	font-weight: 700;
-	color: ${COLORS.white};
+	color: ${COLORS.WHITE_FFFFFF};
 	text-decoration: none;
 
 	&:focus {
@@ -60,7 +60,7 @@ export const NavLinks = styled.div`
 `;
 
 export const NavLink = styled.a`
-	color: ${COLORS.grayLight};
+	color: ${COLORS.GRAY_E5E9F0};
 	padding: 0.5rem 0.75rem;
 	border-radius: 0.375rem;
 	font-size: 1rem;
@@ -69,6 +69,6 @@ export const NavLink = styled.a`
 	transition: color 0.2s ease;
 
 	&:hover {
-		color: ${COLORS.gray};
+		color: ${COLORS.GRAY_60739F};
 	}
 `;
