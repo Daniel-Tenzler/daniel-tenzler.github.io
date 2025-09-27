@@ -3,17 +3,13 @@
 
 ---
 
-#### Bachelor Thesis topic: Generating Classified Task Sets for the Evaluation of Real-time Scheduling Algorithms
+## Bachelor Thesis topic: Generating Classified Task Sets for the Evaluation of Real-time Scheduling Algorithms
 
-#### Bachelor Thesis grade: 1.3
-
----
-
-#### Final Grade: 1.8
+## Bachelor Thesis grade: 1.3 //// Final Grade: 1.8
 
 ---
 
-#### Notable Projects and Courses:
+## Notable Projects and Courses
 
 - **Programming Project at the Department of Electrical energy storage technologies**: Designed and developed a frontend application for the analysis and visualization of large-scale datasets.
 

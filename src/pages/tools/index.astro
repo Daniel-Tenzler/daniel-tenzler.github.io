@@ -2,12 +2,16 @@
 import MainLayout from 'src/layouts/MainLayout.astro';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
 import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
-import UrlEncoder from 'src/components/jsx/urlEncoder/UrlEncoder';
+import ToolsList from 'src/components/jsx/tools/ToolsList/ToolsList';
+import { tools } from 'src/data/tools/tools';
 ---
 
-<MainLayout title="Contact Me" description="Get in touch with Daniel Tenzler">
+<MainLayout
+	title="Tools"
+	description="A collection of useful web development and utility tools"
+>
 	<ThemeWrapper client:load>
 		<GridBackground client:load />
-		<UrlEncoder initialValue="https://daniel-tenzler.github.io" client:load />
+		<ToolsList tools={tools} client:load />
 	</ThemeWrapper>
 </MainLayout>
