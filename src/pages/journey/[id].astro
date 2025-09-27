@@ -2,7 +2,7 @@
 import MainLayout from 'src/layouts/MainLayout.astro';
 import { journeyData } from 'src/data/journey/journey.js';
 import { getEntry } from 'astro:content';
-import ContentContainer from 'src/components/jsx/ContentContainer/ContentContainer.jsx';
+import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer.jsx';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
 import JourneyDetailsPageContent from 'src/components/jsx/journey/JourneyDetailsPageContent/JourneyDetailsPageContent.jsx';
 import SettingsPanel from 'src/components/jsx/settingsPanel/SettingsPanel';
@@ -33,10 +33,10 @@ const { Content } = await journeyEntry.render();
 		<!-- <SettingsPanel client:load>
 			<DarkModeToggle client:load />
 		</SettingsPanel> -->
-	<ContentContainer client:load>
-		<JourneyDetailsPageContent client:load item={item}>
-			<Content />
-		</JourneyDetailsPageContent>
-	</ContentContainer>
+		<ContentContainer client:load>
+			<JourneyDetailsPageContent client:load item={item}>
+				<Content />
+			</JourneyDetailsPageContent>
+		</ContentContainer>
 	</ThemeWrapper>
 </MainLayout>

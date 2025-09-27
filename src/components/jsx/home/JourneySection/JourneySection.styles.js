@@ -105,7 +105,7 @@ export const TimelineContent = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding: 1rem 1rem 1rem 2rem;
-	border-radius: 12px;
+	border-radius: 24px;
 	background: transparent;
 	transition: all 0.3s ease-in-out;
 	position: relative;
@@ -119,12 +119,12 @@ export const TimelineContent = styled.div`
 			transform: scale(1.01);
 			background: radial-gradient(
 				ellipse at center,
-				${getRgbaColor(COLORS.WHITE_FFFFFF, 0.05)} 0%,
+				${getRgbaColor(COLORS.WHITE_FFFFFF, 0.03)} 0%,
 				${getRgbaColor(COLORS.WHITE_FFFFFF, 0.02)} 50%,
 				${getRgbaColor(COLORS.WHITE_FFFFFF, 0.01)} 100%
 			);
-			/* backdrop-filter: blur(3px); */
-			box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+			backdrop-filter: blur(2px);
+			box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.01);
 		}
 	}
 `;

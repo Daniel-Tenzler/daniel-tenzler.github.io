@@ -43,7 +43,7 @@ export const Title = styled.h2`
 
 export const Description = styled.p`
 	color: ${COLORS.WHITE_BFBFBF};
-	margin: 1rem 0;
+	margin: 0rem 0 1rem 0;
 	font-size: 1rem;
 	line-height: 1.5;
 	justify-self: center;

@@ -16,7 +16,7 @@ export default function GitHubStats({ metadata, commitCount, languageStats }) {
 	return (
 		<>
 			<Title>Repository Statistics</Title>
-			<Description>{metadata.description}</Description>
+			<Description>Repository Description: {metadata.description}</Description>
 			<StatsContainer>
 				{metadata.stars > 0 && (
 					<StatItem>
