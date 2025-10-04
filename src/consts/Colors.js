@@ -20,6 +20,8 @@ export const COLORS = {
 	WHITE_FFFFFF: '#ffffff',
 	WHITE_BFBFBF: '#BFBFBF',
 	WHITE_F1F1F1: '#F1F1F1',
+	GREEN_86EFAC: '#86efac',
+	RED_FCA5A5: '#fca5a5',
 	GRAY_60739F: '#60739f',
 	GRAY_E5E9F0: '#e5e9f0',
 	GRAY_222939: '#222939',

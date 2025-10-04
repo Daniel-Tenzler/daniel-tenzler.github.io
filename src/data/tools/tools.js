@@ -8,6 +8,15 @@ export const tools = [
 		icon: '/link.svg',
 		category: 'Web Development',
 	},
+	{
+		id: 'json-visualizer',
+		title: 'JSON Visualizer',
+		description:
+			'Validate, format, and visualize JSON data with syntax highlighting.',
+		path: '/json-visualizer',
+		icon: '/link.svg',
+		category: 'Web Development',
+	},
 ];
 
 export const getToolsByCategory = () => {

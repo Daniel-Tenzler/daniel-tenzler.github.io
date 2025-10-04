@@ -1,0 +1,19 @@
+---
+import MainLayout from 'src/layouts/MainLayout.astro';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
+import JsonVisualizer from 'src/components/jsx/jsonVisualizer/JsonVisualizer.jsx';
+---
+
+<MainLayout
+	title="JSON Visualizer"
+	description="Visualize and format JSON data with syntax highlighting"
+>
+	<ThemeWrapper client:load>
+		<GridBackground client:load />
+		<JsonVisualizer
+			initialValue='{"name": "John Doe", "age": 30, "city": "New York"}'
+			client:load
+		/>
+	</ThemeWrapper>
+</MainLayout>
