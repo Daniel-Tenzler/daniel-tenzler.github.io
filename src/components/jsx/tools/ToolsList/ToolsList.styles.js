@@ -5,6 +5,10 @@ export const Container = styled.div`
 	max-width: 56rem;
 	min-height: 71dvh;
 	margin: 2rem auto;
+
+	@media (max-width: 640px) {
+		padding: 0rem 1rem;
+	}
 `;
 
 export const Title = styled.h1`
@@ -30,7 +34,7 @@ export const Description = styled.p`
 `;
 
 export const CategorySection = styled.div`
-	margin-bottom: 3rem;
+	margin-bottom: 2rem;
 `;
 
 export const CategoryTitle = styled.h2`

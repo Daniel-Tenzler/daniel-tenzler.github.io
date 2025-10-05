@@ -17,6 +17,15 @@ export const tools = [
 		icon: '/link.svg',
 		category: 'Web Development',
 	},
+	{
+		id: 'pixelizer',
+		title: 'Pixelizer',
+		description:
+			'Convert images to RGB matrix data and apply smoothing effects for image processing.',
+		path: '/pixelizer',
+		icon: '/link.svg',
+		category: 'Image Processing',
+	},
 ];
 
 export const getToolsByCategory = () => {

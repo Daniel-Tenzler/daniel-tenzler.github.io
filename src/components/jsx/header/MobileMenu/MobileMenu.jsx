@@ -14,7 +14,7 @@ export default function MobileMenuComponent() {
 	const isMobile = useIsMobile(768);
 
 	const toggleMobileMenu = () => {
-		setIsMobileMenuOpen(prev => !prev);
+		setIsMobileMenuOpen((prev) => !prev);
 	};
 
 	// Only render on mobile devices
@@ -81,6 +81,9 @@ export default function MobileMenuComponent() {
 				</MobileNavLink>
 				<MobileNavLink href="/blog" onClick={toggleMobileMenu}>
 					<NavlinkCard>Blog</NavlinkCard>
+				</MobileNavLink>
+				<MobileNavLink href="/tools" onClick={toggleMobileMenu}>
+					<NavlinkCard>Tools</NavlinkCard>
 				</MobileNavLink>
 				{/* <MobileNavLink href="/contact" onClick={toggleMobileMenu}>
 				<NavlinkCard>
