@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
 	Container,
@@ -10,6 +10,9 @@ import {
 	ErrorMessage,
 	SuccessMessage,
 	FormatButton,
+	Separator,
+	OutputHeader,
+	FullscreenButton,
 } from './JsonVisualizer.styles';
 
 const JsonVisualizer = ({ initialValue }) => {
@@ -18,6 +21,12 @@ const JsonVisualizer = ({ initialValue }) => {
 	const [isValidJson, setIsValidJson] = useState(false);
 	const [error, setError] = useState('');
 	const [success, setSuccess] = useState('');
+	const [dividerPosition, setDividerPosition] = useState(50);
+	const [isDragging, setIsDragging] = useState(false);
+	const [isFullscreen, setIsFullscreen] = useState(false);
+	const containerRef = useRef(null);
+	const MIN_WIDTH_PERCENT = 20;
+	const MAX_WIDTH_PERCENT = 80;
 
 	const validateAndFormatJson = (jsonString) => {
 		if (!jsonString.trim()) {
@@ -56,15 +65,92 @@ const JsonVisualizer = ({ initialValue }) => {
 		}
 	};
 
+	const toggleFullscreen = () => {
+		setIsFullscreen((prev) => !prev);
+	};
+
+	const handleDrag = useCallback(
+		(clientX) => {
+			if (!containerRef.current) return;
+
+			const rect = containerRef.current.getBoundingClientRect();
+			const relativeX = clientX - rect.left;
+			const newPosition = (relativeX / rect.width) * 100;
+			const clampedPosition = Math.min(
+				MAX_WIDTH_PERCENT,
+				Math.max(MIN_WIDTH_PERCENT, newPosition),
+			);
+			setDividerPosition(clampedPosition);
+		},
+		[MAX_WIDTH_PERCENT, MIN_WIDTH_PERCENT],
+	);
+
+	const handleMouseDown = (event) => {
+		event.preventDefault();
+		setIsDragging(true);
+		handleDrag(event.clientX);
+	};
+
+	useEffect(() => {
+		if (!isDragging) {
+			document.body.style.userSelect = '';
+			return undefined;
+		}
+
+		const handleMouseMove = (event) => {
+			handleDrag(event.clientX);
+		};
+
+		const handleMouseUp = () => {
+			setIsDragging(false);
+		};
+
+		document.body.style.userSelect = 'none';
+		window.addEventListener('mousemove', handleMouseMove);
+		window.addEventListener('mouseup', handleMouseUp);
+
+		return () => {
+			document.body.style.userSelect = '';
+			window.removeEventListener('mousemove', handleMouseMove);
+			window.removeEventListener('mouseup', handleMouseUp);
+		};
+	}, [handleDrag, isDragging]);
+
 	useEffect(() => {
 		validateAndFormatJson(initialValue || '');
 	}, [initialValue]);
 
+	useEffect(() => {
+		if (!isFullscreen) {
+			document.body.style.overflow = '';
+			return undefined;
+		}
+
+		const previousOverflow = document.body.style.overflow;
+		document.body.style.overflow = 'hidden';
+
+		return () => {
+			document.body.style.overflow = previousOverflow;
+		};
+	}, [isFullscreen]);
+
+	const inputSectionStyle = isFullscreen
+		? { flexBasis: `${dividerPosition}%`, height: '100%' }
+		: { flexBasis: `${dividerPosition}%` };
+
+	const outputSectionStyle = isFullscreen
+		? { flexBasis: `${100 - dividerPosition}%`, height: '100%' }
+		: { flexBasis: `${100 - dividerPosition}%` };
+
 	return (
-		<Container>
-			<InputSection>
+		<Container ref={containerRef} isFullscreen={isFullscreen}>
+			<InputSection
+				isFullscreen={isFullscreen}
+				style={inputSectionStyle}
+			>
 				<SectionTitle>JSON Input</SectionTitle>
 				<InputField
+					isFullscreen={isFullscreen}
 					value={inputValue}
 					onChange={handleInputChange}
 					placeholder="Enter JSON data here..."
@@ -86,9 +172,36 @@ const JsonVisualizer = ({ initialValue }) => {
 				)}
 			</InputSection>
 
-			<OutputSection>
-				<SectionTitle>Formatted Output</SectionTitle>
-				<OutputField>
+			<Separator
+				onMouseDown={handleMouseDown}
+				role="separator"
+				aria-orientation="vertical"
+				aria-label="Resize panels"
+				aria-valuemin={MIN_WIDTH_PERCENT}
+				aria-valuemax={MAX_WIDTH_PERCENT}
+				aria-valuenow={dividerPosition}
+				className={isDragging ? 'dragging' : ''}
+				isFullscreen={isFullscreen}
+			/>
+
+			<OutputSection
+				isFullscreen={isFullscreen}
+				style={outputSectionStyle}
+			>
+				<OutputHeader>
+					<SectionTitle>Formatted Output</SectionTitle>
+					<FullscreenButton
+						type="button"
+						onClick={toggleFullscreen}
+						aria-pressed={isFullscreen}
+						aria-label={
+							isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'
+						}
+					>
+						{isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
+					</FullscreenButton>
+				</OutputHeader>
+				<OutputField isFullscreen={isFullscreen}>
 					{outputValue ||
 						'Enter valid JSON in the input field to see formatted output...'}
 				</OutputField>
