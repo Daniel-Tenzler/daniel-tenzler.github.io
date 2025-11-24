@@ -84,14 +84,16 @@ export const OutputSection = styled('div', { shouldForwardProp: hideFullscreenPr
 
 export const SectionTitle = styled.h3`
 	color: ${COLORS.WHITE_BFBFBF};
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 	font-weight: 600;
-	margin: 0 0 1em 0;
+	margin: 0;
 	text-align: center;
+	padding: 0.8em 0 0.4em 0;
+	z-index: 1;
 
 	@media (max-width: 768px) {
-		font-size: 1.1rem;
-		margin-bottom: 0.8em;
+		font-size: 1rem;
+		padding: 0.6em 0 0.3em 0;
 	}
 `;
 
@@ -106,6 +108,7 @@ export const ContentWrapper = styled('div', { shouldForwardProp: hideFullscreenP
 	border: 2px solid transparent;
 	transition: border-color 0.2s ease;
 	box-sizing: border-box;
+	position: relative;
 
 	&:focus-within {
 		border-color: ${COLORS.GRAY_474747};
@@ -117,7 +120,7 @@ export const ContentWrapper = styled('div', { shouldForwardProp: hideFullscreenP
 export const InputField = styled('textarea', { shouldForwardProp: hideFullscreenProp })`
 	background-color: transparent;
 	color: ${COLORS.WHITE_FFFFFF};
-	padding: 1em;
+	padding: 0.5em 1em 1em 1em;
 	flex: 1;
 	width: 100%;
 	height: 100%;
@@ -131,18 +134,16 @@ export const InputField = styled('textarea', { shouldForwardProp: hideFullscreen
 	box-sizing: border-box;
 
 	@media (max-width: 768px) {
-
-	@media (max-width: 768px) {
 		font-size: 13px;
 		height: 300px;
-		padding: 0.8em;
+		padding: 0.5em 0.8em 0.8em 0.8em;
 	}
 `;
 
 export const OutputField = styled('div', { shouldForwardProp: hideFullscreenProp })`
 	background-color: transparent;
 	color: ${COLORS.WHITE_FFFFFF};
-	padding: 1em;
+	padding: 0.5em 1em 1em 1em;
 	flex: 1;
 	width: 100%;
 	height: 100%;
@@ -154,14 +155,12 @@ export const OutputField = styled('div', { shouldForwardProp: hideFullscreenProp
 	line-height: 1.5;
 	white-space: pre-wrap;
 	word-wrap: break-word;
-	white-space: pre-wrap;
-	word-wrap: break-word;
 	min-height: 0;
 
 	@media (max-width: 768px) {
 		font-size: 13px;
 		height: 300px;
-		padding: 0.8em;
+		padding: 0.5em 0.8em 0.8em 0.8em;
 	}
 `;
 
@@ -253,38 +252,32 @@ export const MessagesContainer = styled.div`
 `;
 
 export const Separator = styled('div', { shouldForwardProp: hideFullscreenProp })`
-	width: 10px;
+	width: 16px;
 	flex: none;
 	cursor: col-resize;
-	background: linear-gradient(
-		to bottom,
-		${COLORS.GRAY_474747},
-		${COLORS.GRAY_383838}
-	);
-	border-radius: 6px;
+	background: transparent;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	align-self: stretch;
 	position: relative;
-	transition: background 0.2s ease;
-	margin: ${({ isFullscreen }) => (isFullscreen ? '0' : '60px 0')};
+	z-index: 10;
+	margin: 0;
 
 	&::after {
 		content: '';
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 2px;
-		height: 60%;
-		background: linear-gradient(
-			to bottom,
-			${COLORS.BLUE_00004A},
-			${COLORS.BLUE_000D8A}
-		);
+		width: 4px;
+		height: 150px;
+		background-color: ${COLORS.GRAY_474747};
 		border-radius: 100px;
+		transition: all 0.2s ease;
 	}
 
-	&.dragging {
-		background: ${COLORS.GRAY_474747};
+	&:hover::after,
+	&.dragging::after {
+		background-color: ${COLORS.BLUE_2337FF};
+		height: 364px;
+		box-shadow: 2px 2px 12px rgba(35, 55, 255, 0.4);
 	}
 
 	@media (max-width: 768px) {
@@ -292,20 +285,20 @@ export const Separator = styled('div', { shouldForwardProp: hideFullscreenProp }
 	}
 `;
 
-export const OutputHeader = styled.div`
+export const SectionHeader = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	gap: 1em;
-	margin-bottom: 1em;
-
-	h3 {
-		margin: 0;
-		text-align: left;
-	}
+	justify-content: center;
+	position: relative;
+	width: 100%;
+	min-height: 40px;
 `;
 
 export const FullscreenButton = styled.button`
+	position: absolute;
+	right: 1em;
+	top: 50%;
+	transform: translateY(-50%);
 	background: ${COLORS.GRAY_303030};
 	color: ${COLORS.WHITE_FFFFFF};
 	border: 1px solid ${COLORS.GRAY_404040};
@@ -314,6 +307,7 @@ export const FullscreenButton = styled.button`
 	font-size: 0.85rem;
 	cursor: pointer;
 	transition: background 0.2s ease, border-color 0.2s ease;
+	z-index: 2;
 
 	&:hover {
 		background: ${COLORS.GRAY_404040};

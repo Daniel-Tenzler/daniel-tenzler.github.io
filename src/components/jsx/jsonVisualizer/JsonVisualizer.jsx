@@ -15,7 +15,7 @@ import {
 	MessagesContainer,
 	ContentWrapper,
 	Separator,
-	OutputHeader,
+	SectionHeader,
 	FullscreenButton,
 } from './JsonVisualizer.styles';
 
@@ -166,8 +166,10 @@ const JsonVisualizer = ({ initialValue }) => {
 				isFullscreen={isFullscreen}
 				style={inputSectionStyle}
 			>
-				<SectionTitle>JSON Input</SectionTitle>
 				<ContentWrapper isFullscreen={isFullscreen}>
+					<SectionHeader>
+						<SectionTitle>JSON Input</SectionTitle>
+					</SectionHeader>
 					<InputField
 						isFullscreen={isFullscreen}
 						value={inputValue}
@@ -210,20 +212,20 @@ const JsonVisualizer = ({ initialValue }) => {
 				isFullscreen={isFullscreen}
 				style={outputSectionStyle}
 			>
-				<OutputHeader>
-					<SectionTitle>Formatted Output</SectionTitle>
-					<FullscreenButton
-						type="button"
-						onClick={toggleFullscreen}
-						aria-pressed={isFullscreen}
-						aria-label={
-							isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'
-						}
-					>
-						{isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
-					</FullscreenButton>
-				</OutputHeader>
 				<ContentWrapper isFullscreen={isFullscreen}>
+					<SectionHeader>
+						<SectionTitle>Formatted Output</SectionTitle>
+						<FullscreenButton
+							type="button"
+							onClick={toggleFullscreen}
+							aria-pressed={isFullscreen}
+							aria-label={
+								isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'
+							}
+						>
+							{isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
+						</FullscreenButton>
+					</SectionHeader>
 					<OutputField isFullscreen={isFullscreen}>
 						{outputValue ||
 							'Enter valid JSON in the input field to see formatted output...'}
