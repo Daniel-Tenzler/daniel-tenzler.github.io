@@ -47,12 +47,12 @@ export const InputSection = styled('div', { shouldForwardProp: hideFullscreenPro
 	flex-direction: column;
 	box-sizing: border-box;
 	min-height: 0;
+	height: auto;
 
 	${({ isFullscreen }) =>
 		isFullscreen &&
 		`
 			width: auto;
-			height: 100%;
 		`}
 
 	@media (max-width: 768px) {
@@ -68,12 +68,12 @@ export const OutputSection = styled('div', { shouldForwardProp: hideFullscreenPr
 	flex-direction: column;
 	box-sizing: border-box;
 	min-height: 0;
+	height: auto;
 
 	${({ isFullscreen }) =>
 		isFullscreen &&
 		`
 			width: auto;
-			height: 100%;
 		`}
 
 	@media (max-width: 768px) {
@@ -95,26 +95,42 @@ export const SectionTitle = styled.h3`
 	}
 `;
 
-export const InputField = styled('textarea', { shouldForwardProp: hideFullscreenProp })`
+export const ContentWrapper = styled('div', { shouldForwardProp: hideFullscreenProp })`
+	display: flex;
+	flex-direction: column;
 	background-color: ${COLORS.GRAY_292929};
-	color: ${COLORS.WHITE_FFFFFF};
-	padding: 1em;
-	height: ${({ isFullscreen }) => (isFullscreen ? '100%' : '500px')};
-	font-size: 14px;
-	font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
-	border: 2px solid transparent;
 	border-radius: 8px;
-	transition: border-color 0.2s ease;
-	resize: ${({ isFullscreen }) => (isFullscreen ? 'none' : 'vertical')};
-	line-height: 1.5;
-	flex: ${({ isFullscreen }) => (isFullscreen ? 1 : 'unset')};
+	flex: 1;
 	min-height: 0;
+	overflow: hidden;
+	border: 2px solid transparent;
+	transition: border-color 0.2s ease;
+	box-sizing: border-box;
 
-	&:focus-visible {
+	&:focus-within {
 		border-color: ${COLORS.GRAY_474747};
 		outline: 1px solid ${COLORS.GRAY_474747};
 		outline-offset: 2px;
 	}
+`;
+
+export const InputField = styled('textarea', { shouldForwardProp: hideFullscreenProp })`
+	background-color: transparent;
+	color: ${COLORS.WHITE_FFFFFF};
+	padding: 1em;
+	flex: 1;
+	width: 100%;
+	height: 100%;
+	font-size: 14px;
+	font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+	border: none;
+	resize: none;
+	line-height: 1.5;
+	min-height: 0;
+	outline: none;
+	box-sizing: border-box;
+
+	@media (max-width: 768px) {
 
 	@media (max-width: 768px) {
 		font-size: 13px;
@@ -124,19 +140,22 @@ export const InputField = styled('textarea', { shouldForwardProp: hideFullscreen
 `;
 
 export const OutputField = styled('div', { shouldForwardProp: hideFullscreenProp })`
-	background-color: ${COLORS.GRAY_292929};
+	background-color: transparent;
 	color: ${COLORS.WHITE_FFFFFF};
 	padding: 1em;
-	height: ${({ isFullscreen }) => (isFullscreen ? '100%' : '500px')};
+	flex: 1;
+	width: 100%;
+	height: 100%;
 	font-size: 14px;
 	font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
-	border: 2px solid transparent;
-	border-radius: 8px;
+	border: none;
+	box-sizing: border-box;
 	overflow-y: auto;
 	line-height: 1.5;
 	white-space: pre-wrap;
 	word-wrap: break-word;
-	flex: ${({ isFullscreen }) => (isFullscreen ? 1 : 'unset')};
+	white-space: pre-wrap;
+	word-wrap: break-word;
 	min-height: 0;
 
 	@media (max-width: 768px) {
@@ -152,7 +171,6 @@ export const ErrorMessage = styled.div`
 	padding: 0.8em;
 	border-radius: 8px;
 	border: 1px solid rgba(220, 38, 38, 0.3);
-	margin-top: 1em;
 	font-size: 14px;
 	line-height: 1.4;
 `;
@@ -163,7 +181,6 @@ export const SuccessMessage = styled.div`
 	padding: 0.75em 1.5em;
 	border-radius: 8px;
 	border: 1px solid rgba(34, 197, 94, 0.3);
-	margin-top: 1em;
 	font-size: 14px;
 	line-height: 1.4;
 `;
@@ -177,7 +194,6 @@ export const FormatButton = styled.button`
 	font-weight: 500;
 	font-size: 0.95rem;
 	cursor: pointer;
-	margin-top: 1em;
 	transition:
 		background-color 0.2s ease,
 		box-shadow 0.2s ease;
@@ -206,6 +222,34 @@ export const FormatButton = styled.button`
 		padding: 0.6em 1.2em;
 		font-size: 0.9rem;
 	}
+`;
+
+export const CopyButton = styled(FormatButton)`
+	background-color: ${COLORS.GRAY_383838};
+	color: ${COLORS.WHITE_BFBFBF};
+
+	&:hover {
+		background-color: ${COLORS.GRAY_222939};
+	}
+`;
+
+export const ButtonsContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5em 1em;
+	gap: 1em;
+	background-color: transparent;
+`;
+
+export const MessagesContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5em 1em;
+	min-height: 3em;
+	gap: 1em;
+	background-color: transparent;
 `;
 
 export const Separator = styled('div', { shouldForwardProp: hideFullscreenProp })`

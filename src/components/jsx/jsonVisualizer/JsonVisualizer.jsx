@@ -10,6 +10,10 @@ import {
 	ErrorMessage,
 	SuccessMessage,
 	FormatButton,
+	CopyButton,
+	ButtonsContainer,
+	MessagesContainer,
+	ContentWrapper,
 	Separator,
 	OutputHeader,
 	FullscreenButton,
@@ -21,6 +25,7 @@ const JsonVisualizer = ({ initialValue }) => {
 	const [isValidJson, setIsValidJson] = useState(false);
 	const [error, setError] = useState('');
 	const [success, setSuccess] = useState('');
+	const [copySuccess, setCopySuccess] = useState('');
 	const [dividerPosition, setDividerPosition] = useState(50);
 	const [isDragging, setIsDragging] = useState(false);
 	const [isFullscreen, setIsFullscreen] = useState(false);
@@ -62,6 +67,19 @@ const JsonVisualizer = ({ initialValue }) => {
 		if (isValidJson && outputValue) {
 			setInputValue(outputValue);
 			validateAndFormatJson(outputValue);
+		}
+	};
+
+	const handleCopyClick = async () => {
+		if (!outputValue) return;
+
+		try {
+			await navigator.clipboard.writeText(outputValue);
+			setCopySuccess('Copied!');
+			setTimeout(() => setCopySuccess(''), 2000);
+		} catch (err) {
+			console.error('Failed to copy text: ', err);
+			setCopySuccess('Failed to copy');
 		}
 	};
 
@@ -149,27 +167,31 @@ const JsonVisualizer = ({ initialValue }) => {
 				style={inputSectionStyle}
 			>
 				<SectionTitle>JSON Input</SectionTitle>
-				<InputField
-					isFullscreen={isFullscreen}
-					value={inputValue}
-					onChange={handleInputChange}
-					placeholder="Enter JSON data here..."
-					aria-label="JSON input field"
-					aria-invalid={!!error}
-					aria-describedby={
-						error ? 'json-error' : success ? 'json-success' : undefined
-					}
-				/>
-				{error && (
-					<ErrorMessage id="json-error" role="alert">
-						{error}
-					</ErrorMessage>
-				)}
-				{success && (
-					<SuccessMessage id="json-success" role="status">
-						{success}
-					</SuccessMessage>
-				)}
+				<ContentWrapper isFullscreen={isFullscreen}>
+					<InputField
+						isFullscreen={isFullscreen}
+						value={inputValue}
+						onChange={handleInputChange}
+						placeholder="Enter JSON data here..."
+						aria-label="JSON input field"
+						aria-invalid={!!error}
+						aria-describedby={
+							error ? 'json-error' : success ? 'json-success' : undefined
+						}
+					/>
+					<MessagesContainer>
+						{error && (
+							<ErrorMessage id="json-error" role="alert">
+								{error}
+							</ErrorMessage>
+						)}
+						{success && (
+							<SuccessMessage id="json-success" role="status">
+								{success}
+							</SuccessMessage>
+						)}
+					</MessagesContainer>
+				</ContentWrapper>
 			</InputSection>
 
 			<Separator
@@ -201,17 +223,28 @@ const JsonVisualizer = ({ initialValue }) => {
 						{isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
 					</FullscreenButton>
 				</OutputHeader>
-				<OutputField isFullscreen={isFullscreen}>
-					{outputValue ||
-						'Enter valid JSON in the input field to see formatted output...'}
-				</OutputField>
-				<FormatButton
-					onClick={handleFormatClick}
-					disabled={!isValidJson}
-					aria-label="Format JSON"
-				>
-					Format JSON
-				</FormatButton>
+				<ContentWrapper isFullscreen={isFullscreen}>
+					<OutputField isFullscreen={isFullscreen}>
+						{outputValue ||
+							'Enter valid JSON in the input field to see formatted output...'}
+					</OutputField>
+					<ButtonsContainer>
+						<FormatButton
+							onClick={handleFormatClick}
+							disabled={!isValidJson}
+							aria-label="Format JSON"
+						>
+							Format JSON
+						</FormatButton>
+						<CopyButton
+							onClick={handleCopyClick}
+							disabled={!outputValue}
+							aria-label="Copy Output"
+						>
+							{copySuccess || 'Copy All'}
+						</CopyButton>
+					</ButtonsContainer>
+				</ContentWrapper>
 			</OutputSection>
 		</Container>
 	);
