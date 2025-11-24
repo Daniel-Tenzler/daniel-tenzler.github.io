@@ -12,11 +12,11 @@ export async function getRepoMetadata() {
     try {
         const response = await fetch(
             `${GITHUB_API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}`, {
-                headers: {
-                    Accept: 'application/vnd.github.v3+json',
-                    Authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
-                },
-            }
+            headers: {
+                Accept: 'application/vnd.github.v3+json',
+                Authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
+            },
+        }
         );
 
         if (!response.ok) {
@@ -32,12 +32,7 @@ export async function getRepoMetadata() {
         };
     } catch (error) {
         console.error('Error fetching repository metadata:', error);
-        return {
-            stars: 0,
-            forks: 0,
-            description: 'Error fetching repository data',
-            lastUpdated: new Date().toISOString(),
-        };
+        return null;
     }
 }
 
@@ -49,11 +44,11 @@ export async function getCommitCount() {
     try {
         const response = await fetch(
             `${GITHUB_API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}/commits?per_page=1`, {
-                headers: {
-                    Accept: 'application/vnd.github.v3+json',
-                    Authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
-                },
-            }
+            headers: {
+                Accept: 'application/vnd.github.v3+json',
+                Authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
+            },
+        }
         );
 
         if (!response.ok) {
@@ -70,7 +65,7 @@ export async function getCommitCount() {
         return match ? parseInt(match[1], 10) : 1;
     } catch (error) {
         console.error('Error fetching commit count:', error);
-        return 0;
+        return null;
     }
 }
 /**
@@ -87,11 +82,11 @@ export async function fetchRepositories(username) {
         do {
             const response = await fetch(
                 `https://api.github.com/users/${username}/repos?per_page=100&page=${page}`, {
-                    headers: {
-                        Accept: 'application/vnd.github.v3+json',
-                        Authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
-                    },
-                }
+                headers: {
+                    Accept: 'application/vnd.github.v3+json',
+                    Authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
+                },
+            }
             );
 
             if (!response.ok) {
@@ -141,11 +136,11 @@ export async function fetchRepositoryStats(username) {
     try {
         const response = await fetch(
             `https://api.github.com/users/${username}/repos?per_page=100`, {
-                headers: {
-                    Accept: 'application/vnd.github.v3+json',
-                    Authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
-                },
-            }
+            headers: {
+                Accept: 'application/vnd.github.v3+json',
+                Authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
+            },
+        }
         );
 
         if (!response.ok) {

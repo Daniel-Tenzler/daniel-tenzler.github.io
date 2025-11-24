@@ -80,12 +80,16 @@ const languageStats = getLanguageStats(repos);
 
 			<SkillsSection client:load skills={skillsData} />
 
-			<GitHubStats
-				client:load
-				metadata={metadata}
-				commitCount={commitCount}
-				languageStats={languageStats}
-			/>
+			{
+				metadata && commitCount !== null && languageStats && (
+					<GitHubStats
+						client:load
+						metadata={metadata}
+						commitCount={commitCount}
+						languageStats={languageStats}
+					/>
+				)
+			}
 		</ContentContainer>
 	</ThemeWrapper>
 </MainLayout>
