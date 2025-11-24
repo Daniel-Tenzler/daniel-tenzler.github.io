@@ -13,7 +13,8 @@ import {
 	CopyButton,
 	ButtonsContainer,
 	MessagesContainer,
-	ContentWrapper,
+	InputContentWrapper,
+	OutputContentWrapper,
 	Separator,
 	SectionHeader,
 	FullscreenButton,
@@ -166,7 +167,7 @@ const JsonVisualizer = ({ initialValue }) => {
 				isFullscreen={isFullscreen}
 				style={inputSectionStyle}
 			>
-				<ContentWrapper isFullscreen={isFullscreen}>
+				<InputContentWrapper isFullscreen={isFullscreen}>
 					<SectionHeader>
 						<SectionTitle>JSON Input</SectionTitle>
 					</SectionHeader>
@@ -193,7 +194,7 @@ const JsonVisualizer = ({ initialValue }) => {
 							</SuccessMessage>
 						)}
 					</MessagesContainer>
-				</ContentWrapper>
+				</InputContentWrapper>
 			</InputSection>
 
 			<Separator
@@ -212,7 +213,7 @@ const JsonVisualizer = ({ initialValue }) => {
 				isFullscreen={isFullscreen}
 				style={outputSectionStyle}
 			>
-				<ContentWrapper isFullscreen={isFullscreen}>
+				<OutputContentWrapper isFullscreen={isFullscreen}>
 					<SectionHeader>
 						<SectionTitle>Formatted Output</SectionTitle>
 						<FullscreenButton
@@ -246,7 +247,7 @@ const JsonVisualizer = ({ initialValue }) => {
 							{copySuccess || 'Copy All'}
 						</CopyButton>
 					</ButtonsContainer>
-				</ContentWrapper>
+				</OutputContentWrapper>
 			</OutputSection>
 		</Container>
 	);

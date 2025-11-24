@@ -7,7 +7,7 @@ export const Container = styled('div', { shouldForwardProp: hideFullscreenProp }
 	width: 90%;
 	max-width: 1600px;
 	height: 100%;
-	min-height: calc(100vh - 205px);
+	min-height: calc(100vh - 246px);
 	margin: 0 auto;
 	padding: 1.5em 0;
 	display: flex;
@@ -53,6 +53,7 @@ export const InputSection = styled('div', { shouldForwardProp: hideFullscreenPro
 		isFullscreen &&
 		`
 			width: auto;
+			border-radius: 0;
 		`}
 
 	@media (max-width: 768px) {
@@ -74,6 +75,7 @@ export const OutputSection = styled('div', { shouldForwardProp: hideFullscreenPr
 		isFullscreen &&
 		`
 			width: auto;
+			border-radius: 0;
 		`}
 
 	@media (max-width: 768px) {
@@ -97,7 +99,7 @@ export const SectionTitle = styled.h3`
 	}
 `;
 
-export const ContentWrapper = styled('div', { shouldForwardProp: hideFullscreenProp })`
+const BaseContentWrapper = styled('div', { shouldForwardProp: hideFullscreenProp })`
 	display: flex;
 	flex-direction: column;
 	background-color: ${COLORS.GRAY_292929};
@@ -106,15 +108,33 @@ export const ContentWrapper = styled('div', { shouldForwardProp: hideFullscreenP
 	min-height: 0;
 	overflow: hidden;
 	border: 2px solid transparent;
-	transition: border-color 0.2s ease;
+	transition: background-color 0.2s ease, border-color 0.2s ease;
 	box-sizing: border-box;
 	position: relative;
 
+	${({ isFullscreen }) =>
+		isFullscreen &&
+		`
+			border-radius: 0;
+			border: none;
+		`}
+`;
+
+export const InputContentWrapper = styled(BaseContentWrapper)`
 	&:focus-within {
-		border-color: ${COLORS.GRAY_474747};
-		outline: 1px solid ${COLORS.GRAY_474747};
-		outline-offset: 2px;
+		${({ isFullscreen }) =>
+		isFullscreen
+			? `background-color: ${COLORS.GRAY_2D2D2D};`
+			: `
+					border-color: ${COLORS.GRAY_474747};
+					outline: 1px solid ${COLORS.GRAY_474747};
+					outline-offset: 2px;
+				`}
 	}
+`;
+
+export const OutputContentWrapper = styled(BaseContentWrapper)`
+	/* No focus events for output section */
 `;
 
 export const InputField = styled('textarea', { shouldForwardProp: hideFullscreenProp })`
