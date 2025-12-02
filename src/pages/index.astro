@@ -20,7 +20,7 @@ import {
 } from 'src/lib/github.js';
 import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
 import { journeyData } from 'src/data/journey/journey.js';
-import { skillsData } from 'src/data/skills/skills.js';
+import { skillsData, skillCategories } from 'src/data/skills/skills.js';
 import SettingsPanel from 'src/components/jsx/settingsPanel/SettingsPanel';
 import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
 import DarkModeToggle from 'src/components/jsx/darkMode/DarkModeToggle/DarkModeToggle.jsx';
@@ -78,7 +78,11 @@ const languageStats = getLanguageStats(repos);
 
 			<JourneySection client:only="react" data={journeyData} />
 
-			<SkillsSection client:load skills={skillsData} />
+			<SkillsSection
+				client:load
+				skills={skillsData}
+				categories={skillCategories}
+			/>
 
 			<GitHubStats
 				client:load

@@ -4,83 +4,79 @@ import {
 	Section,
 	Title,
 	SkillsContainer,
-	SkillsTrack,
+	SkillsColumn,
+	CategorySection,
+	CategoryTitle,
+	SkillsGrid,
 	SkillBubble,
 } from './SkillsSection.styles';
-import { useScrollAnimation } from './Hooks/useScrollAnimation';
-import { useIsMobile } from 'src/hooks/useIsMobile';
 
-export default function SkillsSection({ skills }) {
-	const isMobile = useIsMobile(600);
-	const {
-		firstTrackRef,
-		secondTrackRef,
-		handlePointerDown,
-		handlePointerMove,
-		endDrag,
-	} = useScrollAnimation(isMobile);
+export default function SkillsSection({ skills, categories }) {
+	// Group skills by category
+	const groupedSkills = skills.reduce((acc, skill) => {
+		if (!acc[skill.category]) {
+			acc[skill.category] = [];
+		}
+		acc[skill.category].push(skill);
+		return acc;
+	}, {});
 
-	const allSkills = Object.values(skills).flat();
-	const duplicatedSkills = [...allSkills, ...allSkills];
+	// Convert to array for splitting
+	const categoryEntries = Object.entries(groupedSkills);
+	const midpoint = Math.ceil(categoryEntries.length / 2);
+	const firstColumnCategories = categoryEntries.slice(0, midpoint);
+	const secondColumnCategories = categoryEntries.slice(midpoint);
 
-	const half = Math.ceil(allSkills.length / 2);
-	const firstHalf = allSkills.slice(0, half);
-	const secondHalf = allSkills.slice(half);
+	const renderCategories = (categoriesArray) => {
+		return categoriesArray.map(([categoryKey, categorySkills]) => {
+			const category = categories[categoryKey];
+			if (!category) return null;
 
-	const duplicatedFirstHalf = [...firstHalf, ...firstHalf];
-	const duplicatedSecondHalf = [...secondHalf, ...secondHalf];
-
-	const buildKeyed = (items, prefix) => {
-		const countsByLabel = new Map();
-		return items.map((label) => {
-			const nextCount = (countsByLabel.get(label) || 0) + 1;
-			countsByLabel.set(label, nextCount);
-			return { key: `${prefix}-${label}-${nextCount}`, label };
+			return (
+				<CategorySection key={categoryKey}>
+					<CategoryTitle $color={category.color}>
+						{category.label}
+					</CategoryTitle>
+					<SkillsGrid>
+						{categorySkills.map((skill) => (
+							<SkillBubble key={skill.name} $color={category.color}>
+								{skill.name}
+							</SkillBubble>
+						))}
+					</SkillsGrid>
+				</CategorySection>
+			);
 		});
 	};
-
-	const firstTrackItems = isMobile
-		? buildKeyed(duplicatedFirstHalf, 'first-mobile')
-		: buildKeyed(duplicatedSkills, 'first-desktop');
-
-	const secondTrackItems = buildKeyed(duplicatedSecondHalf, 'second-mobile');
 
 	return (
 		<Section>
 			<Title>Technologies & Skills</Title>
 			<SkillsContainer>
-				<SkillsTrack
-					ref={firstTrackRef}
-					onPointerDown={(e) => handlePointerDown(e, 'first')}
-					onPointerMove={handlePointerMove}
-					onPointerUp={endDrag}
-					onPointerCancel={endDrag}
-					onPointerLeave={endDrag}
-				>
-					{firstTrackItems.map((item) => (
-						<SkillBubble key={item.key}>{item.label}</SkillBubble>
-					))}
-				</SkillsTrack>
-				{isMobile && (
-					<SkillsTrack
-						reverse
-						ref={secondTrackRef}
-						onPointerDown={(e) => handlePointerDown(e, 'second')}
-						onPointerMove={handlePointerMove}
-						onPointerUp={endDrag}
-						onPointerCancel={endDrag}
-						onPointerLeave={endDrag}
-					>
-						{secondTrackItems.map((item) => (
-							<SkillBubble key={item.key}>{item.label}</SkillBubble>
-						))}
-					</SkillsTrack>
-				)}
+				<SkillsColumn>
+					{renderCategories(firstColumnCategories)}
+				</SkillsColumn>
+				<SkillsColumn>
+					{renderCategories(secondColumnCategories)}
+				</SkillsColumn>
 			</SkillsContainer>
 		</Section>
 	);
 }
 
 SkillsSection.propTypes = {
-	skills: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+	skills: PropTypes.arrayOf(
+		PropTypes.shape({
+			name: PropTypes.string.isRequired,
+			category: PropTypes.string.isRequired,
+		})
+	).isRequired,
+	categories: PropTypes.objectOf(
+		PropTypes.shape({
+			label: PropTypes.string.isRequired,
+			color: PropTypes.string.isRequired,
+		})
+	).isRequired,
 };
+
+
