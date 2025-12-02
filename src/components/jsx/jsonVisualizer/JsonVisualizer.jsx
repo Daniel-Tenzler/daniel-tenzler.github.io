@@ -76,6 +76,7 @@ const JsonVisualizer = ({ initialValue }) => {
 		if (!outputValue) return;
 
 		try {
+			// eslint-disable-next-line no-undef
 			await navigator.clipboard.writeText(outputValue);
 			setCopySuccess('Copied!');
 			setTimeout(() => setCopySuccess(''), 2000);
@@ -98,11 +99,11 @@ const JsonVisualizer = ({ initialValue }) => {
 			const newPosition = (relativeX / rect.width) * 100;
 			const clampedPosition = Math.min(
 				MAX_WIDTH_PERCENT,
-				Math.max(MIN_WIDTH_PERCENT, newPosition),
+				Math.max(MIN_WIDTH_PERCENT, newPosition)
 			);
 			setDividerPosition(clampedPosition);
 		},
-		[MAX_WIDTH_PERCENT, MIN_WIDTH_PERCENT],
+		[MAX_WIDTH_PERCENT, MIN_WIDTH_PERCENT]
 	);
 
 	const handleMouseDown = (event) => {
@@ -187,10 +188,7 @@ const JsonVisualizer = ({ initialValue }) => {
 
 	return (
 		<Container ref={containerRef} isFullscreen={isFullscreen}>
-			<InputSection
-				isFullscreen={isFullscreen}
-				style={inputSectionStyle}
-			>
+			<InputSection isFullscreen={isFullscreen} style={inputSectionStyle}>
 				<InputContentWrapper isFullscreen={isFullscreen}>
 					<SectionHeader>
 						<SectionTitle>JSON Input</SectionTitle>
@@ -203,7 +201,11 @@ const JsonVisualizer = ({ initialValue }) => {
 						aria-label="JSON input field"
 						aria-invalid={!!error}
 						aria-describedby={
-							error ? 'json-error' : success ? 'json-success' : undefined
+							error
+								? 'json-error'
+								: success
+									? 'json-success'
+									: undefined
 						}
 					/>
 					<MessagesContainer>
@@ -213,7 +215,11 @@ const JsonVisualizer = ({ initialValue }) => {
 							</ErrorMessage>
 						)}
 						{success && (
-							<SuccessMessage id="json-success" role="status" fading={isFading}>
+							<SuccessMessage
+								id="json-success"
+								role="status"
+								fading={isFading}
+							>
 								{success}
 							</SuccessMessage>
 						)}
@@ -245,7 +251,9 @@ const JsonVisualizer = ({ initialValue }) => {
 							onClick={toggleFullscreen}
 							aria-pressed={isFullscreen}
 							aria-label={
-								isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'
+								isFullscreen
+									? 'Exit fullscreen'
+									: 'Enter fullscreen'
 							}
 						>
 							{isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}

@@ -83,6 +83,7 @@ export default [
             ],
             'react/no-unused-prop-types': 'warn',
             'react/no-array-index-key': 'warn',
+            "indent": ["error", "tab"],
             ...reactPlugin.configs.recommended.rules,
             ...jsxA11y.configs.strict.rules,
         },
