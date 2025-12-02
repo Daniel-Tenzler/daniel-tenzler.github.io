@@ -84,12 +84,16 @@ const languageStats = getLanguageStats(repos);
 				categories={skillCategories}
 			/>
 
-			<GitHubStats
-				client:load
-				metadata={metadata}
-				commitCount={commitCount}
-				languageStats={languageStats}
-			/>
+			{
+				metadata && commitCount !== null && languageStats && (
+					<GitHubStats
+						client:load
+						metadata={metadata}
+						commitCount={commitCount}
+						languageStats={languageStats}
+					/>
+				)
+			}
 		</ContentContainer>
 	</ThemeWrapper>
 </MainLayout>

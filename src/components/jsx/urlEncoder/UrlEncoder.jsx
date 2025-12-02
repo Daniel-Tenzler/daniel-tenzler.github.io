@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-	ButtonContainer,
 	Container,
+	ContentWrapper,
+	SectionHeader,
+	SectionTitle,
+	InputField,
+	ErrorMessage,
+	MessagesContainer,
+	ButtonContainer,
 	DecodeButton,
 	EncodeButton,
-	InputField,
 } from './UrlEncoder.styles';
 
 const UrlEncoder = ({ initialValue }) => {
@@ -34,40 +39,40 @@ const UrlEncoder = ({ initialValue }) => {
 
 	return (
 		<Container>
-			<InputField
-				as="textarea"
-				value={value}
-				onChange={handleChange}
-				placeholder="Enter text to encode or decode..."
-				aria-label="URL text to encode or decode"
-				aria-invalid={!!error}
-				aria-describedby={error ? "url-encoder-error" : undefined}
-			/>
-			{error && (
-				<div id="url-encoder-error" role="alert" style={{ color: 'red', margin: '0.5em auto', textAlign: 'center' }}>
-					{error}
-				</div>
-			)}
-			<ButtonContainer>
-				<DecodeButton 
-					onClick={onDecode}
-					aria-label="Decode URL"
-				>
-					Decode
-				</DecodeButton>
-				<EncodeButton 
-					onClick={onEncode}
-					aria-label="Encode URL"
-				>
-					Encode
-				</EncodeButton>
-			</ButtonContainer>
+			<ContentWrapper>
+				<SectionHeader>
+					<SectionTitle>URL Encoder/Decoder</SectionTitle>
+				</SectionHeader>
+				<InputField
+					value={value}
+					onChange={handleChange}
+					placeholder="Enter text to encode or decode..."
+					aria-label="URL text to encode or decode"
+					aria-invalid={!!error}
+					aria-describedby={error ? 'url-encoder-error' : undefined}
+				/>
+				<MessagesContainer>
+					{error && (
+						<ErrorMessage id="url-encoder-error" role="alert">
+							{error}
+						</ErrorMessage>
+					)}
+				</MessagesContainer>
+				<ButtonContainer>
+					<DecodeButton onClick={onDecode} aria-label="Decode URL">
+						Decode
+					</DecodeButton>
+					<EncodeButton onClick={onEncode} aria-label="Encode URL">
+						Encode
+					</EncodeButton>
+				</ButtonContainer>
+			</ContentWrapper>
 		</Container>
 	);
 };
 
 UrlEncoder.propTypes = {
-	initialValue: PropTypes.string
+	initialValue: PropTypes.string,
 };
 
 export default UrlEncoder;

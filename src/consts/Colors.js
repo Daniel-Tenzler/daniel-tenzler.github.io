@@ -16,6 +16,7 @@ export const getRgbaColor = (hex, opacity = 1) =>
 export const COLORS = {
 	BLUE_2337FF: '#2337ff',
 	BLUE_000D8A: '#000d8a',
+	BLUE_00004A: '#00004a',
 	BLACK_0F1219: '#0f1219',
 	WHITE_FFFFFF: '#ffffff',
 	WHITE_BFBFBF: '#BFBFBF',

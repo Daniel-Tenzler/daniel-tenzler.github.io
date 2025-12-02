@@ -1,77 +1,140 @@
 import styled from '@emotion/styled';
 import { COLORS } from 'src/consts/Colors';
 
-export const Container = styled.div`
+export const Container = styled('div')`
 	width: 90%;
 	max-width: 1000px;
 	height: 100%;
-	min-height: calc(100vh - 205px);
+	min-height: calc(100vh - 246px);
 	margin: 0 auto;
 	padding: 1.5em 0;
 	display: flex;
 	flex-direction: column;
-`;
-
-export const InputField = styled.input`
-	background-color: ${COLORS.GRAY_474747};
-	color: ${COLORS.WHITE_FFFFFF};
-	padding: 0.75em;
-	max-width: 90%;
-	width: 900px;
-	max-height: 90vh;
-	height: 400px;
-	margin: 0 auto;
-	font-size: 16px;
-	font-family:
-		'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
-	border: 2px solid transparent;
-	border-radius: 8px;
-	transition: border-color 0.2s ease;
-	resize: vertical;
-
-	&:focus-visible {
-		border-color: ${COLORS.WHITE_BFBFBF};
-		outline: 2px solid ${COLORS.WHITE_BFBFBF};
-		outline-offset: 2px;
-	}
+	position: relative;
 
 	@media (max-width: 768px) {
-		font-size: 14px;
-		padding: 0.5em;
-		height: 300px;
+		width: 95%;
 	}
+`;
+
+export const SectionTitle = styled.h3`
+	color: ${COLORS.WHITE_BFBFBF};
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin: 0;
+	text-align: center;
+	padding: 0.8em 0 0.4em 0;
+	z-index: 1;
+
+	@media (max-width: 768px) {
+		font-size: 1rem;
+		padding: 0.6em 0 0.3em 0;
+	}
+`;
+
+const BaseContentWrapper = styled('div')`
+	display: flex;
+	flex-direction: column;
+	background-color: ${COLORS.GRAY_292929};
+	border-radius: 8px;
+	flex: 1;
+	min-height: 0;
+	overflow: hidden;
+	border: 2px solid transparent;
+	transition: background-color 0.2s ease, border-color 0.2s ease;
+	box-sizing: border-box;
+	position: relative;
+`;
+
+export const ContentWrapper = styled(BaseContentWrapper)`
+	&:focus-within {
+		border-color: ${COLORS.GRAY_474747};
+		outline: 1px solid ${COLORS.GRAY_474747};
+		outline-offset: 2px;
+	}
+`;
+
+export const SectionHeader = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+	min-height: 40px;
+`;
+
+export const InputField = styled('textarea')`
+	background-color: transparent;
+	color: ${COLORS.WHITE_FFFFFF};
+	padding: 0.5em 1em 1em 1em;
+	flex: 1;
+	width: 100%;
+	height: 100%;
+	font-size: 14px;
+	font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+	border: none;
+	resize: none;
+	line-height: 1.5;
+	min-height: 0;
+	outline: none;
+	box-sizing: border-box;
+
+	@media (max-width: 768px) {
+		font-size: 13px;
+		height: 300px;
+		padding: 0.5em 0.8em 0.8em 0.8em;
+	}
+`;
+
+export const ErrorMessage = styled.div`
+	background-color: rgba(220, 38, 38, 0.1);
+	color: ${COLORS.RED_FCA5A5};
+	padding: 0.8em;
+	border-radius: 8px;
+	border: 1px solid rgba(220, 38, 38, 0.3);
+	font-size: 14px;
+	line-height: 1.4;
+`;
+
+export const MessagesContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.5em 1em;
+	min-height: 3em;
+	gap: 1em;
+	background-color: transparent;
 `;
 
 export const ButtonContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 1.5em;
-	gap: 1.5em;
-	flex-wrap: wrap;
+	padding: 0.5em 1em;
+	gap: 1em;
+	background-color: transparent;
 
 	@media (max-width: 480px) {
-		gap: 1em;
+		gap: 0.8em;
 	}
 `;
 
 const BaseButton = styled.button`
+	background-color: ${COLORS.GRAY_383838};
 	color: ${COLORS.WHITE_BFBFBF};
-	padding: 0.75em 2em;
+	padding: 0.75em 1.5em;
 	border: none;
 	border-radius: 8px;
-	background-color: ${COLORS.GRAY_383838};
 	font-weight: 500;
 	font-size: 0.95rem;
 	cursor: pointer;
-	min-width: 120px;
 	transition:
 		background-color 0.2s ease,
 		box-shadow 0.2s ease;
 
 	&:hover {
-		background-color: ${COLORS.GRAY_222939};
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		background-color: ${COLORS.GRAY_303030};
+		box-shadow: 0px 0px 14px #1418208a;
 	}
 
 	&:active {
@@ -84,10 +147,14 @@ const BaseButton = styled.button`
 		outline-offset: 2px;
 	}
 
-	@media (max-width: 480px) {
-		padding: 0.6em 1.5em;
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	@media (max-width: 768px) {
+		padding: 0.6em 1.2em;
 		font-size: 0.9rem;
-		min-width: 100px;
 	}
 `;
 
