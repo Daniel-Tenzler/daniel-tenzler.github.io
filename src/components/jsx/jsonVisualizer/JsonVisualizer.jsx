@@ -26,6 +26,7 @@ const JsonVisualizer = ({ initialValue }) => {
 	const [isValidJson, setIsValidJson] = useState(false);
 	const [error, setError] = useState('');
 	const [success, setSuccess] = useState('');
+	const [isFading, setIsFading] = useState(false);
 	const [copySuccess, setCopySuccess] = useState('');
 	const [dividerPosition, setDividerPosition] = useState(50);
 	const [isDragging, setIsDragging] = useState(false);
@@ -140,6 +141,29 @@ const JsonVisualizer = ({ initialValue }) => {
 	}, [initialValue]);
 
 	useEffect(() => {
+		if (!success) {
+			setIsFading(false);
+			return undefined;
+		}
+
+		// Start fading after 3 seconds
+		const fadeTimer = setTimeout(() => {
+			setIsFading(true);
+		}, 3000);
+
+		// Clear message after 5 seconds total (3s visible + 2s fade)
+		const clearTimer = setTimeout(() => {
+			setSuccess('');
+			setIsFading(false);
+		}, 5000);
+
+		return () => {
+			clearTimeout(fadeTimer);
+			clearTimeout(clearTimer);
+		};
+	}, [success]);
+
+	useEffect(() => {
 		if (!isFullscreen) {
 			document.body.style.overflow = '';
 			return undefined;
@@ -189,7 +213,7 @@ const JsonVisualizer = ({ initialValue }) => {
 							</ErrorMessage>
 						)}
 						{success && (
-							<SuccessMessage id="json-success" role="status">
+							<SuccessMessage id="json-success" role="status" fading={isFading}>
 								{success}
 							</SuccessMessage>
 						)}

@@ -1,7 +1,20 @@
 import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
 import { COLORS } from 'src/consts/Colors';
 
 const hideFullscreenProp = (prop) => prop !== 'isFullscreen';
+
+const fadeOut = keyframes`
+	0% {
+		opacity: 1;
+	}
+	70% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+`;
 
 export const Container = styled('div', { shouldForwardProp: hideFullscreenProp })`
 	width: 90%;
@@ -26,11 +39,13 @@ export const Container = styled('div', { shouldForwardProp: hideFullscreenProp }
 			min-height: 100vh;
 			padding: 0;
 			margin: 0;
-			background-color: ${COLORS.BLACK_0F1219};
+			background-color: ${COLORS.BLACK_1A1A1A};
 			z-index: 1000;
 			flex-direction: row;
 			justify-content: stretch;
 			gap: 0;
+			width: 100%;
+			max-width: 100%;
 		`}
 
 	@media (max-width: 768px) {
@@ -202,6 +217,11 @@ export const SuccessMessage = styled.div`
 	border: 1px solid rgba(34, 197, 94, 0.3);
 	font-size: 14px;
 	line-height: 1.4;
+	${({ fading }) =>
+		fading &&
+		`
+		animation: ${fadeOut} 2s ease-out forwards;
+	`}
 `;
 
 export const FormatButton = styled.button`
@@ -218,8 +238,8 @@ export const FormatButton = styled.button`
 		box-shadow 0.2s ease;
 
 	&:hover {
-		background-color: ${COLORS.GRAY_222939};
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		background-color: ${COLORS.GRAY_303030};
+		box-shadow: 0px 0px 14px #1418208a;
 	}
 
 	&:active {
@@ -244,12 +264,6 @@ export const FormatButton = styled.button`
 `;
 
 export const CopyButton = styled(FormatButton)`
-	background-color: ${COLORS.GRAY_383838};
-	color: ${COLORS.WHITE_BFBFBF};
-
-	&:hover {
-		background-color: ${COLORS.GRAY_222939};
-	}
 `;
 
 export const ButtonsContainer = styled.div`
