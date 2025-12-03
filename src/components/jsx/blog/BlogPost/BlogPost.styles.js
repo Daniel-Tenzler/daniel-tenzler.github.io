@@ -24,9 +24,10 @@ export const HeroImage = styled.img`
 `;
 
 export const ContentContainer = styled.div`
-  max-width: 85ch;
+  max-width: 85ch; 
   margin: 0 auto;
   color: ${COLORS.WHITE_FFFFFF};
+	padding-bottom: 200px;
 
   h1 {
     color: ${COLORS.WHITE_FFFFFF};

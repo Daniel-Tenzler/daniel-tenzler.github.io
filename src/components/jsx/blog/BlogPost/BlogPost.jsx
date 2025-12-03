@@ -22,7 +22,12 @@ export default function BlogPost({
 		<Article>
 			{heroImage && (
 				<HeroImageContainer>
-					<HeroImage src={heroImage} alt={title} width={1020} height={510} />
+					<HeroImage
+						src={heroImage}
+						alt={title}
+						width={1020}
+						height={510}
+					/>
 				</HeroImageContainer>
 			)}
 
