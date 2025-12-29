@@ -8,6 +8,7 @@ import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentCo
 import SettingsPanel from 'src/components/jsx/settingsPanel/SettingsPanel';
 import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
 import DarkModeToggle from 'src/components/jsx/darkMode/DarkModeToggle/DarkModeToggle.jsx';
+import RssSubscription from 'src/components/jsx/blog/RssSubscription/RssSubscription';
 
 const posts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -31,8 +32,8 @@ const allTags = [
 		<!-- <SettingsPanel client:load>
 			<DarkModeToggle client:load />
 		</SettingsPanel> -->
-	<ContentContainer client:load>
-		<BlogContainer client:load posts={posts} allTags={allTags} />
-	</ContentContainer>
+    <ContentContainer client:load>
+        <BlogContainer client:load posts={posts} allTags={allTags} />
+    </ContentContainer>
 	</ThemeWrapper>
 </MainLayout>

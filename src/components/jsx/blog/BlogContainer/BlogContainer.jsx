@@ -41,6 +41,7 @@ const BlogContainer = ({ posts, allTags }) => {
 				allTags={allTags}
 				selectedTags={selectedTags}
 				onTagSelect={handleTagSelect}
+				feedUrl="/rss.xml"
 			/>
 			<BlogPostGrid posts={posts} selectedTags={selectedTags} />
 		</Container>
