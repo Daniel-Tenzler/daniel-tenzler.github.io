@@ -18,16 +18,22 @@ export default function PortfolioGrid({ items }) {
 			{items.map((item) => (
 				<StyledLinkArea key={item.id} href={`/portfolio/${item.id}`}>
 					<Card>
-						{item.image && <CardImage src={item.image} alt={item.title} />}
+						{item.image && (
+							<CardImage src={item.image} alt={item.title} />
+						)}
 						<CardContent>
 							<CardTitle>{item.title}</CardTitle>
-							<CardDescription>{item.description}</CardDescription>
+							<CardDescription>
+								{item.description}
+							</CardDescription>
 							<TechContainer>
 								{item.technologies.slice(0, 3).map((tech) => (
 									<TechTag key={tech}>{tech}</TechTag>
 								))}
 								{item.technologies.length > 3 && (
-									<TechTag>+{item.technologies.length - 3} more</TechTag>
+									<TechTag>
+										+{item.technologies.length - 3} more
+									</TechTag>
 								)}
 							</TechContainer>
 						</CardContent>

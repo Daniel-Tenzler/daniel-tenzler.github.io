@@ -16,7 +16,9 @@ export default function GitHubStats({ metadata, commitCount, languageStats }) {
 	return (
 		<>
 			<Title>Repository Statistics</Title>
-			<Description>Repository Description: {metadata.description}</Description>
+			<Description>
+				Repository Description: {metadata.description}
+			</Description>
 			<StatsContainer>
 				{metadata.stars > 0 && (
 					<StatItem>
@@ -46,17 +48,20 @@ export default function GitHubStats({ metadata, commitCount, languageStats }) {
 			{languageStats && (
 				<LanguageStatsSection>
 					<Description>
-						Language Statistics for all of my Repos (taken from Github)
+						Language Statistics for all of my Repos (taken from
+						Github)
 					</Description>
 					<LanguageList>
-						{Object.entries(languageStats.languages).map(([lang, count]) => (
-							<LanguageListItem key={lang}>
-								<StatItem>
-									<StatValue>{count}</StatValue>
-									<StatLabel>{lang}</StatLabel>
-								</StatItem>
-							</LanguageListItem>
-						))}
+						{Object.entries(languageStats.languages).map(
+							([lang, count]) => (
+								<LanguageListItem key={lang}>
+									<StatItem>
+										<StatValue>{count}</StatValue>
+										<StatLabel>{lang}</StatLabel>
+									</StatItem>
+								</LanguageListItem>
+							)
+						)}
 					</LanguageList>
 				</LanguageStatsSection>
 			)}

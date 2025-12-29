@@ -8,8 +8,8 @@ const ContactContainer = () => {
 		<Container>
 			<Title>Get in Touch</Title>
 			<Description>
-				Feel free to reach out using the form below or connect with me on social
-				media.
+				Feel free to reach out using the form below or connect with me
+				on social media.
 			</Description>
 
 			<ContactForm />

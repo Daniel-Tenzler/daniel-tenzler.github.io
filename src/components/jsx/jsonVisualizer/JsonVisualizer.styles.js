@@ -16,7 +16,9 @@ const fadeOut = keyframes`
 	}
 `;
 
-export const Container = styled('div', { shouldForwardProp: hideFullscreenProp })`
+export const Container = styled('div', {
+	shouldForwardProp: hideFullscreenProp,
+})`
 	width: 90%;
 	max-width: 1600px;
 	height: 100%;
@@ -55,7 +57,9 @@ export const Container = styled('div', { shouldForwardProp: hideFullscreenProp }
 	}
 `;
 
-export const InputSection = styled('div', { shouldForwardProp: hideFullscreenProp })`
+export const InputSection = styled('div', {
+	shouldForwardProp: hideFullscreenProp,
+})`
 	flex: 1;
 	padding-right: ${({ isFullscreen }) => (isFullscreen ? 0 : '0.5em')};
 	display: flex;
@@ -77,7 +81,9 @@ export const InputSection = styled('div', { shouldForwardProp: hideFullscreenPro
 	}
 `;
 
-export const OutputSection = styled('div', { shouldForwardProp: hideFullscreenProp })`
+export const OutputSection = styled('div', {
+	shouldForwardProp: hideFullscreenProp,
+})`
 	flex: 1;
 	padding-left: ${({ isFullscreen }) => (isFullscreen ? 0 : '0.5em')};
 	display: flex;
@@ -114,7 +120,9 @@ export const SectionTitle = styled.h3`
 	}
 `;
 
-const BaseContentWrapper = styled('div', { shouldForwardProp: hideFullscreenProp })`
+const BaseContentWrapper = styled('div', {
+	shouldForwardProp: hideFullscreenProp,
+})`
 	display: flex;
 	flex-direction: column;
 	background-color: ${COLORS.GRAY_292929};
@@ -123,7 +131,9 @@ const BaseContentWrapper = styled('div', { shouldForwardProp: hideFullscreenProp
 	min-height: 0;
 	overflow: hidden;
 	border: 2px solid transparent;
-	transition: background-color 0.2s ease, border-color 0.2s ease;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease;
 	box-sizing: border-box;
 	position: relative;
 
@@ -138,9 +148,9 @@ const BaseContentWrapper = styled('div', { shouldForwardProp: hideFullscreenProp
 export const InputContentWrapper = styled(BaseContentWrapper)`
 	&:focus-within {
 		${({ isFullscreen }) =>
-		isFullscreen
-			? `background-color: ${COLORS.GRAY_2D2D2D};`
-			: `
+			isFullscreen
+				? `background-color: ${COLORS.GRAY_2D2D2D};`
+				: `
 					border-color: ${COLORS.GRAY_474747};
 					outline: 1px solid ${COLORS.GRAY_474747};
 					outline-offset: 2px;
@@ -152,7 +162,9 @@ export const OutputContentWrapper = styled(BaseContentWrapper)`
 	/* No focus events for output section */
 `;
 
-export const InputField = styled('textarea', { shouldForwardProp: hideFullscreenProp })`
+export const InputField = styled('textarea', {
+	shouldForwardProp: hideFullscreenProp,
+})`
 	background-color: transparent;
 	color: ${COLORS.WHITE_FFFFFF};
 	padding: 0.5em 1em 1em 1em;
@@ -175,7 +187,9 @@ export const InputField = styled('textarea', { shouldForwardProp: hideFullscreen
 	}
 `;
 
-export const OutputField = styled('div', { shouldForwardProp: hideFullscreenProp })`
+export const OutputField = styled('div', {
+	shouldForwardProp: hideFullscreenProp,
+})`
 	background-color: transparent;
 	color: ${COLORS.WHITE_FFFFFF};
 	padding: 0.5em 1em 1em 1em;
@@ -263,8 +277,7 @@ export const FormatButton = styled.button`
 	}
 `;
 
-export const CopyButton = styled(FormatButton)`
-`;
+export const CopyButton = styled(FormatButton)``;
 
 export const ButtonsContainer = styled.div`
 	display: flex;
@@ -285,7 +298,9 @@ export const MessagesContainer = styled.div`
 	background-color: transparent;
 `;
 
-export const Separator = styled('div', { shouldForwardProp: hideFullscreenProp })`
+export const Separator = styled('div', {
+	shouldForwardProp: hideFullscreenProp,
+})`
 	width: 16px;
 	flex: none;
 	cursor: col-resize;
@@ -340,7 +355,9 @@ export const FullscreenButton = styled.button`
 	padding: 0.4em 0.9em;
 	font-size: 0.85rem;
 	cursor: pointer;
-	transition: background 0.2s ease, border-color 0.2s ease;
+	transition:
+		background 0.2s ease,
+		border-color 0.2s ease;
 	z-index: 2;
 
 	&:hover {

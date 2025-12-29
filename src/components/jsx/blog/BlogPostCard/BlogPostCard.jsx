@@ -33,7 +33,9 @@ export default function BlogPostCard({
 				<Title>{title}</Title>
 				<Description>{description}</Description>
 				<Meta>
-					<time dateTime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+					<time dateTime={pubDate.toISOString()}>
+						{formatDate(pubDate)}
+					</time>
 					{readTime && <span>• {readTime}</span>}
 				</Meta>
 				{tags && tags.length > 0 && (

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const StyledMain = styled.main `
+export const StyledMain = styled.main`
 	width: 70%;
 	max-width: calc(100% - 2em);
 	margin: auto;

@@ -32,15 +32,15 @@ export const skillsData = [
 	{ name: 'Kotlin', category: 'languages' },
 	{ name: 'Swift', category: 'languages' },
 	{ name: 'Java', category: 'languages' },
-	
+
 	// Tools & Platforms
 	{ name: 'Git', category: 'tools' },
 	{ name: 'Docker', category: 'tools' },
 	{ name: 'Figma', category: 'tools' },
-	
+
 	// // DB
 	// { name: 'MySQL', category: 'databases' },
-	
+
 	// Frameworks & Libraries
 	{ name: 'React', category: 'frameworks' },
 	{ name: 'Node.js', category: 'frameworks' },
@@ -51,7 +51,7 @@ export const skillsData = [
 	{ name: 'MCP', category: 'frameworks' },
 	{ name: 'Webpack', category: 'tools' },
 	{ name: 'Vite', category: 'tools' },
-	
+
 	// Testing
 	{ name: 'Jest', category: 'testing' },
 	{ name: 'PHPUnit', category: 'testing' },

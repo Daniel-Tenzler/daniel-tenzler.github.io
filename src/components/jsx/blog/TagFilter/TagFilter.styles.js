@@ -22,9 +22,13 @@ export const TagButton = styled.button`
 
 	&:hover {
 		background: ${(props) =>
-			props.active ? COLORS.BLUE_000D8A : getRgbaColor(COLORS.GRAY_303030)};
+			props.active
+				? COLORS.BLUE_000D8A
+				: getRgbaColor(COLORS.GRAY_303030)};
 		border-color: ${(props) =>
-			props.active ? COLORS.BLUE_000D8A : getRgbaColor(COLORS.GRAY_303030)};
+			props.active
+				? COLORS.BLUE_000D8A
+				: getRgbaColor(COLORS.GRAY_303030)};
 	}
 
 	&:focus {

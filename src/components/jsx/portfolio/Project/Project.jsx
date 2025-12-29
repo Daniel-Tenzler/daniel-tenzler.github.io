@@ -37,7 +37,9 @@ const Project = ({ item }) => {
 					</LinkContainer>
 				</Header>
 
-				{item.image && <ProjectImage src={item.image} alt={item.title} />}
+				{item.image && (
+					<ProjectImage src={item.image} alt={item.title} />
+				)}
 
 				<Description>
 					<p>{item.description}</p>

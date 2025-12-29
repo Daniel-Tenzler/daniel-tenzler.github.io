@@ -8,8 +8,8 @@ const BlogHeader = ({ allTags, selectedTags, onTagSelect }) => {
 		<HeaderSection>
 			<Title>Blog</Title>
 			<Description>
-				Thoughts, tutorials, and insights about web development, software
-				engineering, and technology.
+				Thoughts, tutorials, and insights about web development,
+				software engineering, and technology.
 			</Description>
 			<TagFilter
 				allTags={allTags}

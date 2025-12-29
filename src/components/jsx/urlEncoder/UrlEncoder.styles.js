@@ -41,7 +41,9 @@ const BaseContentWrapper = styled('div')`
 	min-height: 0;
 	overflow: hidden;
 	border: 2px solid transparent;
-	transition: background-color 0.2s ease, border-color 0.2s ease;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease;
 	box-sizing: border-box;
 	position: relative;
 `;

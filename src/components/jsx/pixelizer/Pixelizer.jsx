@@ -143,7 +143,9 @@ const Pixelizer = () => {
 
 	return (
 		<Container>
-			<FileInputLabel htmlFor="image-upload">Choose Image File</FileInputLabel>
+			<FileInputLabel htmlFor="image-upload">
+				Choose Image File
+			</FileInputLabel>
 			<FileInput
 				id="image-upload"
 				type="file"
@@ -181,8 +183,10 @@ const Pixelizer = () => {
 					{smoothedMatrix && (
 						<PreviewContainer>
 							<h3>
-								{processingMode === 'spread' ? 'Spread' : 'Smoothed'} Image
-								(Radius: {smoothingFactor})
+								{processingMode === 'spread'
+									? 'Spread'
+									: 'Smoothed'}{' '}
+								Image (Radius: {smoothingFactor})
 							</h3>
 							<CanvasContainer>
 								<canvas
@@ -204,8 +208,8 @@ const Pixelizer = () => {
 			{smoothedMatrix && (
 				<ReductionControls>
 					<ReductionLabel htmlFor="smoothing-slider">
-						{processingMode === 'spread' ? 'Spread' : 'Smoothing'} Radius:{' '}
-						{smoothingFactor}
+						{processingMode === 'spread' ? 'Spread' : 'Smoothing'}{' '}
+						Radius: {smoothingFactor}
 					</ReductionLabel>
 					<ReductionSlider
 						id="smoothing-slider"

@@ -39,7 +39,10 @@ export default function SkillsSection({ skills, categories }) {
 					</CategoryTitle>
 					<SkillsGrid>
 						{categorySkills.map((skill) => (
-							<SkillBubble key={skill.name} $color={category.color}>
+							<SkillBubble
+								key={skill.name}
+								$color={category.color}
+							>
 								{skill.name}
 							</SkillBubble>
 						))}
@@ -78,5 +81,3 @@ SkillsSection.propTypes = {
 		})
 	).isRequired,
 };
-
-

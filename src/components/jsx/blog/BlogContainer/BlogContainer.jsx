@@ -10,7 +10,9 @@ const BlogContainer = ({ posts, allTags }) => {
 	useEffect(() => {
 		// Get tags from URL on initial load
 		if (typeof window !== 'undefined') {
-			const searchParams = new window.URLSearchParams(window.location.search);
+			const searchParams = new window.URLSearchParams(
+				window.location.search
+			);
 			const tagsFromUrl = searchParams.get('tags');
 			if (tagsFromUrl) {
 				setSelectedTags(tagsFromUrl.split(','));

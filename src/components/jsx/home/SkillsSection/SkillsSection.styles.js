@@ -18,7 +18,7 @@ export const SkillsContainer = styled.div`
 	border-radius: 1rem;
 	padding: 1.5rem;
 	box-shadow: 0 4px 6px ${getRgbaColor(COLORS.BLACK_0F1219, 0.1)};
-	
+
 	@media (max-width: 768px) {
 		grid-template-columns: 1fr;
 		gap: 0;
@@ -32,7 +32,7 @@ export const SkillsColumn = styled.div`
 
 export const CategorySection = styled.div`
 	padding: 1rem 0;
-	
+
 	&:first-of-type {
 		padding-top: 0;
 	}
@@ -46,7 +46,7 @@ export const CategoryTitle = styled.h3`
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
-	
+
 	&::before {
 		content: '';
 		width: 3px;
@@ -74,7 +74,7 @@ export const SkillBubble = styled.span`
 	font-weight: 500;
 	transition: all 0.2s ease;
 	cursor: default;
-	
+
 	&:hover {
 		background-color: ${({ $color }) => getRgbaColor($color, 0.2)};
 		border-color: ${({ $color }) => $color};
@@ -82,4 +82,3 @@ export const SkillBubble = styled.span`
 		box-shadow: 0 0 12px ${({ $color }) => getRgbaColor($color, 0.4)};
 	}
 `;
-

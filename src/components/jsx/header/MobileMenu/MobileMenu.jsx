@@ -30,7 +30,9 @@ export default function MobileMenuComponent() {
 				aria-expanded={isMobileMenuOpen}
 				onClick={toggleMobileMenu}
 			>
-				<SrOnly>{isMobileMenuOpen ? 'Menü schließen' : 'Menü öffnen'}</SrOnly>
+				<SrOnly>
+					{isMobileMenuOpen ? 'Menü schließen' : 'Menü öffnen'}
+				</SrOnly>
 				<MenuIcon
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"

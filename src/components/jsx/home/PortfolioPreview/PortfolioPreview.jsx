@@ -42,14 +42,22 @@ const PortfolioPreview = ({ projects }) => {
 						<ImageContainer>
 							<picture>
 								<source
-									srcSet={project.image.replace(/\.jpg$/i, '.webp')}
+									srcSet={project.image.replace(
+										/\.jpg$/i,
+										'.webp'
+									)}
 									type="image/webp"
 								/>
-								<source srcSet={project.image} type="image/jpeg" />
+								<source
+									srcSet={project.image}
+									type="image/jpeg"
+								/>
 								<ProjectImage
 									src={project.image}
 									alt={project.title}
-									{...(isLargeScreen ? { fetchpriority: 'high' } : {})}
+									{...(isLargeScreen
+										? { fetchpriority: 'high' }
+										: {})}
 								/>
 							</picture>
 						</ImageContainer>

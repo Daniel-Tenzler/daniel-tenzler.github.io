@@ -26,26 +26,33 @@ const ToolsList = ({ tools }) => {
 		<Container>
 			<Title>Tools</Title>
 			<Description>
-				A collection of useful web development and utility tools to help with
-				your projects.
+				A collection of useful web development and utility tools to help
+				with your projects.
 			</Description>
 
-			{Object.entries(toolsByCategory).map(([category, categoryTools]) => (
-				<CategorySection key={category}>
-					<CategoryTitle>{category}</CategoryTitle>
-					<ToolsGrid>
-						{categoryTools.map((tool) => (
-							<ToolCard key={tool.id} href={tool.path}>
-								<ToolIcon>
-									<img src={tool.icon} alt={`${tool.title} icon`} />
-								</ToolIcon>
-								<ToolTitle>{tool.title}</ToolTitle>
-								<ToolDescription>{tool.description}</ToolDescription>
-							</ToolCard>
-						))}
-					</ToolsGrid>
-				</CategorySection>
-			))}
+			{Object.entries(toolsByCategory).map(
+				([category, categoryTools]) => (
+					<CategorySection key={category}>
+						<CategoryTitle>{category}</CategoryTitle>
+						<ToolsGrid>
+							{categoryTools.map((tool) => (
+								<ToolCard key={tool.id} href={tool.path}>
+									<ToolIcon>
+										<img
+											src={tool.icon}
+											alt={`${tool.title} icon`}
+										/>
+									</ToolIcon>
+									<ToolTitle>{tool.title}</ToolTitle>
+									<ToolDescription>
+										{tool.description}
+									</ToolDescription>
+								</ToolCard>
+							))}
+						</ToolsGrid>
+					</CategorySection>
+				)
+			)}
 		</Container>
 	);
 };

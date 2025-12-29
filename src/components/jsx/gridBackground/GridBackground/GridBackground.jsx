@@ -31,7 +31,8 @@ export default function GridBackground() {
 			for (let x = 0; x <= width; x += spacing) {
 				const dist = Math.abs(mousePosRef.current.x - x);
 				const weight = Math.max(0, 1 - dist / maxEffectDist);
-				const lineWidth = minLineWidth + weight * (maxLineWidth - minLineWidth);
+				const lineWidth =
+					minLineWidth + weight * (maxLineWidth - minLineWidth);
 				ctx.beginPath();
 				ctx.moveTo(x, 0);
 				ctx.lineTo(x, height);
@@ -43,7 +44,8 @@ export default function GridBackground() {
 			for (let y = 0; y <= height; y += spacing) {
 				const dist = Math.abs(mousePosRef.current.y - y);
 				const weight = Math.max(0, 1 - dist / maxEffectDist);
-				const lineWidth = minLineWidth + weight * (maxLineWidth - minLineWidth);
+				const lineWidth =
+					minLineWidth + weight * (maxLineWidth - minLineWidth);
 				ctx.beginPath();
 				ctx.moveTo(0, y);
 				ctx.lineTo(width, y);

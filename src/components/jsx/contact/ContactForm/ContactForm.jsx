@@ -17,7 +17,9 @@ export default class ContactForm extends React.Component {
 
 		try {
 			console.log('Form data:', data);
-			window.alert('Thank you for your message! I will get back to you soon.');
+			window.alert(
+				'Thank you for your message! I will get back to you soon.'
+			);
 			e.target.reset();
 		} catch (error) {
 			console.error('Error submitting form:', error);

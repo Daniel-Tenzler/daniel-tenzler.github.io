@@ -33,7 +33,9 @@ const JourneySection = ({ data }) => {
 							<TimelineContent>
 								<TimelineTitle>{item.title}</TimelineTitle>
 								<TimelineDate>{item.date}</TimelineDate>
-								<TimelineDescription>{item.description}</TimelineDescription>
+								<TimelineDescription>
+									{item.description}
+								</TimelineDescription>
 								{item.link && (
 									<StyledJourneyLink href={item.link}>
 										Details

@@ -15,7 +15,9 @@ export default function HeroSection({ title, description }) {
 			<Title>{title}</Title>
 			<Description>{description}</Description>
 			<ButtonContainer>
-				<PrimaryButton href="/portfolio">Personal Projects</PrimaryButton>
+				<PrimaryButton href="/portfolio">
+					Personal Projects
+				</PrimaryButton>
 				<SecondaryButton href="/blog">Blogs</SecondaryButton>
 			</ButtonContainer>
 		</Section>

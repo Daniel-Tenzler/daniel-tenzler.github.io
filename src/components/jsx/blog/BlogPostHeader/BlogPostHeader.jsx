@@ -21,7 +21,9 @@ export default function BlogPostHeader({
 	return (
 		<HeaderContainer>
 			<MetaContainer>
-				<time dateTime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+				<time dateTime={pubDate.toISOString()}>
+					{formatDate(pubDate)}
+				</time>
 				{readTime && <span>• {readTime}</span>}
 				{author && <span>• By {author}</span>}
 			</MetaContainer>
@@ -37,7 +39,9 @@ export default function BlogPostHeader({
 			)}
 
 			{updatedDate && (
-				<UpdateInfo>Last updated on {formatDate(updatedDate)}</UpdateInfo>
+				<UpdateInfo>
+					Last updated on {formatDate(updatedDate)}
+				</UpdateInfo>
 			)}
 		</HeaderContainer>
 	);

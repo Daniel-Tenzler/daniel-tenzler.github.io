@@ -18,7 +18,9 @@ const BlogPostGrid = ({ posts, selectedTags }) => {
 
 	if (filteredPosts.length === 0) {
 		return (
-			<NoPostsMessage>No posts found with the selected tags.</NoPostsMessage>
+			<NoPostsMessage>
+				No posts found with the selected tags.
+			</NoPostsMessage>
 		);
 	}
 
