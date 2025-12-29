@@ -1,4 +1,4 @@
-import{j as r}from"./emotion-element-f0de968e.browser.esm.Bm6gAZbX.js";import{r as i}from"./index.DatCARk7.js";import{P as V}from"./index.DgWbHfw7.js";import{c as n}from"./emotion-styled-base.browser.esm.udlV9ZuP.js";import{k as X}from"./emotion-react.browser.esm.DrUSm7kX.js";import{C as e}from"./Colors.BcygG30f.js";const d=t=>t!=="isFullscreen",U=X`
+import{j as r}from"./emotion-element-f0de968e.browser.esm.Bm6gAZbX.js";import{r as i}from"./index.DatCARk7.js";import{P as V}from"./index.DgWbHfw7.js";import{c as n}from"./emotion-styled-base.browser.esm.udlV9ZuP.js";import{k as X}from"./emotion-react.browser.esm.DrUSm7kX.js";import{C as e}from"./Colors.DJZClhPR.js";const d=t=>t!=="isFullscreen",U=X`
 	0% {
 		opacity: 1;
 	}
