@@ -1,0 +1,21 @@
+---
+import MainLayout from 'src/layouts/MainLayout.astro';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
+import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer.jsx';
+import NotFoundPage from 'src/components/jsx/pages/NotFoundPage/NotFoundPage.jsx';
+---
+
+<MainLayout
+	title="404 - Page Not Found | Daniel Tenzler"
+	description="The page you're looking for doesn't exist. Return to Daniel Tenzler's website to explore blog posts, portfolio, and more."
+>
+	<meta name="robots" content="noindex, follow" slot="head" />
+
+	<ThemeWrapper>
+		<ContentContainer>
+			<GridBackground client:load />
+			<NotFoundPage client:load />
+		</ContentContainer>
+	</ThemeWrapper>
+</MainLayout>

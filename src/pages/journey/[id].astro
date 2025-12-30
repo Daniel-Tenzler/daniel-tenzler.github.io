@@ -21,7 +21,7 @@ const { item } = Astro.props;
 const journeyEntry = await getEntry('journey', item.id);
 
 if (!journeyEntry) {
-	throw new Error(`Journey entry not found for id: ${item.id}`);
+	return Astro.redirect('/404');
 }
 
 const { Content } = await journeyEntry.render();

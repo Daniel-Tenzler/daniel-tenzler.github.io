@@ -56,7 +56,7 @@ const PortfolioPreview = ({ projects }) => {
 									src={project.image}
 									alt={project.title}
 									{...(isLargeScreen
-										? { fetchpriority: 'high' }
+										? { fetchPriority: 'high' }
 										: {})}
 								/>
 							</picture>
