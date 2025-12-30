@@ -28,6 +28,33 @@ export const FooterContent = styled.div`
 	gap: 1rem;
 `;
 
+export const Container = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+`;
+
+export const FooterLinks = styled.div`
+	display: flex;
+	gap: 1.5rem;
+	background-color: ${COLORS.GRAY_383838};
+	border-radius: 1rem;
+	padding: 0.2rem 0.5rem;
+`;
+
+export const FooterLink = styled.a`
+	color: ${COLORS.GRAY_E5E9F0};
+	text-decoration: none;
+	font-size: 0.875rem;
+	transition: color 0.2s ease;
+
+	&:hover {
+		color: ${COLORS.WHITE_BFBFBF};
+	}
+`;
+
 export const Copyright = styled.div`
 	font-size: 0.875rem;
 	color: ${COLORS.GRAY_E5E9F0};
@@ -44,7 +71,7 @@ export const SocialLink = styled.a`
 	transition: color 0.2s ease;
 
 	&:hover {
-		color: ${COLORS.GRAY_60739F};
+		color: ${COLORS.WHITE_BFBFBF};
 	}
 `;
 

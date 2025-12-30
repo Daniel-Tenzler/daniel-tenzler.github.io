@@ -1,0 +1,133 @@
+---
+import MainLayout from 'src/layouts/MainLayout.astro';
+import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground.jsx';
+
+const title = 'Impressum';
+const description = 'Legal notice and contact information for this website.';
+---
+
+<MainLayout title={title} description={description}>
+	<GridBackground client:load />
+	<ContentContainer client:load>
+		<div class="imprint-content">
+			<h1 class="imprint-title">Impressum</h1>
+
+			<div class="imprint-sections">
+				<section class="imprint-section">
+					<h3 class="imprint-section-title">
+						Information according to § 5 TMG (German Telemedia Act):
+					</h3>
+					<section class="imprint-content-section">
+						<span>Daniel Tenzler</span>
+						<span>Tieckstraße 30</span>
+						<span>10116 Berlin, Germany</span>
+					</section>
+				</section>
+
+				<section class="imprint-section">
+					<h3 class="imprint-section-title">Contact Information</h3>
+					<p class="imprint-paragraph">
+						Email: <span class="imprint-detail">
+							kontakt@daniel-tenzler.de
+						</span>
+					</p>
+				</section>
+
+				<section class="imprint-section">
+					<h3 class="imprint-section-title">Liability of content</h3>
+					<p class="imprint-paragraph">
+						The content of this website has been created with the
+						utmost care. However, I cannot guarantee the accuracy,
+						completeness, or timeliness of the information provided.
+						The use of the information on this website is at your
+						own risk.
+					</p>
+				</section>
+
+				<section class="imprint-section">
+					<h3 class="imprint-section-title">Liability for Links</h3>
+					<p class="imprint-paragraph">
+						This website contains links to the websites of third
+						parties ("external links"). As the content of these
+						websites is not under my control, I cannot assume any
+						liability for such external content. In all cases, the
+						provider of information of the linked websites is liable
+						for the content and accuracy of the information
+						provided. At the point in time when the links were
+						placed, no infringements of the law were recognisable to
+						me. As soon as an infringement of the law becomes known
+						to me, I will immediately remove the link in question.
+					</p>
+				</section>
+			</div>
+		</div>
+	</ContentContainer>
+</MainLayout>
+
+<style>
+	.imprint-content {
+		width: 100%;
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 2rem;
+		background: rgba(30, 30, 30, 0.8);
+		border-radius: 8px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+
+	.imprint-detail {
+		padding-left: 1rem;
+	}
+
+	.imprint-title {
+		font-size: 2.25rem;
+		font-weight: 700;
+		margin-bottom: 2rem;
+		margin-top: 0;
+		color: #ffffff;
+	}
+
+	.imprint-sections {
+		margin-top: 2rem;
+	}
+
+	.imprint-section {
+		margin-bottom: 2rem;
+	}
+
+	.imprint-section-title {
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin-bottom: 1rem;
+		color: #ffffff;
+	}
+
+	.imprint-paragraph {
+		margin-bottom: 0.5rem;
+		color: #d1d5db;
+		line-height: 1.6;
+	}
+
+	.imprint-content-section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+	}
+
+	.imprint-content-section span {
+		color: #d1d5db;
+		line-height: 1.6;
+	}
+
+	@media (max-width: 720px) {
+		.imprint-content {
+			padding: 1rem;
+			width: 95%;
+		}
+
+		.imprint-title {
+			font-size: 1.875rem;
+		}
+	}
+</style>

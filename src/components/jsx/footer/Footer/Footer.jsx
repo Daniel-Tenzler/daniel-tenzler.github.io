@@ -7,6 +7,9 @@ import {
 	SocialLinks,
 	SocialLink,
 	SocialIcon,
+	FooterLinks,
+	FooterLink,
+	Container,
 } from './Footer.styles';
 
 export default class Footer extends React.Component {
@@ -17,10 +20,15 @@ export default class Footer extends React.Component {
 			<StyledFooter>
 				<FooterContainer>
 					<FooterContent>
-						<Copyright>
-							© {currentYear} Daniel Tenzler. All rights
-							reserved.
-						</Copyright>
+						<Container>
+							<Copyright>
+								© {currentYear} Daniel Tenzler. All rights
+								reserved.
+							</Copyright>
+							<FooterLinks>
+								<FooterLink href="/imprint">Imprint</FooterLink>
+							</FooterLinks>
+						</Container>
 						<SocialLinks>
 							<SocialLink
 								href="https://github.com/daniel-tenzler"
