@@ -46,24 +46,50 @@ const featuredProjects = portfolioData.projects.filter(
 	(project) => project.featured
 );
 
-// Fetch GitHub data
-const metadata = await getRepoMetadata();
-const commitCount = await getCommitCount();
+// GitHub data fetching
+const startTime = Date.now();
 
-const username = 'daniel-tenzler';
-const repos = await fetchRepositories(username);
-const languageStats = getLanguageStats(repos);
-// const repoStats = await fetchRepositoryStats(username);
+let metadata = null;
+let commitCount = null;
+let languageStats = null;
+
+try {
+	const [apiMetadata, apiCommitCount, repos] = await Promise.all([
+		getRepoMetadata().catch((err) => {
+			console.warn('Repo metadata failed, using null:', err.message);
+			return null;
+		}),
+		getCommitCount().catch((err) => {
+			console.warn('Commit count failed, using null:', err.message);
+			return null;
+		}),
+		fetchRepositories('daniel-tenzler').catch((err) => {
+			console.warn('Repository fetch failed, using null:', err.message);
+			return null;
+		}),
+	]);
+
+	metadata = apiMetadata;
+	commitCount = apiCommitCount;
+	languageStats = repos ? getLanguageStats(repos) : null;
+
+	const endTime = Date.now();
+	console.log(
+		`Parallel GitHub API calls completed in ${endTime - startTime}ms`
+	);
+} catch (error) {
+	console.error('Unexpected error in GitHub API calls:', error);
+}
 ---
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<ThemeWrapper client:load>
-		<GridBackground client:load />
+	<ThemeWrapper client:idle>
+		<GridBackground client:visible />
 		<!-- <SettingsPanel client:load>
 			<DarkModeToggle client:load />
 		</SettingsPanel> -->
 
-		<ContentContainer client:load>
+		<ContentContainer client:idle>
 			<HeroSection
 				client:load
 				title="Daniel Tenzler — Junior Software Developer"
@@ -72,9 +98,9 @@ const languageStats = getLanguageStats(repos);
 
 			<PortfolioPreview client:load projects={featuredProjects} />
 
-			<LatestPostsSection client:load posts={latestPosts} />
+			<LatestPostsSection client:visible posts={latestPosts} />
 
-			<AboutSection client:load paragraphs={aboutParagraphs} />
+			<AboutSection client:idle paragraphs={aboutParagraphs} />
 
 			<JourneySection client:only="react" data={journeyData} />
 
@@ -87,7 +113,7 @@ const languageStats = getLanguageStats(repos);
 			{
 				metadata && commitCount !== null && languageStats && (
 					<GitHubStats
-						client:load
+						client:idle
 						metadata={metadata}
 						commitCount={commitCount}
 						languageStats={languageStats}
