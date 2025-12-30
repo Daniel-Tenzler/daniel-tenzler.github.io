@@ -1,0 +1,211 @@
+---
+import MainLayout from 'src/layouts/MainLayout.astro';
+import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
+
+const title = 'Privacy Policy';
+const description = 'Privacy policy and data protection information for this website.';
+const publicEnv = import.meta.env.PUBLIC_ENV;
+const isGitHubHosted = publicEnv === 'github';
+---
+
+<MainLayout title={title} description={description}>
+	<ContentContainer client:load>
+		<div class="privacy-content">
+			<h1 class="privacy-title">Privacy Policy</h1>
+
+			<div class="privacy-sections">
+				<section class="privacy-section">
+					<h3 class="privacy-section-title">
+						1. Data Controller
+					</h3>
+					<p class="privacy-paragraph">
+						The data controller responsible for this website is:
+					</p>
+					<section class="privacy-content-section">
+						<span>Daniel Tenzler</span>
+						<span>Tieckstraße 30</span>
+						<span>10116 Berlin, Germany</span>
+						<span>Email: kontakt@daniel-tenzler.de</span>
+					</section>
+				</section>
+
+				<section class="privacy-section">
+					<h3 class="privacy-section-title">
+						2. Data Collection and Processing
+					</h3>
+					<p class="privacy-paragraph">
+						When you visit this website, our server automatically collects and stores the following information in server log files:
+					</p>
+					<ul class="privacy-list">
+						<li>IP address (anonymized)</li>
+						<li>Browser type and version</li>
+						<li>Operating system used</li>
+						<li>Referrer URL</li>
+						<li>Hostname of the accessing computer</li>
+						<li>Time of the server request</li>
+					</ul>
+					<p class="privacy-paragraph">
+						This data is collected for technical reasons to ensure the proper functioning and security of our website. The legal basis for this processing is our legitimate interest pursuant to Art. 6(1)(f) GDPR.
+					</p>
+				</section>
+
+				<section class="privacy-section">
+					<h3 class="privacy-section-title">
+						3. Data Storage and Deletion
+					</h3>
+					<p class="privacy-paragraph">
+						Server log data is stored for a period of 30 days and then automatically deleted. This storage period is necessary for security purposes and to ensure the stability and operational reliability of our systems.
+					</p>
+				</section>
+
+				<section class="privacy-section">
+					<h3 class="privacy-section-title">
+						4. Your Rights
+					</h3>
+					<p class="privacy-paragraph">
+						As a data subject, you have the following rights regarding your personal data:
+					</p>
+					<ul class="privacy-list">
+						<li><strong>Right of access (Art. 15 GDPR):</strong> You have the right to request confirmation as to whether personal data concerning you is being processed and to receive information about this data.</li>
+						<li><strong>Right to rectification (Art. 16 GDPR):</strong> You have the right to request the correction of inaccurate personal data concerning you.</li>
+						<li><strong>Right to erasure (Art. 17 GDPR):</strong> You have the right to request the deletion of personal data concerning you.</li>
+						<li><strong>Right to restriction of processing (Art. 18 GDPR):</strong> You have the right to request the restriction of processing of your personal data.</li>
+						<li><strong>Right to object (Art. 21 GDPR):</strong> You have the right to object to the processing of your personal data.</li>
+						<li><strong>Right to data portability (Art. 20 GDPR):</strong> You have the right to receive the personal data concerning you in a structured, commonly used and machine-readable format.</li>
+					</ul>
+					<p class="privacy-paragraph">
+						To exercise these rights, please contact us using the contact information provided in section 1.
+					</p>
+				</section>
+
+				<section class="privacy-section">
+					<h3 class="privacy-section-title">
+						5. Data Sharing
+					</h3>
+					<p class="privacy-paragraph">
+						Your personal data is not shared with third parties for
+						independent purposes. Data processing is carried out by
+						our hosting provider exclusively for the technical
+						operation of this website and in accordance with
+						applicable data protection laws.
+					</p>
+					{isGitHubHosted && (
+						<p class="privacy-paragraph">
+							This website is hosted on GitHub Pages, which means that
+							personal data may be processed by GitHub Inc., a US-based
+							company. This may involve the transfer of personal data to
+							the United States, where data protection laws may differ
+							from those in the European Union. GitHub Inc. is certified
+							under the EU-US Data Privacy Framework, which provides
+							appropriate safeguards for data transfers.
+						</p>
+					)}
+				</section>
+
+				<section class="privacy-section">
+					<h3 class="privacy-section-title">
+						6. Cookies
+					</h3>
+					<p class="privacy-paragraph">
+						This website does not use cookies for tracking or
+						analytical purposes. We only collect the technical data
+						mentioned above for the operation and security of our website.
+					</p>
+				</section>
+
+				<section class="privacy-section">
+					<h3 class="privacy-section-title">
+						7. Automated Decision-Making
+					</h3>
+					<p class="privacy-paragraph">
+						We do not use automated decision-making or profiling based on your personal data.
+					</p>
+				</section>
+
+				<section class="privacy-section">
+					<h3 class="privacy-section-title">
+						8. Changes to this Privacy Policy
+					</h3>
+					<p class="privacy-paragraph">
+						We reserve the right to update this privacy policy to reflect changes in our data processing practices or legal requirements. Any changes will be published on this page.
+					</p>
+				</section>
+			</div>
+		</div>
+	</ContentContainer>
+</MainLayout>
+
+<style>
+	.privacy-content {
+		width: 100%;
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 2rem;
+		background: rgba(30, 30, 30, 0.8);
+		border-radius: 8px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+
+	.privacy-title {
+		font-size: 2.25rem;
+		font-weight: 700;
+		margin-bottom: 2rem;
+		text-align: center;
+		color: #ffffff;
+	}
+
+	.privacy-sections {
+		margin-top: 2rem;
+	}
+
+	.privacy-section {
+		margin-bottom: 2rem;
+	}
+
+	.privacy-section-title {
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin-bottom: 1rem;
+		color: #ffffff;
+	}
+
+	.privacy-paragraph {
+		margin-bottom: 0.5rem;
+		color: #d1d5db;
+		line-height: 1.6;
+	}
+
+	.privacy-content-section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+		margin-bottom: 1rem;
+	}
+
+	.privacy-content-section span {
+		color: #d1d5db;
+		line-height: 1.6;
+	}
+
+	.privacy-list {
+		margin-bottom: 1rem;
+		padding-left: 1.5rem;
+		color: #d1d5db;
+		line-height: 1.6;
+	}
+
+	.privacy-list li {
+		margin-bottom: 0.5rem;
+	}
+
+	@media (max-width: 720px) {
+		.privacy-content {
+			padding: 1rem;
+			width: 95%;
+		}
+		
+		.privacy-title {
+			font-size: 1.875rem;
+		}
+	}
+</style>

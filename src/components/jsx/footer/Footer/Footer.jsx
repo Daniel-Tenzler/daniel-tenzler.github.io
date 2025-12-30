@@ -27,6 +27,9 @@ export default class Footer extends React.Component {
 							</Copyright>
 							<FooterLinks>
 								<FooterLink href="/imprint">Imprint</FooterLink>
+								<FooterLink href="/privacy">
+									Privacy Policy
+								</FooterLink>
 							</FooterLinks>
 						</Container>
 						<SocialLinks>
