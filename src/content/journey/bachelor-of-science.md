@@ -11,7 +11,7 @@
 
 ## Notable Projects and Courses
 
-- **Programming Project at the Department of Electrical energy storage technologies**: Designed and developed a frontend application for the analysis and visualization of large-scale datasets.
+- **Battery Cell Research Data Management System**: A comprehensive web application for managing battery research data, supporting battery cell test tracking, analysis of aging mechanisms, and measurement campaign management, built with a React/TypeScript frontend and a FastAPI (Python) backend.
 
 - **Project on Symbolic Artificial Intelligence**: Created a competitive chess agent using alpha-beta pruning, dynamic step search algorithms and combined heuristics.
 

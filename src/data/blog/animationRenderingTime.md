@@ -26,6 +26,4 @@ A simple mistake, but not a very visible one and almost impossible to notice whi
 
 After correcting the component so that the placeholder is properly replaced once the image or `blurhash` is ready, I ran two sets of performance tests before and after the fix.
 
-**Result:**
-
-> **Painting time dropped by nearly 50%.**
+> Painting time dropped by nearly 50%.
