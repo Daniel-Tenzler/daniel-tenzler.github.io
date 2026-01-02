@@ -17,9 +17,6 @@ Inside of your Astro project, you'll see the following folders and files:
  │   ├── pages/          # Route pages
  │   └── styles/         # Global styles and theme
  ├── scripts/
- │   ├── deploy-helper.js    # Deployment orchestrator
- │   ├── sftp-deployer.js  # SFTP deployment logic
- │   └── whitelist.json     # Protected directories config
  ├── astro.config.mjs
  ├── README.md
  ├── package.json
@@ -38,7 +35,7 @@ This project supports dual deployment targets:
 yarn deploy:github
 ```
 
-### Private Server (SFTP)
+### Dedicated Server (SFTP)
 
 ```bash
 yarn deploy:server
