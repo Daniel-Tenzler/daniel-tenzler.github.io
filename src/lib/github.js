@@ -9,13 +9,19 @@ const REPO_NAME = 'daniel-tenzler.github.io';
  * @returns {Promise<Object>} Repository metadata
  */
 export async function getRepoMetadata() {
+	// Validate that GITHUB_TOKEN is available
+	if (!process.env.GITHUB_TOKEN) {
+		console.error('GITHUB_TOKEN environment variable not found');
+		return null;
+	}
+
 	try {
 		const response = await fetch(
 			`${GITHUB_API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}`,
 			{
 				headers: {
 					Accept: 'application/vnd.github.v3+json',
-					Authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
+					Authorization: `token ${process.env.GITHUB_TOKEN}`,
 				},
 			}
 		);
@@ -42,13 +48,19 @@ export async function getRepoMetadata() {
  * @returns {Promise<number>} Total number of commits
  */
 export async function getCommitCount() {
+	// Validate that GITHUB_TOKEN is available
+	if (!process.env.GITHUB_TOKEN) {
+		console.error('GITHUB_TOKEN environment variable not found');
+		return null;
+	}
+
 	try {
 		const response = await fetch(
 			`${GITHUB_API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}/commits?per_page=1`,
 			{
 				headers: {
 					Accept: 'application/vnd.github.v3+json',
-					Authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
+					Authorization: `token ${process.env.GITHUB_TOKEN}`,
 				},
 			}
 		);
@@ -80,6 +92,12 @@ export async function fetchRepositories(username) {
 	let allRepos = [];
 	let result;
 
+	// Validate that GITHUB_TOKEN is available
+	if (!process.env.GITHUB_TOKEN) {
+		console.error('GITHUB_TOKEN environment variable not found');
+		return null;
+	}
+
 	try {
 		do {
 			const response = await fetch(
@@ -87,7 +105,7 @@ export async function fetchRepositories(username) {
 				{
 					headers: {
 						Accept: 'application/vnd.github.v3+json',
-						Authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
+						Authorization: `token ${process.env.GITHUB_TOKEN}`,
 					},
 				}
 			);
@@ -136,13 +154,19 @@ export function getLanguageStats(repos) {
  * @returns {Promise<Object>} Repository metadata and statistics
  */
 export async function fetchRepositoryStats(username) {
+	// Validate that GITHUB_TOKEN is available
+	if (!process.env.GITHUB_TOKEN) {
+		console.error('GITHUB_TOKEN environment variable not found');
+		return null;
+	}
+
 	try {
 		const response = await fetch(
 			`https://api.github.com/users/${username}/repos?per_page=100`,
 			{
 				headers: {
 					Accept: 'application/vnd.github.v3+json',
-					Authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
+					Authorization: `token ${process.env.GITHUB_TOKEN}`,
 				},
 			}
 		);

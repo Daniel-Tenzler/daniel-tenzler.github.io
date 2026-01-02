@@ -10,8 +10,11 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"clean": "rm -rf dist",
-		"build": "astro build",
+		"build": "node -e \"if(fs.existsSync('.env.github')){fs.copyFileSync('.env.github', '.env');console.log('Copied .env.github to .env');}\" && astro build",
+		"build:server": "node -e \"if(fs.existsSync('.env.server')){fs.copyFileSync('.env.server', '.env');console.log('Copied .env.server to .env');}\" && astro build",
 		"deploy": "npm run clean && npm run build && npx gh-pages -d dist -b gh-pages --dotfiles --nojekyll",
+		"deploy:github": "node scripts/deploy-helper.js github",
+		"deploy:server": "node scripts/deploy-helper.js server",
 		"eslint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
 		"format": "prettier --write ."
 	},
@@ -28,12 +31,15 @@
 		"@types/react-dom": "^19.1.6",
 		"astro": "^5.8.1",
 		"astro-eslint-parser": "^1.2.2",
+		"chalk": "^4.1.2",
+		"dotenv": "^16.6.1",
 		"gh-pages": "^6.3.0",
 		"node-fetch": "^3.3.2",
 		"prop-types": "^15.8.1",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
 		"react-markdown": "^10.1.0",
+		"ssh2-sftp-client": "^10.0.3",
 		"typescript": "^5.8.3",
 		"yaml": "2.4.2"
 	},
@@ -61,5 +67,6 @@
 	],
 	"resolutions": {
 		"convert-source-map": "^2.0.0"
-	}
+	},
+	"packageManager": "yarn@1.22.19"
 }

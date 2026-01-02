@@ -7,34 +7,73 @@ A modern portfolio and blog website built with Astro, React, and styled-componen
 Inside of your Astro project, you'll see the following folders and files:
 
 ```text
-├── public/
-├── src/
-│   ├── components/     # React and Astro components
-│   ├── content/        # Blog posts and portfolio data
-│   ├── consts/         # Global consts for components
-│   ├── layouts/        # Page layouts and templates
-│   ├── lib/            # Utility functions and API clients
-│   ├── pages/          # Route pages
-│   └── styles/         # Global styles and theme
-├── astro.config.mjs
-├── README.md
-├── package.json
-├── .nojekyll
-└── eslint.config.js
+ ├── public/
+ ├── src/
+ │   ├── components/     # React and Astro components
+ │   ├── content/        # Blog posts and portfolio data
+ │   ├── consts/         # Global consts for components
+ │   ├── layouts/        # Page layouts and templates
+ │   ├── lib/            # Utility functions and API clients
+ │   ├── pages/          # Route pages
+ │   └── styles/         # Global styles and theme
+ ├── scripts/
+ │   ├── deploy-helper.js    # Deployment orchestrator
+ │   ├── sftp-deployer.js  # SFTP deployment logic
+ │   └── whitelist.json     # Protected directories config
+ ├── astro.config.mjs
+ ├── README.md
+ ├── package.json
+ ├── yarn.lock
+ ├── .nojekyll
+ └── eslint.config.js
 ```
+
+## 🚀 Deployment
+
+This project supports dual deployment targets:
+
+### GitHub Pages
+
+```bash
+yarn deploy:github
+```
+
+### Private Server (SFTP)
+
+```bash
+yarn deploy:server
+```
+
+**Environment Configuration:**
+
+- `.env.github` - GitHub Pages environment variables
+- `.env.server` - Private server environment variables (git-ignored)
+
+**Security Features:**
+
+- Public key authentication for SFTP
+- Whitelist protection for subdomain directories
+- Environment variable validation
+- Secure file permissions enforcement
+- Fixed GitHub API authentication for builds
 
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `yarn install`         | Installs dependencies                            |
-| `yarn dev`             | Starts local dev server at `localhost:4321`      |
-| `yarn build`           | Build your production site to `./dist/`          |
-| `yarn preview`         | Preview your build locally, before deploying     |
-| `yarn astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `yarn astro -- --help` | Get help using the Astro CLI                     |
+| Command                | Action                                                          |
+| :--------------------- | :-------------------------------------------------------------- |
+| `yarn install`         | Installs dependencies                                           |
+| `yarn dev`             | Starts local dev server at `localhost:4321`                     |
+| `yarn build`           | Build your production site to `./dist/` with GitHub environment |
+| `yarn build:server`    | Build your production site to `./dist/` with server environment |
+| `yarn preview`         | Preview your build locally, before deploying                    |
+| `yarn astro ...`       | Run CLI commands like `astro add`, `astro check`                |
+| `yarn astro -- --help` | Get help using the Astro CLI                                    |
+| `yarn deploy:github`   | Deploy to GitHub Pages                                          |
+| `yarn deploy:server`   | Deploy to private server via SFTP                               |
+| `yarn eslint`          | Run ESLint to check code quality                                |
+| `yarn format`          | Format code with Prettier                                       |
 
 ## Credit
 

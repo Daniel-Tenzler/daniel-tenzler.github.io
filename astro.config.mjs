@@ -1,17 +1,24 @@
 // @ts-nocheck
+/* global process */
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import { fileURLToPath, URL } from 'url';
 import babel from '@rollup/plugin-babel';
+import { config } from 'dotenv';
+
+// Load environment variables
+config();
 
 // https://astro.build/config
+const baseUrl = process.env.BASE_URL || 'https://daniel-tenzler.github.io';
+
 export default defineConfig({
 	outDir: './dist',
 	output: 'static',
-	site: 'https://daniel-tenzler.github.io',
-	base: '/',
+	site: baseUrl,
+	base: baseUrl === 'https://daniel-tenzler.github.io' ? '/' : '/',
 	integrations: [
 		mdx(),
 		sitemap(),

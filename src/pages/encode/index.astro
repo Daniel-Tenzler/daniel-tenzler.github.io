@@ -3,11 +3,13 @@ import MainLayout from 'src/layouts/MainLayout.astro';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
 import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
 import UrlEncoder from 'src/components/jsx/urlEncoder/UrlEncoder';
+
+const baseUrl = import.meta.env.BASE_URL || 'https://daniel-tenzler.github.io';
 ---
 
 <MainLayout title="URL Encoder Tool" description="Encode and decode URLs with this free online URL encoder tool by Daniel Tenzler">
 	<ThemeWrapper client:load>
 		<GridBackground client:load />
-		<UrlEncoder initialValue="https://daniel-tenzler.github.io" client:load />
+		<UrlEncoder initialValue={baseUrl} client:load />
 	</ThemeWrapper>
 </MainLayout>
