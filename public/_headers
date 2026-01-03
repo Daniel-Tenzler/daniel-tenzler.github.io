@@ -1,0 +1,54 @@
+# Cache static assets with long TTL
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=86400
+
+*.jpg
+  Cache-Control: public, max-age=86400
+
+*.jpeg
+  Cache-Control: public, max-age=86400
+
+*.png
+  Cache-Control: public, max-age=86400
+
+*.webp
+  Cache-Control: public, max-age=86400
+
+*.svg
+  Cache-Control: public, max-age=86400
+
+*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS and JS with versioning can be cached long
+/assets/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML files should be cached shorter
+*.html
+  Cache-Control: public, max-age=3600
+
+# API calls shouldn't be cached
+/api/*
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# Security headers
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Enable compression (GitHub Pages does this automatically, but documented for completeness)
+# Content-Encoding: gzip

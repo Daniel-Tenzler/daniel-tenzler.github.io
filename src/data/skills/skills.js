@@ -2,23 +2,19 @@
 export const skillCategories = {
 	languages: {
 		label: 'Languages',
-		color: '#3B82F6', // Blue
+		color: '#a3ff4c', // Brighter blue
 	},
 	frameworks: {
 		label: 'Frameworks & Libraries',
-		color: '#8B5CF6', // Purple
-	},
-	databases: {
-		label: 'Databases',
-		color: '#10B981', // Green
+		color: '#ff3af5', // Brighter purple
 	},
 	tools: {
 		label: 'Tools & Platforms',
-		color: '#F59E0B', // Amber
+		color: '#f1ff26', // Brighter amber
 	},
 	testing: {
 		label: 'Testing',
-		color: '#EF4444', // Red
+		color: '#ff5f5f', // Brighter red
 	},
 };
 
@@ -37,9 +33,6 @@ export const skillsData = [
 	{ name: 'Git', category: 'tools' },
 	{ name: 'Docker', category: 'tools' },
 	{ name: 'Figma', category: 'tools' },
-
-	// // DB
-	// { name: 'MySQL', category: 'databases' },
 
 	// Frameworks & Libraries
 	{ name: 'React', category: 'frameworks' },

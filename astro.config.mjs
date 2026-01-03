@@ -19,6 +19,26 @@ export default defineConfig({
 	output: 'static',
 	site: baseUrl,
 	base: baseUrl === 'https://daniel-tenzler.github.io' ? '/' : '/',
+
+	build: {
+		assetsInlineLimit: 0,
+
+		rollupOptions: {
+			output: {
+				manualChunks: {
+					'react-vendor': ['react', 'react-dom'],
+					'emotion-vendor': ['@emotion/react', '@emotion/styled'],
+					'markdown-vendor': ['react-markdown'],
+				},
+				chunkFileNames: () => {
+					return `assets/[name]-[hash].js`;
+				},
+			},
+		},
+	},
+
+	compression: true,
+
 	integrations: [
 		mdx(),
 		sitemap(),
@@ -34,6 +54,15 @@ export default defineConfig({
 				src: fileURLToPath(new URL('./src', import.meta.url)),
 			},
 		},
+		build: {
+			minify: 'terser',
+			terserOptions: {
+				compress: {
+					drop_console: true,
+					drop_debugger: true,
+				},
+			},
+		},
 		plugins: [
 			babel({
 				babelHelpers: 'bundled',
@@ -45,7 +74,7 @@ export default defineConfig({
 						{
 							autoLabel: 'always',
 							labelFormat: '[dirname]-[filename]',
-							sourceMap: true,
+							sourceMap: false,
 						},
 					],
 				],
