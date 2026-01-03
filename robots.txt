@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://daniel-tenzler.github.io/sitemap.xml
+# Dynamic sitemap URL will be injected during build process
+Sitemap: https://daniel-tenzler.github.io/sitemap-index.xml
