@@ -11,6 +11,20 @@ export const TOCContainer = styled.nav`
 	border: 1px solid ${getRgbaColor(COLORS.GRAY_60739F, 0.2)};
 	border-radius: 1rem;
 	box-shadow: 0 4px 6px ${getRgbaColor(COLORS.BLACK_0F1219, 0.1)};
+
+	@media (max-width: 768px) {
+		align-self: stretch;
+		max-height: 40vh;
+		padding: 1rem;
+		margin: 0 0 1rem 0;
+		border-radius: 0.75rem;
+	}
+
+	@media (max-width: 480px) {
+		max-height: 35vh;
+		padding: 0.75rem;
+		border-radius: 0.5rem;
+	}
 `;
 
 export const TOCList = styled.ul`
@@ -22,6 +36,11 @@ export const TOCList = styled.ul`
 export const TOCItem = styled.li`
 	margin-bottom: 0.5rem;
 	padding-left: ${(props) => (props.depth - 1) * 1}rem;
+
+	@media (max-width: 768px) {
+		margin-bottom: 0.35rem;
+		padding-left: ${(props) => (props.depth - 1) * 0.75}rem;
+	}
 `;
 
 export const TOCLink = styled.a`
@@ -37,5 +56,11 @@ export const TOCLink = styled.a`
 
 	&:hover {
 		color: ${COLORS.WHITE_BFBFBF};
+	}
+
+	@media (max-width: 768px) {
+		font-size: 0.8rem;
+		line-height: 1.3;
+		padding: 0.25rem 0;
 	}
 `;
