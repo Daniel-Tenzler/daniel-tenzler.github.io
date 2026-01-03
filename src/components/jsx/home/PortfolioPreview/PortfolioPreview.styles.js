@@ -35,24 +35,11 @@ export const ProjectCard = styled.div`
 	overflow: hidden;
 	box-shadow: 0 4px 6px ${getRgbaColor(COLORS.GRAY_292929, 0.1)};
 	transition: all 0.3s ease;
-	transform: translateY(20px);
-	animation: fadeInUp 0.5s ease forwards;
 	cursor: pointer;
 
 	&:hover {
 		box-shadow: 0 10px 15px ${getRgbaColor(COLORS.GRAY_292929, 0.2)};
-		transform: translateY(-5px);
-	}
-
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
+		transform: scale(1.01);
 	}
 `;
 

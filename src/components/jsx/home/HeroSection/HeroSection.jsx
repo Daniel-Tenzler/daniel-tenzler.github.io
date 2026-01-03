@@ -1,30 +1,40 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
 	Section,
+	Name,
 	Title,
+	Tagline,
 	Description,
 	ButtonContainer,
 	PrimaryButton,
 	SecondaryButton,
+	AccentLine,
+	ContentWrapper,
 } from './HeroSection.styles';
 
-export default function HeroSection({ title, description }) {
+export default function HeroSection() {
 	return (
 		<Section>
-			<Title>{title}</Title>
-			<Description>{description}</Description>
-			<ButtonContainer>
-				<PrimaryButton href="/portfolio">
-					Personal Projects
-				</PrimaryButton>
-				<SecondaryButton href="/blog">Blogs</SecondaryButton>
-			</ButtonContainer>
+			<ContentWrapper>
+				<Name>Daniel Tenzler</Name>
+				<Title>Software Developer</Title>
+				<AccentLine />
+				<Tagline>
+					Building reliable web applications with modern technologies
+				</Tagline>
+				<Description>
+					Designing and implementing responsive, performant web
+					applications. Focused on full-stack development, with an
+					emphasis on maintainable code, clear architecture, and
+					practical user experience.
+				</Description>
+				<ButtonContainer>
+					<PrimaryButton href="/portfolio">
+						View Projects
+					</PrimaryButton>
+					<SecondaryButton href="/blog">Read Blog</SecondaryButton>
+				</ButtonContainer>
+			</ContentWrapper>
 		</Section>
 	);
 }
-
-HeroSection.propTypes = {
-	title: PropTypes.string.isRequired,
-	description: PropTypes.string.isRequired,
-};

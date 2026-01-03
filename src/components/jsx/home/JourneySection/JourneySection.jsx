@@ -28,7 +28,7 @@ const JourneySection = ({ data }) => {
 				<TimelineScrollArea $isMobile={isMobile}>
 					<TimelineLine $isMobile={isMobile} />
 					{items.map((item) => (
-						<TimelineItem key={item.id}>
+						<TimelineItem key={item.id + item.title}>
 							<TimelineMarker type={item.type} />
 							<TimelineContent>
 								<TimelineTitle>{item.title}</TimelineTitle>

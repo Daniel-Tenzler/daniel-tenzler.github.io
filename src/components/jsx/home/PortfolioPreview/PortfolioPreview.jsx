@@ -55,6 +55,7 @@ const PortfolioPreview = ({ projects }) => {
 								<ProjectImage
 									src={project.image}
 									alt={project.title}
+									loading="lazy"
 									{...(isLargeScreen
 										? { fetchPriority: 'high' }
 										: {})}
