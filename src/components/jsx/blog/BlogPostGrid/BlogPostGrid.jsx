@@ -30,13 +30,13 @@ const BlogPostGrid = ({ posts, selectedTags }) => {
 				<PostWrapper key={post.id}>
 					{post.data.heroImage && (
 						<HeroImage
-							client:load
+							client:visible
 							src={post.data.heroImage}
 							alt={post.data.title}
 						/>
 					)}
 					<BlogPostCard
-						client:load
+						client:visible
 						title={post.data.title}
 						description={post.data.description}
 						pubDate={post.data.pubDate}

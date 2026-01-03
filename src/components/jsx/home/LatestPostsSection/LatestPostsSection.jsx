@@ -17,7 +17,7 @@ export default function LatestPostsSection({ posts }) {
 				{posts.map((post) => (
 					<BlogPostCard
 						key={post.slug}
-						client:load
+						client:visible
 						title={post.title}
 						description={post.description}
 						pubDate={post.pubDate}

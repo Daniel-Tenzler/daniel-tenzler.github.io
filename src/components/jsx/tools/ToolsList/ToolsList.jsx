@@ -41,6 +41,10 @@ const ToolsList = ({ tools }) => {
 										<img
 											src={tool.icon}
 											alt={`${tool.title} icon`}
+											loading="lazy"
+											decoding="async"
+											width="48"
+											height="48"
 										/>
 									</ToolIcon>
 									<ToolTitle>{tool.title}</ToolTitle>

@@ -178,6 +178,7 @@ const Pixelizer = () => {
 							src={imagePreview}
 							alt="Image preview"
 							aria-label="Image preview"
+							loading="lazy"
 						/>
 					</PreviewContainer>
 					{smoothedMatrix && (

@@ -22,12 +22,11 @@ export default class Header extends React.Component {
 							<NavLink href="/portfolio">Portfolio</NavLink>
 							<NavLink href="/blog">Blog</NavLink>
 							<NavLink href="/tools">Tools</NavLink>
-							{/* <NavLink href="/contact">Contact</NavLink> */}
 						</NavLinks>
 						<MobileMenuComponent />
 					</NavContainer>
 				</Nav>
-				<ScrollProgressBar client:load />
+				<ScrollProgressBar client:visible />
 			</StyledHeader>
 		);
 	}

@@ -39,11 +39,15 @@ export const Logo = styled.a`
 	text-decoration: none;
 
 	&:focus {
-		outline: none;
+		outline: 2px solid ${COLORS.BLUE_2337FF};
+		outline-offset: 2px;
+		border-radius: 0.25rem;
 	}
 
 	&:focus-visible {
-		outline: none;
+		outline: 2px solid ${COLORS.BLUE_2337FF};
+		outline-offset: 2px;
+		border-radius: 0.25rem;
 	}
 
 	-webkit-tap-highlight-color: transparent;
@@ -70,5 +74,10 @@ export const NavLink = styled.a`
 
 	&:hover {
 		color: ${COLORS.GRAY_60739F};
+	}
+
+	&:focus-visible {
+		outline: 2px solid ${COLORS.BLUE_2337FF};
+		outline-offset: 2px;
 	}
 `;

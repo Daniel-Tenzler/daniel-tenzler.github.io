@@ -18,6 +18,14 @@ const { title, description = "Daniel Tenzler's personal website and blog" } =
 <!doctype html>
 <html lang="en">
 	<head>
+		<!-- Performance optimizations: DNS prefetch for external resources -->
+		<link rel="dns-prefetch" href="//api.github.com" />
+		<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+		<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+
+		<!-- Preconnect for high-priority external services -->
+		<link rel="preconnect" href="https://api.github.com" />
+
 		<BaseHead
 			title={title}
 			description={description}
@@ -54,11 +62,11 @@ const { title, description = "Daniel Tenzler's personal website and blog" } =
 	</head>
 	<body>
 		<div class="min-h-screen flex flex-col">
-			<Header client:load />
-			<main class="flex-grow">
+			<Header id="navigation" client:visible />
+			<main id="main-content" class="flex-grow">
 				<slot />
 			</main>
-			<Footer client:load />
+			<Footer client:idle />
 		</div>
 	</body>
 </html>
@@ -116,6 +124,4 @@ const { title, description = "Daniel Tenzler's personal website and blog" } =
 		font-size: 16px;
 		line-height: 1.4;
 	}
-
-	
 </style>

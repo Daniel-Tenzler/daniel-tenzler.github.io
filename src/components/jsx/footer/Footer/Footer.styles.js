@@ -53,6 +53,12 @@ export const FooterLink = styled.a`
 	&:hover {
 		color: ${COLORS.WHITE_BFBFBF};
 	}
+
+	&:focus-visible {
+		outline: 2px solid ${COLORS.BLUE_2337FF};
+		outline-offset: 2px;
+		border-radius: 0.25rem;
+	}
 `;
 
 export const Copyright = styled.div`
@@ -72,6 +78,12 @@ export const SocialLink = styled.a`
 
 	&:hover {
 		color: ${COLORS.WHITE_BFBFBF};
+	}
+
+	&:focus-visible {
+		outline: 2px solid ${COLORS.BLUE_2337FF};
+		outline-offset: 2px;
+		border-radius: 0.25rem;
 	}
 `;
 

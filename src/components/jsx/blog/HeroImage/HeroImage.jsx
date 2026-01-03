@@ -5,7 +5,7 @@ import { ImageContainer, Image } from './HeroImage.styles';
 export default function HeroImage({ src, alt }) {
 	return (
 		<ImageContainer>
-			<Image src={src} alt={alt} />
+			<Image src={src} alt={alt} loading="lazy" />
 		</ImageContainer>
 	);
 }

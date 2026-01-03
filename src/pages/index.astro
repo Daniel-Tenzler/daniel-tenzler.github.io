@@ -90,22 +90,18 @@ try {
 		</SettingsPanel> -->
 
 		<ContentContainer client:idle>
-			<HeroSection
-				client:load
-				title="Daniel Tenzler - Software Developer"
-				description="Hi, I'm Daniel - a Web & Native App Developer. This website is my personal portfolio and development playground."
-			/>
+			<HeroSection client:visible />
 
-			<PortfolioPreview client:load projects={featuredProjects} />
+			<PortfolioPreview client:visible projects={featuredProjects} />
 
-			<LatestPostsSection client:visible posts={latestPosts} />
+			<LatestPostsSection client:idle posts={latestPosts} />
 
 			<AboutSection client:idle paragraphs={aboutParagraphs} />
 
 			<JourneySection client:only="react" data={journeyData} />
 
 			<SkillsSection
-				client:load
+				client:idle
 				skills={skillsData}
 				categories={skillCategories}
 			/>

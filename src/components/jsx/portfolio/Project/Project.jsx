@@ -38,7 +38,11 @@ const Project = ({ item }) => {
 				</Header>
 
 				{item.image && (
-					<ProjectImage src={item.image} alt={item.title} />
+					<ProjectImage
+						src={item.image}
+						alt={item.title}
+						loading="lazy"
+					/>
 				)}
 
 				<Description>

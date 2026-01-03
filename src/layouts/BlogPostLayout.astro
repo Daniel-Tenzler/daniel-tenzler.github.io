@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import BaseHead from 'src/components/astro/BaseHead.astro';
 import BlogPost from 'src/components/jsx/blog/BlogPost/BlogPost';
 import TableOfContents from 'src/components/jsx/blog/TableOfContents/TableOfContents';
+import Breadcrumb from 'src/components/jsx/ui/Breadcrumb/Breadcrumb';
 import Footer from 'src/components/jsx/footer/Footer/Footer';
 import Header from 'src/components/jsx/header/Header/Header';
 import { COLORS } from 'src/consts/Colors';
@@ -76,11 +77,19 @@ const {
 	</head>
 	<body>
 		<div class="min-h-screen flex flex-col">
-			<Header client:load />
-			<main class="flex-grow blog-layout">
+			<Header id="navigation" client:visible />
+			<main id="main-content" class="flex-grow blog-layout">
 				<div class="blog-content">
+					<Breadcrumb
+						client:idle
+						items={[
+							{ label: 'Home', href: '/' },
+							{ label: 'Blog', href: '/blog' },
+							{ label: title },
+						]}
+					/>
 					<BlogPost
-						client:load
+						client:visible
 						title={title}
 						pubDate={pubDate}
 						updatedDate={updatedDate}
@@ -95,10 +104,10 @@ const {
 					</BlogPost>
 				</div>
 				<aside class="toc-sidebar">
-					<TableOfContents client:load headings={headings} />
+					<TableOfContents client:idle headings={headings} />
 				</aside>
 			</main>
-			<Footer client:load />
+			<Footer client:idle />
 		</div>
 	</body>
 </html>
@@ -177,6 +186,12 @@ const {
 		}
 		main {
 			padding: 1em;
+		}
+		.toc-sidebar {
+			position: relative;
+			right: auto;
+			top: auto;
+			margin-bottom: 2rem;
 		}
 	}
 </style>

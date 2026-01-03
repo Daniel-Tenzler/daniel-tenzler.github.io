@@ -54,11 +54,11 @@ const { title, description = "Daniel Tenzler's personal website and blog" } =
 	</head>
 	<body>
 		<div class="min-h-screen flex flex-col">
-			<Header client:load />
+			<Header client:visible />
 			<main class="flex-grow">
 				<slot />
 			</main>
-			<Footer client:load />
+			<Footer client:idle />
 		</div>
 	</body>
 </html>

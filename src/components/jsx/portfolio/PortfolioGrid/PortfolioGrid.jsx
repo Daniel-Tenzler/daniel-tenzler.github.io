@@ -19,7 +19,11 @@ export default function PortfolioGrid({ items }) {
 				<StyledLinkArea key={item.id} href={`/portfolio/${item.id}`}>
 					<Card>
 						{item.image && (
-							<CardImage src={item.image} alt={item.title} />
+							<CardImage
+								src={item.image}
+								alt={item.title}
+								loading="lazy"
+							/>
 						)}
 						<CardContent>
 							<CardTitle>{item.title}</CardTitle>
