@@ -68,6 +68,10 @@ export const ProjectTitle = styled.h3`
 export const Description = styled.p`
 	color: ${COLORS.GRAY_E5E9F0};
 	margin-bottom: 1rem;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 `;
 
 export const TechStack = styled.div`

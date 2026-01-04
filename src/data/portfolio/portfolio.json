@@ -3,7 +3,7 @@
 		{
 			"id": "personal-website",
 			"title": "Personal Website & Blog",
-			"description": "A personal website/blog built with Astro and React. Currently, the project is nothing more than a personal small website used for testing interesting ideas and honing my skills.",
+			"description": "A personal website and blog built with Astro, React and Emotion-Styled-Components. Features a short overview of my personal projects, skills and work experience.",
 			"technologies": ["Astro", "React", "Emotion"],
 			"image": "/blog-placeholder-2.jpg",
 			"githubUrl": "https://github.com/daniel-tenzler/daniel-tenzler.github.io",
@@ -14,7 +14,7 @@
 		{
 			"id": "task-set-generator",
 			"title": "Task Set Generator for evaluating distributed, real-time scheduling algorithms",
-			"description": "My Bachelors thesis project. This software generates task set with configurable boundaries for the purpose of testing novel scheduling algorithms.",
+			"description": "A comprehensive task set generator designed for evaluating distributed, real-time scheduling algorithms. This bachelor's thesis project enables researchers and developers to generate configurable task sets with precise control over parameters such as task periods, deadlines, execution times, and resource requirements. The tool supports various scheduling algorithm evaluation scenarios, helping validate the performance and feasibility of novel scheduling approaches in distributed computing environments. Built with Java and integrates Google-OR-Tools for optimization problems and Integer Linear Programming (ILP) for complex constraint solving.",
 			"technologies": ["Java", "Google-OR-Tools", "ILP"],
 			"image": "/blog-placeholder-3.jpg",
 			"githubUrl": "https://github.com/Daniel-Tenzler/TaskSetGenerator",
@@ -25,7 +25,7 @@
 		{
 			"id": "js-sensor-backend",
 			"title": "Simple backend for a Raspberry Pi mounting a DHT22 sensor",
-			"description": "A simple backend that provides a REST API for a Raspberry Pi mounting a DHT22 sensor as well as a simply frontend to display the data.",
+			"description": "A Node.js/Express application for collecting and displaying sensor data collected by Adafruit DHT22. Uses Supabase for data storage and provides a simple frontend to display the data.",
 			"technologies": ["Node.js", "Supabase"],
 			"image": "/blog-placeholder-5.jpg",
 			"githubUrl": "https://github.com/Daniel-Tenzler/sensor-backend",

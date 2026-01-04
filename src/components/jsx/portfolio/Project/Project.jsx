@@ -25,6 +25,15 @@ const Project = ({ item }) => {
 						))}
 					</TechList>
 					<LinkContainer>
+						{item.liveUrl && (
+							<StyledLink
+								href={item.liveUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Live Demo
+							</StyledLink>
+						)}
 						{item.githubUrl && (
 							<StyledLink
 								href={item.githubUrl}
@@ -49,6 +58,15 @@ const Project = ({ item }) => {
 					<p>{item.description}</p>
 				</Description>
 				<LinkContainer>
+					{item.liveUrl && (
+						<StyledLink
+							href={item.liveUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							Live Demo
+						</StyledLink>
+					)}
 					{item.githubUrl && (
 						<StyledLink
 							href={item.githubUrl}
