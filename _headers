@@ -2,6 +2,9 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
@@ -34,6 +37,12 @@
   Cache-Control: public, max-age=31536000, immutable
 
 /assets/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/_astro/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/_astro/*.css
   Cache-Control: public, max-age=31536000, immutable
 
 # HTML files should be cached shorter
