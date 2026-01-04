@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { useIsMobile } from 'src/hooks/useIsMobile';
 import {
 	Section,
 	Title,
@@ -17,13 +18,7 @@ import {
 } from './PortfolioPreview.styles';
 
 const PortfolioPreview = ({ projects }) => {
-	const [isLargeScreen, setIsLargeScreen] = useState(false);
-
-	useEffect(() => {
-		if (typeof window !== 'undefined') {
-			setIsLargeScreen(window.innerWidth >= 1000);
-		}
-	}, []);
+	const isMobile = useIsMobile();
 
 	const handleCardClick = (id) => {
 		window.location.href = `/portfolio/${id}`;
@@ -55,10 +50,14 @@ const PortfolioPreview = ({ projects }) => {
 								<ProjectImage
 									src={project.image}
 									alt={project.title}
-									loading="lazy"
-									{...(isLargeScreen
-										? { fetchPriority: 'high' }
-										: {})}
+									loading={index === 0 ? 'eager' : 'lazy'}
+									fetchPriority={
+										index === 0
+											? 'high'
+											: !isMobile && index < 3
+												? 'high'
+												: 'auto'
+									}
 								/>
 							</picture>
 						</ImageContainer>
