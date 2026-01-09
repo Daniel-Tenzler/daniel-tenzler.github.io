@@ -87,6 +87,17 @@ export const AccentLine = styled.div`
 
 	@media (max-width: 720px) {
 		margin-bottom: 1.5rem;
+		width: 200px;
+		@keyframes expandWidth {
+			from {
+				width: 0;
+				opacity: 0;
+			}
+			to {
+				width: 200px;
+				opacity: 1;
+			}
+		}
 	}
 `;
 
