@@ -2,6 +2,7 @@
 import BaseHead from 'src/components/astro/BaseHead.astro';
 import Footer from 'src/components/jsx/footer/Footer/Footer';
 import Header from 'src/components/jsx/header/Header/Header';
+import LayoutContainer from 'src/components/jsx/layouts/LayoutContainer/LayoutContainer.jsx';
 import { COLORS } from 'src/consts/Colors';
 
 const baseUrl = import.meta.env.BASE_URL || 'https://daniel-tenzler.github.io';
@@ -53,13 +54,11 @@ const { title, description = "Daniel Tenzler's personal website and blog" } =
 		/>
 	</head>
 	<body>
-		<div class="min-h-screen flex flex-col">
+		<LayoutContainer client:load mainId="main-content" mainClassName="">
 			<Header client:visible />
-			<main class="flex-grow">
-				<slot />
-			</main>
+			<slot />
 			<Footer client:idle />
-		</div>
+		</LayoutContainer>
 	</body>
 </html>
 

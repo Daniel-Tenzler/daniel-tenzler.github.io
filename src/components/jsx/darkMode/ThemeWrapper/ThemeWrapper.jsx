@@ -10,7 +10,6 @@ const ThemeWrapper = ({ children }) => {
 	useEffect(() => {
 		const storedTheme = localStorage.getItem('theme');
 		setIsDark(storedTheme === 'dark' || !storedTheme);
-		console.log('Theme changed');
 	}, []);
 
 	// Listen for localStorage changes (cross-tab and in-tab)

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { formatDate } from 'src/infrastructure/dateUtils';
 import {
 	Card,
 	Content,
@@ -9,14 +10,6 @@ import {
 	Tags,
 	Tag,
 } from './BlogPostCard.styles';
-
-const formatDate = (date) => {
-	return new Date(date).toLocaleDateString('en-US', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-	});
-};
 
 export default function BlogPostCard({
 	title,

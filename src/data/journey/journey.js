@@ -14,7 +14,7 @@ export const journeyData = [
 			'Contributing to the development and maintenance of a modern service marketplace',
 		date: '2024 - 2026',
 		type: 'job',
-		id: 'check24-developer',
+		id: 'check24-developer-junior',
 		link: '/journey/check24-developer',
 	},
 	{

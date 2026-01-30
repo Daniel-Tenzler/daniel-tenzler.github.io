@@ -18,7 +18,9 @@ export function getStaticPaths() {
 }
 
 const { item } = Astro.props;
-const journeyEntry = await getEntry('journey', item.id);
+const contentId =
+	item.id === 'check24-developer-junior' ? 'check24-developer' : item.id;
+const journeyEntry = await getEntry('journey', contentId);
 
 if (!journeyEntry) {
 	return Astro.redirect('/404');

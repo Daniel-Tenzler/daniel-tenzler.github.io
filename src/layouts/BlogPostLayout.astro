@@ -6,6 +6,7 @@ import TableOfContents from 'src/components/jsx/blog/TableOfContents/TableOfCont
 import Breadcrumb from 'src/components/jsx/ui/Breadcrumb/Breadcrumb';
 import Footer from 'src/components/jsx/footer/Footer/Footer';
 import Header from 'src/components/jsx/header/Header/Header';
+import LayoutContainer from 'src/components/jsx/layouts/LayoutContainer/LayoutContainer.jsx';
 import { COLORS } from 'src/consts/Colors';
 
 type Props = {
@@ -76,9 +77,9 @@ const {
 		/>
 	</head>
 	<body>
-		<div class="min-h-screen flex flex-col">
+		<LayoutContainer client:load mainId="main-content" mainClassName="blog-layout">
 			<Header id="navigation" client:visible />
-			<main id="main-content" class="flex-grow blog-layout">
+			<div class="blog-layout-wrapper">
 				<div class="blog-content">
 					<Breadcrumb
 						client:idle
@@ -106,9 +107,9 @@ const {
 				<aside class="toc-sidebar">
 					<TableOfContents client:idle headings={headings} />
 				</aside>
-			</main>
+			</div>
 			<Footer client:idle />
-		</div>
+		</LayoutContainer>
 	</body>
 </html>
 
@@ -312,5 +313,22 @@ const {
 		margin-top: 3em;
 		margin-bottom: 3em;
 		border-color: rgb(var(--gray-light));
+	}
+
+	.blog-layout-wrapper {
+		width: 920px;
+		max-width: calc(100% - 2em);
+		margin: auto;
+		padding: 2em 1em;
+		display: flex;
+		gap: 2rem;
+	}
+
+	@media (max-width: 720px) {
+		.blog-layout-wrapper {
+			width: 100%;
+			padding: 1em;
+			flex-direction: column;
+		}
 	}
 </style>

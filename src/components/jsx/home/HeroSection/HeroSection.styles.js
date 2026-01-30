@@ -149,7 +149,7 @@ export const PrimaryButton = styled.a`
 	border: none;
 	font-size: 0.95rem;
 	font-weight: 600;
-	border-radius: 0.5rem;
+	border-radius: 1rem;
 	color: ${COLORS.WHITE_FFFFFF};
 	background: linear-gradient(
 		135deg,
@@ -203,7 +203,7 @@ export const SecondaryButton = styled.a`
 	border: 1px solid ${getRgbaColor(COLORS.GRAY_292929, 0.5)};
 	font-size: 0.95rem;
 	font-weight: 600;
-	border-radius: 0.5rem;
+	border-radius: 1rem;
 	color: ${COLORS.WHITE_FFFFFF};
 	background: ${COLORS.BLACK_1A1A1A};
 	text-decoration: none;

@@ -31,7 +31,7 @@ export const Grid = styled.div`
 
 export const ProjectCard = styled.div`
 	background-color: ${getRgbaColor(COLORS.GRAY_292929, 0.9)};
-	border-radius: 0.5rem;
+	border-radius: 1rem;
 	overflow: hidden;
 	box-shadow: 0 4px 6px ${getRgbaColor(COLORS.GRAY_292929, 0.1)};
 	transition: all 0.3s ease;

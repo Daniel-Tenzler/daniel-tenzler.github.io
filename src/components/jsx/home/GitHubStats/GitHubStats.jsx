@@ -2,70 +2,144 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
 	StatsContainer,
-	StatItem,
+	StatsGrid,
+	StatCard,
 	StatValue,
 	StatLabel,
 	Title,
 	Description,
-	LanguageList,
-	LanguageListItem,
-	LanguageStatsSection,
+	LanguageSection,
+	LanguageBar,
+	LanguageBarSegment,
+	LanguageLegend,
+	LanguageBadge,
+	LanguageCount,
+	SectionDivider,
+	StatsWrapper,
+	GlowEffect,
 } from './GitHubStats.styles';
 
+// Language colors mapping
+const LANGUAGE_COLORS = {
+	JavaScript: '#f7df1e',
+	TypeScript: '#3178c6',
+	Lua: '#000080',
+	Kotlin: '#7f52ff',
+	Java: '#b07219',
+	Python: '#3776ab',
+	'C++': '#f34b7d',
+	'C#': '#178600',
+	Go: '#00add8',
+	Rust: '#dea584',
+	HTML: '#e34c26',
+	CSS: '#563d7c',
+	Shell: '#89e051',
+	Ruby: '#701516',
+	PHP: '#4f5d95',
+	Swift: '#f05138',
+	Dart: '#00b4ab',
+};
+
+const getLanguageColor = (lang) => {
+	return LANGUAGE_COLORS[lang] || '#60739f';
+};
+
 export default function GitHubStats({ metadata, commitCount, languageStats }) {
+	// Calculate total for percentage
+	const totalLanguages = languageStats
+		? Object.values(languageStats.languages).reduce(
+				(sum, count) => sum + count,
+				0
+			)
+		: 0;
+
+	// Sort languages by count (descending)
+	const sortedLanguages = languageStats
+		? Object.entries(languageStats.languages).sort((a, b) => b[1] - a[1])
+		: [];
+
 	return (
-		<>
+		<StatsWrapper>
+			<GlowEffect />
 			<Title>Repository Statistics</Title>
-			<Description>
-				Repository Description: {metadata.description}
-			</Description>
+			<Description>{metadata.description}</Description>
+
 			<StatsContainer>
-				{metadata.stars > 0 && (
-					<StatItem>
-						<StatValue>{metadata.stars}</StatValue>
-						<StatLabel>Stars</StatLabel>
-					</StatItem>
-				)}
-				{metadata.forks > 0 && (
-					<StatItem>
-						<StatValue>{metadata.forks}</StatValue>
-						<StatLabel>Forks</StatLabel>
-					</StatItem>
-				)}
-				{commitCount > 0 && (
-					<StatItem>
-						<StatValue>{commitCount}</StatValue>
-						<StatLabel>Commits</StatLabel>
-					</StatItem>
-				)}
-				<StatItem>
-					<StatValue>
-						{new Date(metadata.lastUpdated).toLocaleDateString()}
-					</StatValue>
-					<StatLabel>Last Updated</StatLabel>
-				</StatItem>
+				<StatsGrid>
+					{metadata.stars > 0 && (
+						<StatCard>
+							<StatValue>{metadata.stars}</StatValue>
+							<StatLabel>Stars</StatLabel>
+						</StatCard>
+					)}
+					{metadata.forks > 0 && (
+						<StatCard>
+							<StatValue>{metadata.forks}</StatValue>
+							<StatLabel>Forks</StatLabel>
+						</StatCard>
+					)}
+					{commitCount > 0 && (
+						<StatCard>
+							<StatValue>{commitCount}</StatValue>
+							<StatLabel>Commits</StatLabel>
+						</StatCard>
+					)}
+					<StatCard>
+						<StatValue>
+							{
+								new Date(metadata.lastUpdated)
+									.toISOString()
+									.split('T')[0]
+							}
+						</StatValue>
+						<StatLabel>Last Updated</StatLabel>
+					</StatCard>
+				</StatsGrid>
 			</StatsContainer>
-			{languageStats && (
-				<LanguageStatsSection>
-					<Description>
-						Language Statistics for all of my Repos (taken from
-						Github)
-					</Description>
-					<LanguageList>
-						{Object.entries(languageStats.languages).map(
-							([lang, count]) => (
-								<LanguageListItem key={lang}>
-									<StatItem>
-										<StatValue>{count}</StatValue>
-										<StatLabel>{lang}</StatLabel>
-									</StatItem>
-								</LanguageListItem>
-							)
-						)}
-					</LanguageList>
-				</LanguageStatsSection>
+
+			{languageStats && sortedLanguages.length > 0 && (
+				<>
+					<SectionDivider />
+					<LanguageSection>
+						<Description>
+							Language Distribution Across All Repositories
+						</Description>
+
+						{/* Visual bar chart */}
+						<LanguageBar>
+							{sortedLanguages.map(([lang, count]) => {
+								const percentage =
+									(count / totalLanguages) * 100;
+								return (
+									<LanguageBarSegment
+										key={lang}
+										$percentage={percentage}
+										$color={getLanguageColor(lang)}
+										title={`${lang}: ${count} repos (${percentage.toFixed(
+											1
+										)}%)`}
+									/>
+								);
+							})}
+						</LanguageBar>
+
+						{/* Legend with badges */}
+						<LanguageLegend>
+							{sortedLanguages.map(([lang, count]) => (
+								<LanguageBadge
+									key={lang}
+									$color={getLanguageColor(lang)}
+								>
+									<span className="dot" />
+									<span className="name">{lang}</span>
+									<LanguageCount>{count}</LanguageCount>
+								</LanguageBadge>
+							))}
+						</LanguageLegend>
+					</LanguageSection>
+				</>
 			)}
-		</>
+		</StatsWrapper>
 	);
 }
 

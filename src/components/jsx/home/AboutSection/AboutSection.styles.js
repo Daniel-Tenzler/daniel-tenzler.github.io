@@ -13,7 +13,7 @@ export const Title = styled.h2`
 export const Content = styled.div`
 	background-color: ${COLORS.GRAY_292929};
 	padding: 1.5rem;
-	border-radius: 0.5rem;
+	border-radius: 1rem;
 	box-shadow: 0 1px 2px ${getRgbaColor(COLORS.BLACK_0F1219, 0.05)};
 `;
 

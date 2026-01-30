@@ -5,21 +5,21 @@ import { useState, useEffect } from 'react';
  * @returns {boolean} - True if viewport is below breakpoint
  */
 export function useIsMobile(breakpoint = 768) {
-	const [isMobile, setIsMobile] = useState(
-		typeof window !== 'undefined' ? window.innerWidth < breakpoint : false
-	);
+	// Start with null to avoid hydration mismatch
+	const [isMobile, setIsMobile] = useState(null);
 
 	useEffect(() => {
 		function handleResize() {
 			setIsMobile(window.innerWidth < breakpoint);
 		}
 
-		// Set initial value
+		// Set initial value only on client
 		handleResize();
 
 		window.addEventListener('resize', handleResize);
 		return () => window.removeEventListener('resize', handleResize);
 	}, [breakpoint]);
 
-	return isMobile;
+	// Return false during SSR, actual value on client
+	return isMobile ?? false;
 }

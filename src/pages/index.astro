@@ -21,9 +21,6 @@ import {
 import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
 import { journeyData } from 'src/data/journey/journey.js';
 import { skillsData, skillCategories } from 'src/data/skills/skills.js';
-import SettingsPanel from 'src/components/jsx/settingsPanel/SettingsPanel';
-import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
-import DarkModeToggle from 'src/components/jsx/darkMode/DarkModeToggle/DarkModeToggle.jsx';
 
 const latestPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -83,41 +80,34 @@ try {
 ---
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<ThemeWrapper client:idle>
-		<GridBackground client:visible />
-		<!-- <SettingsPanel client:load>
-			<DarkModeToggle client:load />
-		</SettingsPanel> -->
+	<GridBackground client:visible />
 
-		<ContentContainer client:idle>
-			<HeroSection client:visible />
+	<ContentContainer>
+		<HeroSection client:visible />
 
-			<PortfolioPreview client:visible projects={featuredProjects} />
+		<PortfolioPreview client:visible projects={featuredProjects} />
 
-			<LatestPostsSection client:idle posts={latestPosts} />
+		<LatestPostsSection posts={latestPosts} />
 
-			<AboutSection client:idle paragraphs={aboutParagraphs} />
+		<AboutSection paragraphs={aboutParagraphs} />
 
-			<JourneySection client:only="react" data={journeyData} />
+		<JourneySection client:visible data={journeyData} />
 
-			<SkillsSection
-				client:idle
-				skills={skillsData}
-				categories={skillCategories}
-			/>
+		<SkillsSection
+			skills={skillsData}
+			categories={skillCategories}
+		/>
 
-			{
-				metadata && commitCount !== null && languageStats && (
-					<GitHubStats
-						client:idle
-						metadata={metadata}
-						commitCount={commitCount}
-						languageStats={languageStats}
-					/>
-				)
-			}
-		</ContentContainer>
-	</ThemeWrapper>
+		{
+			metadata && commitCount !== null && languageStats && (
+				<GitHubStats
+					metadata={metadata}
+					commitCount={commitCount}
+					languageStats={languageStats}
+				/>
+			)
+		}
+	</ContentContainer>
 </MainLayout>
 
 <style>

@@ -16,24 +16,25 @@ export const TimelineContainer = styled.section`
 	width: 100%;
 `;
 
+export const TimelineList = styled.ol`
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+`;
+
 export const Title = styled.h2`
 	margin: 0.5rem auto;
 	width: 100%;
 `;
 
 export const TimelineWrapper = styled.div`
-	overflow-y: auto;
 	position: relative;
-	scrollbar-width: none;
-	-ms-overflow-style: none;
 	padding: 20px;
 	display: flex;
 	justify-content: center;
-	max-height: 700px;
-
-	&::-webkit-scrollbar {
-		display: none;
-	}
 
 	background: radial-gradient(
 		ellipse at center,
@@ -41,11 +42,10 @@ export const TimelineWrapper = styled.div`
 		${getRgbaColor(COLORS.WHITE_FFFFFF, 0.01)} 50%
 			${getRgbaColor(COLORS.WHITE_FFFFFF, 0.001)} 100%
 	);
-	/* backdrop-filter: blur(1px); */
-	border-radius: 20px;
+	border-radius: 1rem;
 `;
 
-export const TimelineScrollArea = styled.div(({ $isMobile }) => ({
+export const TimelineContentArea = styled.div(({ $isMobile }) => ({
 	display: 'flex',
 	flexDirection: 'column',
 	position: 'relative',
@@ -90,7 +90,7 @@ export const TimelineLine = styled.div`
 	);
 `;
 
-export const TimelineItem = styled.div`
+export const TimelineItem = styled.li`
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
@@ -105,7 +105,7 @@ export const TimelineContent = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding: 1rem 1rem 1rem 2rem;
-	border-radius: 24px;
+	border-radius: 1rem;
 	background: transparent;
 	transition: all 0.3s ease-in-out;
 	position: relative;
@@ -187,33 +187,5 @@ export const StyledJourneyLink = styled.a`
 		color: ${COLORS.WHITE_BFBFBF};
 		-webkit-box-shadow: 0px 0px 26px 7px rgba(0, 0, 0, 0.1);
 		box-shadow: 0px 0px 26px 7px rgba(0, 0, 0, 0.1);
-	}
-`;
-
-export const ArrowNavWrapper = styled.div`
-	display: flex;
-	justify-content: center;
-	gap: 2rem;
-	margin-top: 1rem;
-`;
-
-export const ArrowButton = styled.button`
-	background: none;
-	border: none;
-	color: ${COLORS.WHITE_FFFFFF};
-	font-size: 2rem;
-	cursor: pointer;
-	padding: 0.5rem 1.2rem;
-	border-radius: 50%;
-	transition:
-		background 0.2s,
-		color 0.2s,
-		opacity 0.2s;
-	opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
-	pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
-	-webkit-tap-highlight-color: transparent;
-	&:hover {
-		background: ${getRgbaColor(COLORS.WHITE_FFFFFF, 0.01)};
-		color: ${COLORS.WHITE_BFBFBF};
 	}
 `;

@@ -17,7 +17,7 @@ import {
 	Link,
 } from './PortfolioPreview.styles';
 
-const PortfolioPreview = ({ projects }) => {
+const PortfolioPreviewContent = ({ projects }) => {
 	const isMobile = useIsMobile();
 
 	const handleCardClick = (id) => {
@@ -33,6 +33,15 @@ const PortfolioPreview = ({ projects }) => {
 						key={project.id}
 						style={{ animationDelay: `${index * 0.1}s` }}
 						onClick={() => handleCardClick(project.id)}
+						onKeyDown={(e) => {
+							if (e.key === 'Enter' || e.key === ' ') {
+								e.preventDefault();
+								handleCardClick(project.id);
+							}
+						}}
+						tabIndex={0}
+						role="link"
+						aria-label={`View ${project.title} project details`}
 					>
 						<ImageContainer>
 							<picture>
@@ -76,8 +85,9 @@ const PortfolioPreview = ({ projects }) => {
 										target="_blank"
 										rel="noopener noreferrer"
 										onClick={(e) => e.stopPropagation()}
+										aria-label={`${project.title} GitHub repository (opens in new tab)`}
 									>
-										GitHub - {project.title}
+										GitHub ↗
 									</Link>
 								)}
 								{project.liveUrl && (
@@ -86,8 +96,9 @@ const PortfolioPreview = ({ projects }) => {
 										target="_blank"
 										rel="noopener noreferrer"
 										onClick={(e) => e.stopPropagation()}
+										aria-label={`${project.title} live demo (opens in new tab)`}
 									>
-										Live Demo - {project.title}
+										Live Demo ↗
 									</Link>
 								)}
 							</Links>
@@ -99,7 +110,7 @@ const PortfolioPreview = ({ projects }) => {
 	);
 };
 
-PortfolioPreview.propTypes = {
+PortfolioPreviewContent.propTypes = {
 	projects: PropTypes.arrayOf(
 		PropTypes.shape({
 			id: PropTypes.string.isRequired,
@@ -115,4 +126,4 @@ PortfolioPreview.propTypes = {
 	).isRequired,
 };
 
-export default PortfolioPreview;
+export default PortfolioPreviewContent;

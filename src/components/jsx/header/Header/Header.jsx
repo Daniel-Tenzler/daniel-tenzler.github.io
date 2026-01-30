@@ -14,7 +14,7 @@ export default class Header extends React.Component {
 	render() {
 		return (
 			<StyledHeader>
-				<Nav>
+				<Nav aria-label="Main navigation">
 					<NavContainer>
 						<Logo href="/">Daniel Tenzler</Logo>
 						<NavLinks>

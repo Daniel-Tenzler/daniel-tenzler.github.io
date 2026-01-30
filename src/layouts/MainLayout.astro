@@ -20,11 +20,6 @@ const { title, description = "Daniel Tenzler's personal website and blog" } =
 	<head>
 		<!-- Performance optimizations: DNS prefetch for external resources -->
 		<link rel="dns-prefetch" href="//api.github.com" />
-		<link rel="dns-prefetch" href="//fonts.googleapis.com" />
-		<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
-
-		<!-- Preconnect for high-priority external services -->
-		<link rel="preconnect" href="https://api.github.com" />
 
 		<BaseHead
 			title={title}
@@ -55,12 +50,13 @@ const { title, description = "Daniel Tenzler's personal website and blog" } =
 					jobTitle: 'Software Developer',
 					url: baseUrl,
 				},
-				dateModified: new Date().toISOString(),
+				// dateModified: new Date().toISOString(), // Removed to prevent hydration mismatch
 				inLanguage: 'en-US',
 			}}
 		/>
 	</head>
 	<body>
+		<a href="#main-content" class="skip-link">Skip to main content</a>
 		<div class="min-h-screen flex flex-col">
 			<Header id="navigation" client:visible />
 			<main id="main-content" class="flex-grow">
@@ -123,5 +119,24 @@ const { title, description = "Daniel Tenzler's personal website and blog" } =
 		color: rgb(var(--gray-light));
 		font-size: 16px;
 		line-height: 1.4;
+	}
+
+	.skip-link {
+		position: absolute;
+		top: -40px;
+		left: 0;
+		background: #000;
+		color: #fff;
+		padding: 8px 16px;
+		z-index: 10000;
+		font-weight: 600;
+		border-radius: 0 0 4px 0;
+		transition: top 0.3s;
+	}
+
+	.skip-link:focus {
+		top: 0;
+		outline: 2px solid var(--accent);
+		outline-offset: 2px;
 	}
 </style>

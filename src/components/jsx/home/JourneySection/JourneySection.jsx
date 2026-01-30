@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import {
 	TimelineContainer,
 	TimelineWrapper,
-	TimelineScrollArea,
+	TimelineContentArea,
 	TimelineLine,
+	TimelineList,
 	TimelineItem,
 	TimelineMarker,
 	TimelineContent,
@@ -25,26 +26,28 @@ const JourneySection = ({ data }) => {
 		<TimelineContainer>
 			<Title>Journey / Experience</Title>
 			<TimelineWrapper $isMobile={isMobile}>
-				<TimelineScrollArea $isMobile={isMobile}>
+				<TimelineContentArea $isMobile={isMobile}>
 					<TimelineLine $isMobile={isMobile} />
-					{items.map((item) => (
-						<TimelineItem key={item.id + item.title}>
-							<TimelineMarker type={item.type} />
-							<TimelineContent>
-								<TimelineTitle>{item.title}</TimelineTitle>
-								<TimelineDate>{item.date}</TimelineDate>
-								<TimelineDescription>
-									{item.description}
-								</TimelineDescription>
-								{item.link && (
-									<StyledJourneyLink href={item.link}>
-										Details
-									</StyledJourneyLink>
-								)}
-							</TimelineContent>
-						</TimelineItem>
-					))}
-				</TimelineScrollArea>
+					<TimelineList aria-label="Career timeline">
+						{items.map((item) => (
+							<TimelineItem key={item.id + item.title}>
+								<TimelineMarker type={item.type} />
+								<TimelineContent>
+									<TimelineTitle>{item.title}</TimelineTitle>
+									<TimelineDate>{item.date}</TimelineDate>
+									<TimelineDescription>
+										{item.description}
+									</TimelineDescription>
+									{item.link && (
+										<StyledJourneyLink href={item.link}>
+											Details
+										</StyledJourneyLink>
+									)}
+								</TimelineContent>
+							</TimelineItem>
+						))}
+					</TimelineList>
+				</TimelineContentArea>
 			</TimelineWrapper>
 		</TimelineContainer>
 	);

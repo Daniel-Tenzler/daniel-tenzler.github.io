@@ -5,7 +5,6 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import { fileURLToPath, URL } from 'url';
-import babel from '@rollup/plugin-babel';
 import { config } from 'dotenv';
 
 // Load environment variables
@@ -39,15 +38,7 @@ export default defineConfig({
 
 	compression: true,
 
-	integrations: [
-		mdx(),
-		sitemap(),
-		react({
-			babel: {
-				plugins: ['@emotion/babel-plugin'],
-			},
-		}),
-	],
+	integrations: [mdx(), sitemap(), react()],
 	vite: {
 		resolve: {
 			alias: {
@@ -63,22 +54,6 @@ export default defineConfig({
 				},
 			},
 		},
-		plugins: [
-			babel({
-				babelHelpers: 'bundled',
-				extensions: ['.js', '.jsx', '.ts', '.tsx'],
-				include: ['src/**/*'],
-				plugins: [
-					[
-						'@emotion',
-						{
-							autoLabel: 'always',
-							labelFormat: '[dirname]-[filename]',
-							sourceMap: false,
-						},
-					],
-				],
-			}),
-		],
+		plugins: [],
 	},
 });
