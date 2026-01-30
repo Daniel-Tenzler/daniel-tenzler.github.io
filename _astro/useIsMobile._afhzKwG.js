@@ -1,0 +1,1 @@
+import{r as e}from"./index.CxjelfC8.js";function n(n=768){const[t,r]=e.useState(null);return e.useEffect(()=>{function e(){r(window.innerWidth<n)}return e(),window.addEventListener("resize",e),()=>window.removeEventListener("resize",e)},[n]),t??!1}export{n as u};
