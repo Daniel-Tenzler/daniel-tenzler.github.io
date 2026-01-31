@@ -16,6 +16,10 @@ const {
 	image = '/blog-placeholder-1.jpg',
 	structuredData,
 } = Astro.props;
+
+// GitHub Pages redirect to private server for SEO
+const isGitHub = import.meta.env.PUBLIC_ENV === 'github';
+const redirectUrl = isGitHub ? `https://daniel-tenzler.de${Astro.url.pathname}` : null;
 ---
 
 <!-- Global Metadata -->
@@ -38,6 +42,11 @@ const {
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
+
+<!-- GitHub Pages redirect to private server for SEO -->
+{
+	redirectUrl && <meta http-equiv="refresh" content={`0; url=${redirectUrl}`} />
+}
 
 <!-- Language and Region -->
 <link rel="alternate" hreflang="en" href={canonicalURL} />
