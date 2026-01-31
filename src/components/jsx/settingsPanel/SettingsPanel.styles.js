@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS } from 'src/consts/Colors';
 
 const PANEL_WIDTH = 300;
 const VISIBLE_PERCENT = 0.15;
@@ -10,9 +9,9 @@ export const StyledPanel = styled.div`
 	left: 0;
 	width: ${PANEL_WIDTH}px;
 	height: 120px;
-	background: ${COLORS.GRAY_303030};
-	color: ${COLORS.WHITE};
-	box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+	background: var(--color-border-light);
+	color: var(--color-text-emphasis);
+	box-shadow: 2px 4px 12px #00000026;
 	border-radius: 0 8px 8px 0;
 	z-index: 10000;
 	transform: translateX(

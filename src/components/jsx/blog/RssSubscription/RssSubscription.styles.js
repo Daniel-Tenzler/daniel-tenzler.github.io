@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS } from 'src/consts/Colors';
 
 export const StyledRssSubscriptionContainer = styled.div`
 	display: flex;
@@ -12,8 +11,8 @@ export const StyledRssButton = styled.a`
 	align-items: center;
 	gap: 6px;
 	padding: 6px 12px;
-	background-color: ${COLORS.BLUE_00004A};
-	color: ${COLORS.WHITE_FFFFFF};
+	background-color: var(--blue-00004a);
+	color: var(--color-text-emphasis);
 	border-radius: 4px;
 	text-decoration: none;
 	font-weight: 500;
@@ -25,7 +24,7 @@ export const StyledRssButton = styled.a`
 	text-decoration: none;
 
 	&:hover {
-		background-color: ${COLORS.BLUE_000D8A};
+		background-color: var(--color-accent-brand-dark);
 	}
 
 	&:active {

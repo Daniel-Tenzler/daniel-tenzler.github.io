@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 import { keyframes } from '@emotion/react';
 
 const fadeIn = keyframes`
@@ -38,9 +37,9 @@ export const TimelineWrapper = styled.div`
 
 	background: radial-gradient(
 		ellipse at center,
-		${getRgbaColor(COLORS.WHITE_FFFFFF, 0.02)} 0%,
-		${getRgbaColor(COLORS.WHITE_FFFFFF, 0.01)} 50%
-			${getRgbaColor(COLORS.WHITE_FFFFFF, 0.001)} 100%
+		var(--white-ffffff-03) 0%,
+		var(--white-ffffff-02) 50%,
+			var(--white-ffffff-01) 100%
 	);
 	border-radius: 1rem;
 `;
@@ -72,7 +71,7 @@ export const TimelineLine = styled.div`
 	left: var(--line-x);
 	width: 4px;
 	height: 100%;
-	background-color: ${getRgbaColor(COLORS.WHITE_FFFFFF, 0.7)};
+	background-color: var(--white-ffffff-b3);
 
 	-webkit-mask-image: linear-gradient(
 		to bottom,
@@ -119,12 +118,12 @@ export const TimelineContent = styled.div`
 			transform: scale(1.01);
 			background: radial-gradient(
 				ellipse at center,
-				${getRgbaColor(COLORS.WHITE_FFFFFF, 0.03)} 0%,
-				${getRgbaColor(COLORS.WHITE_FFFFFF, 0.02)} 50%,
-				${getRgbaColor(COLORS.WHITE_FFFFFF, 0.01)} 100%
+				var(--white-ffffff-03) 0%,
+				var(--white-ffffff-02) 50%,
+				var(--white-ffffff-01) 100%
 			);
 			backdrop-filter: blur(2px);
-			box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.01);
+			box-shadow: 2px 2px 2px 2px #00000003;
 		}
 	}
 `;
@@ -138,8 +137,10 @@ export const TimelineMarker = styled.div`
 	height: var(--marker-size);
 	border-radius: 50%;
 	background-color: ${({ type }) =>
-		type === 'job' ? COLORS.BLUE_2337FF : COLORS.BLUE_000D8A};
-	border: 3px solid ${COLORS.WHITE_FFFFFF};
+		type === 'job'
+			? 'var(--color-accent-brand)'
+			: 'var(--color-accent-brand-dark)'};
+	border: 3px solid var(--color-text-emphasis);
 	z-index: 2;
 `;
 
@@ -156,7 +157,7 @@ export const TimelineTitle = styled.h3`
 
 export const TimelineDate = styled.p`
 	font-style: italic;
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 	height: auto;
 	white-space: nowrap;
 	overflow: hidden;
@@ -179,13 +180,13 @@ export const TimelineDescription = styled.p`
 
 export const StyledJourneyLink = styled.a`
 	display: inline-block;
-	color: ${COLORS.WHITE_F1F1F1};
+	color: var(--color-text-subtle);
 	font-size: 15px;
 	text-decoration: none;
 	margin-top: 10px;
 	&:hover {
-		color: ${COLORS.WHITE_BFBFBF};
-		-webkit-box-shadow: 0px 0px 26px 7px rgba(0, 0, 0, 0.1);
-		box-shadow: 0px 0px 26px 7px rgba(0, 0, 0, 0.1);
+		color: var(--color-text-muted);
+		-webkit-box-shadow: 0px 0px 26px 7px #0000001a;
+		box-shadow: 0px 0px 26px 7px #0000001a;
 	}
 `;

@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
-export const Container = styled.main`
+export const Container = styled.div`
 	max-width: 1280px;
 	margin: 0 auto;
 	padding: 2rem 1rem;
@@ -30,10 +29,10 @@ export const TechList = styled.div`
 
 export const TechTag = styled.span`
 	padding: 0.25rem 0.75rem;
-	background-color: ${getRgbaColor(COLORS.BLACK_0F1219, 0.5)};
+	background-color: var(--black-0f1219-80);
 	border-radius: 9999px;
 	font-size: 0.875rem;
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 `;
 
 export const LinkContainer = styled.div`
@@ -42,7 +41,7 @@ export const LinkContainer = styled.div`
 `;
 
 export const StyledLink = styled.a`
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	text-decoration: none;
 	&:hover {
 		text-decoration: underline;

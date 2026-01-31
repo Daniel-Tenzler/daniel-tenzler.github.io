@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
 export const Section = styled.section`
 	padding: 1rem 0;
@@ -10,7 +9,7 @@ export const Section = styled.section`
 
 export const Title = styled.h2`
 	margin-bottom: 2rem;
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 	margin-top: 0.5rem;
 `;
 
@@ -30,15 +29,15 @@ export const Grid = styled.div`
 `;
 
 export const ProjectCard = styled.div`
-	background-color: ${getRgbaColor(COLORS.GRAY_292929, 0.9)};
+	background-color: var(--gray-292929-e6);
 	border-radius: 1rem;
 	overflow: hidden;
-	box-shadow: 0 4px 6px ${getRgbaColor(COLORS.GRAY_292929, 0.1)};
+	box-shadow: 0 4px 6px var(--gray-292929-1a);
 	transition: all 0.3s ease;
 	cursor: pointer;
 
 	&:hover {
-		box-shadow: 0 10px 15px ${getRgbaColor(COLORS.GRAY_292929, 0.2)};
+		box-shadow: 0 10px 15px var(--gray-292929-33);
 		transform: scale(1.01);
 	}
 `;
@@ -62,11 +61,11 @@ export const ProjectTitle = styled.h3`
 	font-size: 1.25rem;
 	font-weight: 600;
 	margin-bottom: 0.5rem;
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 `;
 
 export const Description = styled.p`
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 	margin-bottom: 1rem;
 	display: -webkit-box;
 	-webkit-line-clamp: 4;
@@ -83,10 +82,10 @@ export const TechStack = styled.div`
 
 export const TechTag = styled.span`
 	padding: 0.25rem 0.75rem;
-	background-color: ${getRgbaColor(COLORS.BLACK_0F1219, 0.5)};
+	background-color: var(--black-0f1219-80);
 	border-radius: 9999px;
 	font-size: 0.875rem;
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 `;
 
 export const Links = styled.div`
@@ -95,11 +94,11 @@ export const Links = styled.div`
 `;
 
 export const Link = styled.a`
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	text-decoration: none;
 	transition: color 0.2s ease;
 
 	&:hover {
-		color: ${COLORS.GRAY_E5E9F0};
+		color: var(--color-text-primary);
 	}
 `;

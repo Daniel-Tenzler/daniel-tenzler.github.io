@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
 export const StyledFooter = styled.footer`
-	background-color: ${COLORS.GRAY_303030};
-	border-top: 1px solid ${getRgbaColor(COLORS.GRAY_383838)};
+	background-color: var(--color-border-light);
+	border-top: 1px solid var(--gray-383838);
 `;
 
 export const FooterContainer = styled.div`
@@ -39,23 +38,23 @@ export const Container = styled.div`
 export const FooterLinks = styled.div`
 	display: flex;
 	gap: 1.5rem;
-	background-color: ${COLORS.GRAY_383838};
+	background-color: var(--gray-383838);
 	border-radius: 1rem;
 	padding: 0.2rem 0.5rem;
 `;
 
 export const FooterLink = styled.a`
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 	text-decoration: none;
 	font-size: 0.875rem;
 	transition: color 0.2s ease;
 
 	&:hover {
-		color: ${COLORS.WHITE_BFBFBF};
+		color: var(--color-text-muted);
 	}
 
 	&:focus-visible {
-		outline: 2px solid ${COLORS.BLUE_2337FF};
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 		border-radius: 0.25rem;
 	}
@@ -63,7 +62,7 @@ export const FooterLink = styled.a`
 
 export const Copyright = styled.div`
 	font-size: 0.875rem;
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 `;
 
 export const SocialLinks = styled.div`
@@ -72,16 +71,16 @@ export const SocialLinks = styled.div`
 `;
 
 export const SocialLink = styled.a`
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 	text-decoration: none;
 	transition: color 0.2s ease;
 
 	&:hover {
-		color: ${COLORS.WHITE_BFBFBF};
+		color: var(--color-text-muted);
 	}
 
 	&:focus-visible {
-		outline: 2px solid ${COLORS.BLUE_2337FF};
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 		border-radius: 0.25rem;
 	}

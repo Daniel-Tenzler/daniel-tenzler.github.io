@@ -5,10 +5,6 @@ import { getCollection } from 'astro:content';
 import BlogContainer from 'src/components/jsx/blog/BlogContainer/BlogContainer';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
 import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
-import SettingsPanel from 'src/components/jsx/settingsPanel/SettingsPanel';
-import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
-import DarkModeToggle from 'src/components/jsx/darkMode/DarkModeToggle/DarkModeToggle.jsx';
-import RssSubscription from 'src/components/jsx/blog/RssSubscription/RssSubscription';
 
 const posts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -27,13 +23,8 @@ const allTags = [
 ---
 
 <MainLayout title={`${SITE_TITLE}`} description={SITE_DESCRIPTION}>
-	<ThemeWrapper client:load>
-		<GridBackground client:load />
-		<!-- <SettingsPanel client:load>
-			<DarkModeToggle client:load />
-		</SettingsPanel> -->
-    <ContentContainer client:load>
-        <BlogContainer client:load posts={posts} allTags={allTags} />
-    </ContentContainer>
-	</ThemeWrapper>
+	<GridBackground client:load />
+	<ContentContainer client:load>
+		<BlogContainer client:load posts={posts} allTags={allTags} />
+	</ContentContainer>
 </MainLayout>

@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
 export const StyledHeader = styled.header`
 	position: sticky;
 	top: 0;
 	z-index: 50;
-	background-color: ${getRgbaColor(COLORS.GRAY_303030, 0.8)};
+	background-color: var(--gray-303030-cc);
 	backdrop-filter: blur(4px);
-	border-bottom: 1px solid ${getRgbaColor(COLORS.GRAY_383838)};
+	border-bottom: 1px solid var(--gray-383838-cc);
 `;
 
 export const Nav = styled.nav`
@@ -35,17 +34,17 @@ export const Logo = styled.a`
 	flex-shrink: 0;
 	font-size: 1.25rem;
 	font-weight: 700;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	text-decoration: none;
 
 	&:focus {
-		outline: 2px solid ${COLORS.BLUE_2337FF};
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 		border-radius: 0.25rem;
 	}
 
 	&:focus-visible {
-		outline: 2px solid ${COLORS.BLUE_2337FF};
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 		border-radius: 0.25rem;
 	}
@@ -64,7 +63,7 @@ export const NavLinks = styled.div`
 `;
 
 export const NavLink = styled.a`
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 	padding: 0.5rem 0.75rem;
 	border-radius: 0.375rem;
 	font-size: 1rem;
@@ -73,11 +72,34 @@ export const NavLink = styled.a`
 	transition: color 0.2s ease;
 
 	&:hover {
-		color: ${COLORS.GRAY_60739F};
+		color: var(--color-text-secondary);
 	}
 
 	&:focus-visible {
-		outline: 2px solid ${COLORS.BLUE_2337FF};
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
+	}
+`;
+
+export const MobileLeftSection = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	flex-shrink: 0;
+
+	@media (min-width: 640px) {
+		/* Hide the mobile DarkModeToggle on desktop */
+		& > button:last-child {
+			display: none;
+		}
+	}
+`;
+
+export const DesktopDarkModeWrapper = styled.div`
+	display: none;
+
+	@media (min-width: 640px) {
+		display: flex;
+		align-items: center;
 	}
 `;

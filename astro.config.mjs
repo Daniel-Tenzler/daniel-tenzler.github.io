@@ -6,6 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import { fileURLToPath, URL } from 'url';
 import { config } from 'dotenv';
+import babel from '@rollup/plugin-babel';
 
 // Load environment variables
 config();
@@ -54,6 +55,13 @@ export default defineConfig({
 				},
 			},
 		},
-		plugins: [],
+		plugins: [
+			babel({
+				extensions: ['.js', '.jsx', '.ts', '.tsx'],
+				babelHelpers: 'bundled',
+				include: /src\/.*\.(js|jsx|ts|tsx)$/,
+				plugins: ['@emotion/babel-plugin'],
+			}),
+		],
 	},
 });

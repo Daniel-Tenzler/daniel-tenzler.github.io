@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
 export const HeaderContainer = styled.header`
 	margin-bottom: 2rem;
@@ -12,14 +11,14 @@ export const MetaContainer = styled.div`
 	justify-content: center;
 	gap: 1rem;
 	font-size: 0.875rem;
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 	margin-bottom: 1rem;
 `;
 
 export const Title = styled.h1`
 	font-size: 2rem;
 	font-weight: 800;
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 	margin-bottom: 1rem;
 	line-height: 1.1;
 `;
@@ -34,14 +33,14 @@ export const TagsContainer = styled.div`
 
 export const Tag = styled.span`
 	padding: 0.25rem 0.75rem;
-	background-color: ${getRgbaColor(COLORS.BLACK_0F1219, 0.5)};
+	background-color: var(--black-0f1219-80);
 	border-radius: 9999px;
 	font-size: 0.875rem;
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 `;
 
 export const UpdateInfo = styled.div`
 	font-size: 0.875rem;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	font-style: italic;
 `;

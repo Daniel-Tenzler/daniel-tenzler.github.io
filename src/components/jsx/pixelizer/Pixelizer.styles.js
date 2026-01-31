@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS } from 'src/consts/Colors';
 
 export const Container = styled.div`
 	width: 90%;
@@ -15,26 +14,26 @@ export const Container = styled.div`
 `;
 
 export const FileInputLabel = styled.label`
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 	font-size: 1.1rem;
 	font-weight: 500;
 	cursor: pointer;
 	padding: 0.75em 2em;
-	border: 2px solid ${COLORS.GRAY_383838};
+	border: 2px solid var(--gray-383838);
 	border-radius: 8px;
-	background-color: ${COLORS.GRAY_474747};
+	background-color: var(--gray-474747);
 	transition: all 0.2s ease;
 	display: inline-block;
 	text-align: center;
 	min-width: 200px;
 
 	&:hover {
-		background-color: ${COLORS.GRAY_383838};
-		border-color: ${COLORS.WHITE_BFBFBF};
+		background-color: var(--gray-383838);
+		border-color: var(--color-text-muted);
 	}
 
 	&:focus-within {
-		outline: 2px solid ${COLORS.WHITE_BFBFBF};
+		outline: 2px solid var(--color-text-muted);
 		outline-offset: 2px;
 	}
 
@@ -62,8 +61,8 @@ export const ImagePreview = styled.img`
 	max-width: 100%;
 	max-height: 300px;
 	border-radius: 8px;
-	border: 2px solid ${COLORS.GRAY_383838};
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	border: 2px solid var(--gray-383838);
+	box-shadow: 0 4px 8px #00000033;
 
 	@media (max-width: 768px) {
 		max-height: 200px;
@@ -83,11 +82,11 @@ export const ButtonContainer = styled.div`
 `;
 
 const BaseButton = styled.button`
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 	padding: 0.75em 2em;
 	border: none;
 	border-radius: 8px;
-	background-color: ${COLORS.GRAY_2D2D2D};
+	background-color: var(--gray-2d2d2d);
 	font-weight: 500;
 	font-size: 0.95rem;
 	cursor: pointer;
@@ -97,17 +96,17 @@ const BaseButton = styled.button`
 		box-shadow 0.2s ease;
 
 	&:hover:not(:disabled) {
-		background-color: ${COLORS.GRAY_222939};
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		background-color: var(--gray-222939);
+		box-shadow: 0 2px 4px #0000001a;
 	}
 
 	&:active:not(:disabled) {
-		background-color: ${COLORS.GRAY_383838};
+		background-color: var(--gray-383838);
 		box-shadow: none;
 	}
 
 	&:focus-visible {
-		outline: 2px solid ${COLORS.GRAY_222939};
+		outline: 2px solid var(--gray-222939);
 		outline-offset: 2px;
 	}
 
@@ -126,8 +125,8 @@ const BaseButton = styled.button`
 export const ProcessButton = styled(BaseButton)``;
 
 export const OutputField = styled.textarea`
-	background-color: ${COLORS.GRAY_2D2D2D};
-	color: ${COLORS.WHITE_FFFFFF};
+	background-color: var(--gray-2d2d2d);
+	color: var(--color-text-emphasis);
 	padding: 0.75em;
 	max-width: 90%;
 	width: 900px;
@@ -143,8 +142,8 @@ export const OutputField = styled.textarea`
 	line-height: 1.4;
 
 	&:focus-visible {
-		border-color: ${COLORS.WHITE_BFBFBF};
-		outline: 2px solid ${COLORS.WHITE_BFBFBF};
+		border-color: var(--color-text-muted);
+		outline: 2px solid var(--color-text-muted);
 		outline-offset: 2px;
 	}
 
@@ -191,8 +190,8 @@ export const CanvasContainer = styled.div`
 		max-width: 100%;
 		max-height: 300px;
 		border-radius: 8px;
-		border: 2px solid ${COLORS.GRAY_383838};
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		border: 2px solid var(--gray-383838);
+		box-shadow: 0 4px 8px #00000033;
 
 		@media (max-width: 768px) {
 			max-height: 200px;
@@ -206,16 +205,16 @@ export const ReductionControls = styled.div`
 	align-items: center;
 	gap: 1em;
 	padding: 1em;
-	background-color: ${COLORS.GRAY_474747};
+	background-color: var(--gray-474747);
 	border-radius: 8px;
-	border: 1px solid ${COLORS.GRAY_383838};
+	border: 1px solid var(--gray-383838);
 	max-width: 400px;
 	margin-left: auto;
 	margin-right: auto;
 `;
 
 export const ReductionLabel = styled.label`
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 	font-size: 1rem;
 	font-weight: 500;
 	text-align: center;
@@ -225,7 +224,7 @@ export const ReductionSlider = styled.input`
 	width: 100%;
 	height: 6px;
 	border-radius: 3px;
-	background: ${COLORS.GRAY_383838};
+	background: var(--gray-383838);
 	outline: none;
 	cursor: pointer;
 
@@ -234,13 +233,13 @@ export const ReductionSlider = styled.input`
 		width: 20px;
 		height: 20px;
 		border-radius: 50%;
-		background: ${COLORS.WHITE_BFBFBF};
+		background: var(--color-text-muted);
 		cursor: pointer;
-		border: 2px solid ${COLORS.GRAY_383838};
+		border: 2px solid var(--gray-383838);
 		transition: all 0.2s ease;
 
 		&:hover {
-			background: ${COLORS.WHITE_FFFFFF};
+			background: var(--color-text-emphasis);
 			transform: scale(1.1);
 		}
 	}
@@ -249,19 +248,19 @@ export const ReductionSlider = styled.input`
 		width: 20px;
 		height: 20px;
 		border-radius: 50%;
-		background: ${COLORS.WHITE_BFBFBF};
+		background: var(--color-text-muted);
 		cursor: pointer;
-		border: 2px solid ${COLORS.GRAY_383838};
+		border: 2px solid var(--gray-383838);
 		transition: all 0.2s ease;
 
 		&:hover {
-			background: ${COLORS.WHITE_FFFFFF};
+			background: var(--color-text-emphasis);
 			transform: scale(1.1);
 		}
 	}
 
 	&:focus-visible {
-		outline: 2px solid ${COLORS.WHITE_BFBFBF};
+		outline: 2px solid var(--color-text-muted);
 		outline-offset: 2px;
 	}
 `;
@@ -272,25 +271,25 @@ export const ProcessingModeContainer = styled.div`
 	align-items: center;
 	gap: 1em;
 	padding: 1em;
-	background-color: ${COLORS.GRAY_474747};
+	background-color: var(--gray-474747);
 	border-radius: 8px;
-	border: 1px solid ${COLORS.GRAY_383838};
+	border: 1px solid var(--gray-383838);
 	max-width: 400px;
 	margin-left: auto;
 	margin-right: auto;
 `;
 
 export const ProcessingModeLabel = styled.label`
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 	font-size: 1rem;
 	font-weight: 500;
 	text-align: center;
 `;
 
 export const ProcessingModeSelect = styled.select`
-	background-color: ${COLORS.GRAY_383838};
-	color: ${COLORS.WHITE_BFBFBF};
-	border: 2px solid ${COLORS.GRAY_383838};
+	background-color: var(--gray-383838);
+	color: var(--color-text-muted);
+	border: 2px solid var(--gray-383838);
 	border-radius: 6px;
 	padding: 0.5em 1em;
 	font-size: 0.95rem;
@@ -299,17 +298,17 @@ export const ProcessingModeSelect = styled.select`
 	transition: all 0.2s ease;
 
 	&:hover {
-		border-color: ${COLORS.WHITE_BFBFBF};
+		border-color: var(--color-text-muted);
 	}
 
 	&:focus-visible {
-		outline: 2px solid ${COLORS.WHITE_BFBFBF};
+		outline: 2px solid var(--color-text-muted);
 		outline-offset: 2px;
-		border-color: ${COLORS.WHITE_BFBFBF};
+		border-color: var(--color-text-muted);
 	}
 
 	option {
-		background-color: ${COLORS.GRAY_383838};
-		color: ${COLORS.WHITE_BFBFBF};
+		background-color: var(--gray-383838);
+		color: var(--color-text-muted);
 	}
 `;

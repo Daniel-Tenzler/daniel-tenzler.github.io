@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const StyledMain = styled.main`
+export const StyledMain = styled.div`
 	max-width: 90%;
 	padding: 0;
 `;

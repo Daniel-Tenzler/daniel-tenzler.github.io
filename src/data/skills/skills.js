@@ -1,20 +1,20 @@
-// Define skill categories with their associated colors
+// Define skill categories with their associated CSS variable names
 export const skillCategories = {
 	languages: {
 		label: 'Languages',
-		color: '#a3ff4c', // Brighter blue
+		colorVar: '--skill-languages',
 	},
 	frameworks: {
 		label: 'Frameworks & Libraries',
-		color: '#ff3af5', // Brighter purple
+		colorVar: '--skill-frameworks',
 	},
 	tools: {
 		label: 'Tools & Platforms',
-		color: '#f1ff26', // Brighter amber
+		colorVar: '--skill-tools',
 	},
 	testing: {
 		label: 'Testing',
-		color: '#ff5f5f', // Brighter red
+		colorVar: '--skill-testing',
 	},
 };
 

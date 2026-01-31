@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS } from 'src/consts/Colors';
 
 export const Container = styled('div')`
 	width: 90%;
@@ -18,7 +17,7 @@ export const Container = styled('div')`
 `;
 
 export const SectionTitle = styled.h3`
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 	font-size: 1.1rem;
 	font-weight: 600;
 	margin: 0;
@@ -35,7 +34,7 @@ export const SectionTitle = styled.h3`
 const BaseContentWrapper = styled('div')`
 	display: flex;
 	flex-direction: column;
-	background-color: ${COLORS.GRAY_292929};
+	background-color: var(--gray-292929);
 	border-radius: 8px;
 	flex: 1;
 	min-height: 0;
@@ -50,8 +49,8 @@ const BaseContentWrapper = styled('div')`
 
 export const ContentWrapper = styled(BaseContentWrapper)`
 	&:focus-within {
-		border-color: ${COLORS.GRAY_474747};
-		outline: 1px solid ${COLORS.GRAY_474747};
+		border-color: var(--gray-474747);
+		outline: 1px solid var(--gray-474747);
 		outline-offset: 2px;
 	}
 `;
@@ -67,7 +66,7 @@ export const SectionHeader = styled.div`
 
 export const InputField = styled('textarea')`
 	background-color: transparent;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	padding: 0.5em 1em 1em 1em;
 	flex: 1;
 	width: 100%;
@@ -89,11 +88,11 @@ export const InputField = styled('textarea')`
 `;
 
 export const ErrorMessage = styled.div`
-	background-color: rgba(220, 38, 38, 0.1);
-	color: ${COLORS.RED_FCA5A5};
+	background-color: #dc26261a;
+	color: var(--color-status-error);
 	padding: 0.8em;
 	border-radius: 8px;
-	border: 1px solid rgba(220, 38, 38, 0.3);
+	border: 1px solid #dc26264d;
 	font-size: 14px;
 	line-height: 1.4;
 `;
@@ -122,8 +121,8 @@ export const ButtonContainer = styled.div`
 `;
 
 const BaseButton = styled.button`
-	background-color: ${COLORS.GRAY_383838};
-	color: ${COLORS.WHITE_BFBFBF};
+	background-color: var(--gray-383838);
+	color: var(--color-text-muted);
 	padding: 0.75em 1.5em;
 	border: none;
 	border-radius: 8px;
@@ -135,17 +134,17 @@ const BaseButton = styled.button`
 		box-shadow 0.2s ease;
 
 	&:hover {
-		background-color: ${COLORS.GRAY_303030};
+		background-color: var(--color-border-light);
 		box-shadow: 0px 0px 14px #1418208a;
 	}
 
 	&:active {
-		background-color: ${COLORS.GRAY_383838};
+		background-color: var(--gray-383838);
 		box-shadow: none;
 	}
 
 	&:focus-visible {
-		outline: 2px solid ${COLORS.GRAY_222939};
+		outline: 2px solid var(--gray-222939);
 		outline-offset: 2px;
 	}
 

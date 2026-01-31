@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
 export const Section = styled.section`
 	margin-bottom: 3rem;
@@ -7,17 +6,17 @@ export const Section = styled.section`
 
 export const Title = styled.h2`
 	margin-bottom: 2rem;
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 `;
 
 export const SkillsContainer = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 2rem;
-	background-color: ${COLORS.GRAY_292929};
+	background-color: var(--color-bg-tertiary);
 	border-radius: 1rem;
 	padding: 1.5rem;
-	box-shadow: 0 4px 6px ${getRgbaColor(COLORS.BLACK_0F1219, 0.1)};
+	box-shadow: 0 4px 6px var(--black-0f1219-1a);
 
 	@media (max-width: 768px) {
 		grid-template-columns: 1fr;
@@ -42,7 +41,7 @@ export const CategoryTitle = styled.h3`
 	font-size: 1rem;
 	font-weight: 600;
 	margin: 0 0 1rem 0;
-	color: ${({ $color }) => $color};
+	color: ${({ $color }) => `var(${$color})`};
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
@@ -51,7 +50,7 @@ export const CategoryTitle = styled.h3`
 		content: '';
 		width: 3px;
 		height: 1rem;
-		background-color: ${({ $color }) => $color};
+		background-color: ${({ $color }) => `var(${$color})`};
 		border-radius: 2px;
 	}
 `;
@@ -66,19 +65,23 @@ export const SkillBubble = styled.span`
 	display: inline-flex;
 	align-items: center;
 	padding: 0.4rem 0.875rem;
-	background-color: ${({ $color }) => getRgbaColor($color, 0.1)};
-	border: 1.5px solid ${({ $color }) => getRgbaColor($color, 0.3)};
+	background-color: ${({ $color }) =>
+		`color-mix(in srgb, var(${$color}) 10%, transparent)`};
+	border: 1.5px solid ${({ $color }) =>
+		`color-mix(in srgb, var(${$color}) 30%, transparent)`};
 	border-radius: 9999px;
 	font-size: 0.8125rem;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	font-weight: 500;
 	transition: all 0.2s ease;
 	cursor: default;
 
 	&:hover {
-		background-color: ${({ $color }) => getRgbaColor($color, 0.2)};
-		border-color: ${({ $color }) => $color};
+		background-color: ${({ $color }) =>
+			`color-mix(in srgb, var(${$color}) 20%, transparent)`};
+		border-color: ${({ $color }) => `var(${$color})`};
 		transform: scale(1.05);
-		box-shadow: 0 0 12px ${({ $color }) => getRgbaColor($color, 0.4)};
+		box-shadow: 0 0 12px ${({ $color }) =>
+			`color-mix(in srgb, var(${$color}) 40%, transparent)`};
 	}
 `;

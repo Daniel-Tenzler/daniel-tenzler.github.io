@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
 export const MobileMenuButton = styled.button`
 	position: relative;
@@ -10,19 +9,19 @@ export const MobileMenuButton = styled.button`
 	width: 3rem;
 	height: 3rem;
 	border-radius: 50%;
-	color: ${COLORS.WHITE_FFFFFF};
-	background-color: ${COLORS.GRAY_474747};
+	color: var(--color-text-emphasis);
+	background-color: var(--gray-474747);
 	transition: all 0.2s ease;
 	cursor: pointer;
 	border: 2px solid transparent;
 
 	&:hover {
-		color: ${COLORS.GRAY_E5E9F0};
-		background-color: ${getRgbaColor(COLORS.GRAY_303030)};
+		color: var(--color-text-primary);
+		background-color: var(--gray-303030);
 	}
 
 	&[aria-expanded='true'] {
-		color: ${COLORS.BLUE_2337FF};
+		color: var(--color-accent-brand);
 	}
 
 	@media (min-width: 640px) {
@@ -46,7 +45,7 @@ export const MobileMenuButton = styled.button`
 	&[aria-expanded='true']::before {
 		transform: scale(1);
 		opacity: 1;
-		border-color: ${COLORS.GRAY_383838};
+		border-color: var(--gray-383838);
 	}
 
 	&:focus {
@@ -66,7 +65,7 @@ export const MenuIcon = styled.svg`
 	transition:
 		transform 0.3s ease-in-out,
 		opacity 0.3s ease-in-out;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 
 	& .top-bar {
 		transform-origin: center;
@@ -90,13 +89,13 @@ export const MobileMenu = styled.div`
 	top: 100%;
 	left: 0;
 	right: 0;
-	background-color: ${getRgbaColor(COLORS.GRAY_303030, 0.8)};
+	background-color: var(--gray-303030-cc);
 	backdrop-filter: blur(4px);
 	z-index: 9999;
-	border-bottom: 1px solid ${getRgbaColor(COLORS.GRAY_404040)};
+	border-bottom: 1px solid var(--gray-404040-cc);
 	padding: 1rem;
-	box-shadow: 0 4px 6px -1px ${getRgbaColor(COLORS.BLACK_0F1219, 0.1)};
-	color: ${COLORS.WHITE_FFFFFF};
+	box-shadow: 0 4px 6px -1px var(--black-0f1219-1a);
+	color: var(--color-text-emphasis);
 
 	@media (min-width: 640px) {
 		display: none;
@@ -105,7 +104,7 @@ export const MobileMenu = styled.div`
 
 export const MobileNavLink = styled.a`
 	display: block;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	padding: 0.75rem 1rem;
 	border-radius: 0.375rem;
 	font-size: 1.1rem;
@@ -115,8 +114,8 @@ export const MobileNavLink = styled.a`
 	-webkit-tap-highlight-color: transparent; /* for removing the highlight */
 
 	&:hover {
-		color: ${COLORS.GRAY_E5E9F0};
-		background-color: ${getRgbaColor(COLORS.GRAY_222939)};
+		color: var(--color-text-primary);
+		background-color: var(--gray-222939);
 	}
 `;
 
@@ -124,11 +123,11 @@ export const NavlinkCard = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	background-color: ${COLORS.GRAY_292929};
+	background-color: var(--color-bg-tertiary);
 	width: fit-content;
 	padding: 0.6rem 1.5rem;
 	border-radius: 99px;
-	box-shadow: 2px 2px 4px ${COLORS.GRAY_292929};
+	box-shadow: 2px 2px 4px var(--gray-292929);
 `;
 
 export const SrOnly = styled.span`

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
 // Main wrapper
 export const StatsWrapper = styled.div`
@@ -20,7 +19,7 @@ export const GlowEffect = styled.div`
 export const Title = styled.h2`
 	font-size: 2rem;
 	font-weight: 700;
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 	text-align: center;
 	margin-bottom: 0.75rem;
 	letter-spacing: -0.02em;
@@ -31,7 +30,7 @@ export const Title = styled.h2`
 `;
 
 export const Description = styled.p`
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 	margin: 0 0 2rem 0;
 	font-size: 1rem;
 	line-height: 1.6;
@@ -48,9 +47,9 @@ export const Description = styled.p`
 // Stats container - clean solid background like other sections
 export const StatsContainer = styled.div`
 	padding: 2rem;
-	background-color: ${COLORS.GRAY_292929};
+	background-color: var(--color-bg-tertiary);
 	border-radius: 1rem;
-	box-shadow: 0 1px 2px ${getRgbaColor(COLORS.BLACK_0F1219, 0.05)};
+	box-shadow: 0 1px 2px var(--black-0f1219-0a);
 	margin: 0 auto;
 	max-width: 700px;
 
@@ -77,19 +76,19 @@ export const StatCard = styled.div`
 	flex-direction: column;
 	align-items: center;
 	padding: 1.25rem 1rem;
-	background-color: ${COLORS.GRAY_383838};
+	background-color: var(--gray-383838);
 	border-radius: 1rem;
 	transition: background-color 0.2s ease;
 
 	&:hover {
-		background-color: ${COLORS.GRAY_404040};
+		background-color: var(--gray-404040);
 	}
 `;
 
 export const StatValue = styled.div`
 	font-size: 1.75rem;
 	font-weight: 700;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	line-height: 1.2;
 	margin-bottom: 0.375rem;
 	font-variant-numeric: tabular-nums;
@@ -101,7 +100,7 @@ export const StatValue = styled.div`
 
 export const StatLabel = styled.div`
 	font-size: 0.8125rem;
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 	text-transform: uppercase;
 	letter-spacing: 0.08em;
 	font-weight: 500;
@@ -114,7 +113,7 @@ export const SectionDivider = styled.div`
 	background: linear-gradient(
 		90deg,
 		transparent 0%,
-		${getRgbaColor(COLORS.WHITE_FFFFFF, 0.15)} 50%,
+		var(--white-ffffff-26) 50%,
 		transparent 100%
 	);
 	margin: 3rem auto;
@@ -131,21 +130,22 @@ export const LanguageBar = styled.div`
 	height: 32px;
 	border-radius: 8px;
 	overflow: hidden;
-	background: ${getRgbaColor(COLORS.GRAY_2D2D2D, 0.8)};
-	border: 1px solid ${getRgbaColor(COLORS.WHITE_FFFFFF, 0.08)};
+	background: var(--gray-2d2d2d-cc);
+	border: 1px solid var(--white-ffffff-15);
 	margin: 1.5rem auto;
 	max-width: 700px;
-	box-shadow: inset 0 2px 4px ${getRgbaColor(COLORS.BLACK_0F1219, 0.3)};
+	box-shadow: inset 0 2px 4px var(--black-0f1219-4d);
 
 	@media (max-width: 768px) {
 		height: 28px;
 	}
 `;
 
-// Individual segment in the bar
+// Individual segment in the bar - language color from CSS variable
 export const LanguageBarSegment = styled.div`
 	width: ${(props) => props.$percentage}%;
-	background-color: ${(props) => props.$color};
+	background-color: ${(props) =>
+		props.$color ? `var(${props.$color})` : '#60739f'};
 	transition: all 0.3s ease;
 	position: relative;
 
@@ -162,14 +162,14 @@ export const LanguageBarSegment = styled.div`
 		bottom: 0;
 		background: linear-gradient(
 			180deg,
-			${getRgbaColor(COLORS.WHITE_FFFFFF, 0.15)} 0%,
+			var(--white-ffffff-26) 0%,
 			transparent 50%
 		);
 		pointer-events: none;
 	}
 
 	&:not(:last-child) {
-		border-right: 1px solid ${getRgbaColor(COLORS.BLACK_0F1219, 0.3)};
+		border-right: 1px solid var(--black-0f1219-4d);
 	}
 `;
 
@@ -185,34 +185,44 @@ export const LanguageLegend = styled.div`
 	margin-right: auto;
 `;
 
-// Language badge (pill shape) - subtle hover
+// Language badge (pill shape) - uses CSS variable for language color
 export const LanguageBadge = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
 	padding: 0.5rem 0.875rem;
-	background: ${(props) => getRgbaColor(props.$color, 0.1)};
-	border: 1.5px solid ${(props) => getRgbaColor(props.$color, 0.3)};
+	background: ${({ $color }) =>
+		$color
+			? `color-mix(in srgb, var(${$color}) 10%, transparent)`
+			: 'rgba(96, 115, 159, 0.1)'};
+	border: 1.5px solid ${({ $color }) =>
+		$color
+			? `color-mix(in srgb, var(${$color}) 30%, transparent)`
+			: 'rgba(96, 115, 159, 0.3)'};
 	border-radius: 9999px;
 	transition: border-color 0.2s ease;
 	cursor: default;
 
 	&:hover {
-		border-color: ${(props) => getRgbaColor(props.$color, 0.6)};
+		border-color: ${({ $color }) =>
+			$color
+				? `color-mix(in srgb, var(${$color}) 60%, transparent)`
+				: 'rgba(96, 115, 159, 0.6)'};
 	}
 
 	.dot {
 		width: 8px;
 		height: 8px;
 		border-radius: 50%;
-		background-color: ${(props) => props.$color};
+		background-color: ${(props) =>
+			props.$color ? `var(${props.$color})` : '#60739f'};
 		flex-shrink: 0;
 	}
 
 	.name {
 		font-size: 0.8125rem;
 		font-weight: 500;
-		color: ${COLORS.WHITE_FFFFFF};
+		color: var(--color-text-emphasis);
 	}
 `;
 
@@ -220,8 +230,8 @@ export const LanguageBadge = styled.div`
 export const LanguageCount = styled.span`
 	font-size: 0.75rem;
 	font-weight: 600;
-	color: ${COLORS.WHITE_BFBFBF};
-	background: ${getRgbaColor(COLORS.GRAY_474747, 0.8)};
+	color: var(--color-text-muted);
+	background: var(--gray-474747-cc);
 	padding: 0.125rem 0.5rem;
 	border-radius: 9999px;
 	min-width: 1.5rem;

@@ -6,8 +6,8 @@ import TableOfContents from 'src/components/jsx/blog/TableOfContents/TableOfCont
 import Breadcrumb from 'src/components/jsx/ui/Breadcrumb/Breadcrumb';
 import Footer from 'src/components/jsx/footer/Footer/Footer';
 import Header from 'src/components/jsx/header/Header/Header';
-import LayoutContainer from 'src/components/jsx/layouts/LayoutContainer/LayoutContainer.jsx';
 import { COLORS } from 'src/consts/Colors';
+import '../styles/layouts-shared.css';
 
 type Props = {
 	title: string;
@@ -75,98 +75,68 @@ const {
 				articleSection: tags?.[0] || 'Blog',
 			}}
 		/>
+
+		<!-- Inline script for no-flash dark mode -->
+		<script is:inline>
+			(function() {
+				const stored = localStorage.getItem('theme');
+				if (stored) {
+					document.documentElement.setAttribute('data-theme', stored);
+				} else {
+					const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+					document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+				}
+			})();
+		</script>
 	</head>
 	<body>
-		<LayoutContainer client:load mainId="main-content" mainClassName="blog-layout">
+		<a href="#main-content" class="skip-link">Skip to main content</a>
+		<div class="min-h-screen flex flex-col">
 			<Header id="navigation" client:visible />
-			<div class="blog-layout-wrapper">
-				<div class="blog-content">
-					<Breadcrumb
-						client:idle
-						items={[
-							{ label: 'Home', href: '/' },
-							{ label: 'Blog', href: '/blog' },
-							{ label: title },
-						]}
-					/>
-					<BlogPost
-						client:visible
-						title={title}
-						pubDate={pubDate}
-						updatedDate={updatedDate}
-						heroImage={heroImage}
-						readTime={readTime}
-						tags={tags}
-						author={author}
-					>
-						<div class="prose">
-							<slot />
-						</div>
-					</BlogPost>
+			<main id="main-content" class="flex-grow blog-layout">
+				<div class="blog-layout-wrapper">
+					<div class="blog-content">
+						<Breadcrumb
+							client:idle
+							items={[
+								{ label: 'Home', href: '/' },
+								{ label: 'Blog', href: '/blog' },
+								{ label: title },
+							]}
+						/>
+						<BlogPost
+							client:visible
+							title={title}
+							pubDate={pubDate}
+							updatedDate={updatedDate}
+							heroImage={heroImage}
+							readTime={readTime}
+							tags={tags}
+							author={author}
+						>
+							<div class="prose">
+								<slot />
+							</div>
+						</BlogPost>
+					</div>
+					<aside class="toc-sidebar">
+						<TableOfContents client:idle headings={headings} />
+					</aside>
 				</div>
-				<aside class="toc-sidebar">
-					<TableOfContents client:idle headings={headings} />
-				</aside>
-			</div>
+			</main>
 			<Footer client:idle />
-		</LayoutContainer>
+		</div>
 	</body>
 </html>
 
 <style is:global>
-	:root {
-		--accent: #2337ff;
-		--accent-dark: #000d8a;
-		--black: 15, 18, 25;
-		--gray: 96, 115, 159;
-		--gray-light: 229, 233, 240;
-		--gray-dark: 34, 41, 57;
-		--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-		--box-shadow:
-			0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-			0 16px 32px rgba(var(--gray), 33%);
-		--main-surface-background: #212121e6;
-		--semi-surface-primary: #303030;
-		--surface-blend-1: #383838;
-		--surface-blend-2: #404040;
-		--outer-surface-background: #474747;
-		--message-surface: #323232d9;
-		--composer-blue-bg: #2a4a6d;
-		--composer-blue-hover: #1a416a;
-		--composer-blue-text: #48aaff;
-		--composer-surface-primary: #303030;
-	}
-
+	/* Blog post-specific layout overrides */
 	body {
-		font-family:
-			system-ui,
-			-apple-system,
-			BlinkMacSystemFont,
-			'Segoe UI',
-			Roboto,
-			Oxygen,
-			Ubuntu,
-			Cantarell,
-			'Open Sans',
-			'Helvetica Neue',
-			sans-serif;
-		margin: 0;
-		padding: 0;
-		background: radial-gradient(
-			circle,
-			var(--semi-surface-primary) 0%,
-			var(--semi-surface-primary) 30%,
-			var(--surface-blend-1) 50%,
-			var(--surface-blend-2) 70%,
-			var(--outer-surface-background) 100%
-		);
-		background-size: 100% 100%;
-		color: rgb(var(--gray-light));
-		font-size: 16px;
 		line-height: 1.7;
+		background-size: 100% 100%;
 	}
 
-	main {
+	main.blog-layout {
 		width: 920px;
 		max-width: calc(100% - 2em);
 		margin: auto;
@@ -182,10 +152,7 @@ const {
 	}
 
 	@media (max-width: 720px) {
-		body {
-			font-size: 16px;
-		}
-		main {
+		main.blog-layout {
 			padding: 1em;
 		}
 		.toc-sidebar {
@@ -200,18 +167,18 @@ const {
 <style>
 	.prose {
 		max-width: 85ch;
-		color: rgb(var(--gray-light));
+		color: var(--gray-e5e9f0);
 	}
 
 	.prose :global(h1) {
-		color: rgb(var(--gray-light));
+		color: var(--gray-e5e9f0);
 		font-weight: 800;
 		font-size: 2em;
 		margin-top: 0;
 	}
 
 	.prose :global(h2) {
-		color: rgb(var(--gray-light));
+		color: var(--gray-e5e9f0);
 		font-weight: 700;
 		font-size: 1.5em;
 		margin-top: 2em;
@@ -220,7 +187,7 @@ const {
 	}
 
 	.prose :global(h3) {
-		color: rgb(var(--gray-light));
+		color: var(--gray-e5e9f0);
 		font-weight: 600;
 		font-size: 1.25em;
 		margin-top: 1.6em;
@@ -241,19 +208,19 @@ const {
 	}
 
 	.prose :global(strong) {
-		color: rgb(var(--gray-light));
+		color: var(--gray-e5e9f0);
 		font-weight: 600;
 	}
 
 	.prose :global(code) {
-		color: rgb(var(--gray-light));
+		color: var(--gray-e5e9f0);
 		font-weight: 600;
 		font-size: 0.875em;
 	}
 
 	.prose :global(pre) {
-		color: rgb(var(--gray-light));
-		background-color: rgb(var(--gray-light));
+		color: var(--gray-e5e9f0);
+		background-color: var(--gray-e5e9f0);
 		overflow-x: auto;
 		font-size: 0.875em;
 		line-height: 1.7142857;
@@ -266,9 +233,9 @@ const {
 	.prose :global(blockquote) {
 		font-weight: 500;
 		font-style: italic;
-		color: rgb(var(--gray-light));
+		color: var(--gray-e5e9f0);
 		border-left-width: 0.25rem;
-		border-left-color: rgb(var(--gray-light));
+		border-left-color: var(--gray-e5e9f0);
 		quotes: '\201C' '\201D' '\2018' '\2019';
 		margin-top: 1.6em;
 		margin-bottom: 1.6em;
@@ -312,7 +279,7 @@ const {
 	.prose :global(hr) {
 		margin-top: 3em;
 		margin-bottom: 3em;
-		border-color: rgb(var(--gray-light));
+		border-color: var(--gray-e5e9f0);
 	}
 
 	.blog-layout-wrapper {

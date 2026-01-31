@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
-import { COLORS } from 'src/consts/Colors';
 
 const hideFullscreenProp = (prop) => prop !== 'isFullscreen';
 
@@ -41,7 +40,7 @@ export const Container = styled('div', {
 			min-height: 100vh;
 			padding: 0;
 			margin: 0;
-			background-color: ${COLORS.BLACK_1A1A1A};
+			background-color: var(--black-1a1a1a);
 			z-index: 1000;
 			flex-direction: row;
 			justify-content: stretch;
@@ -106,7 +105,7 @@ export const OutputSection = styled('div', {
 `;
 
 export const SectionTitle = styled.h3`
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 	font-size: 1.1rem;
 	font-weight: 600;
 	margin: 0;
@@ -125,7 +124,7 @@ const BaseContentWrapper = styled('div', {
 })`
 	display: flex;
 	flex-direction: column;
-	background-color: ${COLORS.GRAY_292929};
+	background-color: var(--gray-292929);
 	border-radius: 8px;
 	flex: 1;
 	min-height: 0;
@@ -149,10 +148,10 @@ export const InputContentWrapper = styled(BaseContentWrapper)`
 	&:focus-within {
 		${({ isFullscreen }) =>
 			isFullscreen
-				? `background-color: ${COLORS.GRAY_2D2D2D};`
+				? `background-color: var(--gray-2d2d2d);`
 				: `
-					border-color: ${COLORS.GRAY_474747};
-					outline: 1px solid ${COLORS.GRAY_474747};
+					border-color: var(--gray-474747);
+					outline: 1px solid var(--gray-474747);
 					outline-offset: 2px;
 				`}
 	}
@@ -166,7 +165,7 @@ export const InputField = styled('textarea', {
 	shouldForwardProp: hideFullscreenProp,
 })`
 	background-color: transparent;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	padding: 0.5em 1em 1em 1em;
 	flex: 1;
 	width: 100%;
@@ -191,7 +190,7 @@ export const OutputField = styled('div', {
 	shouldForwardProp: hideFullscreenProp,
 })`
 	background-color: transparent;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	padding: 0.5em 1em 1em 1em;
 	flex: 1;
 	width: 100%;
@@ -215,7 +214,7 @@ export const OutputField = styled('div', {
 
 export const ErrorMessage = styled.div`
 	background-color: rgba(220, 38, 38, 0.1);
-	color: ${COLORS.RED_FCA5A5};
+	color: var(--color-status-error);
 	padding: 0.8em;
 	border-radius: 8px;
 	border: 1px solid rgba(220, 38, 38, 0.3);
@@ -225,7 +224,7 @@ export const ErrorMessage = styled.div`
 
 export const SuccessMessage = styled.div`
 	background-color: rgba(34, 197, 94, 0.1);
-	color: ${COLORS.GREEN_86EFAC};
+	color: var(--color-status-success);
 	padding: 0.75em 1.5em;
 	border-radius: 8px;
 	border: 1px solid rgba(34, 197, 94, 0.3);
@@ -234,13 +233,13 @@ export const SuccessMessage = styled.div`
 	${({ fading }) =>
 		fading &&
 		`
-		animation: ${fadeOut} 2s ease-out forwards;
-	`}
+			animation: ${fadeOut} 2s ease-out forwards;
+		`}
 `;
 
 export const FormatButton = styled.button`
-	background-color: ${COLORS.GRAY_383838};
-	color: ${COLORS.WHITE_BFBFBF};
+	background-color: var(--gray-383838);
+	color: var(--color-text-muted);
 	padding: 0.75em 1.5em;
 	border: none;
 	border-radius: 8px;
@@ -252,17 +251,17 @@ export const FormatButton = styled.button`
 		box-shadow 0.2s ease;
 
 	&:hover {
-		background-color: ${COLORS.GRAY_303030};
+		background-color: var(--color-border-light);
 		box-shadow: 0px 0px 14px #1418208a;
 	}
 
 	&:active {
-		background-color: ${COLORS.GRAY_383838};
+		background-color: var(--gray-383838);
 		box-shadow: none;
 	}
 
 	&:focus-visible {
-		outline: 2px solid ${COLORS.GRAY_222939};
+		outline: 2px solid var(--gray-222939);
 		outline-offset: 2px;
 	}
 
@@ -317,16 +316,16 @@ export const Separator = styled('div', {
 		content: '';
 		width: 4px;
 		height: 150px;
-		background-color: ${COLORS.GRAY_474747};
+		background-color: var(--gray-474747);
 		border-radius: 100px;
 		transition: all 0.2s ease;
 	}
 
 	&:hover::after,
 	&.dragging::after {
-		background-color: ${COLORS.BLUE_2337FF};
+		background-color: var(--color-accent-brand);
 		height: 364px;
-		box-shadow: 2px 2px 12px rgba(35, 55, 255, 0.4);
+		box-shadow: 2px 2px 12px #2337ff66;
 	}
 
 	@media (max-width: 768px) {
@@ -348,9 +347,9 @@ export const FullscreenButton = styled.button`
 	right: 1em;
 	top: 50%;
 	transform: translateY(-50%);
-	background: ${COLORS.GRAY_303030};
-	color: ${COLORS.WHITE_FFFFFF};
-	border: 1px solid ${COLORS.GRAY_404040};
+	background: var(--color-border-light);
+	color: var(--color-text-emphasis);
+	border: 1px solid var(--gray-404040);
 	border-radius: 8px;
 	padding: 0.4em 0.9em;
 	font-size: 0.85rem;
@@ -361,16 +360,16 @@ export const FullscreenButton = styled.button`
 	z-index: 2;
 
 	&:hover {
-		background: ${COLORS.GRAY_404040};
-		border-color: ${COLORS.GRAY_474747};
+		background: var(--gray-404040);
+		border-color: var(--gray-474747);
 	}
 
 	&:active {
-		background: ${COLORS.GRAY_383838};
+		background: var(--gray-383838);
 	}
 
 	&:focus-visible {
-		outline: 2px solid ${COLORS.BLUE_2337FF};
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 	}
 `;

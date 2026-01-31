@@ -5,9 +5,6 @@ import { getEntry } from 'astro:content';
 import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer.jsx';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
 import JourneyDetailsPageContent from 'src/components/jsx/journey/JourneyDetailsPageContent/JourneyDetailsPageContent.jsx';
-import SettingsPanel from 'src/components/jsx/settingsPanel/SettingsPanel';
-import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
-import DarkModeToggle from 'src/components/jsx/darkMode/DarkModeToggle/DarkModeToggle.jsx';
 
 export function getStaticPaths() {
 	const journeyItems = journeyData.filter((item) => item.id && item.link);
@@ -30,15 +27,10 @@ const { Content } = await journeyEntry.render();
 ---
 
 <MainLayout title={`${item.title} | My Journey`}>
-	<ThemeWrapper client:load>
-		<GridBackground client:load />
-		<!-- <SettingsPanel client:load>
-			<DarkModeToggle client:load />
-		</SettingsPanel> -->
-		<ContentContainer client:load>
-			<JourneyDetailsPageContent client:load item={item}>
-				<Content />
-			</JourneyDetailsPageContent>
-		</ContentContainer>
-	</ThemeWrapper>
+	<GridBackground client:load />
+	<ContentContainer client:load>
+		<JourneyDetailsPageContent client:load item={item}>
+			<Content />
+		</JourneyDetailsPageContent>
+	</ContentContainer>
 </MainLayout>

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
 export const Section = styled.section`
 	padding: 2rem 0;
@@ -23,8 +22,8 @@ export const Name = styled.h1`
 	margin: 0 0 0.5rem 0;
 	background: linear-gradient(
 		135deg,
-		${COLORS.WHITE_FFFFFF} 0%,
-		${COLORS.WHITE_BFBFBF} 60%
+		var(--color-text-emphasis) 0%,
+		var(--color-text-muted) 60%
 	);
 	-webkit-background-clip: text;
 	background-clip: text;
@@ -51,7 +50,7 @@ export const Title = styled.h2`
 	font-weight: 600;
 	line-height: 1.3;
 	margin: 0 0 1.5rem 0;
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 	letter-spacing: 0.01em;
 	animation: fadeInUp 0.8s ease-out 0.1s both;
 
@@ -66,9 +65,9 @@ export const AccentLine = styled.div`
 	height: 3px;
 	background: linear-gradient(
 		90deg,
-		${COLORS.GRAY_474747} 0%,
-		${COLORS.WHITE_FFFFFF} 20%,
-		${COLORS.GRAY_474747} 100%
+		var(--gray-474747) 0%,
+		var(--color-text-emphasis) 20%,
+		var(--gray-474747) 100%
 	);
 	margin: 0 0 2rem 0;
 	border-radius: 2px;
@@ -106,7 +105,7 @@ export const Tagline = styled.p`
 	font-weight: 500;
 	line-height: 1.4;
 	margin: 0 0 1.5rem 0;
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 	animation: fadeInUp 0.8s ease-out 0.3s both;
 
 	@media (max-width: 720px) {
@@ -119,7 +118,7 @@ export const Description = styled.p`
 	font-size: clamp(1rem, 1.5vw, 1.1rem);
 	line-height: 1.7;
 	margin: 0 0 2.5rem 0;
-	color: ${getRgbaColor(COLORS.WHITE_FFFFFF, 0.9)};
+	color: var(--white-ffffff-e6);
 	max-width: 600px;
 	animation: fadeInUp 0.8s ease-out 0.4s both;
 
@@ -150,17 +149,17 @@ export const PrimaryButton = styled.a`
 	font-size: 0.95rem;
 	font-weight: 600;
 	border-radius: 1rem;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	background: linear-gradient(
 		135deg,
-		${COLORS.GRAY_292929} 0%,
-		${COLORS.BLACK_1A1A1A} 100%
+		var(--color-bg-tertiary) 0%,
+		var(--color-bg-secondary) 100%
 	);
 	text-decoration: none;
 	transition: all 0.3s ease;
 	position: relative;
 	overflow: hidden;
-	box-shadow: 0 4px 20px ${getRgbaColor(COLORS.BLACK_0F1219, 0.4)};
+	box-shadow: 0 4px 20px var(--black-0f1219-66);
 
 	&::before {
 		content: '';
@@ -172,14 +171,14 @@ export const PrimaryButton = styled.a`
 		background: linear-gradient(
 			90deg,
 			transparent,
-			${getRgbaColor(COLORS.WHITE_FFFFFF, 0.2)},
+			var(--white-ffffff-33),
 			transparent
 		);
 		transition: left 0.6s ease;
 	}
 
 	&:hover {
-		box-shadow: 0 3px 20px ${getRgbaColor(COLORS.BLACK_1A1A1A, 0.9)};
+		box-shadow: 0 3px 20px var(--black-1a1a1a-e6);
 		transform: scale(1.05);
 	}
 
@@ -200,12 +199,12 @@ export const SecondaryButton = styled.a`
 	align-items: center;
 	justify-content: center;
 	padding: 0.75rem 1.5rem;
-	border: 1px solid ${getRgbaColor(COLORS.GRAY_292929, 0.5)};
+	border: 1px solid var(--gray-292929-80);
 	font-size: 0.95rem;
 	font-weight: 600;
 	border-radius: 1rem;
-	color: ${COLORS.WHITE_FFFFFF};
-	background: ${COLORS.BLACK_1A1A1A};
+	color: var(--color-text-emphasis);
+	background: var(--color-bg-secondary);
 	text-decoration: none;
 	transition: all 0.3s ease;
 	position: relative;
@@ -218,16 +217,16 @@ export const SecondaryButton = styled.a`
 		left: 0;
 		width: 0;
 		height: 100%;
-		background: ${getRgbaColor(COLORS.GRAY_292929, 0.1)};
+		background: var(--gray-292929-1a);
 		transition: width 0.3s ease;
 		z-index: -1;
 	}
 
 	&:hover {
 		transform: scale(1.05);
-		border-color: ${COLORS.GRAY_292929};
-		color: ${COLORS.WHITE_FFFFFF};
-		box-shadow: 0 3px 20px ${getRgbaColor(COLORS.BLACK_1A1A1A, 0.9)};
+		border-color: var(--color-bg-tertiary);
+		color: var(--color-text-emphasis);
+		box-shadow: 0 3px 20px var(--black-1a1a1a-e6);
 	}
 
 	&:active {

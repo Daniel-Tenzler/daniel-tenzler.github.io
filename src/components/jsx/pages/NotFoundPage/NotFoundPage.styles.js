@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
 export const StyledNotFoundContainer = styled.section`
 	text-align: center;
@@ -11,9 +10,9 @@ export const StyledNotFoundContainer = styled.section`
 export const StyledErrorCode = styled.div`
 	font-size: 8rem;
 	font-weight: bold;
-	color: ${COLORS.BLUE_2337FF};
+	color: var(--color-accent-brand);
 	margin-bottom: 1rem;
-	text-shadow: 0 0 20px ${getRgbaColor(COLORS.BLUE_2337FF, 0.3)};
+	text-shadow: 0 0 20px var(--blue-2337ff-4d);
 
 	@media (min-width: 768px) {
 		font-size: 10rem;
@@ -23,13 +22,13 @@ export const StyledErrorCode = styled.div`
 export const StyledErrorTitle = styled.h1`
 	font-size: 2.5rem;
 	margin-bottom: 1rem;
-	color: ${COLORS.WHITE_F1F1F1};
+	color: var(--color-text-subtle);
 `;
 
 export const StyledErrorDescription = styled.p`
 	font-size: 1.2rem;
 	margin-bottom: 2rem;
-	color: ${COLORS.GRAY_60739F};
+	color: var(--color-text-secondary);
 	line-height: 1.6;
 `;
 
@@ -63,23 +62,23 @@ export const StyledNavLink = styled.a`
 `;
 
 export const StyledPrimaryLink = styled(StyledNavLink)`
-	background-color: ${COLORS.BLUE_2337FF};
-	color: ${COLORS.WHITE_FFFFFF};
+	background-color: var(--color-accent-brand);
+	color: var(--color-text-emphasis);
 
 	&:hover {
-		background-color: ${COLORS.BLUE_000D8A};
-		box-shadow: 0 2px 4px ${getRgbaColor(COLORS.BLUE_2337FF, 0.6)};
+		background-color: var(--color-accent-brand-dark);
+		box-shadow: 0 2px 4px var(--blue-2337ff-99);
 	}
 `;
 
 export const StyledSecondaryLink = styled(StyledNavLink)`
 	background-color: transparent;
-	color: ${COLORS.WHITE_F1F1F1};
-	border-color: ${COLORS.GRAY_60739F};
+	color: var(--color-text-subtle);
+	border-color: var(--color-text-secondary);
 
 	&:hover {
-		border-color: ${COLORS.BLUE_000D8A};
-		color: ${COLORS.WHITE_BFBFBF};
-		background-color: ${getRgbaColor(COLORS.BLUE_000D8A, 0.1)};
+		border-color: var(--color-accent-brand-dark);
+		color: var(--color-text-muted);
+		background-color: var(--blue-000d8a-1a);
 	}
 `;

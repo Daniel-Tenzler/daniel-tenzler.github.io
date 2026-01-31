@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS } from 'src/consts/Colors';
 
 export const Section = styled.section`
 	margin-bottom: 3rem;
@@ -7,7 +6,7 @@ export const Section = styled.section`
 
 export const Title = styled.h2`
 	margin-bottom: 2rem;
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 `;
 
 export const PostsGrid = styled.div`
@@ -26,7 +25,7 @@ export const ViewAllLink = styled.div`
 `;
 
 export const Link = styled.a`
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	font-weight: 500;
 	text-decoration: none;
 	transition: color 0.2s ease;
@@ -37,7 +36,7 @@ export const Link = styled.a`
 	}
 
 	&:hover {
-		color: ${COLORS.GRAY_E5E9F0};
+		color: var(--color-text-primary);
 		text-decoration: underline;
 	}
 

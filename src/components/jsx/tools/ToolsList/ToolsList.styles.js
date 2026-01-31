@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
 export const Container = styled.div`
 	max-width: 56rem;
@@ -14,7 +13,7 @@ export const Container = styled.div`
 export const Title = styled.h1`
 	font-size: 2.5rem;
 	font-weight: 700;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	margin-bottom: 0.5rem;
 	text-align: center;
 	margin: 0;
@@ -25,7 +24,7 @@ export const Title = styled.h1`
 
 export const Description = styled.p`
 	font-size: 1.125rem;
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 	text-align: center;
 	margin-bottom: 3rem;
 	max-width: 42rem;
@@ -40,9 +39,9 @@ export const CategorySection = styled.div`
 export const CategoryTitle = styled.h2`
 	font-size: 1.5rem;
 	font-weight: 600;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	margin-bottom: 1rem;
-	border-bottom: 2px solid ${getRgbaColor(COLORS.GRAY_383838)};
+	border-bottom: 2px solid var(--gray-383838);
 	padding-bottom: 0.5rem;
 `;
 
@@ -62,18 +61,18 @@ export const ToolsGrid = styled.div`
 
 export const ToolCard = styled.a`
 	display: block;
-	background-color: ${getRgbaColor(COLORS.GRAY_2D2D2D)};
-	border: 1px solid ${getRgbaColor(COLORS.GRAY_383838)};
+	background-color: var(--gray-2d2d2d);
+	border: 1px solid var(--gray-383838);
 	border-radius: 0.75rem;
 	padding: 1.5rem;
 	text-decoration: none;
 	transition: all 0.2s ease;
 
 	&:hover {
-		background-color: ${getRgbaColor(COLORS.GRAY_303030)};
-		border-color: ${getRgbaColor(COLORS.WHITE_BFBFBF, 0.2)};
+		background-color: var(--gray-303030);
+		border-color: var(--white-bfbfbf-33);
 		transform: translateY(-1px);
-		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+		box-shadow: 0 8px 25px #0000004d;
 	}
 
 	&:focus {
@@ -81,7 +80,7 @@ export const ToolCard = styled.a`
 	}
 
 	&:focus-visible {
-		outline: 2px solid ${COLORS.GRAY_60739F};
+		outline: 2px solid var(--gray-60739f);
 		outline-offset: 2px;
 	}
 `;
@@ -93,26 +92,26 @@ export const ToolIcon = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 
 	img {
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
-		color: ${COLORS.WHITE_FFFFFF};
+		color: var(--color-text-emphasis);
 	}
 `;
 
 export const ToolTitle = styled.h3`
 	font-size: 1.25rem;
 	font-weight: 600;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 	margin-bottom: 0.5rem;
 	margin-top: 0.5rem;
 `;
 
 export const ToolDescription = styled.p`
 	font-size: 0.875rem;
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 	line-height: 1.5;
 `;

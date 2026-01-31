@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS } from 'src/consts/Colors';
 
 export const HeaderSection = styled.section`
 	margin-bottom: 3rem;
@@ -16,12 +15,12 @@ export const Title = styled.h1`
 	font-size: 2.25rem;
 	font-weight: bold;
 	margin-bottom: 1.5rem;
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 	margin-top: 0.5rem;
 `;
 
 export const Description = styled.p`
 	font-size: 1.25rem;
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 	margin-bottom: 0;
 `;

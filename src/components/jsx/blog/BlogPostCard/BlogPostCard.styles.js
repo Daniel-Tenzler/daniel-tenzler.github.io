@@ -1,19 +1,18 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
 export const Card = styled.a`
 	display: block;
-	background: ${COLORS.GRAY_292929};
+	background: var(--color-bg-tertiary);
 	border-radius: ${({ $noTopBorderRadius }) =>
-		$noTopBorderRadius ? '0 0.5rem 0.5rem 0.5rem' : '0.5rem'};
+		$noTopBorderRadius ? '0 0 0.5rem 0.5rem' : '0.5rem'};
 	overflow: hidden;
-	box-shadow: 0 1px 3px ${getRgbaColor(COLORS.GRAY_292929, 0.1)};
+	box-shadow: 0 1px 3px var(--gray-292929-1a);
 	transition: all 0.2s ease;
 	text-decoration: none;
 	color: inherit;
 
 	&:hover {
-		box-shadow: 0 8px 8px ${getRgbaColor(COLORS.GRAY_292929, 0.5)};
+		box-shadow: 0 8px 8px var(--gray-292929-80);
 	}
 `;
 
@@ -25,18 +24,18 @@ export const Title = styled.h3`
 	margin: 0 0 0.5rem;
 	font-size: 1.25rem;
 	font-weight: 600;
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 	transition: color 0.2s ease;
 
 	${Card}:hover & {
-		color: ${COLORS.WHITE_BFBFBF};
+		color: var(--color-text-muted);
 	}
 `;
 
 export const Description = styled.p`
 	margin: 0 0 1rem;
 	font-size: 0.875rem;
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 `;
 
 export const Meta = styled.div`
@@ -44,7 +43,7 @@ export const Meta = styled.div`
 	align-items: center;
 	gap: 1rem;
 	font-size: 0.875rem;
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 `;
 
 export const Tags = styled.div`
@@ -56,8 +55,8 @@ export const Tags = styled.div`
 
 export const Tag = styled.span`
 	padding: 0.25rem 0.75rem;
-	background-color: ${getRgbaColor(COLORS.BLACK_0F1219, 0.5)};
+	background-color: var(--black-0f1219-80);
 	border-radius: 9999px;
 	font-size: 0.875rem;
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 `;

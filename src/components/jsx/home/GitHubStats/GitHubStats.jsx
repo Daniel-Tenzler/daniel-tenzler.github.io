@@ -19,29 +19,25 @@ import {
 	GlowEffect,
 } from './GitHubStats.styles';
 
-// Language colors mapping
-const LANGUAGE_COLORS = {
-	JavaScript: '#f7df1e',
-	TypeScript: '#3178c6',
-	Lua: '#000080',
-	Kotlin: '#7f52ff',
-	Java: '#b07219',
-	Python: '#3776ab',
-	'C++': '#f34b7d',
-	'C#': '#178600',
-	Go: '#00add8',
-	Rust: '#dea584',
-	HTML: '#e34c26',
-	CSS: '#563d7c',
-	Shell: '#89e051',
-	Ruby: '#701516',
-	PHP: '#4f5d95',
-	Swift: '#f05138',
-	Dart: '#00b4ab',
-};
-
-const getLanguageColor = (lang) => {
-	return LANGUAGE_COLORS[lang] || '#60739f';
+// Mapping of language names to CSS variable names
+const LANGUAGE_CSS_VARS = {
+	JavaScript: '--lang-javascript',
+	TypeScript: '--lang-typescript',
+	Lua: '--lang-lua',
+	Kotlin: '--lang-kotlin',
+	Java: '--lang-java',
+	Python: '--lang-python',
+	'C++': '--lang-cpp',
+	'C#': '--lang-csharp',
+	Go: '--lang-go',
+	Rust: '--lang-rust',
+	HTML: '--lang-html',
+	CSS: '--lang-css',
+	Shell: '--lang-shell',
+	Ruby: '--lang-ruby',
+	PHP: '--lang-php',
+	Swift: '--lang-swift',
+	Dart: '--lang-dart',
 };
 
 export default function GitHubStats({ metadata, commitCount, languageStats }) {
@@ -110,11 +106,12 @@ export default function GitHubStats({ metadata, commitCount, languageStats }) {
 							{sortedLanguages.map(([lang, count]) => {
 								const percentage =
 									(count / totalLanguages) * 100;
+								const cssVar = LANGUAGE_CSS_VARS[lang] || null;
 								return (
 									<LanguageBarSegment
 										key={lang}
 										$percentage={percentage}
-										$color={getLanguageColor(lang)}
+										$color={cssVar}
 										title={`${lang}: ${count} repos (${percentage.toFixed(
 											1
 										)}%)`}
@@ -125,16 +122,19 @@ export default function GitHubStats({ metadata, commitCount, languageStats }) {
 
 						{/* Legend with badges */}
 						<LanguageLegend>
-							{sortedLanguages.map(([lang, count]) => (
-								<LanguageBadge
-									key={lang}
-									$color={getLanguageColor(lang)}
-								>
-									<span className="dot" />
-									<span className="name">{lang}</span>
-									<LanguageCount>{count}</LanguageCount>
-								</LanguageBadge>
-							))}
+							{sortedLanguages.map(([lang, count]) => {
+								const cssVar = LANGUAGE_CSS_VARS[lang] || null;
+								return (
+									<LanguageBadge
+										key={lang}
+										$color={cssVar}
+									>
+										<span className="dot" />
+										<span className="name">{lang}</span>
+										<LanguageCount>{count}</LanguageCount>
+									</LanguageBadge>
+								);
+							})}
 						</LanguageLegend>
 					</LanguageSection>
 				</>

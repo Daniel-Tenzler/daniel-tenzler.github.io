@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
 export const Grid = styled.div`
 	display: grid;
@@ -17,9 +16,9 @@ export const Grid = styled.div`
 `;
 
 export const Card = styled.article`
-	background: ${COLORS.GRAY_292929};
+	background: var(--color-bg-tertiary);
 	border-radius: 0.5rem;
-	box-shadow: 0 4px 6px ${getRgbaColor(COLORS.GRAY_292929, 0.1)};
+	box-shadow: 0 4px 6px var(--gray-292929-1a);
 	overflow: hidden;
 	transition: transform 0.3s ease;
 
@@ -43,15 +42,15 @@ export const CardTitle = styled.h2`
 	font-size: 1.25rem;
 	font-weight: 600;
 	margin-bottom: 0.5rem;
-	color: ${COLORS.WHITE_FFFFFF};
+	color: var(--color-text-emphasis);
 
 	a:hover & {
-		color: ${COLORS.WHITE_BFBFBF};
+		color: var(--color-text-muted);
 	}
 `;
 
 export const CardDescription = styled.p`
-	color: ${COLORS.GRAY_E5E9F0};
+	color: var(--color-text-primary);
 	margin-bottom: 1rem;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
@@ -67,10 +66,10 @@ export const TechContainer = styled.div`
 
 export const TechTag = styled.span`
 	padding: 0.25rem 0.75rem;
-	background-color: ${getRgbaColor(COLORS.BLACK_0F1219, 0.5)};
+	background-color: var(--black-0f1219-80);
 	border-radius: 9999px;
 	font-size: 0.875rem;
-	color: ${COLORS.WHITE_BFBFBF};
+	color: var(--color-text-muted);
 `;
 
 export const StyledLinkArea = styled.a`

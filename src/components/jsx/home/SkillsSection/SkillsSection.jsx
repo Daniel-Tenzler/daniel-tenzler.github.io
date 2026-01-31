@@ -34,14 +34,14 @@ export default function SkillsSection({ skills, categories }) {
 
 			return (
 				<CategorySection key={categoryKey}>
-					<CategoryTitle $color={category.color}>
+					<CategoryTitle $color={category.colorVar}>
 						{category.label}
 					</CategoryTitle>
 					<SkillsGrid>
 						{categorySkills.map((skill) => (
 							<SkillBubble
 								key={skill.name}
-								$color={category.color}
+								$color={category.colorVar}
 							>
 								{skill.name}
 							</SkillBubble>
@@ -77,7 +77,7 @@ SkillsSection.propTypes = {
 	categories: PropTypes.objectOf(
 		PropTypes.shape({
 			label: PropTypes.string.isRequired,
-			color: PropTypes.string.isRequired,
+			colorVar: PropTypes.string.isRequired,
 		})
 	).isRequired,
 };

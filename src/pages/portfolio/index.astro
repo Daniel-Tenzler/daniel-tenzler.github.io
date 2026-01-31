@@ -3,19 +3,11 @@ import { getPortfolioItems } from 'src/data/portfolio/portfolio';
 import PortfolioOverview from 'src/components/jsx/portfolio/PortfolioOverview/PortfolioOverview';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
 import PortfolioLayout from 'src/layouts/PortfolioLayout.astro';
-import SettingsPanel from 'src/components/jsx/settingsPanel/SettingsPanel';
-import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
-import DarkModeToggle from 'src/components/jsx/darkMode/DarkModeToggle/DarkModeToggle.jsx';
 
 const portfolioItems = await getPortfolioItems();
 ---
 
 <PortfolioLayout title="Portfolio | Daniel Tenzler">
-	<ThemeWrapper client:load>
-		<GridBackground client:load />
-		<!-- <SettingsPanel client:load>
-			<DarkModeToggle client:load />
-		</SettingsPanel> -->
-  <PortfolioOverview client:load items={portfolioItems} />
-	</ThemeWrapper>
+	<GridBackground client:load />
+	<PortfolioOverview client:load items={portfolioItems} />
 </PortfolioLayout> 

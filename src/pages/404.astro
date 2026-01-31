@@ -1,7 +1,6 @@
 ---
 import MainLayout from 'src/layouts/MainLayout.astro';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
-import ThemeWrapper from 'src/components/jsx/darkMode/ThemeWrapper/ThemeWrapper.jsx';
 import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer.jsx';
 import NotFoundPage from 'src/components/jsx/pages/NotFoundPage/NotFoundPage.jsx';
 ---
@@ -12,10 +11,8 @@ import NotFoundPage from 'src/components/jsx/pages/NotFoundPage/NotFoundPage.jsx
 >
 	<meta name="robots" content="noindex, follow" slot="head" />
 
-	<ThemeWrapper>
-		<ContentContainer>
-			<GridBackground client:load />
-			<NotFoundPage client:load />
-		</ContentContainer>
-	</ThemeWrapper>
+	<ContentContainer>
+		<GridBackground client:load />
+		<NotFoundPage client:load />
+	</ContentContainer>
 </MainLayout>

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { COLORS, getRgbaColor } from 'src/consts/Colors';
 
 export const Article = styled.article`
 	max-width: 4xl;
@@ -19,18 +18,18 @@ export const HeroImage = styled.img`
 	object-fit: cover;
 	border-radius: 0.5rem;
 	box-shadow:
-		0 4px 6px ${getRgbaColor(COLORS.BLACK_0F1219, 0.1)},
-		0 2px 4px ${getRgbaColor(COLORS.BLACK_0F1219, 0.06)};
+		0 4px 6px var(--black-0f1219-1a),
+		0 2px 4px var(--black-0f1219-0f);
 `;
 
 export const ContentContainer = styled.div`
-  max-width: 85ch; 
+  max-width: 85ch;
   margin: 0 auto;
-  color: ${COLORS.WHITE_FFFFFF};
+  color: var(--color-text-emphasis);
 	padding-bottom: 200px;
 
   h1 {
-    color: ${COLORS.WHITE_FFFFFF};
+    color: var(--color-text-emphasis);
     font-weight: 800;
     font-size: 2.25em;
     margin-top: 0;
@@ -39,7 +38,7 @@ export const ContentContainer = styled.div`
   }
 
   h2 {
-    color: ${COLORS.WHITE_FFFFFF};
+    color: var(--color-text-emphasis);
     font-weight: 700;
     font-size: 1.5em;
     margin-top: 2em;
@@ -48,7 +47,7 @@ export const ContentContainer = styled.div`
   }
 
   h3 {
-    color: ${COLORS.WHITE_FFFFFF};
+    color: var(--color-text-emphasis);
     font-weight: 600;
     font-size: 1.25em;
     margin-top: 1.6em;
@@ -62,25 +61,25 @@ export const ContentContainer = styled.div`
   }
 
   a {
-    color: ${COLORS.WHITE_FFFFFF};
+    color: var(--color-text-emphasis);
     text-decoration: underline;
     font-weight: 500;
   }
 
   strong {
-    color: ${COLORS.WHITE_FFFFFF};
+    color: var(--color-text-emphasis);
     font-weight: 600;
   }
 
   code {
-    color: ${COLORS.WHITE_FFFFFF};
+    color: var(--color-text-emphasis);
     font-weight: 600;
     font-size: 0.875em;
   }
 
   pre {
-    color: ${getRgbaColor(COLORS.WHITE_FFFFFF)};
-    background-color: ${getRgbaColor(COLORS.BLACK_0F1219, 0.92)};
+    color: var(--color-text-emphasis);
+    background-color: var(--black-0f1219-eb);
     overflow-x: auto;
     font-size: 0.875em;
     line-height: 1.7142857;
@@ -93,9 +92,9 @@ export const ContentContainer = styled.div`
   blockquote {
     font-weight: 500;
     font-style: italic;
-    color: ${COLORS.WHITE_FFFFFF};
+    color: var(--color-text-emphasis);
     border-left-width: 0.25rem;
-    border-left-color: ${getRgbaColor(COLORS.WHITE_FFFFFF)};
+    border-left-color: var(--color-text-emphasis);
     quotes: "\201C""\201D""\2018""\2019";
     margin-top: 1.6em;
     margin-bottom: 1.6em;
@@ -134,6 +133,6 @@ export const ContentContainer = styled.div`
   hr {
     margin-top: 3em;
     margin-bottom: 3em;
-    border-color: ${getRgbaColor(COLORS.WHITE_FFFFFF)};
+    border-color: var(--color-text-emphasis);
   }
 `;
