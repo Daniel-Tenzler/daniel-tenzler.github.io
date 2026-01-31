@@ -1,0 +1,1 @@
+const F=(F,e=1)=>`rgba(${(F=>{const e=F.replace("#",""),B=parseInt(e,16);return`${B>>16&255}, ${B>>8&255}, ${255&B}`})(F)}, ${e})`,e={BLUE_2337FF:"#2337ff",WHITE_BFBFBF:"#BFBFBF",GRAY_E5E9F0:"#e5e9f0"};export{e as C,F as g};
