@@ -20,4 +20,4 @@ jobs:
             - name: Run Lighthouse CI
               run: |
                   npm install -g @lhci/cli@0.13.x
-                  lhci autorun --config=.lighthouserc.json --collect.url=https://daniel-tenzler.github.io
+                  lhci autorun --config=.lighthouserc.json --collect.url=https://daniel-tenzler.de
