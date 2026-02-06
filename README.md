@@ -41,6 +41,15 @@ yarn deploy:github
 yarn deploy:server
 ```
 
+**Dry-Run Mode**
+
+Test deployments without making changes:
+
+```bash
+yarn deploy:github -- --dry-run
+yarn deploy:server -- --dry-run
+```
+
 **Environment Configuration:**
 
 - `.env.github` - GitHub Pages environment variables
@@ -50,27 +59,28 @@ yarn deploy:server
 
 - Public key authentication for SFTP
 - Whitelist protection for subdomain directories
-- Environment variable validation
+- Environment variable validation (https required for BASE_URL)
 - Secure file permissions enforcement
-- Fixed GitHub API authentication for builds
+- Pre-flight checks before deployment
+- Error codes with recovery hints
 
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                | Action                                                          |
-| :--------------------- | :-------------------------------------------------------------- |
-| `yarn install`         | Installs dependencies                                           |
-| `yarn dev`             | Starts local dev server at `localhost:4321`                     |
-| `yarn build`           | Build your production site to `./dist/` with GitHub environment |
-| `yarn build:server`    | Build your production site to `./dist/` with server environment |
-| `yarn preview`         | Preview your build locally, before deploying                    |
-| `yarn astro ...`       | Run CLI commands like `astro add`, `astro check`                |
-| `yarn astro -- --help` | Get help using the Astro CLI                                    |
-| `yarn deploy:github`   | Deploy to GitHub Pages                                          |
-| `yarn deploy:server`   | Deploy to private server via SFTP                               |
-| `yarn eslint`          | Run ESLint to check code quality                                |
-| `yarn format`          | Format code with Prettier                                       |
+| Command                  | Action                                                      |
+| :----------------------- | :---------------------------------------------------------- |
+| `yarn install`           | Installs dependencies                                       |
+| `yarn dev`               | Starts local dev server at `localhost:4321` (uses server env) |
+| `yarn dev -- --github`   | Starts dev server with GitHub environment                   |
+| `yarn preview`           | Preview your build locally, before deploying                |
+| `yarn astro ...`         | Run CLI commands like `astro add`, `astro check`            |
+| `yarn astro -- --help`   | Get help using the Astro CLI                                |
+| `yarn deploy:github`     | Deploy to GitHub Pages (recommended)                        |
+| `yarn deploy:server`     | Deploy to private server via SFTP (recommended)              |
+| `yarn deploy:* -- --dry-run` | Simulate deployment without changes                    |
+| `yarn eslint`            | Run ESLint to check code quality                             |
+| `yarn format`            | Format code with Prettier                                    |
 
 ## Credit
 
