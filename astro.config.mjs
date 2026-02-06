@@ -20,15 +20,31 @@ export default defineConfig({
 	site: baseUrl,
 	base: baseUrl === 'https://daniel-tenzler.github.io' ? '/' : '/',
 
+	// Inline small stylesheets to avoid render-blocking CSS requests
+	inlineStylesheets: 'auto',
+
 	build: {
 		assetsInlineLimit: 0,
 
 		rollupOptions: {
 			output: {
-				manualChunks: {
-					'react-vendor': ['react', 'react-dom'],
-					'emotion-vendor': ['@emotion/react', '@emotion/styled'],
-					'markdown-vendor': ['react-markdown'],
+				manualChunks(id) {
+					// React vendor
+					if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+						return 'react-vendor';
+					}
+					// Emotion vendor
+					if (id.includes('node_modules/@emotion')) {
+						return 'emotion-vendor';
+					}
+					// Markdown vendor
+					if (id.includes('node_modules/react-markdown')) {
+						return 'markdown-vendor';
+					}
+					// Group small utilities together (Colors, useIsMobile, etc)
+					if (id.includes('/src/consts/') || id.includes('/src/hooks/') || id.includes('/src/infrastructure/')) {
+						return 'shared-utils';
+					}
 				},
 				chunkFileNames: () => {
 					return `assets/[name]-[hash].js`;

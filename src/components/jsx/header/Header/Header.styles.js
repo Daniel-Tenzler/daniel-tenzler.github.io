@@ -64,12 +64,17 @@ export const NavLinks = styled.div`
 
 export const NavLink = styled.a`
 	color: var(--color-text-primary);
-	padding: 0.5rem 0.75rem;
+	padding: 0.75rem;
 	border-radius: 0.375rem;
 	font-size: 1rem;
 	font-weight: 500;
 	text-decoration: none;
 	transition: color 0.2s ease;
+	/* Minimum touch target size (48x48px) for accessibility */
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 48px;
 
 	&:hover {
 		color: var(--color-text-secondary);

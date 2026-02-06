@@ -50,7 +50,7 @@ const Project = ({ item }) => {
 					<ProjectImage
 						src={item.image}
 						alt={item.title}
-						loading="lazy"
+						fetchPriority="high"
 					/>
 				)}
 

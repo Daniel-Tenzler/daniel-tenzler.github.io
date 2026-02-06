@@ -97,6 +97,13 @@ export const Link = styled.a`
 	color: var(--color-text-emphasis);
 	text-decoration: none;
 	transition: color 0.2s ease;
+	/* Minimum touch target size (48x48px) for accessibility */
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 48px;
+	min-width: 48px;
+	padding: 12px;
 
 	&:hover {
 		color: var(--color-text-primary);

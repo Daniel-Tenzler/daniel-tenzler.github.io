@@ -105,13 +105,15 @@ export const MobileMenu = styled.div`
 export const MobileNavLink = styled.a`
 	display: block;
 	color: var(--color-text-emphasis);
-	padding: 0.75rem 1rem;
+	padding: 0.875rem 1rem;
 	border-radius: 0.375rem;
 	font-size: 1.1rem;
 	font-weight: 500;
 	text-decoration: none;
 	transition: all 0.2s ease;
 	-webkit-tap-highlight-color: transparent; /* for removing the highlight */
+	/* Minimum touch target size (48px height) for accessibility */
+	min-height: 48px;
 
 	&:hover {
 		color: var(--color-text-primary);
