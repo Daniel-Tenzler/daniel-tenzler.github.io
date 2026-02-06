@@ -325,11 +325,11 @@ class DeployHelper {
 			// Validate deployment target
 			await this.validateTarget();
 
-			// Pre-flight checks
-			await this.preFlightChecks();
-
 			// Load appropriate environment (validation happens inside)
 			await this.loadEnvironment();
+
+			// Pre-flight checks
+			await this.preFlightChecks();
 
 			// Clean and build
 			await this.cleanBuild();
