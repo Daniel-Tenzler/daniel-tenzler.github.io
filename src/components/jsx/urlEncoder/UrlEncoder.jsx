@@ -50,6 +50,9 @@ const UrlEncoder = ({ initialValue }) => {
 					aria-label="URL text to encode or decode"
 					aria-invalid={!!error}
 					aria-describedby={error ? 'url-encoder-error' : undefined}
+					spellCheck={false}
+					autoComplete="off"
+					autoCapitalize="off"
 				/>
 				<MessagesContainer>
 					{error && (

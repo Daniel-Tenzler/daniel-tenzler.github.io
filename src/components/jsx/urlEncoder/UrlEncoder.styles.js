@@ -17,7 +17,7 @@ export const Container = styled('div')`
 `;
 
 export const SectionTitle = styled.h3`
-	color: var(--color-text-muted);
+	color: var(--color-text-emphasis);
 	font-size: 1.1rem;
 	font-weight: 600;
 	margin: 0;
@@ -122,7 +122,7 @@ export const ButtonContainer = styled.div`
 
 const BaseButton = styled.button`
 	background-color: var(--gray-383838);
-	color: var(--color-text-muted);
+	color: var(--color-text-emphasis);
 	padding: 0.75em 1.5em;
 	border: none;
 	border-radius: 8px;
