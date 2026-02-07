@@ -10,6 +10,7 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"clean": "rm -rf dist",
+		"generate-images": "node scripts/generate-images.js",
 		"deploy:github": "node scripts/deploy-helper.js github",
 		"deploy:server": "node scripts/deploy-helper.js server",
 		"eslint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
@@ -58,6 +59,7 @@
 		"eslint-plugin-react": "^7.37.5",
 		"eslint-plugin-react-hooks": "^5.2.0",
 		"prettier": "^3.6.2",
+		"sharp": "^0.34.5",
 		"terser": "^5.44.1"
 	},
 	"eslintIgnore": [

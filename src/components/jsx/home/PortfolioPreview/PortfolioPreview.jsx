@@ -46,18 +46,19 @@ const PortfolioPreviewContent = ({ projects }) => {
 						<ImageContainer>
 							<picture>
 								<source
-									srcSet={project.image.replace(
-										/\.jpg$/i,
-										'.webp'
-									)}
+									srcSet={project.responsiveImage.webp.srcset}
+									sizes={project.responsiveImage.sizes}
 									type="image/webp"
 								/>
 								<source
-									srcSet={project.image}
+									srcSet={project.responsiveImage.jpeg.srcset}
+									sizes={project.responsiveImage.sizes}
 									type="image/jpeg"
 								/>
 								<ProjectImage
-									src={project.image}
+									src={project.responsiveImage.jpeg.src}
+									srcSet={project.responsiveImage.jpeg.srcset}
+									sizes={project.responsiveImage.sizes}
 									alt={project.title}
 									loading={index === 0 ? 'eager' : 'lazy'}
 									fetchPriority={
@@ -118,6 +119,17 @@ PortfolioPreviewContent.propTypes = {
 			description: PropTypes.string.isRequired,
 			technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
 			image: PropTypes.string.isRequired,
+			responsiveImage: PropTypes.shape({
+				jpeg: PropTypes.shape({
+					src: PropTypes.string.isRequired,
+					srcset: PropTypes.string.isRequired,
+				}).isRequired,
+				webp: PropTypes.shape({
+					src: PropTypes.string.isRequired,
+					srcset: PropTypes.string.isRequired,
+				}).isRequired,
+				sizes: PropTypes.string.isRequired,
+			}).isRequired,
 			githubUrl: PropTypes.string,
 			liveUrl: PropTypes.string,
 			featured: PropTypes.bool.isRequired,

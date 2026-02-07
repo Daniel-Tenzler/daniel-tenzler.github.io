@@ -42,13 +42,15 @@ const {
 		<BaseHead
 			title={title}
 			description={description}
-			image={coverImage || heroImage || '/blog-placeholder-2.jpg'}
+			image={
+				coverImage || heroImage || '/images/portfolio/blog-placeholder-2.jpg'
+			}
 			structuredData={{
 				'@context': 'https://schema.org',
 				'@type': 'BlogPosting',
 				headline: title,
 				description: description,
-				image: coverImage || heroImage || '/blog-placeholder-2.jpg',
+				image: coverImage || heroImage || '/images/portfolio/blog-placeholder-2.jpg',
 				author: {
 					'@type': 'Person',
 					name: author || 'Daniel Tenzler',
@@ -58,7 +60,7 @@ const {
 					name: 'Daniel Tenzler',
 					logo: {
 						'@type': 'ImageObject',
-						url: '/favicon.svg',
+						url: '/icons/favicon.svg',
 					},
 				},
 				datePublished: pubDate.toISOString(),

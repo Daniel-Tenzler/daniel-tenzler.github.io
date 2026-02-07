@@ -2,7 +2,7 @@
 title: 'Collection of Project Ideas'
 description: 'Some project ideas that I do not want to forget'
 pubDate: 'Jun 22 2025'
-heroImage: '/blog-placeholder-4.jpg'
+heroImage: '/images/portfolio/blog-placeholder-4.jpg'
 tags: ['web dev', 'astro', 'js', 'app dev', 'jsx']
 ---
 

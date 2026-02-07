@@ -12,6 +12,11 @@ import { getCollection } from 'astro:content';
 import portfolioData from 'src/data/portfolio/portfolio.json';
 import PortfolioPreview from 'src/components/jsx/home/PortfolioPreview/PortfolioPreview';
 import {
+	prepareResponsiveImageData,
+	PORTFOLIO_IMAGE_WIDTHS,
+	PORTFOLIO_IMAGE_SIZES,
+} from 'src/infrastructure/imageUtils';
+import {
 	getRepoMetadata,
 	getCommitCount,
 	fetchRepositories,
@@ -39,9 +44,16 @@ const aboutParagraphs = [
 	"I'm a full-stack web developer focused on building fast, accessible, and user-friendly apps. This site is where I test out new web technologies when I have the time.",
 ];
 
-const featuredProjects = portfolioData.projects.filter(
-	(project) => project.featured
-);
+const featuredProjects = portfolioData.projects
+	.filter((project) => project.featured)
+	.map((project) => ({
+		...project,
+		responsiveImage: prepareResponsiveImageData(
+			project.image,
+			PORTFOLIO_IMAGE_WIDTHS,
+			PORTFOLIO_IMAGE_SIZES
+		),
+	}));
 
 // GitHub data fetching
 const startTime = Date.now();

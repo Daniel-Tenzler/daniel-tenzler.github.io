@@ -2,7 +2,7 @@
 title: 'How a Small Image Placeholder Change Increased Painting Time by Nearly 50%'
 description: 'Recently, one of our Android app developers flagged an unusual issue...'
 pubDate: 'Aug 08 2025'
-heroImage: '/blog-placeholder-2.jpg'
+heroImage: '/images/portfolio/blog-placeholder-2.jpg'
 tags: ['web dev', 'react', 'app dev', 'jsx']
 ---
 

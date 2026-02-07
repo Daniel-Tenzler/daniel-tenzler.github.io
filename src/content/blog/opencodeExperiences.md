@@ -2,7 +2,7 @@
 title: 'Experiences Using Opencode’s Zen Model “Big Pickle” for Project Development'
 description: 'A practical assessment of strengths and limitations encountered while using Opencode’s Zen model Big Pickle for real-world projects.'
 pubDate: 'Jan 01 2026'
-heroImage: '/blog-placeholder-3.jpg'
+heroImage: '/images/portfolio/blog-placeholder-3.jpg'
 tags: ['web dev', 'AI', 'coding']
 ---
 
