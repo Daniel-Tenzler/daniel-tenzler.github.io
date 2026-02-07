@@ -5,7 +5,7 @@ export const tools = [
 		description:
 			'Encode or decode URL strings for web development and data processing.',
 		path: '/encode',
-		icon: '/link.svg',
+		icon: '/icons/link.svg',
 		category: 'Web Development',
 	},
 	{
@@ -14,7 +14,7 @@ export const tools = [
 		description:
 			'Validate, format, and visualize JSON data with syntax highlighting.',
 		path: '/json-visualizer',
-		icon: '/link.svg',
+		icon: '/icons/link.svg',
 		category: 'Web Development',
 	},
 	{
@@ -23,7 +23,7 @@ export const tools = [
 		description:
 			'Convert images to RGB matrix data and apply smoothing effects for image processing.',
 		path: '/pixelizer',
-		icon: '/link.svg',
+		icon: '/icons/link.svg',
 		category: 'Image Processing',
 	},
 ];
