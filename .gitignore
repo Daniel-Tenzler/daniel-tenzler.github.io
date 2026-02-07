@@ -44,3 +44,10 @@ GEMINI.md
 hetzner_sftp.ppk
 hetzner_sftp_openssh
 
+# Claude
+.claude
+CLAUDE.md
+/docs
+
+# Generic Agents
+AGENTS.md

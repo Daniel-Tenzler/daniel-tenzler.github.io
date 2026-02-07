@@ -1,44 +1,32 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
 	Container,
-	InputSection,
 	OutputSection,
 	SectionTitle,
-	InputField,
 	OutputField,
 	ErrorMessage,
 	SuccessMessage,
-	FormatButton,
 	CopyButton,
+	ImportButton,
 	ButtonsContainer,
 	MessagesContainer,
-	InputContentWrapper,
 	OutputContentWrapper,
-	Separator,
 	SectionHeader,
 	FullscreenButton,
 } from './JsonVisualizer.styles';
 
 const JsonVisualizer = ({ initialValue }) => {
-	const [inputValue, setInputValue] = useState(initialValue || '');
 	const [outputValue, setOutputValue] = useState('');
-	const [isValidJson, setIsValidJson] = useState(false);
 	const [error, setError] = useState('');
 	const [success, setSuccess] = useState('');
 	const [isFading, setIsFading] = useState(false);
 	const [copySuccess, setCopySuccess] = useState('');
-	const [dividerPosition, setDividerPosition] = useState(50);
-	const [isDragging, setIsDragging] = useState(false);
 	const [isFullscreen, setIsFullscreen] = useState(false);
-	const containerRef = useRef(null);
-	const MIN_WIDTH_PERCENT = 20;
-	const MAX_WIDTH_PERCENT = 80;
 
 	const validateAndFormatJson = (jsonString) => {
 		if (!jsonString.trim()) {
 			setOutputValue('');
-			setIsValidJson(false);
 			setError('');
 			setSuccess('');
 			return;
@@ -48,27 +36,24 @@ const JsonVisualizer = ({ initialValue }) => {
 			const parsed = JSON.parse(jsonString);
 			const formatted = JSON.stringify(parsed, null, 2);
 			setOutputValue(formatted);
-			setIsValidJson(true);
 			setError('');
 			setSuccess('Valid JSON! Formatted and displayed.');
 		} catch (e) {
 			setOutputValue('');
-			setIsValidJson(false);
 			setError(`Invalid JSON: ${e.message}`);
 			setSuccess('');
 		}
 	};
 
-	const handleInputChange = (e) => {
-		const value = e.target.value;
-		setInputValue(value);
-		validateAndFormatJson(value);
-	};
-
-	const handleFormatClick = () => {
-		if (isValidJson && outputValue) {
-			setInputValue(outputValue);
-			validateAndFormatJson(outputValue);
+	const handleImportFromClipboard = async () => {
+		try {
+			// eslint-disable-next-line no-undef
+			const text = await navigator.clipboard.readText();
+			validateAndFormatJson(text);
+		} catch (err) {
+			console.error('Failed to read clipboard: ', err);
+			setError('Failed to read from clipboard. Please check permissions.');
+			setSuccess('');
 		}
 	};
 
@@ -89,53 +74,6 @@ const JsonVisualizer = ({ initialValue }) => {
 	const toggleFullscreen = () => {
 		setIsFullscreen((prev) => !prev);
 	};
-
-	const handleDrag = useCallback(
-		(clientX) => {
-			if (!containerRef.current) return;
-
-			const rect = containerRef.current.getBoundingClientRect();
-			const relativeX = clientX - rect.left;
-			const newPosition = (relativeX / rect.width) * 100;
-			const clampedPosition = Math.min(
-				MAX_WIDTH_PERCENT,
-				Math.max(MIN_WIDTH_PERCENT, newPosition)
-			);
-			setDividerPosition(clampedPosition);
-		},
-		[MAX_WIDTH_PERCENT, MIN_WIDTH_PERCENT]
-	);
-
-	const handleMouseDown = (event) => {
-		event.preventDefault();
-		setIsDragging(true);
-		handleDrag(event.clientX);
-	};
-
-	useEffect(() => {
-		if (!isDragging) {
-			document.body.style.userSelect = '';
-			return undefined;
-		}
-
-		const handleMouseMove = (event) => {
-			handleDrag(event.clientX);
-		};
-
-		const handleMouseUp = () => {
-			setIsDragging(false);
-		};
-
-		document.body.style.userSelect = 'none';
-		window.addEventListener('mousemove', handleMouseMove);
-		window.addEventListener('mouseup', handleMouseUp);
-
-		return () => {
-			document.body.style.userSelect = '';
-			window.removeEventListener('mousemove', handleMouseMove);
-			window.removeEventListener('mouseup', handleMouseUp);
-		};
-	}, [handleDrag, isDragging]);
 
 	useEffect(() => {
 		validateAndFormatJson(initialValue || '');
@@ -178,36 +116,29 @@ const JsonVisualizer = ({ initialValue }) => {
 		};
 	}, [isFullscreen]);
 
-	const inputSectionStyle = isFullscreen
-		? { flexBasis: `${dividerPosition}%`, height: '100%' }
-		: { flexBasis: `${dividerPosition}%` };
-
-	const outputSectionStyle = isFullscreen
-		? { flexBasis: `${100 - dividerPosition}%`, height: '100%' }
-		: { flexBasis: `${100 - dividerPosition}%` };
-
 	return (
-		<Container ref={containerRef} isFullscreen={isFullscreen}>
-			<InputSection isFullscreen={isFullscreen} style={inputSectionStyle}>
-				<InputContentWrapper isFullscreen={isFullscreen}>
+		<Container isFullscreen={isFullscreen}>
+			<OutputSection isFullscreen={isFullscreen}>
+				<OutputContentWrapper isFullscreen={isFullscreen}>
 					<SectionHeader>
-						<SectionTitle>JSON Input</SectionTitle>
+						<SectionTitle>JSON Visualizer</SectionTitle>
+						<FullscreenButton
+							type="button"
+							onClick={toggleFullscreen}
+							aria-pressed={isFullscreen}
+							aria-label={
+								isFullscreen
+									? 'Exit fullscreen'
+									: 'Enter fullscreen'
+							}
+						>
+							{isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
+						</FullscreenButton>
 					</SectionHeader>
-					<InputField
-						isFullscreen={isFullscreen}
-						value={inputValue}
-						onChange={handleInputChange}
-						placeholder="Enter JSON data here..."
-						aria-label="JSON input field"
-						aria-invalid={!!error}
-						aria-describedby={
-							error
-								? 'json-error'
-								: success
-									? 'json-success'
-									: undefined
-						}
-					/>
+					<OutputField isFullscreen={isFullscreen}>
+						{outputValue ||
+							'Click "Import from Clipboard" to paste and format JSON...'}
+					</OutputField>
 					<MessagesContainer>
 						{error && (
 							<ErrorMessage id="json-error" role="alert">
@@ -224,53 +155,13 @@ const JsonVisualizer = ({ initialValue }) => {
 							</SuccessMessage>
 						)}
 					</MessagesContainer>
-				</InputContentWrapper>
-			</InputSection>
-
-			<Separator
-				onMouseDown={handleMouseDown}
-				role="separator"
-				aria-orientation="vertical"
-				aria-label="Resize panels"
-				aria-valuemin={MIN_WIDTH_PERCENT}
-				aria-valuemax={MAX_WIDTH_PERCENT}
-				aria-valuenow={dividerPosition}
-				className={isDragging ? 'dragging' : ''}
-				isFullscreen={isFullscreen}
-			/>
-
-			<OutputSection
-				isFullscreen={isFullscreen}
-				style={outputSectionStyle}
-			>
-				<OutputContentWrapper isFullscreen={isFullscreen}>
-					<SectionHeader>
-						<SectionTitle>Formatted Output</SectionTitle>
-						<FullscreenButton
-							type="button"
-							onClick={toggleFullscreen}
-							aria-pressed={isFullscreen}
-							aria-label={
-								isFullscreen
-									? 'Exit fullscreen'
-									: 'Enter fullscreen'
-							}
-						>
-							{isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
-						</FullscreenButton>
-					</SectionHeader>
-					<OutputField isFullscreen={isFullscreen}>
-						{outputValue ||
-							'Enter valid JSON in the input field to see formatted output...'}
-					</OutputField>
 					<ButtonsContainer>
-						<FormatButton
-							onClick={handleFormatClick}
-							disabled={!isValidJson}
-							aria-label="Format JSON"
+						<ImportButton
+							onClick={handleImportFromClipboard}
+							aria-label="Import JSON from clipboard"
 						>
-							Format JSON
-						</FormatButton>
+							Import from Clipboard
+						</ImportButton>
 						<CopyButton
 							onClick={handleCopyClick}
 							disabled={!outputValue}

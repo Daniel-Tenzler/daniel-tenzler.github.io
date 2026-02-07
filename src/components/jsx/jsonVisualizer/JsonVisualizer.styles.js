@@ -278,6 +278,8 @@ export const FormatButton = styled.button`
 
 export const CopyButton = styled(FormatButton)``;
 
+export const ImportButton = styled(FormatButton)``;
+
 export const ButtonsContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
