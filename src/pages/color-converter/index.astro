@@ -1,0 +1,13 @@
+---
+import MainLayout from 'src/layouts/MainLayout.astro';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import ColorConverter from 'src/components/jsx/colorConverter/ColorConverter';
+---
+
+<MainLayout
+	title="Color Converter Tool"
+	description="Convert between HEX, RGB, HSL, HSV, HWB, and CMYK color formats"
+>
+	<GridBackground client:load />
+	<ColorConverter client:load />
+</MainLayout>

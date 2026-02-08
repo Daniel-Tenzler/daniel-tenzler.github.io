@@ -26,6 +26,33 @@ export const tools = [
 		icon: '/icons/link.svg',
 		category: 'Image Processing',
 	},
+	{
+		id: 'color-converter',
+		title: 'Color Converter',
+		description:
+			'Convert between HEX, RGB, HSL, HSV, HWB, and CMYK color formats.',
+		path: '/color-converter',
+		icon: '/icons/link.svg',
+		category: 'Color & Design',
+	},
+	{
+		id: 'box-shadow-generator',
+		title: 'Box Shadow Generator',
+		description:
+			'Generate CSS box shadows with visual preview, multiple layers, and presets.',
+		path: '/box-shadow-generator',
+		icon: '/icons/link.svg',
+		category: 'Color & Design',
+	},
+	{
+		id: 'gradient-generator',
+		title: 'Gradient Generator',
+		description:
+			'Create beautiful CSS gradients with linear, radial, and conic options.',
+		path: '/gradient-generator',
+		icon: '/icons/link.svg',
+		category: 'Color & Design',
+	},
 ];
 
 export const getToolsByCategory = () => {
