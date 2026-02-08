@@ -1,0 +1,13 @@
+---
+import MainLayout from 'src/layouts/MainLayout.astro';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import CsvToJson from 'src/components/jsx/csvToJson/CsvToJson';
+---
+
+<MainLayout
+	title="CSV to JSON Converter Tool"
+	description="Convert CSV data to JSON format with delimiter detection"
+>
+	<GridBackground client:load />
+	<CsvToJson client:load />
+</MainLayout>

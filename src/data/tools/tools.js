@@ -53,6 +53,32 @@ export const tools = [
 		icon: '/icons/link.svg',
 		category: 'Color & Design',
 	},
+	{
+		id: 'diff-checker',
+		title: 'Diff Checker',
+		description:
+			'Compare two texts and visualize differences line by line.',
+		path: '/diff-checker',
+		icon: '/icons/link.svg',
+		category: 'Developer Utilities',
+	},
+	{
+		id: 'csv-to-json',
+		title: 'CSV to JSON',
+		description:
+			'Convert CSV data to JSON format with delimiter detection.',
+		path: '/csv-to-json',
+		icon: '/icons/link.svg',
+		category: 'Developer Utilities',
+	},
+	{
+		id: 'yaml-converter',
+		title: 'YAML Converter',
+		description: 'Convert between YAML and JSON formats bidirectionally.',
+		path: '/yaml-converter',
+		icon: '/icons/link.svg',
+		category: 'Developer Utilities',
+	},
 ];
 
 export const getToolsByCategory = () => {

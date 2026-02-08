@@ -1,0 +1,13 @@
+---
+import MainLayout from 'src/layouts/MainLayout.astro';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import YamlConverter from 'src/components/jsx/yamlConverter/YamlConverter';
+---
+
+<MainLayout
+	title="YAML Converter Tool"
+	description="Convert between YAML and JSON formats bidirectionally"
+>
+	<GridBackground client:load />
+	<YamlConverter client:load />
+</MainLayout>
