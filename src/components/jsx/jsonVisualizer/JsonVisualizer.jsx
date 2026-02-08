@@ -52,7 +52,9 @@ const JsonVisualizer = ({ initialValue }) => {
 			validateAndFormatJson(text);
 		} catch (err) {
 			console.error('Failed to read clipboard: ', err);
-			setError('Failed to read from clipboard. Please check permissions.');
+			setError(
+				'Failed to read from clipboard. Please check permissions.'
+			);
 			setSuccess('');
 		}
 	};

@@ -21,19 +21,28 @@ export const useTheme = () => {
 		}
 
 		// No stored preference - use system preference
-		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-		document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+		const prefersDark = window.matchMedia(
+			'(prefers-color-scheme: dark)'
+		).matches;
+		document.documentElement.setAttribute(
+			'data-theme',
+			prefersDark ? 'dark' : 'light'
+		);
 
 		// Listen for system preference changes (only if user hasn't set preference)
 		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 		const handleSystemChange = (e) => {
 			if (!localStorage.getItem('theme')) {
-				document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+				document.documentElement.setAttribute(
+					'data-theme',
+					e.matches ? 'dark' : 'light'
+				);
 			}
 		};
 		mediaQuery.addEventListener('change', handleSystemChange);
 
-		return () => mediaQuery.removeEventListener('change', handleSystemChange);
+		return () =>
+			mediaQuery.removeEventListener('change', handleSystemChange);
 	}, []);
 
 	/**
@@ -42,7 +51,8 @@ export const useTheme = () => {
 	 */
 	const toggleTheme = () => {
 		if (typeof document === 'undefined') return;
-		const current = document.documentElement.getAttribute('data-theme') || 'dark';
+		const current =
+			document.documentElement.getAttribute('data-theme') || 'dark';
 		const next = current === 'dark' ? 'light' : 'dark';
 		document.documentElement.setAttribute('data-theme', next);
 		localStorage.setItem('theme', next);

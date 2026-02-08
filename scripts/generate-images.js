@@ -18,7 +18,11 @@ function validateWidths(widths, type) {
 	}
 
 	for (const width of widths) {
-		if (typeof width !== 'number' || width <= 0 || !Number.isInteger(width)) {
+		if (
+			typeof width !== 'number' ||
+			width <= 0 ||
+			!Number.isInteger(width)
+		) {
 			throw new Error(
 				`IMAGE_TYPES.${type}.widths must contain positive integers: ${width}`
 			);

@@ -20,7 +20,10 @@ afterEach(() => {
 test('should validate github deployment target structure', async () => {
 	// Create mock environment
 	const envPath = path.join(tempDir, '.env.github');
-	fs.writeFileSync(envPath, 'BASE_URL=https://example.com\nGITHUB_TOKEN=test');
+	fs.writeFileSync(
+		envPath,
+		'BASE_URL=https://example.com\nGITHUB_TOKEN=test'
+	);
 
 	// This would require mocking DeployHelper's project root
 	// For now, test validates the structure works

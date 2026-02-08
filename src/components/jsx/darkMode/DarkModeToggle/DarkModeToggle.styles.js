@@ -84,7 +84,9 @@ export const Switch = styled.span`
 		background: var(--color-text-emphasis);
 		border-radius: 50%;
 		box-shadow: 0 1px 4px #0000001e;
-		transition: left 0.2s, background 0.2s;
+		transition:
+			left 0.2s,
+			background 0.2s;
 	}
 
 	/* Compact version for mobile header */

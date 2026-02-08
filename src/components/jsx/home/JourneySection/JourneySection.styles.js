@@ -39,7 +39,7 @@ export const TimelineWrapper = styled.div`
 		ellipse at center,
 		var(--white-ffffff-03) 0%,
 		var(--white-ffffff-02) 50%,
-			var(--white-ffffff-01) 100%
+		var(--white-ffffff-01) 100%
 	);
 	border-radius: 1rem;
 `;

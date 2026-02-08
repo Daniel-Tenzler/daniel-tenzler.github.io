@@ -12,7 +12,9 @@ export const TagButton = styled.button`
 	border: 1px solid var(--black-0f1219);
 	border-radius: 9999px;
 	background: ${(props) =>
-		props.active ? 'var(--color-accent-brand-dark)' : 'var(--black-0f1219)'};
+		props.active
+			? 'var(--color-accent-brand-dark)'
+			: 'var(--black-0f1219)'};
 	color: var(--color-text-emphasis);
 	font-size: 0.875rem;
 	cursor: pointer;

@@ -9,8 +9,16 @@ export const DEPLOY_CONFIG = {
 
 	// Modern SSH algorithms (remove deprecated sha1)
 	sshAlgorithms: {
-		kex: ['curve25519-sha256', 'ecdh-sha2-nistp256', 'diffie-hellman-group16-sha512'],
-		cipher: ['chacha20-poly1305@openssh.com', 'aes256-gcm@openssh.com', 'aes256-ctr'],
+		kex: [
+			'curve25519-sha256',
+			'ecdh-sha2-nistp256',
+			'diffie-hellman-group16-sha512',
+		],
+		cipher: [
+			'chacha20-poly1305@openssh.com',
+			'aes256-gcm@openssh.com',
+			'aes256-ctr',
+		],
 		serverHostKey: ['ssh-ed25519', 'rsa-sha2-512', 'ecdsa-sha2-nistp256'],
 		hmac: ['hmac-sha2-256-etm@openssh.com', 'hmac-sha2-256'],
 	},

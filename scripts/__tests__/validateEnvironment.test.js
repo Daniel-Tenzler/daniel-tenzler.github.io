@@ -24,7 +24,10 @@ afterEach(() => {
 });
 
 test('should accept valid environment variables', async () => {
-	fs.writeFileSync(tempEnvPath, 'BASE_URL=https://example.com\nSFTP_HOST=example.com');
+	fs.writeFileSync(
+		tempEnvPath,
+		'BASE_URL=https://example.com\nSFTP_HOST=example.com'
+	);
 	await helper.validateEnvironmentFile(tempEnvPath);
 	assert.ok(true); // No error thrown
 });

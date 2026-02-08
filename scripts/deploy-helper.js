@@ -61,7 +61,10 @@ class DeployHelper {
 		// Check 1: Verify dist directory will exist after build
 		const distDir = path.join(this.projectRoot, 'dist');
 		if (!fs.existsSync(distDir)) {
-			await this.log('[CHECK] dist/ directory will be created by build', 'info');
+			await this.log(
+				'[CHECK] dist/ directory will be created by build',
+				'info'
+			);
 		}
 
 		// Check 2: Verify environment file exists
@@ -152,7 +155,10 @@ class DeployHelper {
 					);
 				}
 
-				if (varNameTrimmed === 'BASE_URL' && !value.startsWith('https://')) {
+				if (
+					varNameTrimmed === 'BASE_URL' &&
+					!value.startsWith('https://')
+				) {
 					throw new DeployError(
 						ErrorCodes.ENV_VAR_INVALID,
 						`BASE_URL must use https://`,
@@ -216,7 +222,10 @@ class DeployHelper {
 	async deployToGitHub() {
 		await this.log('Deploying to GitHub Pages...');
 		if (this.dryRun) {
-			await this.log('[DRY RUN] Would run: gh-pages -d dist -b gh-pages --dotfiles --nojekyll', 'info');
+			await this.log(
+				'[DRY RUN] Would run: gh-pages -d dist -b gh-pages --dotfiles --nojekyll',
+				'info'
+			);
 			return;
 		}
 		try {
@@ -233,7 +242,11 @@ class DeployHelper {
 	async deployToServer() {
 		await this.log('Deploying to private server via SFTP...');
 		if (this.dryRun) {
-			await this.log('[DRY RUN] Would deploy via SFTP to: ' + process.env.SFTP_REMOTE_DIR, 'info');
+			await this.log(
+				'[DRY RUN] Would deploy via SFTP to: ' +
+					process.env.SFTP_REMOTE_DIR,
+				'info'
+			);
 			return;
 		}
 
@@ -301,7 +314,10 @@ class DeployHelper {
 				fs.writeFileSync(robotsPath, this.originalRobotsTxt);
 				await this.log('robots.txt restored to original state', 'gray');
 			} catch (error) {
-				await this.log(`Warning: Failed to restore robots.txt: ${error.message}`, 'warning');
+				await this.log(
+					`Warning: Failed to restore robots.txt: ${error.message}`,
+					'warning'
+				);
 			}
 		}
 
@@ -318,7 +334,10 @@ class DeployHelper {
 				`Starting deployment to ${chalk.bold(this.target.toUpperCase())}...`
 			);
 			if (this.dryRun) {
-				await this.log(chalk.yellow('DRY RUN MODE - no changes will be made'), 'warning');
+				await this.log(
+					chalk.yellow('DRY RUN MODE - no changes will be made'),
+					'warning'
+				);
 			}
 			await this.log('='.repeat(50));
 
@@ -386,7 +405,10 @@ process.on('uncaughtException', (error) => {
 });
 
 // Run main function only if this file is executed directly
-if (import.meta.url === new URL(`file://${process.argv[1].replace(/\\/g, '/')}`).href) {
+if (
+	import.meta.url ===
+	new URL(`file://${process.argv[1].replace(/\\/g, '/')}`).href
+) {
 	main();
 }
 

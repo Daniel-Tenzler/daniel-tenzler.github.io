@@ -30,7 +30,10 @@ export default defineConfig({
 			output: {
 				manualChunks(id) {
 					// React vendor
-					if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+					if (
+						id.includes('node_modules/react') ||
+						id.includes('node_modules/react-dom')
+					) {
 						return 'react-vendor';
 					}
 					// Emotion vendor
@@ -42,7 +45,11 @@ export default defineConfig({
 						return 'markdown-vendor';
 					}
 					// Group small utilities together (Colors, useIsMobile, etc)
-					if (id.includes('/src/consts/') || id.includes('/src/hooks/') || id.includes('/src/infrastructure/')) {
+					if (
+						id.includes('/src/consts/') ||
+						id.includes('/src/hooks/') ||
+						id.includes('/src/infrastructure/')
+					) {
 						return 'shared-utils';
 					}
 				},
@@ -76,7 +83,18 @@ export default defineConfig({
 				extensions: ['.js', '.jsx', '.ts', '.tsx'],
 				babelHelpers: 'bundled',
 				include: /src\/.*\.(js|jsx|ts|tsx)$/,
-				plugins: ['@emotion/babel-plugin'],
+				plugins: [
+					[
+						'@emotion/babel-plugin',
+						{
+							// Ensure consistent class names for SSR by using the source file
+							// and component name rather than random hashes
+							autoLabel: 'always',
+							labelFormat: '[local]',
+							sourceMap: false,
+						},
+					],
+				],
 			}),
 		],
 	},

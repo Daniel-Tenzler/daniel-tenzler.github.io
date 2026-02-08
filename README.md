@@ -68,19 +68,19 @@ yarn deploy:server -- --dry-run
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                  | Action                                                      |
-| :----------------------- | :---------------------------------------------------------- |
-| `yarn install`           | Installs dependencies                                       |
-| `yarn dev`               | Starts local dev server at `localhost:4321` (uses server env) |
-| `yarn dev -- --github`   | Starts dev server with GitHub environment                   |
-| `yarn preview`           | Preview your build locally, before deploying                |
-| `yarn astro ...`         | Run CLI commands like `astro add`, `astro check`            |
-| `yarn astro -- --help`   | Get help using the Astro CLI                                |
-| `yarn deploy:github`     | Deploy to GitHub Pages (recommended)                        |
-| `yarn deploy:server`     | Deploy to private server via SFTP (recommended)              |
-| `yarn deploy:* -- --dry-run` | Simulate deployment without changes                    |
-| `yarn eslint`            | Run ESLint to check code quality                             |
-| `yarn format`            | Format code with Prettier                                    |
+| Command                      | Action                                                        |
+| :--------------------------- | :------------------------------------------------------------ |
+| `yarn install`               | Installs dependencies                                         |
+| `yarn dev`                   | Starts local dev server at `localhost:4321` (uses server env) |
+| `yarn dev -- --github`       | Starts dev server with GitHub environment                     |
+| `yarn preview`               | Preview your build locally, before deploying                  |
+| `yarn astro ...`             | Run CLI commands like `astro add`, `astro check`              |
+| `yarn astro -- --help`       | Get help using the Astro CLI                                  |
+| `yarn deploy:github`         | Deploy to GitHub Pages (recommended)                          |
+| `yarn deploy:server`         | Deploy to private server via SFTP (recommended)               |
+| `yarn deploy:* -- --dry-run` | Simulate deployment without changes                           |
+| `yarn eslint`                | Run ESLint to check code quality                              |
+| `yarn format`                | Format code with Prettier                                     |
 
 ## Credit
 

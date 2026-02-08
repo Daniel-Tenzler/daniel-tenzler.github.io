@@ -7,6 +7,8 @@ import Breadcrumb from 'src/components/jsx/ui/Breadcrumb/Breadcrumb';
 import Footer from 'src/components/jsx/footer/Footer/Footer';
 import Header from 'src/components/jsx/header/Header/Header';
 import { COLORS } from 'src/consts/Colors';
+import { SITE_URL } from 'src/consts/SiteData.js';
+import { generateBlogPostingSchema } from 'src/infrastructure/structuredData.js';
 import '../styles/layouts-shared.css';
 
 type Props = {
@@ -34,6 +36,19 @@ const {
 	author,
 	headings,
 } = Astro.props;
+
+// Generate BlogPosting schema
+const blogPostingSchema = generateBlogPostingSchema(SITE_URL, {
+	headline: title,
+	description: description,
+	image: coverImage || heroImage || '/images/portfolio/blog-placeholder-2.jpg',
+	datePublished: pubDate,
+	dateModified: updatedDate,
+	url: Astro.url.href,
+	author: author,
+	readTime: readTime,
+	tags: tags,
+});
 ---
 
 <!doctype html>
@@ -45,37 +60,7 @@ const {
 			image={
 				coverImage || heroImage || '/images/portfolio/blog-placeholder-2.jpg'
 			}
-			structuredData={{
-				'@context': 'https://schema.org',
-				'@type': 'BlogPosting',
-				headline: title,
-				description: description,
-				image: coverImage || heroImage || '/images/portfolio/blog-placeholder-2.jpg',
-				author: {
-					'@type': 'Person',
-					name: author || 'Daniel Tenzler',
-				},
-				publisher: {
-					'@type': 'Organization',
-					name: 'Daniel Tenzler',
-					logo: {
-						'@type': 'ImageObject',
-						url: '/icons/favicon.svg',
-					},
-				},
-				datePublished: pubDate.toISOString(),
-				dateModified:
-					updatedDate?.toISOString() || pubDate.toISOString(),
-				mainEntityOfPage: {
-					'@type': 'WebPage',
-					'@id': Astro.url.href,
-				},
-				wordCount: readTime
-					? parseInt(readTime.replace(/\D/g, ''))
-					: undefined,
-				keywords: tags?.join(', '),
-				articleSection: tags?.[0] || 'Blog',
-			}}
+			structuredData={blogPostingSchema}
 		/>
 
 		<!-- Inline script for no-flash dark mode -->
@@ -99,7 +84,7 @@ const {
 				<div class="blog-layout-wrapper">
 					<div class="blog-content">
 						<Breadcrumb
-							client:idle
+							client:only="react"
 							items={[
 								{ label: 'Home', href: '/' },
 								{ label: 'Blog', href: '/blog' },

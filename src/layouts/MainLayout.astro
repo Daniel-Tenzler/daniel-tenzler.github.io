@@ -10,9 +10,10 @@ const baseUrl = import.meta.env.BASE_URL || 'https://daniel-tenzler.github.io';
 interface Props {
 	title: string;
 	description?: string;
+	structuredData?: object;
 }
 
-const { title, description = "Daniel Tenzler's personal website and blog" } =
+const { title, description = "Daniel Tenzler's personal website and blog", structuredData } =
 	Astro.props;
 ---
 
@@ -26,7 +27,7 @@ const { title, description = "Daniel Tenzler's personal website and blog" } =
 			title={title}
 			description={description}
 			image="/images/portfolio/blog-placeholder-2.jpg"
-			structuredData={{
+			structuredData={structuredData || {
 				'@context': 'https://schema.org',
 				'@type': 'WebPage',
 				name: title,

@@ -26,6 +26,8 @@ import {
 import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
 import { journeyData } from 'src/data/journey/journey.js';
 import { skillsData, skillCategories } from 'src/data/skills/skills.js';
+import { generatePersonSchema } from 'src/infrastructure/structuredData.js';
+import { SITE_URL } from 'src/consts/SiteData.js';
 
 const latestPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -89,9 +91,20 @@ try {
 } catch (error) {
 	console.error('Unexpected error in GitHub API calls:', error);
 }
+
+// Generate Person schema for the homepage
+const personSchema = generatePersonSchema(SITE_URL, {
+	jobTitle: 'Full-Stack Web Developer',
+	description: SITE_DESCRIPTION,
+	sameAs: ['https://github.com/daniel-tenzler'],
+});
 ---
 
-<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<MainLayout
+	title={SITE_TITLE}
+	description={SITE_DESCRIPTION}
+	structuredData={personSchema}
+>
 	<GridBackground client:visible />
 
 	<ContentContainer>
@@ -105,10 +118,7 @@ try {
 
 		<JourneySection client:idle data={journeyData} />
 
-		<SkillsSection
-			skills={skillsData}
-			categories={skillCategories}
-		/>
+		<SkillsSection skills={skillsData} categories={skillCategories} />
 
 		{
 			metadata && commitCount !== null && languageStats && (

@@ -125,10 +125,7 @@ export default function GitHubStats({ metadata, commitCount, languageStats }) {
 							{sortedLanguages.map(([lang, count]) => {
 								const cssVar = LANGUAGE_CSS_VARS[lang] || null;
 								return (
-									<LanguageBadge
-										key={lang}
-										$color={cssVar}
-									>
+									<LanguageBadge key={lang} $color={cssVar}>
 										<span className="dot" />
 										<span className="name">{lang}</span>
 										<LanguageCount>{count}</LanguageCount>

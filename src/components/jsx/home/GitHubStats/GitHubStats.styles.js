@@ -195,10 +195,11 @@ export const LanguageBadge = styled.div`
 		$color
 			? `color-mix(in srgb, var(${$color}) 10%, transparent)`
 			: 'rgba(96, 115, 159, 0.1)'};
-	border: 1.5px solid ${({ $color }) =>
-		$color
-			? `color-mix(in srgb, var(${$color}) 30%, transparent)`
-			: 'rgba(96, 115, 159, 0.3)'};
+	border: 1.5px solid
+		${({ $color }) =>
+			$color
+				? `color-mix(in srgb, var(${$color}) 30%, transparent)`
+				: 'rgba(96, 115, 159, 0.3)'};
 	border-radius: 9999px;
 	transition: border-color 0.2s ease;
 	cursor: default;

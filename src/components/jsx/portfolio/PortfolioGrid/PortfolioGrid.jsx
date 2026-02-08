@@ -26,7 +26,10 @@ export default function PortfolioGrid({ items }) {
 				const fetchPriorityAttr = isFirstOnMobile ? 'high' : undefined;
 
 				return (
-					<StyledLinkArea key={item.id} href={`/portfolio/${item.id}`}>
+					<StyledLinkArea
+						key={item.id}
+						href={`/portfolio/${item.id}`}
+					>
 						<Card>
 							{item.image && (
 								<CardImage
@@ -42,9 +45,11 @@ export default function PortfolioGrid({ items }) {
 									{item.description}
 								</CardDescription>
 								<TechContainer>
-									{item.technologies.slice(0, 3).map((tech) => (
-										<TechTag key={tech}>{tech}</TechTag>
-									))}
+									{item.technologies
+										.slice(0, 3)
+										.map((tech) => (
+											<TechTag key={tech}>{tech}</TechTag>
+										))}
 									{item.technologies.length > 3 && (
 										<TechTag>
 											+{item.technologies.length - 3} more

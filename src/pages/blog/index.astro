@@ -1,10 +1,11 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from 'src/consts/SiteData';
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from 'src/consts/SiteData';
 import MainLayout from 'src/layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 import BlogContainer from 'src/components/jsx/blog/BlogContainer/BlogContainer';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
 import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
+import { generateBlogIndexSchema } from 'src/utils/structuredData';
 
 const posts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -20,9 +21,11 @@ const posts = (await getCollection('blog'))
 const allTags = [
 	...new Set(posts.flatMap((post) => post.data.tags || [])),
 ].sort();
+
+const structuredData = generateBlogIndexSchema(posts, SITE_URL);
 ---
 
-<MainLayout title={`${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+<MainLayout title={`${SITE_TITLE}`} description={SITE_DESCRIPTION} structuredData={structuredData}>
 	<GridBackground client:load />
 	<ContentContainer client:load>
 		<BlogContainer client:load posts={posts} allTags={allTags} />

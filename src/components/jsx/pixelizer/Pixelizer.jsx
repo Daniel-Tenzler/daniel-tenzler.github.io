@@ -40,7 +40,10 @@ const Pixelizer = () => {
 		if (originalImageRef.current && pixelSize) {
 			setIsProcessing(true);
 			try {
-				const canvas = pixelateImage(originalImageRef.current, pixelSize);
+				const canvas = pixelateImage(
+					originalImageRef.current,
+					pixelSize
+				);
 				setPixelatedCanvas(canvas);
 			} catch (err) {
 				console.error('Error pixelating image:', err);
@@ -49,19 +52,30 @@ const Pixelizer = () => {
 				setIsProcessing(false);
 			}
 		}
-	}, [originalImage, pixelSize, pixelateImage, setIsProcessing, setPixelatedCanvas, setError]);
+	}, [
+		originalImage,
+		pixelSize,
+		pixelateImage,
+		setIsProcessing,
+		setPixelatedCanvas,
+		setError,
+	]);
 
 	const validateFile = (file) => {
 		// Check file type
 		if (!file.type.startsWith('image/')) {
-			setError('Please select a valid image file (JPG, PNG, GIF, WebP, etc.)');
+			setError(
+				'Please select a valid image file (JPG, PNG, GIF, WebP, etc.)'
+			);
 			return false;
 		}
 
 		// Check file size (10MB limit)
 		const maxSize = 10 * 1024 * 1024; // 10MB
 		if (file.size > maxSize) {
-			setError('File size exceeds 10MB limit. Please choose a smaller image.');
+			setError(
+				'File size exceeds 10MB limit. Please choose a smaller image.'
+			);
 			return false;
 		}
 
@@ -70,7 +84,10 @@ const Pixelizer = () => {
 
 	const validateImageDimensions = (imgElement) => {
 		const maxDimension = 4096;
-		if (imgElement.width > maxDimension || imgElement.height > maxDimension) {
+		if (
+			imgElement.width > maxDimension ||
+			imgElement.height > maxDimension
+		) {
 			setError(
 				`Image dimensions (${imgElement.width}x${imgElement.height}) exceed 4096x4096 limit. Processing may be slow.`
 			);
@@ -187,8 +204,8 @@ const Pixelizer = () => {
 			<Header>
 				<h1>Pixelizer</h1>
 				<p>
-					Transform any image into pixel art. Upload an image, adjust the pixel
-					size, and download your retro creation.
+					Transform any image into pixel art. Upload an image, adjust
+					the pixel size, and download your retro creation.
 				</p>
 			</Header>
 
@@ -226,16 +243,20 @@ const Pixelizer = () => {
 								/>
 							</svg>
 							<div className="upload-text">
-								<strong>Click to upload</strong> or drag and drop
+								<strong>Click to upload</strong> or drag and
+								drop
 								<br />
-								<span style={{ fontSize: '0.85em', opacity: 0.7 }}>
+								<span
+									style={{ fontSize: '0.85em', opacity: 0.7 }}
+								>
 									JPG, PNG, GIF, WebP (max 10MB)
 								</span>
 							</div>
 						</>
 					) : (
 						<div className="upload-text">
-							<strong>Current file:</strong> {getFileDisplayName()}
+							<strong>Current file:</strong>{' '}
+							{getFileDisplayName()}
 							<br />
 							<span style={{ fontSize: '0.85em', opacity: 0.7 }}>
 								Click or drag to replace
@@ -340,7 +361,8 @@ const Pixelizer = () => {
 								Pixelated ({pixelSize}px blocks)
 								<span>
 									{' '}
-									({pixelatedCanvas.width}×{pixelatedCanvas.height})
+									({pixelatedCanvas.width}×
+									{pixelatedCanvas.height})
 								</span>
 							</div>
 						</ImageCard>

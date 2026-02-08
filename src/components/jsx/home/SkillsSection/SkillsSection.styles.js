@@ -67,8 +67,8 @@ export const SkillBubble = styled.span`
 	padding: 0.4rem 0.875rem;
 	background-color: ${({ $color }) =>
 		`color-mix(in srgb, var(${$color}) 10%, transparent)`};
-	border: 1.5px solid ${({ $color }) =>
-		`color-mix(in srgb, var(${$color}) 30%, transparent)`};
+	border: 1.5px solid
+		${({ $color }) => `color-mix(in srgb, var(${$color}) 30%, transparent)`};
 	border-radius: 9999px;
 	font-size: 0.8125rem;
 	color: var(--color-text-emphasis);
@@ -81,7 +81,8 @@ export const SkillBubble = styled.span`
 			`color-mix(in srgb, var(${$color}) 20%, transparent)`};
 		border-color: ${({ $color }) => `var(${$color})`};
 		transform: scale(1.05);
-		box-shadow: 0 0 12px ${({ $color }) =>
-			`color-mix(in srgb, var(${$color}) 40%, transparent)`};
+		box-shadow: 0 0 12px
+			${({ $color }) =>
+				`color-mix(in srgb, var(${$color}) 40%, transparent)`};
 	}
 `;

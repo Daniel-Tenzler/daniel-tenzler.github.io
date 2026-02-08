@@ -9,13 +9,17 @@ The image generation system automatically creates responsive image sizes for sou
 ## Convention
 
 ### Source Images
+
 Source images are identified by the following convention:
+
 - **No dash in the filename** (e.g., `photo.jpg`, `project.webp`)
 - **Both `.jpg` and `.webp` variants must exist**
 - Placed in configured directories (e.g., `public/images/portfolio`)
 
 ### Generated Images
+
 Generated images follow this pattern:
+
 - **Dash-separated sizes** (e.g., `photo-400.jpg`, `photo-640.webp`)
 - Created automatically by the generation script
 - Both `.jpg` and `.webp` variants are generated
@@ -39,20 +43,24 @@ export const IMAGE_TYPES = {
 ### Adding New Images
 
 1. **Place source images** in the configured directory:
-   - Add both `.jpg` and `.webp` variants
-   - Use filenames without dashes (e.g., `myproject.jpg` and `myproject.webp`)
+    - Add both `.jpg` and `.webp` variants
+    - Use filenames without dashes (e.g., `myproject.jpg` and `myproject.webp`)
 
 2. **Run the generation script**:
-   ```bash
-   yarn generate-images
-   ```
+
+    ```bash
+    yarn generate-images
+    ```
 
 3. **Use in your code**:
-   ```javascript
-   import { prepareResponsiveImageData } from 'src/infrastructure/imageUtils';
 
-   const imageData = prepareResponsiveImageData('/images/portfolio/myproject.jpg');
-   ```
+    ```javascript
+    import { prepareResponsiveImageData } from 'src/infrastructure/imageUtils';
+
+    const imageData = prepareResponsiveImageData(
+    	'/images/portfolio/myproject.jpg'
+    );
+    ```
 
 ### Example
 
@@ -63,6 +71,7 @@ yarn generate-images
 ```
 
 The script will automatically:
+
 - Detect the new source image
 - Generate `blog-placeholder-6-400.jpg` and `blog-placeholder-6-400.webp`
 - Generate `blog-placeholder-6-640.jpg` and `blog-placeholder-6-640.webp`
@@ -87,6 +96,7 @@ The script skips generating images if both `.jpg` and `.webp` variants already e
 ## Error Handling
 
 The script handles errors gracefully:
+
 - Warns about missing source variants
 - Continues processing other images if one fails
 - Provides clear error messages
@@ -97,16 +107,19 @@ The script handles errors gracefully:
 To add a new image type:
 
 1. Update `images.config.js`:
-   ```javascript
-   export const IMAGE_TYPES = {
-     portfolio: { /* existing config */ },
-     blog: {
-       directory: 'public/images/blog',
-       widths: [600, 900, 1200],
-       sizes: '100vw',
-     },
-   };
-   ```
+
+    ```javascript
+    export const IMAGE_TYPES = {
+    	portfolio: {
+    		/* existing config */
+    	},
+    	blog: {
+    		directory: 'public/images/blog',
+    		widths: [600, 900, 1200],
+    		sizes: '100vw',
+    	},
+    };
+    ```
 
 2. The script will automatically handle the new type on the next run.
 

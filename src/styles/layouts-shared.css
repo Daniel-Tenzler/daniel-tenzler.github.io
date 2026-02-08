@@ -76,9 +76,7 @@
 	--accent-dark: #000d8a;
 	--gray-gradient: #e5e9f080, #ffffff;
 	--box-shadow:
-		0 2px 6px #60739f40,
-		0 8px 24px #60739f54,
-		0 16px 32px #60739f54;
+		0 2px 6px #60739f40, 0 8px 24px #60739f54, 0 16px 32px #60739f54;
 	--main-surface-background: #212121e6;
 	--semi-surface-primary: #303030;
 	--surface-blend-1: #383838;
@@ -238,9 +236,7 @@
 	--main-surface-background: #d1d1d1;
 	--message-surface: #f0f0f0d9;
 	--box-shadow:
-		0 2px 6px #78829626,
-		0 8px 24px #78829633,
-		0 16px 32px #78829633;
+		0 2px 6px #78829626, 0 8px 24px #78829633, 0 16px 32px #78829633;
 
 	--blue-2337ff: #2337ff;
 	--blue-000d8a: #0561ca;

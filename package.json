@@ -13,6 +13,7 @@
 		"generate-images": "node scripts/generate-images.js",
 		"deploy:github": "node scripts/deploy-helper.js github",
 		"deploy:server": "node scripts/deploy-helper.js server",
+		"typecheck": "astro check",
 		"eslint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
 		"format": "prettier --write ."
 	},
@@ -42,6 +43,7 @@
 		"yaml": "2.4.2"
 	},
 	"devDependencies": {
+		"@astrojs/check": "^0.9.6",
 		"@babel/core": "^7.27.4",
 		"@babel/plugin-transform-react-jsx-self": "^7.27.1",
 		"@babel/plugin-transform-react-jsx-source": "^7.27.1",

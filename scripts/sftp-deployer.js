@@ -229,7 +229,10 @@ class SftpDeployer {
 					await sftp.put(localItemPath, remoteItemPath);
 
 					// Set file permissions
-					await sftp.chmod(remoteItemPath, DEPLOY_CONFIG.permissions.file);
+					await sftp.chmod(
+						remoteItemPath,
+						DEPLOY_CONFIG.permissions.file
+					);
 
 					await this.log(`Uploaded file: ${item}`, 'success');
 					uploadedCount++;
