@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-	max-width: 56rem;
+	max-width: 70rem;
 	min-height: 71dvh;
-	margin: 2rem auto;
+	margin: 1rem auto;
 
 	@media (max-width: 640px) {
 		padding: 0rem 1rem;
@@ -26,23 +26,22 @@ export const Description = styled.p`
 	font-size: 1.125rem;
 	color: var(--color-text-primary);
 	text-align: center;
-	margin-bottom: 3rem;
-	max-width: 42rem;
+	margin-bottom: 2rem;
+	max-width: 50rem;
 	margin-left: auto;
 	margin-right: auto;
 `;
 
 export const CategorySection = styled.div`
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 `;
 
 export const CategoryTitle = styled.h2`
 	font-size: 1.5rem;
 	font-weight: 600;
 	color: var(--color-text-emphasis);
-	margin-bottom: 1rem;
+	margin-bottom: 0.5rem;
 	border-bottom: 2px solid var(--gray-383838);
-	padding-bottom: 0.5rem;
 `;
 
 export const ToolsGrid = styled.div`
@@ -80,7 +79,7 @@ export const ToolCard = styled.a`
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--gray-60739f);
+		outline: 2px solid var(--color-text-primary);
 		outline-offset: 2px;
 	}
 `;

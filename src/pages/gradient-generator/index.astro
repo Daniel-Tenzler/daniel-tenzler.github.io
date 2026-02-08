@@ -1,0 +1,13 @@
+---
+import MainLayout from 'src/layouts/MainLayout.astro';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import GradientGenerator from 'src/components/jsx/gradientGenerator/GradientGenerator';
+---
+
+<MainLayout
+	title="Gradient Generator Tool"
+	description="Create beautiful CSS gradients with linear, radial, and conic options. Customize colors, positions, and angles with live preview."
+>
+	<GridBackground client:load />
+	<GradientGenerator client:load />
+</MainLayout>

@@ -26,8 +26,8 @@ const ToolsList = ({ tools }) => {
 		<Container>
 			<Title>Tools</Title>
 			<Description>
-				A collection of useful web development and utility tools to help
-				with your projects.
+				A collection of small & useful web development and utility tools
+				to help with my projects.
 			</Description>
 
 			{Object.entries(toolsByCategory).map(
