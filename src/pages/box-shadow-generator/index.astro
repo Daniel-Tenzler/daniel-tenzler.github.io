@@ -1,0 +1,13 @@
+---
+import MainLayout from 'src/layouts/MainLayout.astro';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import BoxShadowGenerator from 'src/components/jsx/boxShadowGenerator/BoxShadowGenerator';
+---
+
+<MainLayout
+	title="Box Shadow Generator Tool"
+	description="Generate CSS box shadows with visual preview and multiple layer support"
+>
+	<GridBackground client:load />
+	<BoxShadowGenerator client:load />
+</MainLayout>
