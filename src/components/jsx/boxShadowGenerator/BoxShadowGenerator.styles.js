@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { BaseMediumButton, BaseToggleButton } from 'src/components/jsx/ui/Button.styles';
 
 export const Container = styled.div`
 	width: 90%;
@@ -118,34 +119,8 @@ export const LayersList = styled.div`
 	}
 `;
 
-export const LayerItem = styled.button`
-	background-color: ${(props) =>
-		props.active ? 'var(--gray-474747)' : 'var(--gray-383838)'};
-	color: var(--color-text-emphasis);
+export const LayerItem = styled(BaseToggleButton)`
 	padding: 0.6em 1em;
-	border: 1px solid var(--gray-474747);
-	border-radius: 6px;
-	font-size: 13px;
-	cursor: pointer;
-	transition:
-		background-color 0.2s ease,
-		border-color 0.2s ease;
-	font-weight: 500;
-
-	&:hover {
-		border-color: var(--color-border-light);
-		background-color: var(--gray-474747);
-	}
-
-	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
-		outline-offset: 2px;
-	}
-
-	@media (max-width: 768px) {
-		font-size: 12px;
-		padding: 0.5em 0.8em;
-	}
 `;
 
 export const LayerHeader = styled.span`
@@ -329,78 +304,14 @@ export const OpacitySlider = styled.input`
 	}
 `;
 
-export const ToggleButton = styled.button`
-	background-color: ${(props) =>
-		props.active ? 'var(--gray-474747)' : 'var(--gray-383838)'};
-	color: var(--color-text-emphasis);
+export const ToggleButton = styled(BaseToggleButton)`
 	padding: 0.6em 1.2em;
-	border: 1px solid var(--gray-474747);
-	border-radius: 6px;
-	font-size: 13px;
-	font-weight: 500;
-	cursor: pointer;
-	transition:
-		background-color 0.2s ease,
-		border-color 0.2s ease;
 	text-align: center;
-
-	&:hover {
-		background-color: var(--gray-474747);
-		border-color: var(--color-border-light);
-	}
-
-	&:active {
-		background-color: var(--gray-404040);
-	}
-
-	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
-		outline-offset: 2px;
-	}
-
-	@media (max-width: 768px) {
-		font-size: 12px;
-		padding: 0.5em 1em;
-	}
 `;
 
-const BaseActionBtn = styled.button`
-	background-color: var(--gray-404040);
-	color: var(--color-text-emphasis);
-	padding: 0.6em 1em;
-	border: 1px solid var(--gray-474747);
-	border-radius: 6px;
-	font-size: 13px;
-	font-weight: 500;
-	cursor: pointer;
-	transition:
-		background-color 0.2s ease,
-		border-color 0.2s ease;
-	width: fit-content;
+export const AddLayerButton = styled(BaseMediumButton);
 
-	&:hover {
-		background-color: var(--gray-474747);
-		border-color: var(--color-border-light);
-	}
-
-	&:active {
-		background-color: var(--gray-383838);
-	}
-
-	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
-		outline-offset: 2px;
-	}
-
-	@media (max-width: 768px) {
-		font-size: 12px;
-		padding: 0.5em 0.8em;
-	}
-`;
-
-export const AddLayerButton = styled(BaseActionBtn)``;
-
-export const RemoveLayerButton = styled(BaseActionBtn)``;
+export const RemoveLayerButton = styled(BaseMediumButton);
 
 export const PresetsSection = styled.div`
 	display: flex;
@@ -431,7 +342,7 @@ export const PresetsGrid = styled.div`
 	}
 `;
 
-export const PresetButton = styled(BaseActionBtn)`
+export const PresetButton = styled(BaseMediumButton)`
 	flex: 1;
 	min-width: 80px;
 	text-align: center;
@@ -476,36 +387,7 @@ export const OutputCode = styled.textarea`
 	}
 `;
 
-export const CopyButton = styled.button`
-	background-color: var(--gray-404040);
-	color: var(--color-text-emphasis);
+export const CopyButton = styled(BaseMediumButton)`
 	padding: 0.6em 1.2em;
-	border: 1px solid var(--gray-474747);
-	border-radius: 6px;
-	font-size: 13px;
-	font-weight: 500;
-	cursor: pointer;
-	transition:
-		background-color 0.2s ease,
-		border-color 0.2s ease;
 	align-self: flex-start;
-
-	&:hover {
-		background-color: var(--gray-474747);
-		border-color: var(--color-border-light);
-	}
-
-	&:active {
-		background-color: var(--gray-383838);
-	}
-
-	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
-		outline-offset: 2px;
-	}
-
-	@media (max-width: 768px) {
-		font-size: 12px;
-		padding: 0.5em 1em;
-	}
 `;

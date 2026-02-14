@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { BasePrimaryButton } from 'src/components/jsx/ui/Button.styles';
 
 export const Container = styled.div`
 	width: 90%;
@@ -81,48 +82,7 @@ export const ButtonContainer = styled.div`
 	}
 `;
 
-const BaseButton = styled.button`
-	color: var(--color-text-muted);
-	padding: 0.75em 2em;
-	border: none;
-	border-radius: 8px;
-	background-color: var(--gray-2d2d2d);
-	font-weight: 500;
-	font-size: 15px;
-	cursor: pointer;
-	min-width: 140px;
-	transition:
-		background-color 0.2s ease,
-		box-shadow 0.2s ease;
-
-	&:hover:not(:disabled) {
-		background-color: var(--gray-222939);
-		box-shadow: 0 2px 4px #0000001a;
-	}
-
-	&:active:not(:disabled) {
-		background-color: var(--gray-383838);
-		box-shadow: none;
-	}
-
-	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
-		outline-offset: 2px;
-	}
-
-	&:disabled {
-		opacity: 0.5;
-		cursor: not-allowed;
-	}
-
-	@media (max-width: 480px) {
-		padding: 0.6em 1.5em;
-		font-size: 14px;
-		min-width: 120px;
-	}
-`;
-
-export const ProcessButton = styled(BaseButton)``;
+export const ProcessButton = styled(BasePrimaryButton);
 
 export const OutputField = styled.textarea`
 	background-color: var(--gray-2d2d2d);

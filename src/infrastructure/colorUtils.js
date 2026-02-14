@@ -503,3 +503,20 @@ export const convertToAllFormats = (rgb) => {
 		cmyk: formatCmyk(rgb),
 	};
 };
+
+/**
+ * Convert HEX color with opacity to RGBA string
+ * @param {string} hex - HEX color value (with or without # prefix)
+ * @param {number} opacity - Opacity value (0-1)
+ * @returns {string} RGBA color string
+ * @example
+ * hexToRgba('#ff0000', 0.5) // returns 'rgba(255, 0, 0, 0.5)'
+ * Used by Box Shadow Generator
+ */
+export const hexToRgba = (hex, opacity) => {
+	const cleanHex = hex.replace('#', '');
+	const r = parseInt(cleanHex.substring(0, 2), 16);
+	const g = parseInt(cleanHex.substring(2, 4), 16);
+	const b = parseInt(cleanHex.substring(4, 6), 16);
+	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+};

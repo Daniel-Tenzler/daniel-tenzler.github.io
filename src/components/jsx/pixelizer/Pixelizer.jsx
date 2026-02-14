@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import usePixelation from 'src/components/jsx/pixelizer/hooks/usePixelation';
 import usePixelationEffect from 'src/components/jsx/pixelizer/hooks/usePixelationEffect';
+import { validateImageFile, validateImageDimensions } from 'src/infrastructure/validation';
 import {
 	Container,
 	Header,
@@ -63,43 +64,8 @@ const Pixelizer = () => {
 		setError,
 	]);
 
-	const validateFile = (file) => {
-		// Check file type
-		if (!file.type.startsWith('image/')) {
-			setError(
-				'Please select a valid image file (JPG, PNG, GIF, WebP, etc.)'
-			);
-			return false;
-		}
-
-		// Check file size (10MB limit)
-		const maxSize = 10 * 1024 * 1024; // 10MB
-		if (file.size > maxSize) {
-			setError(
-				'File size exceeds 10MB limit. Please choose a smaller image.'
-			);
-			return false;
-		}
-
-		return true;
-	};
-
-	const validateImageDimensions = (imgElement) => {
-		const maxDimension = 4096;
-		if (
-			imgElement.width > maxDimension ||
-			imgElement.height > maxDimension
-		) {
-			setError(
-				`Image dimensions (${imgElement.width}x${imgElement.height}) exceed 4096x4096 limit. Processing may be slow.`
-			);
-			return false;
-		}
-		return true;
-	};
-
 	const handleFileSelect = (file) => {
-		if (!validateFile(file)) {
+		if (!validateImageFile(file, setError)) {
 			return;
 		}
 
@@ -112,7 +78,7 @@ const Pixelizer = () => {
 			// eslint-disable-next-line no-undef
 			const img = new Image();
 			img.onload = () => {
-				validateImageDimensions(img);
+				validateImageDimensions(img, setError);
 				setOriginalImage(e.target.result);
 				setIsProcessing(false);
 			};

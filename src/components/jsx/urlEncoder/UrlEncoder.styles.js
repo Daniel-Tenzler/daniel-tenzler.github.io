@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { BaseSmallButton } from 'src/components/jsx/ui/Button.styles';
 
 export const Container = styled('div')`
 	width: 90%;
@@ -120,45 +121,8 @@ export const ButtonContainer = styled.div`
 	}
 `;
 
-const BaseButton = styled.button`
-	background-color: var(--gray-383838);
-	color: var(--color-text-emphasis);
-	padding: 0.75em 1.5em;
-	border: none;
-	border-radius: 8px;
-	font-weight: 500;
-	font-size: 15px;
-	cursor: pointer;
-	transition:
-		background-color 0.2s ease,
-		box-shadow 0.2s ease;
+const BaseButton = BaseSmallButton;
 
-	&:hover {
-		background-color: var(--color-border-light);
-		box-shadow: 0px 0px 14px #1418208a;
-	}
+export const DecodeButton = styled(BaseButton);
 
-	&:active {
-		background-color: var(--gray-383838);
-		box-shadow: none;
-	}
-
-	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
-		outline-offset: 2px;
-	}
-
-	&:disabled {
-		opacity: 0.5;
-		cursor: not-allowed;
-	}
-
-	@media (max-width: 768px) {
-		padding: 0.6em 1.2em;
-		font-size: 14px;
-	}
-`;
-
-export const DecodeButton = styled(BaseButton)``;
-
-export const EncodeButton = styled(BaseButton)``;
+export const EncodeButton = styled(BaseButton);

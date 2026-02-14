@@ -29,80 +29,8 @@ import {
 	PresetsGrid,
 	PresetButton,
 } from './BoxShadowGenerator.styles';
-
-const generateLayerId = () => `layer-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-
-const DEFAULT_LAYER = {
-	id: generateLayerId(),
-	offsetX: 10,
-	offsetY: 10,
-	blur: 20,
-	spread: 0,
-	color: '#000000',
-	opacity: 0.2,
-	inset: false,
-};
-
-const PRESETS = {
-	subtle: [
-		{
-			id: 'subtle-1',
-			offsetX: 0,
-			offsetY: 2,
-			blur: 4,
-			spread: 0,
-			color: '#000000',
-			opacity: 0.1,
-			inset: false,
-		},
-	],
-	raised: [
-		{
-			id: 'raised-1',
-			offsetX: 0,
-			offsetY: 4,
-			blur: 12,
-			spread: 0,
-			color: '#000000',
-			opacity: 0.15,
-			inset: false,
-		},
-		{
-			id: 'raised-2',
-			offsetX: 0,
-			offsetY: 2,
-			blur: 4,
-			spread: 0,
-			color: '#000000',
-			opacity: 0.1,
-			inset: false,
-		},
-	],
-	floating: [
-		{
-			id: 'floating-1',
-			offsetX: 0,
-			offsetY: 20,
-			blur: 40,
-			spread: 0,
-			color: '#000000',
-			opacity: 0.3,
-			inset: false,
-		},
-	],
-	inset: [
-		{
-			id: 'inset-1',
-			offsetX: 0,
-			offsetY: 2,
-			blur: 4,
-			spread: 0,
-			color: '#000000',
-			opacity: 0.2,
-			inset: true,
-		},
-	],
-};
+import { DEFAULT_LAYER, BOX_SHADOW_PRESETS, generateLayerId } from 'src/data/boxShadowPresets';
+import { hexToRgba } from 'src/infrastructure/colorUtils';
 
 const BoxShadowGenerator = () => {
 	const [layers, setLayers] = useState([DEFAULT_LAYER]);
@@ -131,14 +59,6 @@ const BoxShadowGenerator = () => {
 			})
 			.join(', ');
 	}, []);
-
-	const hexToRgba = (hex, opacity) => {
-		const cleanHex = hex.replace('#', '');
-		const r = parseInt(cleanHex.substring(0, 2), 16);
-		const g = parseInt(cleanHex.substring(2, 4), 16);
-		const b = parseInt(cleanHex.substring(4, 6), 16);
-		return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-	};
 
 	const boxShadowCSS = useMemo(
 		() => generateBoxShadowCSS(layers),
@@ -172,7 +92,7 @@ const BoxShadowGenerator = () => {
 	};
 
 	const handleApplyPreset = (preset) => {
-		setLayers(PRESETS[preset]);
+		setLayers(BOX_SHADOW_PRESETS[preset]);
 		setActiveLayerIndex(0);
 	};
 
