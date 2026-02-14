@@ -3,12 +3,12 @@ import styled from '@emotion/styled';
 export const PresetSelectorWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 0.75rem;
+	gap: 12px;
 	width: 100%;
 `;
 
 export const PresetLabel = styled.label`
-	font-size: 0.9rem;
+	font-size: 14px;
 	font-weight: 500;
 	color: var(--color-text-secondary);
 `;
@@ -16,17 +16,17 @@ export const PresetLabel = styled.label`
 export const PresetGrid = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-	gap: 0.5rem;
+	gap: 8px;
 	width: 100%;
 `;
 
 export const PresetButton = styled.button`
-	padding: 0.75rem 0.5rem;
+	padding: 12px 8px;
 	border: 1px solid var(--color-border-light);
 	border-radius: 4px;
 	background-color: var(--gray-2a2a2a);
 	color: var(--color-text-primary);
-	font-size: 0.85rem;
+	font-size: 14px;
 	cursor: pointer;
 	transition: all 0.2s;
 	text-align: center;
@@ -66,7 +66,7 @@ export const PresetPreview = styled.div`
 	width: 100%;
 	height: 40px;
 	border-radius: 3px;
-	margin-bottom: 0.4rem;
+	margin-bottom: 6px;
 	background: ${(props) => props.$preview};
 	border: 1px solid var(--color-border-light);
 `;

@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 
 export const Section = styled.section`
-	padding: 2rem 0;
+	padding: 32px 0;
 	position: relative;
 
 	@media (max-width: 720px) {
-		padding: 1.5rem 0;
+		padding: 24px 0;
 	}
 `;
 
@@ -16,10 +16,10 @@ export const ContentWrapper = styled.div`
 `;
 
 export const Name = styled.h1`
-	font-size: clamp(2.5rem, 5vw, 4rem);
+	font-size: clamp(40px, 5vw, 64px);
 	font-weight: 800;
 	line-height: 1.1;
-	margin: 0 0 0.5rem 0;
+	margin: 0 0 8px 0;
 	background: linear-gradient(
 		135deg,
 		var(--color-text-emphasis) 0%,
@@ -41,22 +41,22 @@ export const Name = styled.h1`
 	}
 
 	@media (max-width: 720px) {
-		font-size: clamp(2rem, 8vw, 3rem);
+		font-size: clamp(32px, 8vw, 48px);
 	}
 `;
 
 export const Title = styled.h2`
-	font-size: clamp(1.5rem, 3vw, 2rem);
+	font-size: clamp(24px, 3vw, 32px);
 	font-weight: 600;
 	line-height: 1.3;
-	margin: 0 0 1.5rem 0;
+	margin: 0 0 24px 0;
 	color: var(--color-text-muted);
 	letter-spacing: 0.01em;
 	animation: fadeInUp 0.8s ease-out 0.1s both;
 
 	@media (max-width: 720px) {
-		font-size: clamp(1.25rem, 6vw, 1.5rem);
-		margin-bottom: 1rem;
+		font-size: clamp(20px, 6vw, 24px);
+		margin-bottom: 16px;
 	}
 `;
 
@@ -69,7 +69,7 @@ export const AccentLine = styled.div`
 		var(--color-text-emphasis) 20%,
 		var(--gray-474747) 100%
 	);
-	margin: 0 0 2rem 0;
+	margin: 0 0 32px 0;
 	border-radius: 2px;
 	animation: expandWidth 0.8s ease-out 0.2s both;
 
@@ -85,7 +85,7 @@ export const AccentLine = styled.div`
 	}
 
 	@media (max-width: 720px) {
-		margin-bottom: 1.5rem;
+		margin-bottom: 24px;
 		width: 200px;
 		@keyframes expandWidth {
 			from {
@@ -101,42 +101,42 @@ export const AccentLine = styled.div`
 `;
 
 export const Tagline = styled.p`
-	font-size: clamp(1.1rem, 2vw, 1.25rem);
+	font-size: clamp(18px, 2vw, 20px);
 	font-weight: 500;
 	line-height: 1.4;
-	margin: 0 0 1.5rem 0;
+	margin: 0 0 24px 0;
 	color: var(--color-text-muted);
 	animation: fadeInUp 0.8s ease-out 0.3s both;
 
 	@media (max-width: 720px) {
-		font-size: clamp(1rem, 4vw, 1.1rem);
-		margin-bottom: 1rem;
+		font-size: clamp(16px, 4vw, 18px);
+		margin-bottom: 16px;
 	}
 `;
 
 export const Description = styled.p`
-	font-size: clamp(1rem, 1.5vw, 1.1rem);
+	font-size: clamp(16px, 1.5vw, 18px);
 	line-height: 1.7;
-	margin: 0 0 2.5rem 0;
+	margin: 0 0 40px 0;
 	color: var(--white-ffffff-e6);
 	max-width: 600px;
 	animation: fadeInUp 0.8s ease-out 0.4s both;
 
 	@media (max-width: 720px) {
-		font-size: clamp(0.95rem, 3vw, 1rem);
-		margin-bottom: 2rem;
+		font-size: clamp(15px, 3vw, 16px);
+		margin-bottom: 32px;
 		max-width: 100%;
 	}
 `;
 
 export const ButtonContainer = styled.div`
 	display: flex;
-	gap: 1rem;
+	gap: 16px;
 	flex-wrap: wrap;
 	animation: fadeInUp 0.8s ease-out 0.5s both;
 
 	@media (max-width: 720px) {
-		gap: 0.75rem;
+		gap: 12px;
 	}
 `;
 
@@ -144,11 +144,11 @@ export const PrimaryButton = styled.a`
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0.75rem 1.5rem;
+	padding: 12px 24px;
 	border: none;
-	font-size: 0.95rem;
+	font-size: 15px;
 	font-weight: 600;
-	border-radius: 1rem;
+	border-radius: 16px;
 	color: var(--color-text-emphasis);
 	background: linear-gradient(
 		135deg,
@@ -187,8 +187,8 @@ export const PrimaryButton = styled.a`
 	}
 
 	@media (max-width: 720px) {
-		padding: 0.625rem 1.25rem;
-		font-size: 0.9rem;
+		padding: 10px 20px;
+		font-size: 14px;
 		flex: 1;
 		min-width: 140px;
 	}
@@ -198,11 +198,11 @@ export const SecondaryButton = styled.a`
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0.75rem 1.5rem;
+	padding: 12px 24px;
 	border: 1px solid var(--gray-292929-80);
-	font-size: 0.95rem;
+	font-size: 15px;
 	font-weight: 600;
-	border-radius: 1rem;
+	border-radius: 16px;
 	color: var(--color-text-emphasis);
 	background: var(--color-bg-secondary);
 	text-decoration: none;
@@ -234,8 +234,8 @@ export const SecondaryButton = styled.a`
 	}
 
 	@media (max-width: 720px) {
-		padding: 0.625rem 1.25rem;
-		font-size: 0.9rem;
+		padding: 10px 20px;
+		font-size: 14px;
 		flex: 1;
 		min-width: 140px;
 	}

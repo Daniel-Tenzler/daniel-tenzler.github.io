@@ -128,7 +128,7 @@ const blogPostingSchema = generateBlogPostingSchema(SITE_URL, {
 		max-width: calc(100% - 2em);
 		margin: auto;
 		padding: 2em 1em;
-		min-height: calc(100vh - (201px + 4rem));
+		min-height: calc(100vh - (201px + 64px));
 	}
 
 	.toc-sidebar {
@@ -146,7 +146,7 @@ const blogPostingSchema = generateBlogPostingSchema(SITE_URL, {
 			position: relative;
 			right: auto;
 			top: auto;
-			margin-bottom: 2rem;
+			margin-bottom: 32px;
 		}
 	}
 </style>
@@ -213,7 +213,7 @@ const blogPostingSchema = generateBlogPostingSchema(SITE_URL, {
 		line-height: 1.7142857;
 		margin-top: 1.7142857em;
 		margin-bottom: 1.7142857em;
-		border-radius: 0.375rem;
+		border-radius: 6px;
 		padding: 0.8571429em 1.1428571em;
 	}
 
@@ -221,7 +221,7 @@ const blogPostingSchema = generateBlogPostingSchema(SITE_URL, {
 		font-weight: 500;
 		font-style: italic;
 		color: var(--gray-e5e9f0);
-		border-left-width: 0.25rem;
+		border-left-width: 4px;
 		border-left-color: var(--gray-e5e9f0);
 		quotes: '\201C' '\201D' '\2018' '\2019';
 		margin-top: 1.6em;
@@ -251,7 +251,7 @@ const blogPostingSchema = generateBlogPostingSchema(SITE_URL, {
 	.prose :global(img) {
 		margin-top: 2em;
 		margin-bottom: 2em;
-		border-radius: 0.375rem;
+		border-radius: 6px;
 		display: block;
 		margin-left: 50%;
 		transform: translateX(-50%);
@@ -275,7 +275,7 @@ const blogPostingSchema = generateBlogPostingSchema(SITE_URL, {
 		margin: auto;
 		padding: 2em 1em;
 		display: flex;
-		gap: 2rem;
+		gap: 32px;
 	}
 
 	@media (max-width: 720px) {

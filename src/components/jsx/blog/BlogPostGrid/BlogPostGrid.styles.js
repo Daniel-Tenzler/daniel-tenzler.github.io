@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const GridSection = styled.section`
 	display: grid;
-	gap: 2rem;
+	gap: 32px;
 
 	@media (min-width: 768px) {
 		grid-template-columns: repeat(2, 1fr);
@@ -25,6 +25,6 @@ export const PostWrapper = styled.div`
 export const NoPostsMessage = styled.p`
 	text-align: center;
 	color: var(--color-text-emphasis);
-	font-size: 1.125rem;
-	margin: 2rem 0;
+	font-size: 18px;
+	margin: 32px 0;
 `;

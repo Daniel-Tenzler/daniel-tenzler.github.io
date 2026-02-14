@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const RangeSliderWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	gap: 8px;
 	width: 100%;
 `;
 
@@ -14,14 +14,14 @@ export const SliderHeader = styled.div`
 `;
 
 export const SliderLabel = styled.label`
-	font-size: 0.9rem;
+	font-size: 14px;
 	font-weight: 500;
 	color: var(--color-text-primary);
 `;
 
 export const SliderControls = styled.div`
 	display: flex;
-	gap: 0.75rem;
+	gap: 12px;
 	align-items: center;
 	width: 100%;
 `;
@@ -85,13 +85,13 @@ export const SliderInput = styled.input`
 
 export const NumberInput = styled.input`
 	width: 80px;
-	padding: 0.4rem 0.6rem;
+	padding: 6px 10px;
 	border: 1px solid var(--color-border-light);
 	border-radius: 4px;
 	background-color: var(--gray-2a2a2a);
 	color: var(--color-text-primary);
 	font-family: 'Courier New', monospace;
-	font-size: 0.9rem;
+	font-size: 14px;
 	text-align: right;
 	transition: border-color 0.2s;
 
@@ -118,7 +118,7 @@ export const NumberInput = styled.input`
 `;
 
 export const UnitDisplay = styled.span`
-	font-size: 0.85rem;
+	font-size: 14px;
 	color: var(--color-text-muted);
-	min-width: 2rem;
+	min-width: 32px;
 `;

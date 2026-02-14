@@ -18,7 +18,7 @@ export const Container = styled('div')`
 
 export const SectionTitle = styled.h3`
 	color: var(--color-text-emphasis);
-	font-size: 1.1rem;
+	font-size: 18px;
 	font-weight: 600;
 	margin: 0;
 	text-align: center;
@@ -26,7 +26,7 @@ export const SectionTitle = styled.h3`
 	z-index: 1;
 
 	@media (max-width: 768px) {
-		font-size: 1rem;
+		font-size: 16px;
 		padding: 0.6em 0 0.3em 0;
 	}
 `;
@@ -127,7 +127,7 @@ const BaseButton = styled.button`
 	border: none;
 	border-radius: 8px;
 	font-weight: 500;
-	font-size: 0.95rem;
+	font-size: 15px;
 	cursor: pointer;
 	transition:
 		background-color 0.2s ease,
@@ -155,7 +155,7 @@ const BaseButton = styled.button`
 
 	@media (max-width: 768px) {
 		padding: 0.6em 1.2em;
-		font-size: 0.9rem;
+		font-size: 14px;
 	}
 `;
 

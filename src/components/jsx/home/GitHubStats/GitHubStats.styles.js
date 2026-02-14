@@ -2,12 +2,12 @@ import styled from '@emotion/styled';
 
 // Main wrapper
 export const StatsWrapper = styled.div`
-	padding: 3rem 2rem;
-	margin: 2rem auto;
+	padding: 48px 32px;
+	margin: 32px auto;
 	max-width: 900px;
 
 	@media (max-width: 768px) {
-		padding: 2rem 1rem;
+		padding: 32px 16px;
 	}
 `;
 
@@ -17,22 +17,22 @@ export const GlowEffect = styled.div`
 `;
 
 export const Title = styled.h2`
-	font-size: 2rem;
+	font-size: 32px;
 	font-weight: 700;
 	color: var(--color-text-primary);
 	text-align: center;
-	margin-bottom: 0.75rem;
+	margin-bottom: 12px;
 	letter-spacing: -0.02em;
 
 	@media (max-width: 768px) {
-		font-size: 1.5rem;
+		font-size: 24px;
 	}
 `;
 
 export const Description = styled.p`
 	color: var(--color-text-muted);
-	margin: 0 0 2rem 0;
-	font-size: 1rem;
+	margin: 0 0 32px 0;
+	font-size: 16px;
 	line-height: 1.6;
 	text-align: center;
 	max-width: 600px;
@@ -40,21 +40,21 @@ export const Description = styled.p`
 	margin-right: auto;
 
 	@media (max-width: 768px) {
-		font-size: 0.9375rem;
+		font-size: 15px;
 	}
 `;
 
 // Stats container - clean solid background like other sections
 export const StatsContainer = styled.div`
-	padding: 2rem;
+	padding: 32px;
 	background-color: var(--color-bg-tertiary);
-	border-radius: 1rem;
+	border-radius: 16px;
 	box-shadow: 0 1px 2px var(--black-0f1219-0a);
 	margin: 0 auto;
 	max-width: 700px;
 
 	@media (max-width: 768px) {
-		padding: 1.5rem 1rem;
+		padding: 24px 16px;
 	}
 `;
 
@@ -62,11 +62,11 @@ export const StatsContainer = styled.div`
 export const StatsGrid = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-	gap: 1.5rem;
+	gap: 24px;
 
 	@media (max-width: 768px) {
 		grid-template-columns: repeat(2, 1fr);
-		gap: 1rem;
+		gap: 16px;
 	}
 `;
 
@@ -75,9 +75,9 @@ export const StatCard = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 1.25rem 1rem;
+	padding: 20px 16px;
 	background-color: var(--gray-383838);
-	border-radius: 1rem;
+	border-radius: 16px;
 	transition: background-color 0.2s ease;
 
 	&:hover {
@@ -86,20 +86,20 @@ export const StatCard = styled.div`
 `;
 
 export const StatValue = styled.div`
-	font-size: 1.75rem;
+	font-size: 28px;
 	font-weight: 700;
 	color: var(--color-text-emphasis);
 	line-height: 1.2;
-	margin-bottom: 0.375rem;
+	margin-bottom: 6px;
 	font-variant-numeric: tabular-nums;
 
 	@media (max-width: 768px) {
-		font-size: 1.5rem;
+		font-size: 24px;
 	}
 `;
 
 export const StatLabel = styled.div`
-	font-size: 0.8125rem;
+	font-size: 13px;
 	color: var(--color-text-muted);
 	text-transform: uppercase;
 	letter-spacing: 0.08em;
@@ -116,12 +116,12 @@ export const SectionDivider = styled.div`
 		var(--white-ffffff-26) 50%,
 		transparent 100%
 	);
-	margin: 3rem auto;
+	margin: 48px auto;
 `;
 
 // Language section
 export const LanguageSection = styled.div`
-	margin-top: 1rem;
+	margin-top: 16px;
 `;
 
 // Visual bar chart
@@ -132,7 +132,7 @@ export const LanguageBar = styled.div`
 	overflow: hidden;
 	background: var(--gray-2d2d2d-cc);
 	border: 1px solid var(--white-ffffff-15);
-	margin: 1.5rem auto;
+	margin: 24px auto;
 	max-width: 700px;
 	box-shadow: inset 0 2px 4px var(--black-0f1219-4d);
 
@@ -178,8 +178,8 @@ export const LanguageLegend = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: 0.75rem;
-	margin-top: 1.5rem;
+	gap: 12px;
+	margin-top: 24px;
 	max-width: 700px;
 	margin-left: auto;
 	margin-right: auto;
@@ -189,8 +189,8 @@ export const LanguageLegend = styled.div`
 export const LanguageBadge = styled.div`
 	display: flex;
 	align-items: center;
-	gap: 0.5rem;
-	padding: 0.5rem 0.875rem;
+	gap: 8px;
+	padding: 8px 14px;
 	background: ${({ $color }) =>
 		$color
 			? `color-mix(in srgb, var(${$color}) 10%, transparent)`
@@ -221,7 +221,7 @@ export const LanguageBadge = styled.div`
 	}
 
 	.name {
-		font-size: 0.8125rem;
+		font-size: 13px;
 		font-weight: 500;
 		color: var(--color-text-emphasis);
 	}
@@ -229,12 +229,12 @@ export const LanguageBadge = styled.div`
 
 // Count badge within language badge
 export const LanguageCount = styled.span`
-	font-size: 0.75rem;
+	font-size: 12px;
 	font-weight: 600;
 	color: var(--color-text-muted);
 	background: var(--gray-474747-cc);
-	padding: 0.125rem 0.5rem;
+	padding: 2px 8px;
 	border-radius: 9999px;
-	min-width: 1.5rem;
+	min-width: 24px;
 	text-align: center;
 `;

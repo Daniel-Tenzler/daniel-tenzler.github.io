@@ -6,7 +6,7 @@ export const Article = styled.article`
 `;
 
 export const HeroImageContainer = styled.div`
-	margin-bottom: 2rem;
+	margin-bottom: 32px;
 	display: flex;
 	justify-content: center;
 `;
@@ -16,7 +16,7 @@ export const HeroImage = styled.img`
 	max-width: 4xl;
 	height: 400px;
 	object-fit: cover;
-	border-radius: 0.5rem;
+	border-radius: 8px;
 	box-shadow:
 		0 4px 6px var(--black-0f1219-1a),
 		0 2px 4px var(--black-0f1219-0f);
@@ -85,7 +85,7 @@ export const ContentContainer = styled.div`
     line-height: 1.7142857;
     margin-top: 1.7142857em;
     margin-bottom: 1.7142857em;
-    border-radius: 0.375rem;
+    border-radius: 6px;
     padding: 0.8571429em 1.1428571em;
   }
 
@@ -93,7 +93,7 @@ export const ContentContainer = styled.div`
     font-weight: 500;
     font-style: italic;
     color: var(--color-text-emphasis);
-    border-left-width: 0.25rem;
+    border-left-width: 4px;
     border-left-color: var(--color-text-emphasis);
     quotes: "\201C""\201D""\2018""\2019";
     margin-top: 1.6em;
@@ -123,7 +123,7 @@ export const ContentContainer = styled.div`
   img {
     margin-top: 2em;
     margin-bottom: 2em;
-    border-radius: 0.375rem;
+    border-radius: 6px;
     display: block;
     margin-left: auto;
     margin-right: auto;

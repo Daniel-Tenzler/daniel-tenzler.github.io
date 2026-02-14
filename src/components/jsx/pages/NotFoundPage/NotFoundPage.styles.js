@@ -2,32 +2,32 @@ import styled from '@emotion/styled';
 
 export const StyledNotFoundContainer = styled.section`
 	text-align: center;
-	padding: 4rem 2rem;
+	padding: 64px 32px;
 	max-width: 600px;
 	margin: 0 auto;
 `;
 
 export const StyledErrorCode = styled.div`
-	font-size: 8rem;
+	font-size: 128px;
 	font-weight: bold;
 	color: var(--color-accent-brand);
-	margin-bottom: 1rem;
+	margin-bottom: 16px;
 	text-shadow: 0 0 20px var(--blue-2337ff-4d);
 
 	@media (min-width: 768px) {
-		font-size: 10rem;
+		font-size: 160px;
 	}
 `;
 
 export const StyledErrorTitle = styled.h1`
-	font-size: 2.5rem;
-	margin-bottom: 1rem;
+	font-size: 40px;
+	margin-bottom: 16px;
 	color: var(--color-text-subtle);
 `;
 
 export const StyledErrorDescription = styled.p`
-	font-size: 1.2rem;
-	margin-bottom: 2rem;
+	font-size: 19px;
+	margin-bottom: 32px;
 	color: var(--color-text-secondary);
 	line-height: 1.6;
 `;
@@ -35,7 +35,7 @@ export const StyledErrorDescription = styled.p`
 export const StyledActions = styled.nav`
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 16px;
 	align-items: center;
 
 	@media (min-width: 768px) {
@@ -46,7 +46,7 @@ export const StyledActions = styled.nav`
 `;
 
 export const StyledNavLink = styled.a`
-	padding: 0.75rem 2rem;
+	padding: 12px 32px;
 	border-radius: 8px;
 	text-decoration: none;
 	font-weight: 500;

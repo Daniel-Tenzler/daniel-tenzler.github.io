@@ -1,52 +1,52 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-	max-width: 70rem;
+	max-width: 1120px;
 	min-height: 71dvh;
-	margin: 1rem auto;
+	margin: 16px auto;
 
 	@media (max-width: 640px) {
-		padding: 0rem 1rem;
+		padding: 0px 16px;
 	}
 `;
 
 export const Title = styled.h1`
-	font-size: 2.5rem;
+	font-size: 40px;
 	font-weight: 700;
 	color: var(--color-text-emphasis);
-	margin-bottom: 0.5rem;
+	margin-bottom: 8px;
 	text-align: center;
 	margin: 0;
 	@media (min-width: 640px) {
-		font-size: 3rem;
+		font-size: 48px;
 	}
 `;
 
 export const Description = styled.p`
-	font-size: 1.125rem;
+	font-size: 18px;
 	color: var(--color-text-primary);
 	text-align: center;
-	margin-bottom: 2rem;
-	max-width: 50rem;
+	margin-bottom: 32px;
+	max-width: 800px;
 	margin-left: auto;
 	margin-right: auto;
 `;
 
 export const CategorySection = styled.div`
-	margin-bottom: 1rem;
+	margin-bottom: 16px;
 `;
 
 export const CategoryTitle = styled.h2`
-	font-size: 1.5rem;
+	font-size: 24px;
 	font-weight: 600;
 	color: var(--color-text-emphasis);
-	margin-bottom: 0.5rem;
+	margin-bottom: 8px;
 	border-bottom: 2px solid var(--gray-383838);
 `;
 
 export const ToolsGrid = styled.div`
 	display: grid;
-	gap: 1rem;
+	gap: 16px;
 	grid-template-columns: 1fr;
 
 	@media (min-width: 640px) {
@@ -62,8 +62,8 @@ export const ToolCard = styled.a`
 	display: block;
 	background-color: var(--gray-2d2d2d);
 	border: 1px solid var(--gray-383838);
-	border-radius: 0.75rem;
-	padding: 1.5rem;
+	border-radius: 12px;
+	padding: 24px;
 	text-decoration: none;
 	transition: all 0.2s ease;
 
@@ -85,8 +85,8 @@ export const ToolCard = styled.a`
 `;
 
 export const ToolIcon = styled.div`
-	max-width: 2rem;
-	max-height: 2rem;
+	max-width: 32px;
+	max-height: 32px;
 	margin-bottom: 0%.5;
 	display: flex;
 	align-items: center;
@@ -102,15 +102,15 @@ export const ToolIcon = styled.div`
 `;
 
 export const ToolTitle = styled.h3`
-	font-size: 1.25rem;
+	font-size: 20px;
 	font-weight: 600;
 	color: var(--color-text-emphasis);
-	margin-bottom: 0.5rem;
-	margin-top: 0.5rem;
+	margin-bottom: 8px;
+	margin-top: 8px;
 `;
 
 export const ToolDescription = styled.p`
-	font-size: 0.875rem;
+	font-size: 14px;
 	color: var(--color-text-primary);
 	line-height: 1.5;
 `;

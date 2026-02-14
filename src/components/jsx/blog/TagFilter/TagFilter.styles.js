@@ -3,12 +3,12 @@ import styled from '@emotion/styled';
 export const FilterContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.5rem;
-	margin-bottom: 2rem;
+	gap: 8px;
+	margin-bottom: 32px;
 `;
 
 export const TagButton = styled.button`
-	padding: 0.5rem 1rem;
+	padding: 8px 16px;
 	border: 1px solid var(--black-0f1219);
 	border-radius: 9999px;
 	background: ${(props) =>
@@ -16,7 +16,7 @@ export const TagButton = styled.button`
 			? 'var(--color-accent-brand-dark)'
 			: 'var(--black-0f1219)'};
 	color: var(--color-text-emphasis);
-	font-size: 0.875rem;
+	font-size: 14px;
 	cursor: pointer;
 	transition: all 0.2s ease;
 

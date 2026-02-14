@@ -6,8 +6,8 @@ export const MobileMenuButton = styled.button`
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 3rem;
-	height: 3rem;
+	width: 48px;
+	height: 48px;
 	border-radius: 50%;
 	color: var(--color-text-emphasis);
 	background-color: var(--gray-474747);
@@ -60,8 +60,8 @@ export const MobileMenuButton = styled.button`
 `;
 
 export const MenuIcon = styled.svg`
-	height: 1.5rem;
-	width: 1.5rem;
+	height: 24px;
+	width: 24px;
 	transition:
 		transform 0.3s ease-in-out,
 		opacity 0.3s ease-in-out;
@@ -93,7 +93,7 @@ export const MobileMenu = styled.div`
 	backdrop-filter: blur(4px);
 	z-index: 9999;
 	border-bottom: 1px solid var(--gray-404040-cc);
-	padding: 1rem;
+	padding: 16px;
 	box-shadow: 0 4px 6px -1px var(--black-0f1219-1a);
 	color: var(--color-text-emphasis);
 
@@ -105,9 +105,9 @@ export const MobileMenu = styled.div`
 export const MobileNavLink = styled.a`
 	display: block;
 	color: var(--color-text-emphasis);
-	padding: 0.875rem 1rem;
-	border-radius: 0.375rem;
-	font-size: 1.1rem;
+	padding: 14px 16px;
+	border-radius: 6px;
+	font-size: 18px;
 	font-weight: 500;
 	text-decoration: none;
 	transition: all 0.2s ease;
@@ -127,7 +127,7 @@ export const NavlinkCard = styled.div`
 	justify-content: space-between;
 	background-color: var(--color-bg-tertiary);
 	width: fit-content;
-	padding: 0.6rem 1.5rem;
+	padding: 10px 24px;
 	border-radius: 99px;
 	box-shadow: 2px 2px 4px var(--gray-292929);
 `;

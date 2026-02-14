@@ -5,8 +5,8 @@ import { COLORS } from 'src/consts/Colors';
 
 const BreadcrumbContainer = styled.nav`
 	aria-label: Breadcrumb navigation;
-	padding: 0.75rem 0;
-	margin-bottom: 1rem;
+	padding: 12px 0;
+	margin-bottom: 16px;
 `;
 
 const BreadcrumbList = styled.ol`
@@ -15,7 +15,7 @@ const BreadcrumbList = styled.ol`
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	font-size: 0.875rem;
+	font-size: 14px;
 `;
 
 const BreadcrumbItem = styled.li`
@@ -24,7 +24,7 @@ const BreadcrumbItem = styled.li`
 
 	&:not(:last-child)::after {
 		content: '/';
-		margin: 0 0.5rem;
+		margin: 0 8px;
 		color: ${COLORS.WHITE_BFBFBF};
 	}
 `;
@@ -41,7 +41,7 @@ const BreadcrumbLink = styled.a`
 	&:focus-visible {
 		outline: 2px solid ${COLORS.BLUE_2337FF};
 		outline-offset: 2px;
-		border-radius: 0.25rem;
+		border-radius: 4px;
 	}
 `;
 

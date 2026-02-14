@@ -1,17 +1,17 @@
 import styled from '@emotion/styled';
 
 export const Section = styled.section`
-	margin-bottom: 3rem;
+	margin-bottom: 48px;
 `;
 
 export const Title = styled.h2`
-	margin-bottom: 2rem;
+	margin-bottom: 32px;
 	color: var(--color-text-primary);
 `;
 
 export const PostsGrid = styled.div`
 	display: grid;
-	gap: 2rem;
+	gap: 32px;
 	grid-template-columns: 1fr;
 
 	@media (min-width: 768px) {
@@ -20,7 +20,7 @@ export const PostsGrid = styled.div`
 `;
 
 export const ViewAllLink = styled.div`
-	margin-top: 1rem;
+	margin-top: 16px;
 	text-align: center;
 `;
 

@@ -15,7 +15,7 @@ export const Container = styled.div`
 
 export const FileInputLabel = styled.label`
 	color: var(--color-text-muted);
-	font-size: 1.1rem;
+	font-size: 18px;
 	font-weight: 500;
 	cursor: pointer;
 	padding: 0.75em 2em;
@@ -38,7 +38,7 @@ export const FileInputLabel = styled.label`
 	}
 
 	@media (max-width: 480px) {
-		font-size: 1rem;
+		font-size: 16px;
 		padding: 0.6em 1.5em;
 		min-width: 150px;
 	}
@@ -88,7 +88,7 @@ const BaseButton = styled.button`
 	border-radius: 8px;
 	background-color: var(--gray-2d2d2d);
 	font-weight: 500;
-	font-size: 0.95rem;
+	font-size: 15px;
 	cursor: pointer;
 	min-width: 140px;
 	transition:
@@ -117,7 +117,7 @@ const BaseButton = styled.button`
 
 	@media (max-width: 480px) {
 		padding: 0.6em 1.5em;
-		font-size: 0.9rem;
+		font-size: 14px;
 		min-width: 120px;
 	}
 `;
@@ -162,7 +162,7 @@ export const ErrorMessage = styled.div`
 	padding: 0.75em 1em;
 	margin: 0.5em auto;
 	text-align: center;
-	font-size: 0.9rem;
+	font-size: 14px;
 	max-width: 90%;
 `;
 
@@ -215,7 +215,7 @@ export const ReductionControls = styled.div`
 
 export const ReductionLabel = styled.label`
 	color: var(--color-text-muted);
-	font-size: 1rem;
+	font-size: 16px;
 	font-weight: 500;
 	text-align: center;
 `;
@@ -281,7 +281,7 @@ export const ProcessingModeContainer = styled.div`
 
 export const ProcessingModeLabel = styled.label`
 	color: var(--color-text-muted);
-	font-size: 1rem;
+	font-size: 16px;
 	font-weight: 500;
 	text-align: center;
 `;
@@ -292,7 +292,7 @@ export const ProcessingModeSelect = styled.select`
 	border: 2px solid var(--gray-383838);
 	border-radius: 6px;
 	padding: 0.5em 1em;
-	font-size: 0.95rem;
+	font-size: 15px;
 	cursor: pointer;
 	min-width: 200px;
 	transition: all 0.2s ease;
@@ -315,18 +315,18 @@ export const ProcessingModeSelect = styled.select`
 
 export const Header = styled.div`
 	text-align: center;
-	margin-bottom: 2rem;
+	margin-bottom: 32px;
 
 	h1 {
 		color: var(--color-text-emphasis);
-		font-size: 2.5rem;
+		font-size: 40px;
 		font-weight: 700;
-		margin-bottom: 0.5rem;
+		margin-bottom: 8px;
 	}
 
 	p {
 		color: var(--color-text-muted);
-		font-size: 1.1rem;
+		font-size: 18px;
 		max-width: 600px;
 		margin: 0 auto;
 		line-height: 1.6;
@@ -334,12 +334,12 @@ export const Header = styled.div`
 
 	@media (max-width: 768px) {
 		h1 {
-			font-size: 2rem;
+			font-size: 32px;
 		}
 
 		p {
-			font-size: 1rem;
-			padding: 0 1rem;
+			font-size: 16px;
+			padding: 0 16px;
 		}
 	}
 `;
@@ -347,8 +347,8 @@ export const Header = styled.div`
 export const ControlsSection = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 2rem;
-	padding: 1.5rem;
+	gap: 32px;
+	padding: 24px;
 	background-color: var(--gray-474747);
 	border-radius: 8px;
 	border: 1px solid var(--gray-383838);
@@ -368,8 +368,8 @@ export const FileUploadZone = styled.label`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 1rem;
-	padding: 3rem 2rem;
+	gap: 16px;
+	padding: 48px 32px;
 	border: 2px dashed var(--gray-383838);
 	border-radius: 8px;
 	background-color: var(--gray-2d2d2d);
@@ -390,7 +390,7 @@ export const FileUploadZone = styled.label`
 	&.has-file {
 		border-color: #14b8a6;
 		background-color: var(--gray-474747);
-		padding: 1.5rem;
+		padding: 24px;
 	}
 
 	svg {
@@ -401,17 +401,17 @@ export const FileUploadZone = styled.label`
 
 	.upload-text {
 		color: var(--color-text-muted);
-		font-size: 1rem;
+		font-size: 16px;
 		text-align: center;
 	}
 
 	&.has-file .upload-text {
-		font-size: 0.9rem;
+		font-size: 14px;
 		color: var(--color-text-emphasis);
 	}
 
 	@media (max-width: 768px) {
-		padding: 2rem 1rem;
+		padding: 32px 16px;
 		min-height: 150px;
 	}
 `;
@@ -420,12 +420,12 @@ export const PixelSizeSlider = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 1rem;
+	gap: 16px;
 
 	.slider-container {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
+		gap: 16px;
 		width: 100%;
 	}
 
@@ -477,9 +477,9 @@ export const PixelSizeSlider = styled.div`
 	.size-value {
 		background-color: var(--gray-383838);
 		color: var(--color-text-emphasis);
-		padding: 0.5rem 1rem;
+		padding: 8px 16px;
 		border-radius: 6px;
-		font-size: 0.95rem;
+		font-size: 15px;
 		font-weight: 500;
 		min-width: 60px;
 		text-align: center;
@@ -487,7 +487,7 @@ export const PixelSizeSlider = styled.div`
 
 	.slider-label {
 		color: var(--color-text-muted);
-		font-size: 0.95rem;
+		font-size: 15px;
 		font-weight: 500;
 		text-align: center;
 	}
@@ -497,19 +497,19 @@ export const ActionButtons = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 1rem;
+	gap: 16px;
 	flex-wrap: wrap;
 `;
 
 export const ComparisonSection = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 2rem;
-	padding: 2rem;
+	gap: 32px;
+	padding: 32px;
 	background-color: var(--gray-474747);
 	border-radius: 8px;
 	border: 1px solid var(--gray-383838);
-	margin-top: 2rem;
+	margin-top: 32px;
 	width: 100%;
 	max-width: 1200px;
 	margin-left: auto;
@@ -526,7 +526,7 @@ export const ImageCard = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 1rem;
+	gap: 16px;
 	flex: 1;
 
 	.image-wrapper {
@@ -553,10 +553,10 @@ export const ImageCard = styled.div`
 
 	.image-label {
 		color: var(--color-text-muted);
-		font-size: 0.95rem;
+		font-size: 15px;
 		font-weight: 500;
 		text-align: center;
-		padding: 0 1rem;
+		padding: 0 16px;
 	}
 
 	@media (max-width: 768px) {

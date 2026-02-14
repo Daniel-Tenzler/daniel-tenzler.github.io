@@ -2,27 +2,27 @@ import styled from '@emotion/styled';
 
 export const TOCContainer = styled.nav`
 	align-self: start;
-	max-height: calc(100vh - 8rem);
+	max-height: calc(100vh - 128px);
 	overflow-y: auto;
-	padding: 1.5rem 1.5rem 1.5rem 0.5rem;
+	padding: 24px 24px 24px 8px;
 	background-color: var(--gray-303030-cc);
 	backdrop-filter: blur(10px);
 	border: 1px solid var(--gray-60739f-33);
-	border-radius: 1rem;
+	border-radius: 16px;
 	box-shadow: 0 4px 6px var(--black-0f1219-1a);
 
 	@media (max-width: 768px) {
 		align-self: stretch;
 		max-height: 40vh;
-		padding: 1rem;
-		margin: 0 0 1rem 0;
-		border-radius: 0.75rem;
+		padding: 16px;
+		margin: 0 0 16px 0;
+		border-radius: 12px;
 	}
 
 	@media (max-width: 480px) {
 		max-height: 35vh;
-		padding: 0.75rem;
-		border-radius: 0.5rem;
+		padding: 12px;
+		border-radius: 8px;
 	}
 `;
 
@@ -33,18 +33,18 @@ export const TOCList = styled.ul`
 `;
 
 export const TOCItem = styled.li`
-	margin-bottom: 0.5rem;
+	margin-bottom: 8px;
 	padding-left: ${(props) => (props.depth - 1) * 1}rem;
 
 	@media (max-width: 768px) {
-		margin-bottom: 0.35rem;
+		margin-bottom: 6px;
 		padding-left: ${(props) => (props.depth - 1) * 0.75}rem;
 	}
 `;
 
 export const TOCLink = styled.a`
 	display: block;
-	font-size: 0.875rem;
+	font-size: 14px;
 	color: ${(props) =>
 		props.isActive
 			? 'var(--color-text-emphasis)'
@@ -58,8 +58,8 @@ export const TOCLink = styled.a`
 	}
 
 	@media (max-width: 768px) {
-		font-size: 0.8rem;
+		font-size: 13px;
 		line-height: 1.3;
-		padding: 0.25rem 0;
+		padding: 4px 0;
 	}
 `;

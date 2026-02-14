@@ -8,14 +8,14 @@ export const ToggleWrapper = styled.button`
 	border: none;
 	cursor: pointer;
 	outline: none;
-	padding: 0.75rem;
+	padding: 12px;
 	border-radius: 999px;
 	background-color: var(--gray-2a2a2a);
 	color: var(--color-text-primary);
-	font-size: 1rem;
+	font-size: 16px;
 	box-shadow: 0 2px 8px #00000014;
 	transition: all 0.2s;
-	gap: 0.75rem;
+	gap: 12px;
 	/* Minimum touch target size (48x48px) for accessibility */
 	min-height: 48px;
 	min-width: 48px;
@@ -26,8 +26,8 @@ export const ToggleWrapper = styled.button`
 
 	/* Compact version for mobile header */
 	@media (max-width: 639px) {
-		padding: 0.6rem;
-		gap: 0.5rem;
+		padding: 10px;
+		gap: 8px;
 		background-color: transparent;
 		box-shadow: none;
 	}

@@ -6,16 +6,16 @@ export const StyledFooter = styled.footer`
 `;
 
 export const FooterContainer = styled.div`
-	max-width: 56rem;
+	max-width: 896px;
 	margin: 0 auto;
-	padding: 2rem 1rem;
+	padding: 32px 16px;
 
 	@media (min-width: 640px) {
-		padding: 2rem 1.5rem;
+		padding: 32px 24px;
 	}
 
 	@media (min-width: 1024px) {
-		padding: 2rem 2rem;
+		padding: 32px 32px;
 	}
 `;
 
@@ -24,7 +24,7 @@ export const FooterContent = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 1rem;
+	gap: 16px;
 `;
 
 export const Container = styled.div`
@@ -32,21 +32,21 @@ export const Container = styled.div`
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	gap: 2rem;
+	gap: 32px;
 `;
 
 export const FooterLinks = styled.div`
 	display: flex;
-	gap: 1.5rem;
+	gap: 24px;
 	background-color: var(--gray-383838);
-	border-radius: 1rem;
-	padding: 0.2rem 0.5rem;
+	border-radius: 16px;
+	padding: 3px 8px;
 `;
 
 export const FooterLink = styled.a`
 	color: var(--color-text-primary);
 	text-decoration: none;
-	font-size: 0.875rem;
+	font-size: 14px;
 	transition: color 0.2s ease;
 
 	&:hover {
@@ -56,18 +56,18 @@ export const FooterLink = styled.a`
 	&:focus-visible {
 		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
-		border-radius: 0.25rem;
+		border-radius: 4px;
 	}
 `;
 
 export const Copyright = styled.div`
-	font-size: 0.875rem;
+	font-size: 14px;
 	color: var(--color-text-primary);
 `;
 
 export const SocialLinks = styled.div`
 	display: flex;
-	gap: 1.5rem;
+	gap: 24px;
 `;
 
 export const SocialLink = styled.a`
@@ -82,12 +82,12 @@ export const SocialLink = styled.a`
 	&:focus-visible {
 		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
-		border-radius: 0.25rem;
+		border-radius: 4px;
 	}
 `;
 
 export const SocialIcon = styled.svg`
-	height: 1.5rem;
-	width: 1.5rem;
+	height: 24px;
+	width: 24px;
 	margin-left: 5px;
 `;

@@ -3,25 +3,25 @@ import styled from '@emotion/styled';
 export const ColorInputWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 0.75rem;
+	gap: 12px;
 	width: 100%;
 `;
 
 export const InputRow = styled.div`
 	display: flex;
-	gap: 0.5rem;
+	gap: 8px;
 	align-items: center;
 `;
 
 export const HexInput = styled.input`
 	flex: 1;
-	padding: 0.5rem 0.75rem;
+	padding: 8px 12px;
 	border: 1px solid var(--color-border-light);
 	border-radius: 4px;
 	background-color: var(--gray-2a2a2a);
 	color: var(--color-text-primary);
 	font-family: 'Courier New', monospace;
-	font-size: 0.9rem;
+	font-size: 14px;
 	text-transform: uppercase;
 	transition: border-color 0.2s;
 
@@ -78,14 +78,14 @@ export const ColorPickerButton = styled.button`
 export const OpacitySlider = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	gap: 8px;
 `;
 
 export const SliderLabel = styled.label`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-size: 0.85rem;
+	font-size: 14px;
 	color: var(--color-text-primary);
 `;
 
@@ -148,8 +148,8 @@ export const PreviewSwatch = styled.div`
 `;
 
 export const Label = styled.label`
-	font-size: 0.9rem;
+	font-size: 14px;
 	font-weight: 500;
 	color: var(--color-text-primary);
-	margin-bottom: 0.25rem;
+	margin-bottom: 4px;
 `;

@@ -10,29 +10,29 @@ export const StyledHeader = styled.header`
 `;
 
 export const Nav = styled.nav`
-	max-width: 56rem;
+	max-width: 896px;
 	margin: 0 auto;
-	padding: 0 1rem;
+	padding: 0 16px;
 
 	@media (min-width: 640px) {
-		padding: 0 1.5rem;
+		padding: 0 24px;
 	}
 
 	@media (min-width: 1024px) {
-		padding: 0 2rem;
+		padding: 0 32px;
 	}
 `;
 
 export const NavContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
-	height: 4rem;
+	height: 64px;
 	align-items: center;
 `;
 
 export const Logo = styled.a`
 	flex-shrink: 0;
-	font-size: 1.25rem;
+	font-size: 20px;
 	font-weight: 700;
 	color: var(--color-text-emphasis);
 	text-decoration: none;
@@ -40,13 +40,13 @@ export const Logo = styled.a`
 	&:focus {
 		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
-		border-radius: 0.25rem;
+		border-radius: 4px;
 	}
 
 	&:focus-visible {
 		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
-		border-radius: 0.25rem;
+		border-radius: 4px;
 	}
 
 	-webkit-tap-highlight-color: transparent;
@@ -54,8 +54,8 @@ export const Logo = styled.a`
 
 export const NavLinks = styled.div`
 	display: none;
-	margin-left: 1.5rem;
-	gap: 2rem;
+	margin-left: 24px;
+	gap: 32px;
 
 	@media (min-width: 640px) {
 		display: flex;
@@ -64,9 +64,9 @@ export const NavLinks = styled.div`
 
 export const NavLink = styled.a`
 	color: var(--color-text-primary);
-	padding: 0.75rem;
-	border-radius: 0.375rem;
-	font-size: 1rem;
+	padding: 12px;
+	border-radius: 6px;
+	font-size: 16px;
 	font-weight: 500;
 	text-decoration: none;
 	transition: color 0.2s ease;
@@ -89,7 +89,7 @@ export const NavLink = styled.a`
 export const MobileLeftSection = styled.div`
 	display: flex;
 	align-items: center;
-	gap: 0.75rem;
+	gap: 12px;
 	flex-shrink: 0;
 
 	@media (min-width: 640px) {

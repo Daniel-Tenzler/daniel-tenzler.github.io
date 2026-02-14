@@ -106,7 +106,7 @@ export const OutputSection = styled('div', {
 
 export const SectionTitle = styled.h3`
 	color: var(--color-text-muted);
-	font-size: 1.1rem;
+	font-size: 18px;
 	font-weight: 600;
 	margin: 0;
 	text-align: center;
@@ -114,7 +114,7 @@ export const SectionTitle = styled.h3`
 	z-index: 1;
 
 	@media (max-width: 768px) {
-		font-size: 1rem;
+		font-size: 16px;
 		padding: 0.6em 0 0.3em 0;
 	}
 `;
@@ -244,7 +244,7 @@ export const FormatButton = styled.button`
 	border: none;
 	border-radius: 8px;
 	font-weight: 500;
-	font-size: 0.95rem;
+	font-size: 15px;
 	cursor: pointer;
 	transition:
 		background-color 0.2s ease,
@@ -272,7 +272,7 @@ export const FormatButton = styled.button`
 
 	@media (max-width: 768px) {
 		padding: 0.6em 1.2em;
-		font-size: 0.9rem;
+		font-size: 14px;
 	}
 `;
 
@@ -354,7 +354,7 @@ export const FullscreenButton = styled.button`
 	border: 1px solid var(--gray-404040);
 	border-radius: 8px;
 	padding: 0.4em 0.9em;
-	font-size: 0.85rem;
+	font-size: 14px;
 	cursor: pointer;
 	transition:
 		background 0.2s ease,

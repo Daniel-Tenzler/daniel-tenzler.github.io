@@ -2,39 +2,39 @@ import styled from '@emotion/styled';
 
 export const JourneyDetailsContainer = styled.div`
 	min-height: calc(100vh - 350px);
-	padding: 2rem;
+	padding: 32px;
 `;
 
 export const Title = styled.h1`
-	font-size: 1.875rem;
-	line-height: 2.25rem;
+	font-size: 30px;
+	line-height: 36px;
 	font-weight: 700;
-	margin-bottom: 0.5rem;
+	margin-bottom: 8px;
 
 	@media (min-width: 768px) {
-		font-size: 3rem;
+		font-size: 48px;
 		line-height: 1;
 	}
 `;
 
 export const Date = styled.p`
-	font-size: 1.125rem;
-	line-height: 1.75rem;
+	font-size: 18px;
+	line-height: 28px;
 	color: var(--color-text-muted);
-	margin-bottom: 1.5rem;
+	margin-bottom: 24px;
 `;
 
 export const Details = styled.div`
 	p {
-		font-size: 1.125rem;
+		font-size: 18px;
 		line-height: 1.77;
 	}
 `;
 
 export const BackButton = styled.a`
 	display: inline-block;
-	margin-top: 2rem;
-	padding: 0.75rem 1.5rem;
+	margin-top: 32px;
+	padding: 12px 24px;
 	background-color: var(--color-accent-brand-dark);
 	color: white;
 	text-decoration: none;

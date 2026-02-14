@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const StyledRssSubscriptionContainer = styled.div`
 	display: flex;
 	justify-content: flex-end;
-	margin-bottom: 1rem;
+	margin-bottom: 16px;
 `;
 
 export const StyledRssButton = styled.a`
@@ -20,7 +20,7 @@ export const StyledRssButton = styled.a`
 	transition: all 0.2s ease;
 	border: none;
 	cursor: pointer;
-	margin-bottom: 1rem;
+	margin-bottom: 16px;
 	text-decoration: none;
 
 	&:hover {

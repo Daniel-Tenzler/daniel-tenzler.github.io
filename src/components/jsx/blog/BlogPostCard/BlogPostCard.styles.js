@@ -4,7 +4,7 @@ export const Card = styled.a`
 	display: block;
 	background: var(--color-bg-tertiary);
 	border-radius: ${({ $noTopBorderRadius }) =>
-		$noTopBorderRadius ? '0 0 0.5rem 0.5rem' : '0.5rem'};
+		$noTopBorderRadius ? '0 0 8px 8px' : '8px'};
 	overflow: hidden;
 	box-shadow: 0 1px 3px var(--gray-292929-1a);
 	transition: all 0.2s ease;
@@ -17,12 +17,12 @@ export const Card = styled.a`
 `;
 
 export const Content = styled.div`
-	padding: 1.5rem;
+	padding: 24px;
 `;
 
 export const Title = styled.h3`
-	margin: 0 0 0.5rem;
-	font-size: 1.25rem;
+	margin: 0 0 8px;
+	font-size: 20px;
 	font-weight: 600;
 	color: var(--color-text-primary);
 	transition: color 0.2s ease;
@@ -33,30 +33,30 @@ export const Title = styled.h3`
 `;
 
 export const Description = styled.p`
-	margin: 0 0 1rem;
-	font-size: 0.875rem;
+	margin: 0 0 16px;
+	font-size: 14px;
 	color: var(--color-text-primary);
 `;
 
 export const Meta = styled.div`
 	display: flex;
 	align-items: center;
-	gap: 1rem;
-	font-size: 0.875rem;
+	gap: 16px;
+	font-size: 14px;
 	color: var(--color-text-muted);
 `;
 
 export const Tags = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.5rem;
-	margin-top: 0.75rem;
+	gap: 8px;
+	margin-top: 12px;
 `;
 
 export const Tag = styled.span`
-	padding: 0.25rem 0.75rem;
+	padding: 4px 12px;
 	background-color: var(--black-0f1219-80);
 	border-radius: 9999px;
-	font-size: 0.875rem;
+	font-size: 14px;
 	color: var(--color-text-muted);
 `;

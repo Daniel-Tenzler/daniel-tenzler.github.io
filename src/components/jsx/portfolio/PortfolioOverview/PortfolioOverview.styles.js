@@ -6,8 +6,8 @@ export const StyledMain = styled.div`
 `;
 
 export const StyledHeading = styled.h1`
-	font-size: 2.25rem;
+	font-size: 36px;
 	font-weight: 700;
-	margin-bottom: 2rem;
-	margin-top: 0.5rem;
+	margin-bottom: 32px;
+	margin-top: 8px;
 `;

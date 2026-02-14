@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const CodeOutputWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 0.75rem;
+	gap: 12px;
 	width: 100%;
 `;
 
@@ -14,23 +14,23 @@ export const CodeHeader = styled.div`
 `;
 
 export const CodeLabel = styled.label`
-	font-size: 0.9rem;
+	font-size: 14px;
 	font-weight: 500;
 	color: var(--color-text-secondary);
 `;
 
 export const CopyButton = styled.button`
-	padding: 0.4rem 0.8rem;
+	padding: 6px 13px;
 	border: 1px solid var(--color-border-light);
 	border-radius: 4px;
 	background-color: var(--gray-2a2a2a);
 	color: var(--color-text-primary);
-	font-size: 0.85rem;
+	font-size: 14px;
 	cursor: pointer;
 	transition: all 0.2s;
 	display: flex;
 	align-items: center;
-	gap: 0.4rem;
+	gap: 6px;
 
 	&:hover:not(:disabled) {
 		background-color: var(--gray-383838);
@@ -61,13 +61,13 @@ export const CopyButton = styled.button`
 export const CodeBlock = styled.pre`
 	display: flex;
 	align-items: center;
-	padding: 1rem;
+	padding: 16px;
 	border: 1px solid var(--color-border-light);
 	border-radius: 4px;
 	background-color: var(--gray-2a2a2a);
 	color: var(--color-text-primary);
 	font-family: 'Courier New', monospace;
-	font-size: 0.85rem;
+	font-size: 14px;
 	line-height: 1.5;
 	overflow-x: auto;
 	overflow-y: hidden;

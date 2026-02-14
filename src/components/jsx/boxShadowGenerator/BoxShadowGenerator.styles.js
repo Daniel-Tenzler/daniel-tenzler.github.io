@@ -18,7 +18,7 @@ export const Container = styled.div`
 
 export const SectionTitle = styled.h3`
 	color: var(--color-text-emphasis);
-	font-size: 1.1rem;
+	font-size: 18px;
 	font-weight: 600;
 	margin: 0;
 	text-align: center;
@@ -26,7 +26,7 @@ export const SectionTitle = styled.h3`
 	z-index: 1;
 
 	@media (max-width: 768px) {
-		font-size: 1rem;
+		font-size: 16px;
 		padding: 0.6em 0 0.3em 0;
 	}
 `;

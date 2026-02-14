@@ -11,7 +11,7 @@ const fadeIn = keyframes`
 `;
 
 export const TimelineContainer = styled.section`
-	margin: 2rem auto;
+	margin: 32px auto;
 	width: 100%;
 `;
 
@@ -25,7 +25,7 @@ export const TimelineList = styled.ol`
 `;
 
 export const Title = styled.h2`
-	margin: 0.5rem auto;
+	margin: 8px auto;
 	width: 100%;
 `;
 
@@ -41,7 +41,7 @@ export const TimelineWrapper = styled.div`
 		var(--white-ffffff-02) 50%,
 		var(--white-ffffff-01) 100%
 	);
-	border-radius: 1rem;
+	border-radius: 16px;
 `;
 
 export const TimelineContentArea = styled.div(({ $isMobile }) => ({
@@ -103,8 +103,8 @@ export const TimelineContent = styled.div`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	padding: 1rem 1rem 1rem 2rem;
-	border-radius: 1rem;
+	padding: 16px 16px 16px 32px;
+	border-radius: 16px;
 	background: transparent;
 	transition: all 0.3s ease-in-out;
 	position: relative;
@@ -145,7 +145,7 @@ export const TimelineMarker = styled.div`
 `;
 
 export const TimelineTitle = styled.h3`
-	margin: 0 0 0.5rem 0;
+	margin: 0 0 8px 0;
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
@@ -162,7 +162,7 @@ export const TimelineDate = styled.p`
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	margin: 0 0 0.5rem 0;
+	margin: 0 0 8px 0;
 	transition: all 0.3s ease-in-out;
 	font-size: 16px;
 `;
