@@ -56,20 +56,8 @@ const ColorConverter = () => {
 			await window.navigator.clipboard.writeText(value);
 			setCopiedFormat(format);
 			setTimeout(() => setCopiedFormat(null), 2000);
-		} catch {
-			// Fallback for older browsers
-			const textArea = document.createElement('textarea');
-			textArea.value = value;
-			document.body.appendChild(textArea);
-			textArea.select();
-			try {
-				document.execCommand('copy');
-				setCopiedFormat(format);
-				setTimeout(() => setCopiedFormat(null), 2000);
-			} catch (fallbackErr) {
-				console.error('Failed to copy:', fallbackErr);
-			}
-			document.body.removeChild(textArea);
+		} catch (err) {
+			console.error('Failed to copy:', err);
 		}
 	};
 

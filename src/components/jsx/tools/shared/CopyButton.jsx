@@ -7,19 +7,8 @@ const CopyButton = ({ text, onCopy, copied, ...props }) => {
 		try {
 			await window.navigator.clipboard.writeText(text);
 			if (onCopy) onCopy();
-		} catch {
-			// Fallback for older browsers
-			const textArea = document.createElement('textarea');
-			textArea.value = text;
-			document.body.appendChild(textArea);
-			textArea.select();
-			try {
-				document.execCommand('copy');
-				if (onCopy) onCopy();
-			} catch (fallbackErr) {
-				console.error('Failed to copy:', fallbackErr);
-			}
-			document.body.removeChild(textArea);
+		} catch (err) {
+			console.error('Failed to copy:', err);
 		}
 	};
 

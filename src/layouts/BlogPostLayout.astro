@@ -1,12 +1,10 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import BaseHead from 'src/components/astro/BaseHead.astro';
 import BlogPost from 'src/components/jsx/blog/BlogPost/BlogPost';
 import TableOfContents from 'src/components/jsx/blog/TableOfContents/TableOfContents';
 import Breadcrumb from 'src/components/jsx/ui/Breadcrumb/Breadcrumb';
 import Footer from 'src/components/jsx/footer/Footer/Footer';
 import Header from 'src/components/jsx/header/Header/Header';
-import { COLORS } from 'src/consts/Colors';
 import { SITE_URL } from 'src/consts/SiteData.js';
 import { generateBlogPostingSchema } from 'src/infrastructure/structuredData.js';
 import '../styles/layouts-shared.css';
