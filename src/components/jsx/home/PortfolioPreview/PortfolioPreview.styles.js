@@ -35,6 +35,19 @@ export const ProjectCard = styled.div`
 	box-shadow: 0 4px 6px var(--gray-292929-1a);
 	transition: all 0.3s ease;
 	cursor: pointer;
+	animation: fadeInUp 0.6s ease-out backwards;
+	animation-delay: ${(props) => props.$animationDelay || '0s'};
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 
 	&:hover {
 		box-shadow: 0 10px 15px var(--gray-292929-33);

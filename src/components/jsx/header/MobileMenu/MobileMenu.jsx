@@ -39,6 +39,7 @@ export default function MobileMenuComponent() {
 					viewBox="0 0 24 24"
 					stroke="currentColor"
 					aria-hidden="true"
+					$isMenuOpen={isMobileMenuOpen}
 				>
 					<path
 						className="top-bar"
@@ -46,11 +47,6 @@ export default function MobileMenuComponent() {
 						strokeLinejoin="round"
 						strokeWidth={2}
 						d="M4 6h16"
-						style={{
-							transform: isMobileMenuOpen
-								? 'rotate(45deg) translateY(6px)'
-								: 'none',
-						}}
 					/>
 					<path
 						className="middle-bar"
@@ -58,7 +54,6 @@ export default function MobileMenuComponent() {
 						strokeLinejoin="round"
 						strokeWidth={2}
 						d="M4 12h16"
-						style={{ opacity: isMobileMenuOpen ? 0 : 1 }}
 					/>
 					<path
 						className="bottom-bar"
@@ -66,15 +61,10 @@ export default function MobileMenuComponent() {
 						strokeLinejoin="round"
 						strokeWidth={2}
 						d="M4 18h16"
-						style={{
-							transform: isMobileMenuOpen
-								? 'rotate(-45deg) translateY(-6px)'
-								: 'none',
-						}}
 					/>
 				</MenuIcon>
 			</MobileMenuButton>
-			<MobileMenu isOpen={isMobileMenuOpen} id="mobile-menu">
+			<MobileMenu $isOpen={isMobileMenuOpen} id="mobile-menu">
 				<MobileNavLink href="/" onClick={toggleMobileMenu}>
 					<NavlinkCard>Home</NavlinkCard>
 				</MobileNavLink>

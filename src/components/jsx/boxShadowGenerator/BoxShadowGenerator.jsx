@@ -30,7 +30,10 @@ import {
 	PresetButton,
 } from './BoxShadowGenerator.styles';
 
+const generateLayerId = () => `layer-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+
 const DEFAULT_LAYER = {
+	id: generateLayerId(),
 	offsetX: 10,
 	offsetY: 10,
 	blur: 20,
@@ -43,6 +46,7 @@ const DEFAULT_LAYER = {
 const PRESETS = {
 	subtle: [
 		{
+			id: 'subtle-1',
 			offsetX: 0,
 			offsetY: 2,
 			blur: 4,
@@ -54,6 +58,7 @@ const PRESETS = {
 	],
 	raised: [
 		{
+			id: 'raised-1',
 			offsetX: 0,
 			offsetY: 4,
 			blur: 12,
@@ -63,6 +68,7 @@ const PRESETS = {
 			inset: false,
 		},
 		{
+			id: 'raised-2',
 			offsetX: 0,
 			offsetY: 2,
 			blur: 4,
@@ -74,6 +80,7 @@ const PRESETS = {
 	],
 	floating: [
 		{
+			id: 'floating-1',
 			offsetX: 0,
 			offsetY: 20,
 			blur: 40,
@@ -85,6 +92,7 @@ const PRESETS = {
 	],
 	inset: [
 		{
+			id: 'inset-1',
 			offsetX: 0,
 			offsetY: 2,
 			blur: 4,
@@ -149,7 +157,7 @@ const BoxShadowGenerator = () => {
 
 	const handleAddLayer = () => {
 		if (layers.length < 5) {
-			setLayers((prev) => [...prev, { ...DEFAULT_LAYER }]);
+			setLayers((prev) => [...prev, { ...DEFAULT_LAYER, id: generateLayerId() }]);
 			setActiveLayerIndex(layers.length);
 		}
 	};
@@ -187,12 +195,10 @@ const BoxShadowGenerator = () => {
 					<SectionTitle>Box Shadow Generator</SectionTitle>
 				</SectionHeader>
 
-				<PreviewSection style={{ backgroundColor }}>
+				<PreviewSection $backgroundColor={backgroundColor}>
 					<PreviewBox
-						style={{
-							boxShadow: boxShadowCSS,
-							backgroundColor: objectColor,
-						}}
+						$boxShadow={boxShadowCSS}
+						$backgroundColor={objectColor}
 						aria-label="Box shadow preview"
 					>
 						Preview
@@ -277,9 +283,9 @@ const BoxShadowGenerator = () => {
 
 				<ControlsSection>
 					<LayersList>
-						{layers.map((_layer, index) => (
+						{layers.map((layer, index) => (
 							<LayerItem
-								key={`layer-${index}`}
+								key={layer.id}
 								active={index === activeLayerIndex}
 								onClick={() => setActiveLayerIndex(index)}
 								aria-label={`Layer ${index + 1}`}

@@ -83,8 +83,9 @@ const DiffChecker = () => {
 		}
 
 		let lineNumber = 1;
+		let lineIdCounter = 0;
 
-		return diffResult.map((part, index) => {
+		return diffResult.map((part) => {
 			const lines = part.value.split('\n');
 			const lastLineIndex = lines.length - 1;
 
@@ -102,7 +103,7 @@ const DiffChecker = () => {
 				}
 
 				const lineElement = (
-					<Line key={`${index}-${lineIndex}`}>
+					<Line key={`diff-line-${lineIdCounter++}`}>
 						<LineNumber>{lineNumber}</LineNumber>
 						<LineContent as={LineComponent}>{line}</LineContent>
 					</Line>

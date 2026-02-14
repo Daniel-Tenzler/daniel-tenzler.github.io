@@ -73,7 +73,7 @@ export const PreviewSection = styled.div`
 	justify-content: center;
 	align-items: center;
 	padding: 2em;
-	background-color: var(--gray-383838);
+	background-color: ${(props) => props.$backgroundColor || 'var(--gray-383838)'};
 	border-radius: 8px;
 	border: 1px solid var(--gray-474747);
 
@@ -85,13 +85,14 @@ export const PreviewSection = styled.div`
 export const PreviewBox = styled.div`
 	width: 150px;
 	height: 150px;
-	background-color: var(--color-text-emphasis);
+	background-color: ${(props) => props.$backgroundColor || 'var(--color-text-emphasis)'};
 	border-radius: 8px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	color: var(--gray-292929);
 	font-weight: 600;
+	box-shadow: ${(props) => props.$boxShadow || 'none'};
 	transition: box-shadow 0.2s ease;
 
 	@media (max-width: 768px) {

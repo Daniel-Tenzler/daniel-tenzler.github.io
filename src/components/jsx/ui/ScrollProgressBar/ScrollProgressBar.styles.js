@@ -12,6 +12,7 @@ export const ProgressBar = styled.div`
 
 export const ProgressFill = styled.div`
 	height: 100%;
+	width: ${(props) => props.$progress || '0%'};
 	background: linear-gradient(
 		90deg,
 		#000044ff 0%,

@@ -12,7 +12,9 @@ import {
 	ComparisonSection,
 	ImageCard,
 	ErrorMessage,
+	ProcessingMessage,
 	FileInput,
+	UploadHint,
 } from './Pixelizer.styles';
 
 const Pixelizer = () => {
@@ -246,11 +248,9 @@ const Pixelizer = () => {
 								<strong>Click to upload</strong> or drag and
 								drop
 								<br />
-								<span
-									style={{ fontSize: '0.85em', opacity: 0.7 }}
-								>
+								<UploadHint>
 									JPG, PNG, GIF, WebP (max 10MB)
-								</span>
+								</UploadHint>
 							</div>
 						</>
 					) : (
@@ -258,9 +258,9 @@ const Pixelizer = () => {
 							<strong>Current file:</strong>{' '}
 							{getFileDisplayName()}
 							<br />
-							<span style={{ fontSize: '0.85em', opacity: 0.7 }}>
+							<UploadHint>
 								Click or drag to replace
-							</span>
+							</UploadHint>
 						</div>
 					)}
 					<FileInput
@@ -371,17 +371,12 @@ const Pixelizer = () => {
 			)}
 
 			{isProcessing && (
-				<ErrorMessage
+				<ProcessingMessage
 					role="status"
 					aria-live="polite"
-					style={{
-						color: 'var(--color-text-muted)',
-						backgroundColor: 'var(--gray-474747)',
-						borderColor: 'var(--gray-383838)',
-					}}
 				>
 					Processing image...
-				</ErrorMessage>
+				</ProcessingMessage>
 			)}
 		</Container>
 	);

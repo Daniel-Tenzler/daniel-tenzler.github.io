@@ -113,7 +113,7 @@ const ColorConverter = () => {
 				{!error && formats && (
 					<>
 						<ColorPreview
-							style={{ backgroundColor: formats.rgb }}
+							$backgroundColor={formats.rgb}
 							aria-label="Color preview"
 						/>
 

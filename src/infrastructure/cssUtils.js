@@ -2,52 +2,10 @@
  * CSS Utilities for Box Shadow and Gradient Generators
  */
 
-/**
- * Convert hex color to RGB object
- * @param {string} hex - Hex color (with or without #)
- * @returns {Object|null} RGB object {r, g, b} or null if invalid
- */
-export const hexToRgb = (hex) => {
-	if (!hex || typeof hex !== 'string') return null;
+import { parseHex } from 'src/infrastructure/colorUtils.js';
 
-	const cleaned = hex.replace('#', '');
-
-	// Handle 3-character shorthand
-	if (cleaned.length === 3) {
-		return {
-			r: parseInt(cleaned[0] + cleaned[0], 16),
-			g: parseInt(cleaned[1] + cleaned[1], 16),
-			b: parseInt(cleaned[2] + cleaned[2], 16),
-		};
-	}
-
-	// Handle 6-character hex
-	if (cleaned.length === 6) {
-		const bigint = parseInt(cleaned, 16);
-		return {
-			r: (bigint >> 16) & 255,
-			g: (bigint >> 8) & 255,
-			b: bigint & 255,
-		};
-	}
-
-	return null;
-};
-
-/**
- * Convert RGB values to hex color string
- * @param {number} r - Red value (0-255)
- * @param {number} g - Green value (0-255)
- * @param {number} b - Blue value (0-255)
- * @returns {string} Hex color (without #)
- */
-export const rgbToHex = (r, g, b) => {
-	const toHex = (n) => {
-		const hex = Math.round(Math.max(0, Math.min(255, n))).toString(16);
-		return hex.length === 1 ? '0' + hex : hex;
-	};
-	return `${toHex(r)}${toHex(g)}${toHex(b)}`;
-};
+// Re-export hexToRgb as alias to parseHex from colorUtils
+export const hexToRgb = parseHex;
 
 /**
  * Validate hex color format

@@ -565,3 +565,20 @@ export const ImageCard = styled.div`
 		}
 	}
 `;
+
+export const UploadHint = styled.span`
+	font-size: 0.85em;
+	opacity: 0.7;
+`;
+
+export const ProcessingMessage = styled.div`
+	color: var(--color-text-muted);
+	background-color: var(--gray-474747);
+	border: 1px solid var(--gray-383838);
+	border-radius: 6px;
+	padding: 0.75em 1em;
+	margin: 0.5em auto;
+	text-align: center;
+	font-size: 14px;
+	max-width: 90%;
+`;

@@ -153,6 +153,7 @@ export const ColorPreview = styled.div`
 	height: 80px;
 	border-radius: 8px;
 	border: 1px solid var(--gray-474747);
+	background-color: ${(props) => props.$backgroundColor || 'transparent'};
 	transition: background-color 0.2s ease;
 
 	@media (max-width: 480px) {

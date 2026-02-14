@@ -28,7 +28,7 @@ export default function ScrollProgressBar() {
 
 	return (
 		<ProgressBar>
-			<ProgressFill style={{ width: `${scrollProgress}%` }} />
+			<ProgressFill $progress={`${scrollProgress}%`} />
 		</ProgressBar>
 	);
 }

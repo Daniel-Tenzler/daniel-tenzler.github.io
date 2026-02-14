@@ -31,7 +31,7 @@ const PortfolioPreviewContent = ({ projects }) => {
 				{projects.map((project, index) => (
 					<ProjectCard
 						key={project.id}
-						style={{ animationDelay: `${index * 0.1}s` }}
+						$animationDelay={`${index * 0.1}s`}
 						onClick={() => handleCardClick(project.id)}
 						onKeyDown={(e) => {
 							if (e.key === 'Enter' || e.key === ' ') {
