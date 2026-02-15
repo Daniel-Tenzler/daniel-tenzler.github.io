@@ -5,7 +5,7 @@ interface Props {
 	title: string;
 	description: string;
 	image?: string;
-	structuredData?: object;
+	structuredData?: object | null;
 }
 
 const canonicalURL = new URL('https://daniel-tenzler.de');
@@ -78,9 +78,6 @@ const redirectUrl = isGitHub ? `https://daniel-tenzler.de${Astro.url.pathname}` 
 <!-- Structured Data (JSON-LD) -->
 {
 	structuredData && (
-		<script
-			type="application/ld+json"
-			set:html={JSON.stringify(structuredData)}
-		/>
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 	)
 }
