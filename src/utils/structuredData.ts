@@ -1,11 +1,22 @@
+import type {
+	PortfolioItemSchema,
+	SoftwareApplicationSchema,
+	BlogPostData,
+	CollectionPageSchema,
+	ListItemSchema,
+} from './structuredData.types';
+
 /**
  * Generates SoftwareApplication schema for portfolio items
- * @param {Object} item - Portfolio item object
+ * @param {PortfolioItemSchema} item - Portfolio item object
  * @param {string} baseUrl - Site base URL
- * @returns {Object} SoftwareApplication structured data
+ * @returns {SoftwareApplicationSchema} SoftwareApplication structured data
  */
-export function generatePortfolioItemSchema(item, baseUrl) {
-	const schema = {
+export function generatePortfolioItemSchema(
+	item: PortfolioItemSchema,
+	baseUrl: string
+): SoftwareApplicationSchema {
+	const schema: SoftwareApplicationSchema = {
 		'@context': 'https://schema.org',
 		'@type': 'SoftwareApplication',
 		name: item.title,
@@ -56,7 +67,7 @@ export function generatePortfolioItemSchema(item, baseUrl) {
 		// Parse dates like "2025-05" or "2024-06"
 		const [year, month] = item.date.split('-');
 		if (year && month) {
-			schema.datePublished = new Date(year, month - 1).toISOString();
+			schema.datePublished = new Date(parseInt(year, 10), parseInt(month, 10) - 1).toISOString();
 		}
 	}
 
@@ -73,12 +84,15 @@ export function generatePortfolioItemSchema(item, baseUrl) {
 
 /**
  * Generates CollectionPage schema with ItemList for blog index
- * @param {Array} posts - Array of blog post objects
+ * @param {BlogPostData[]} posts - Array of blog post objects
  * @param {string} baseUrl - Site base URL
- * @returns {Object} CollectionPage structured data
+ * @returns {CollectionPageSchema} CollectionPage structured data
  */
-export function generateBlogIndexSchema(posts, baseUrl) {
-	const itemList = posts
+export function generateBlogIndexSchema(
+	posts: BlogPostData[],
+	baseUrl: string
+): CollectionPageSchema {
+	const itemList: ListItemSchema[] = posts
 		.slice(0, 10) // Limit to 10 most recent posts
 		.map((post, index) => {
 			const url = new URL(`/blog/${post.slug}`, baseUrl).href;
@@ -133,3 +147,15 @@ export function generateBlogIndexSchema(posts, baseUrl) {
 		inLanguage: 'en-US',
 	};
 }
+
+/**
+ * Type exports
+ */
+export type {
+	BlogPostData,
+	CollectionPageSchema,
+	JsonLdContext,
+	ListItemSchema,
+	PortfolioItemSchema,
+	SoftwareApplicationSchema,
+} from './structuredData.types';

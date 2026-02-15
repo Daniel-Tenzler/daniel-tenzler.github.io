@@ -1,4 +1,10 @@
 import fetch from 'node-fetch';
+import type {
+	GitHubRepoMetadata,
+	GitHubRepository,
+	LanguageStats,
+	GitHubRepositoryStats,
+} from './github.types';
 
 const GITHUB_API_BASE = 'https://api.github.com';
 const REPO_OWNER = 'daniel-tenzler';
@@ -6,9 +12,9 @@ const REPO_NAME = 'daniel-tenzler.github.io';
 
 /**
  * Fetches repository metadata from GitHub API
- * @returns {Promise<Object>} Repository metadata
+ * @returns {Promise<GitHubRepoMetadata | null>} Repository metadata or null on error
  */
-export async function getRepoMetadata() {
+export async function getRepoMetadata(): Promise<GitHubRepoMetadata | null> {
 	// Validate that GITHUB_TOKEN is available
 	if (!process.env.GITHUB_TOKEN) {
 		console.error('GITHUB_TOKEN environment variable not found');
@@ -30,7 +36,12 @@ export async function getRepoMetadata() {
 			throw new Error(`GitHub API error: ${response.status}`);
 		}
 
-		const data = await response.json();
+		const data = (await response.json()) as {
+			stargazers_count: number;
+			forks_count: number;
+			description: string;
+			updated_at: string;
+		};
 		return {
 			stars: data.stargazers_count,
 			forks: data.forks_count,
@@ -45,9 +56,9 @@ export async function getRepoMetadata() {
 
 /**
  * Fetches commit count from GitHub API
- * @returns {Promise<number>} Total number of commits
+ * @returns {Promise<number | null>} Total number of commits or null on error
  */
-export async function getCommitCount() {
+export async function getCommitCount(): Promise<number | null> {
 	// Validate that GITHUB_TOKEN is available
 	if (!process.env.GITHUB_TOKEN) {
 		console.error('GITHUB_TOKEN environment variable not found');
@@ -82,15 +93,18 @@ export async function getCommitCount() {
 		return null;
 	}
 }
+
 /**
  * Fetches all public repositories for a given GitHub username
  * @param {string} username - GitHub username
- * @returns {Promise<Array|null>} Array of repository objects or null on error
+ * @returns {Promise<GitHubRepository[] | null>} Array of repository objects or null on error
  */
-export async function fetchRepositories(username) {
+export async function fetchRepositories(
+	username: string
+): Promise<GitHubRepository[] | null> {
 	let page = 1;
-	let allRepos = [];
-	let result;
+	let allRepos: GitHubRepository[] = [];
+	let result: GitHubRepository[];
 
 	// Validate that GITHUB_TOKEN is available
 	if (!process.env.GITHUB_TOKEN) {
@@ -111,12 +125,14 @@ export async function fetchRepositories(username) {
 			);
 
 			if (!response.ok) {
-				const errorBody = await response.json().catch(() => ({}));
+				const errorBody = (await response.json().catch(() => ({}))) as {
+					message?: string;
+				};
 				console.log('GitHub API error:', response.status, errorBody);
 				return null;
 			}
 
-			result = await response.json();
+			result = (await response.json()) as GitHubRepository[];
 			allRepos = allRepos.concat(result);
 			page++;
 		} while (Array.isArray(result) && result.length === 100);
@@ -130,12 +146,14 @@ export async function fetchRepositories(username) {
 
 /**
  * Processes repository data to get language statistics
- * @param {Array} repos - Array of repository objects
- * @returns {Object} Object containing language statistics
+ * @param {GitHubRepository[]} repos - Array of repository objects
+ * @returns {LanguageStats | null} Object containing language statistics
  */
-export function getLanguageStats(repos) {
+export function getLanguageStats(
+	repos: GitHubRepository[]
+): LanguageStats | null {
 	if (repos === undefined || repos === null) return null;
-	const stats = {
+	const stats: LanguageStats = {
 		total: repos.length,
 		languages: {},
 	};
@@ -151,9 +169,11 @@ export function getLanguageStats(repos) {
 /**
  * Fetches repository metadata and statistics for a given GitHub username
  * @param {string} username - GitHub username
- * @returns {Promise<Object>} Repository metadata and statistics
+ * @returns {Promise<GitHubRepositoryStats | null>} Repository metadata and statistics
  */
-export async function fetchRepositoryStats(username) {
+export async function fetchRepositoryStats(
+	username: string
+): Promise<GitHubRepositoryStats | null> {
 	// Validate that GITHUB_TOKEN is available
 	if (!process.env.GITHUB_TOKEN) {
 		console.error('GITHUB_TOKEN environment variable not found');
@@ -176,7 +196,7 @@ export async function fetchRepositoryStats(username) {
 			return null;
 		}
 
-		const repos = await response.json();
+		const repos = (await response.json()) as GitHubRepository[];
 
 		// Calculate total stars and forks
 		const metadata = repos.reduce(
@@ -190,7 +210,7 @@ export async function fetchRepositoryStats(username) {
 		);
 
 		// Get commit count for the most active repository
-		const commitCount = await getCommitCount(username, repos[0]);
+		const commitCount = await getCommitCount();
 
 		return {
 			metadata,
@@ -198,6 +218,6 @@ export async function fetchRepositoryStats(username) {
 		};
 	} catch (error) {
 		console.error('Error fetching repository stats:', error);
-		throw error;
+		return null;
 	}
 }
