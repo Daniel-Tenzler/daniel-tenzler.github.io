@@ -4,14 +4,36 @@
  */
 
 /**
+ * Interface for a box shadow layer configuration
+ */
+export interface BoxShadowLayer {
+	id: string;
+	offsetX: number;
+	offsetY: number;
+	blur: number;
+	spread: number;
+	color: string;
+	opacity: number;
+	inset: boolean;
+}
+
+/**
+ * Type for box shadow presets object
+ * Maps preset names to arrays of layer configurations
+ */
+export type BoxShadowPresets = {
+	[key: string]: BoxShadowLayer[];
+};
+
+/**
  * Generate a unique layer ID
  */
-export const generateLayerId = () => `layer-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+export const generateLayerId = (): string => `layer-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
 
 /**
  * Default layer configuration
  */
-export const DEFAULT_LAYER = {
+export const DEFAULT_LAYER: BoxShadowLayer = {
 	id: 'default-layer',
 	offsetX: 10,
 	offsetY: 10,
@@ -26,7 +48,7 @@ export const DEFAULT_LAYER = {
  * Box shadow presets
  * Each preset is an array of layer configurations
  */
-export const BOX_SHADOW_PRESETS = {
+export const BOX_SHADOW_PRESETS: BoxShadowPresets = {
 	subtle: [
 		{
 			id: 'subtle-1',

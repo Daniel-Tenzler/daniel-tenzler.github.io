@@ -1,4 +1,6 @@
-export const journeyData = [
+import type { JourneyData } from './journey.types';
+
+export const journeyData: JourneyData = [
 	{
 		title: 'Bachelor of Science - Computer Science at Technische Universität Berlin',
 		description:

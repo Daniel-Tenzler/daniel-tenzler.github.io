@@ -1,5 +1,7 @@
+import type { SkillCategories, SkillsData } from './skills.types';
+
 // Define skill categories with their associated CSS variable names
-export const skillCategories = {
+export const skillCategories: SkillCategories = {
 	languages: {
 		label: 'Languages',
 		colorVar: '--skill-languages',
@@ -19,7 +21,7 @@ export const skillCategories = {
 };
 
 // Skills data as an array of objects
-export const skillsData = [
+export const skillsData: SkillsData = [
 	// Languages
 	{ name: 'JS/TS', category: 'languages' },
 	{ name: 'HTML/XML/JSON', category: 'languages' },

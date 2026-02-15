@@ -2,17 +2,97 @@
  * CSS Utilities for Box Shadow and Gradient Generators
  */
 
-import { parseHex } from 'src/infrastructure/colorUtils.js';
+import { parseHex } from 'src/infrastructure/colorUtils';
 
 // Re-export hexToRgb as alias to parseHex from colorUtils
 export const hexToRgb = parseHex;
 
 /**
- * Validate hex color format
- * @param {string} hex - Hex color to validate
- * @returns {boolean} True if valid hex color
+ * CSS value type for parsing and handling CSS units
  */
-export const isValidHex = (hex) => {
+export interface CSSValue {
+	value: number;
+	unit: 'px' | 'rem' | 'em' | '%' | 'vh' | 'vw';
+}
+
+/**
+ * CSS value parser function type
+ */
+export type CSSValueParser = (value: string) => CSSValue | null;
+
+/**
+ * Box shadow layer configuration
+ */
+export interface BoxShadowLayer {
+	offsetX: number;
+	offsetY: number;
+	blur: number;
+	spread: number;
+	color: string;
+	opacity: number;
+	inset: boolean;
+}
+
+/**
+ * Gradient color stop configuration
+ */
+export interface GradientColorStop {
+	id: string;
+	color: string;
+	position: number;
+	opacity?: number;
+}
+
+/**
+ * Linear gradient configuration
+ */
+export interface LinearGradientConfig {
+	angle: number;
+}
+
+/**
+ * Radial gradient configuration
+ */
+export interface RadialGradientConfig {
+	shape: 'circle' | 'ellipse';
+	posX: number;
+	posY: number;
+}
+
+/**
+ * Conic gradient configuration
+ */
+export interface ConicGradientConfig {
+	angle: number;
+	posX: number;
+	posY: number;
+}
+
+/**
+ * Gradient state configuration
+ */
+export interface GradientState {
+	type: 'linear' | 'radial' | 'conic';
+	colorStops: GradientColorStop[];
+	linear?: LinearGradientConfig;
+	radial?: RadialGradientConfig;
+	conic?: ConicGradientConfig;
+}
+
+/**
+ * Gradient preset configuration
+ */
+export interface GradientPreset {
+	name: string;
+	config: GradientState;
+}
+
+/**
+ * Validate hex color format
+ * @param hex - Hex color to validate
+ * @returns True if valid hex color
+ */
+export const isValidHex = (hex: string): boolean => {
 	if (!hex || typeof hex !== 'string') return false;
 	const cleaned = hex.replace('#', '');
 	return /^[0-9a-f]{3}$|^[0-9a-f]{6}$/i.test(cleaned);
@@ -20,10 +100,10 @@ export const isValidHex = (hex) => {
 
 /**
  * Generate box-shadow CSS string from layers array
- * @param {Array} layers - Array of shadow layer objects
- * @returns {string} CSS box-shadow string
+ * @param layers - Array of shadow layer objects
+ * @returns CSS box-shadow string
  */
-export const generateBoxShadowCSS = (layers) => {
+export const generateBoxShadowCSS = (layers: BoxShadowLayer[]): string => {
 	if (!Array.isArray(layers) || layers.length === 0) {
 		return 'none';
 	}
@@ -33,22 +113,25 @@ export const generateBoxShadowCSS = (layers) => {
 
 		// Convert hex color with opacity to rgba
 		const rgb = hexToRgb(color);
+		if (!rgb) {
+			return '';
+		}
 		const alpha = opacity / 100;
 		const rgba = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`;
 
 		const insetKeyword = inset ? 'inset ' : '';
 		return `${insetKeyword}${offsetX}px ${offsetY}px ${blur}px ${spread}px ${rgba}`;
-	});
+	}).filter(Boolean);
 
-	return shadowLayers.join(', ');
+	return shadowLayers.join(', ') || 'none';
 };
 
 /**
  * Generate gradient CSS string from state object
- * @param {Object} state - Gradient state object
- * @returns {string} CSS gradient string
+ * @param state - Gradient state object
+ * @returns CSS gradient string
  */
-export const generateGradientCSS = (state) => {
+export const generateGradientCSS = (state: GradientState): string => {
 	if (
 		!state ||
 		!state.type ||
@@ -66,10 +149,13 @@ export const generateGradientCSS = (state) => {
 	// Generate color stop strings
 	const stopStrings = sortedStops.map((stop) => {
 		const rgb = hexToRgb(stop.color);
+		if (!rgb) {
+			return '';
+		}
 		const alpha = stop.opacity !== undefined ? stop.opacity / 100 : 1;
 		const rgba = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`;
 		return `${rgba} ${stop.position}%`;
-	});
+	}).filter(Boolean);
 
 	switch (type) {
 		case 'linear': {
@@ -100,12 +186,12 @@ export const GRADIENT_TYPES = {
 	LINEAR: 'linear',
 	RADIAL: 'radial',
 	CONIC: 'conic',
-};
+} as const;
 
 /**
  * Default gradient configuration
  */
-export const DEFAULT_GRADIENT_CONFIG = {
+export const DEFAULT_GRADIENT_CONFIG: GradientState = {
 	type: 'linear',
 	linear: {
 		angle: 135,
@@ -129,7 +215,7 @@ export const DEFAULT_GRADIENT_CONFIG = {
 /**
  * Gradient presets
  */
-export const GRADIENT_PRESETS = [
+export const GRADIENT_PRESETS: GradientPreset[] = [
 	{
 		name: 'Sunset',
 		config: {

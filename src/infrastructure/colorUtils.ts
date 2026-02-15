@@ -1,13 +1,24 @@
 // Color conversion utilities
 // All conversions use RGB as the intermediary format
 
+import type {
+	RGB,
+	RGBA,
+	HSLA,
+	HSV,
+	CMYK,
+	HWB,
+	AllColorFormats,
+	ValidatorPatterns,
+} from './colorUtils.types';
+
 // RGB object: { r: 0-255, g: 0-255, b: 0-255, a: 0-1 }
 
 /**
  * Parse HEX to RGB
  * Supports: #RGB, #RGBA, #RRGGBB, #RRGGBBAA
  */
-export const parseHex = (hex) => {
+export const parseHex = (hex: string): RGBA | null => {
 	const cleaned = hex.replace('#', '');
 
 	// Handle shorthand (3 or 4 chars)
@@ -54,8 +65,8 @@ export const parseHex = (hex) => {
 /**
  * Format RGB to HEX
  */
-export const formatHex = ({ r, g, b, a }) => {
-	const toHex = (n) => n.toString(16).padStart(2, '0');
+export const formatHex = ({ r, g, b, a }: RGBA): string => {
+	const toHex = (n: number): string => n.toString(16).padStart(2, '0');
 	let hex = `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 	if (a < 1) {
 		hex += toHex(Math.round(a * 255));
@@ -66,7 +77,7 @@ export const formatHex = ({ r, g, b, a }) => {
 /**
  * Parse rgb()/rgba() string
  */
-export const parseRgb = (str) => {
+export const parseRgb = (str: string): RGBA | null => {
 	const match = str.match(
 		/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([\d.]+)\s*)?\)/
 	);
@@ -83,7 +94,7 @@ export const parseRgb = (str) => {
 /**
  * Format RGB to rgb()/rgba() string
  */
-export const formatRgb = ({ r, g, b, a }) => {
+export const formatRgb = ({ r, g, b, a }: RGBA): string => {
 	if (a < 1) {
 		return `rgba(${r}, ${g}, ${b}, ${a.toFixed(2).replace(/\.?0+$/, '')})`;
 	}
@@ -93,7 +104,7 @@ export const formatRgb = ({ r, g, b, a }) => {
 /**
  * Convert RGB to HSL
  */
-export const rgbToHsl = ({ r, g, b, a }) => {
+export const rgbToHsl = ({ r, g, b, a }: RGBA): HSLA => {
 	const rNorm = r / 255;
 	const gNorm = g / 255;
 	const bNorm = b / 255;
@@ -133,7 +144,7 @@ export const rgbToHsl = ({ r, g, b, a }) => {
 /**
  * Parse hsl()/hsla() string
  */
-export const parseHsl = (str) => {
+export const parseHsl = (str: string): RGBA | null => {
 	const match = str.match(
 		/hsla?\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*(?:,\s*([\d.]+)\s*)?\)/
 	);
@@ -150,17 +161,19 @@ export const parseHsl = (str) => {
 /**
  * Convert HSL to RGB
  */
-export const hslToRgb = ({ h, s, l, a = 1 }) => {
+export const hslToRgb = ({ h, s, l, a = 1 }: HSLA): RGBA => {
 	const hNorm = h / 360;
 	const sNorm = s / 100;
 	const lNorm = l / 100;
 
-	let r, g, b;
+	let r: number;
+	let g: number;
+	let b: number;
 
 	if (s === 0) {
 		r = g = b = lNorm;
 	} else {
-		const hue2rgb = (p, q, t) => {
+		const hue2rgb = (p: number, q: number, t: number): number => {
 			if (t < 0) t += 1;
 			if (t > 1) t -= 1;
 			if (t < 1 / 6) return p + (q - p) * 6 * t;
@@ -189,7 +202,7 @@ export const hslToRgb = ({ h, s, l, a = 1 }) => {
 /**
  * Format RGB to hsl()/hsla() string
  */
-export const formatHsl = (rgb) => {
+export const formatHsl = (rgb: RGBA): string => {
 	const hsl = rgbToHsl(rgb);
 	if (hsl.a < 1) {
 		return `hsla(${hsl.h}, ${hsl.s}%, ${hsl.l}%, ${hsl.a.toFixed(2).replace(/\.?0+$/, '')})`;
@@ -200,7 +213,7 @@ export const formatHsl = (rgb) => {
 /**
  * Convert RGB to HSV
  */
-export const rgbToHsv = ({ r, g, b, a }) => {
+export const rgbToHsv = ({ r, g, b, a }: RGBA): HSV => {
 	const rNorm = r / 255;
 	const gNorm = g / 255;
 	const bNorm = b / 255;
@@ -238,7 +251,7 @@ export const rgbToHsv = ({ r, g, b, a }) => {
 /**
  * Parse hsv() string
  */
-export const parseHsv = (str) => {
+export const parseHsv = (str: string): RGBA | null => {
 	const match = str.match(/hsv\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/);
 	if (!match) return null;
 
@@ -252,7 +265,7 @@ export const parseHsv = (str) => {
 /**
  * Convert HSV to RGB
  */
-export const hsvToRgb = ({ h, s, v, a = 1 }) => {
+export const hsvToRgb = ({ h, s, v, a = 1 }: HSV): RGBA => {
 	const hNorm = h / 360;
 	const sNorm = s / 100;
 	const vNorm = v / 100;
@@ -263,7 +276,9 @@ export const hsvToRgb = ({ h, s, v, a = 1 }) => {
 	const q = vNorm * (1 - f * sNorm);
 	const t = vNorm * (1 - (1 - f) * sNorm);
 
-	let r, g, b;
+	let r: number;
+	let g: number;
+	let b: number;
 
 	switch (i % 6) {
 		case 0:
@@ -296,6 +311,10 @@ export const hsvToRgb = ({ h, s, v, a = 1 }) => {
 			g = p;
 			b = q;
 			break;
+		default:
+			r = vNorm;
+			g = p;
+			b = q;
 	}
 
 	return {
@@ -309,7 +328,7 @@ export const hsvToRgb = ({ h, s, v, a = 1 }) => {
 /**
  * Format RGB to hsv() string
  */
-export const formatHsv = (rgb) => {
+export const formatHsv = (rgb: RGBA): string => {
 	const hsv = rgbToHsv(rgb);
 	return `hsv(${hsv.h}, ${hsv.s}%, ${hsv.v}%)`;
 };
@@ -317,7 +336,7 @@ export const formatHsv = (rgb) => {
 /**
  * Convert RGB to HWB
  */
-export const rgbToHwb = ({ r, g, b, a }) => {
+export const rgbToHwb = ({ r, g, b, a }: RGBA): HWB => {
 	const hsv = rgbToHsv({ r, g, b, a });
 	const w = ((1 - hsv.s / 100) * hsv.v) / 100;
 	const bVal = (1 - hsv.v) / 100;
@@ -333,7 +352,7 @@ export const rgbToHwb = ({ r, g, b, a }) => {
 /**
  * Parse hwb() string
  */
-export const parseHwb = (str) => {
+export const parseHwb = (str: string): RGBA | null => {
 	const match = str.match(
 		/hwb\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*(?:,\s*([\d.]+)\s*)?\)/
 	);
@@ -350,7 +369,7 @@ export const parseHwb = (str) => {
 /**
  * Convert HWB to RGB
  */
-export const hwbToRgb = ({ h, w, b, a = 1 }) => {
+export const hwbToRgb = ({ h, w, b, a = 1 }: HWB): RGBA => {
 	// Handle edge case where w + b >= 100
 	if (w + b >= 100) {
 		const gray = (100 * w) / (w + b);
@@ -362,7 +381,7 @@ export const hwbToRgb = ({ h, w, b, a = 1 }) => {
 		};
 	}
 
-	const hsvResult = {
+	const hsvResult: HSV = {
 		h: h,
 		s: 100 - (w / (100 - b)) * 100,
 		v: 100 - b,
@@ -375,9 +394,9 @@ export const hwbToRgb = ({ h, w, b, a = 1 }) => {
 /**
  * Format RGB to hwb() string
  */
-export const formatHwb = (rgb) => {
+export const formatHwb = (rgb: RGBA): string => {
 	const hwb = rgbToHwb(rgb);
-	if (hwb.a < 1) {
+	if (hwb.a && hwb.a < 1) {
 		return `hwb(${hwb.h}, ${hwb.w}%, ${hwb.b}%, ${hwb.a.toFixed(2).replace(/\.?0+$/, '')})`;
 	}
 	return `hwb(${hwb.h}, ${hwb.w}%, ${hwb.b}%)`;
@@ -386,7 +405,7 @@ export const formatHwb = (rgb) => {
 /**
  * Convert RGB to CMYK
  */
-export const rgbToCmyk = ({ r, g, b }) => {
+export const rgbToCmyk = ({ r, g, b }: RGB): CMYK => {
 	const rNorm = r / 255;
 	const gNorm = g / 255;
 	const bNorm = b / 255;
@@ -407,7 +426,7 @@ export const rgbToCmyk = ({ r, g, b }) => {
 /**
  * Parse cmyk() string
  */
-export const parseCmyk = (str) => {
+export const parseCmyk = (str: string): RGBA | null => {
 	const match = str.match(
 		/cmyk\(\s*(\d+)%\s*,\s*(\d+)%\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/
 	);
@@ -424,7 +443,7 @@ export const parseCmyk = (str) => {
 /**
  * Convert CMYK to RGB
  */
-export const cmykToRgb = ({ c, m, y, k }) => {
+export const cmykToRgb = ({ c, m, y, k }: CMYK): RGBA => {
 	const r = 255 * (1 - c) * (1 - k);
 	const g = 255 * (1 - m) * (1 - k);
 	const b = 255 * (1 - y) * (1 - k);
@@ -440,7 +459,7 @@ export const cmykToRgb = ({ c, m, y, k }) => {
 /**
  * Format RGB to cmyk() string
  */
-export const formatCmyk = (rgb) => {
+export const formatCmyk = (rgb: RGB): string => {
 	const cmyk = rgbToCmyk(rgb);
 	return `cmyk(${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%)`;
 };
@@ -448,7 +467,7 @@ export const formatCmyk = (rgb) => {
 /**
  * Validation regex patterns
  */
-export const validators = {
+export const validators: ValidatorPatterns = {
 	hex: /^#?([0-9a-f]{3}|[0-9a-f]{4}|[0-9a-f]{6}|[0-9a-f]{8})$/i,
 	rgb: /^rgba?\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*(?:,\s*[\d.]+\s*)?\)$/,
 	hsl: /^hsla?\(\s*\d+\s*,\s*\d+%\s*,\s*\d+%\s*(?:,\s*[\d.]+\s*)?\)$/,
@@ -460,7 +479,7 @@ export const validators = {
 /**
  * Detect format and parse to RGB
  */
-export const parseColor = (input) => {
+export const parseColor = (input: unknown): RGBA | null => {
 	if (!input || typeof input !== 'string') return null;
 
 	const trimmed = input.trim().toLowerCase();
@@ -491,7 +510,7 @@ export const parseColor = (input) => {
 /**
  * Convert RGB to all formats
  */
-export const convertToAllFormats = (rgb) => {
+export const convertToAllFormats = (rgb: RGBA | null): AllColorFormats | null => {
 	if (!rgb) return null;
 
 	return {
@@ -506,14 +525,14 @@ export const convertToAllFormats = (rgb) => {
 
 /**
  * Convert HEX color with opacity to RGBA string
- * @param {string} hex - HEX color value (with or without # prefix)
- * @param {number} opacity - Opacity value (0-1)
- * @returns {string} RGBA color string
+ * @param hex - HEX color value (with or without # prefix)
+ * @param opacity - Opacity value (0-1)
+ * @returns RGBA color string
  * @example
  * hexToRgba('#ff0000', 0.5) // returns 'rgba(255, 0, 0, 0.5)'
  * Used by Box Shadow Generator
  */
-export const hexToRgba = (hex, opacity) => {
+export const hexToRgba = (hex: string, opacity: number): string => {
 	const cleanHex = hex.replace('#', '');
 	const r = parseInt(cleanHex.substring(0, 2), 16);
 	const g = parseInt(cleanHex.substring(2, 4), 16);

@@ -1,4 +1,6 @@
-export const tools = [
+import type { Tool } from './tools.types';
+
+export const tools: Tool[] = [
 	{
 		id: 'url-encoder',
 		title: 'URL Encoder/Decoder',
@@ -81,8 +83,8 @@ export const tools = [
 	},
 ];
 
-export const getToolsByCategory = () => {
-	const categories = {};
+export const getToolsByCategory = (): Record<string, Tool[]> => {
+	const categories: Record<string, Tool[]> = {};
 	tools.forEach((tool) => {
 		if (!categories[tool.category]) {
 			categories[tool.category] = [];
