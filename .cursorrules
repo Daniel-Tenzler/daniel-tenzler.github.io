@@ -1,0 +1,90 @@
+# TypeScript & Project-Specific Rules for this Codebase
+
+## Language & File Extensions
+
+- This project uses TypeScript (strict mode)
+- Use `.ts` for TypeScript files, `.tsx` for React components, `.astro` for Astro components
+- Never use `.js` or `.jsx` for new files
+
+## Import Style
+
+- Use absolute imports from `src/` directory: `import X from 'src/components/...'`
+- Path alias `@/` is also available: `import X from '@/components/...'`
+- Avoid relative imports (e.g., `../components/`)
+
+## TypeScript Configuration
+
+- Strict mode is enabled in `tsconfig.json`
+- All compiler options are set to strict
+- Type checking is required (`yarn typecheck` must pass)
+
+## Component Props
+
+- All React components must have TypeScript interfaces for props
+- Use `export interface ComponentNameProps` pattern
+- Props must be properly typed (no `any` types)
+- Example:
+  ```typescript
+  export interface MyComponentProps {
+    title: string;
+    count?: number;
+    onAction: () => void;
+  }
+
+  const MyComponent = ({ title, count = 0, onAction }: MyComponentProps) => {
+    // ...
+  };
+  ```
+
+## Emotion Styled Components
+
+- Styled components with custom props (prefixed with `$`) need proper TypeScript interfaces
+- Create interfaces before the styled component:
+  ```typescript
+  interface StyledButtonProps {
+    $active?: boolean;
+    $variant?: 'primary' | 'secondary';
+  }
+
+  export const StyledButton = styled.button<StyledButtonProps>`
+    background: ${props => props.$active ? 'blue' : 'gray'};
+  `;
+  ```
+
+## Astro Client Directives
+
+- When using Astro client directives (`client:load`, `client:visible`, etc.) in React components, add them to props interface:
+  ```typescript
+  export interface MyComponentProps extends React.HTMLAttributes<HTMLDivElement> {
+    'client:load'?: boolean;
+    'client:visible'?: boolean;
+    'client:idle'?: boolean;
+  }
+  ```
+
+## Type Definitions
+
+- Global type definitions are in `src/types/global.types.ts`
+- Astro-specific types are in `src/types/astro.types.ts`
+- React-specific types are in `src/types/react.types.ts`
+- Use existing types before creating new ones
+
+## Code Style
+
+- Use tabs for indentation (tab width: 4)
+- Use single quotes for strings
+- Semicolons are required
+- Use camelCase for variables/functions, PascalCase for components, UPPER_CASE for constants
+
+## Development Workflow
+
+1. Always run `yarn typecheck` before committing
+2. Run `yarn eslint` to check code quality
+3. The build command is `yarn astro build`
+4. Test locally with `yarn dev` or `yarn preview`
+
+## Key Files
+
+- `tsconfig.json` - TypeScript configuration
+- `CLAUDE.md` - Project-specific guidelines
+- `package.json` - Dependencies and scripts

@@ -1,6 +1,6 @@
 # Personal Portfolio & Blog
 
-A modern portfolio and blog website built with Astro, React, and styled-components. This project serves as both a showcase for my work and a platform for sharing technical insights through blog posts.
+A modern portfolio and blog website built with Astro, React, TypeScript, and Emotion styled-components. This project serves as both a showcase for my work and a platform for sharing technical insights through blog posts.
 
 ## 🚀 Project Structure
 
@@ -79,8 +79,17 @@ All commands are run from the root of the project, from a terminal:
 | `yarn deploy:github`         | Deploy to GitHub Pages (recommended)                          |
 | `yarn deploy:server`         | Deploy to private server via SFTP (recommended)               |
 | `yarn deploy:* -- --dry-run` | Simulate deployment without changes                           |
+| `yarn typecheck`             | Run TypeScript type checking                                  |
 | `yarn eslint`                | Run ESLint to check code quality                              |
 | `yarn format`                | Format code with Prettier                                     |
+
+## 🛠️ Tech Stack
+
+- **Framework**: Astro 5.8
+- **UI Library**: React 19
+- **Language**: TypeScript 5.8
+- **Styling**: Emotion (styled-components)
+- **Deployment**: GitHub Pages & SFTP
 
 ## Credit
 
