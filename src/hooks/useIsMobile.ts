@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
 
 /**
- * @param {number} breakpoint - The breakpoint in pixels (default: 768)
- * @returns {boolean} - True if viewport is below breakpoint
+ * Custom hook to detect if viewport is below a breakpoint
+ * @param breakpoint - The breakpoint in pixels (default: 768)
+ * @returns Object with isMobile boolean and breakpoint number
  */
-export function useIsMobile(breakpoint = 768) {
+export const useIsMobile = (breakpoint: number = 768): {
+	isMobile: boolean;
+	breakpoint: number;
+} => {
 	// Start with null to avoid hydration mismatch
-	const [isMobile, setIsMobile] = useState(null);
+	const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
 	useEffect(() => {
 		function handleResize() {
@@ -21,5 +25,5 @@ export function useIsMobile(breakpoint = 768) {
 	}, [breakpoint]);
 
 	// Return false during SSR, actual value on client
-	return isMobile ?? false;
+	return { isMobile: isMobile ?? false, breakpoint };
 }

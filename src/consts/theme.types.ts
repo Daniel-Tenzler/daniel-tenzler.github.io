@@ -9,18 +9,14 @@
 // import { useTheme } from 'src/hooks/useTheme';
 // const { toggleTheme, getTheme } = useTheme();
 
-export const lightTheme = {
-	background: '#ffffff',
-	text: '#222222',
-};
+export interface ThemeColors {
+	background: string;
+	text: string;
+}
 
-export const darkTheme = {
-	background: '#181818',
-	text: '#f5f5f5',
-};
-
-// @deprecated Use CSS variables via useTheme hook instead
 export const THEME_MODES = {
 	DARK: 'dark',
 	LIGHT: 'light',
-};
+} as const;
+
+export type ThemeMode = (typeof THEME_MODES)[keyof typeof THEME_MODES];

@@ -1,5 +1,7 @@
+import type { ColorConstants, GetRgbaColorFunction, HexToRgbFunction } from './Colors.types';
+
 // Utility: Convert hex to RGB string (e.g. "#ffffff" → "255, 255, 255")
-export const hexToRgb = (hex) => {
+export const hexToRgb: HexToRgbFunction = (hex) => {
 	if (!hex || typeof hex !== 'string') return '';
 	const cleaned = hex.replace('#', '');
 	const bigint = parseInt(cleaned, 16);
@@ -10,10 +12,10 @@ export const hexToRgb = (hex) => {
 };
 
 // Utility: Get rgba string from hex color
-export const getRgbaColor = (hex, opacity = 1) =>
+export const getRgbaColor: GetRgbaColorFunction = (hex, opacity = 1) =>
 	`rgba(${hexToRgb(hex)}, ${opacity})`;
 
-export const COLORS = {
+export const COLORS: ColorConstants = {
 	BLUE_2337FF: '#2337ff',
 	BLUE_000D8A: '#000d8a',
 	BLUE_00004A: '#00004a',
