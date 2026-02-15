@@ -1,14 +1,16 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from 'src/consts/SiteData.js';
+import { SITE_TITLE, SITE_DESCRIPTION } from 'src/consts/SiteData';
 import MainLayout from 'src/layouts/MainLayout.astro';
-import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground.jsx';
-import HeroSection from 'src/components/jsx/home/HeroSection/HeroSection.jsx';
-import LatestPostsSection from 'src/components/jsx/home/LatestPostsSection/LatestPostsSection.jsx';
-import AboutSection from 'src/components/jsx/home/AboutSection/AboutSection.jsx';
-import JourneySection from 'src/components/jsx/home/JourneySection/JourneySection.jsx';
-import SkillsSection from 'src/components/jsx/home/SkillsSection/SkillsSection.jsx';
-import GitHubStats from 'src/components/jsx/home/GitHubStats/GitHubStats.jsx';
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import HeroSection from 'src/components/jsx/home/HeroSection/HeroSection';
+import LatestPostsSection from 'src/components/jsx/home/LatestPostsSection/LatestPostsSection';
+import AboutSection from 'src/components/jsx/home/AboutSection/AboutSection';
+import JourneySection from 'src/components/jsx/home/JourneySection/JourneySection';
+import SkillsSection from 'src/components/jsx/home/SkillsSection/SkillsSection';
+import GitHubStats from 'src/components/jsx/home/GitHubStats/GitHubStats';
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import type { BlogPostFrontmatter } from 'src/types/astro.types';
 import portfolioData from 'src/data/portfolio/portfolio.json';
 import PortfolioPreview from 'src/components/jsx/home/PortfolioPreview/PortfolioPreview';
 import {
@@ -21,17 +23,20 @@ import {
 	getCommitCount,
 	fetchRepositories,
 	getLanguageStats,
-} from 'src/lib/github.js';
+} from 'src/lib/github';
 import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
-import { journeyData } from 'src/data/journey/journey.js';
-import { skillsData, skillCategories } from 'src/data/skills/skills.js';
-import { generatePersonSchema } from 'src/infrastructure/structuredData.js';
-import { SITE_URL } from 'src/consts/SiteData.js';
+import { journeyData } from 'src/data/journey/journey';
+import { skillsData, skillCategories } from 'src/data/skills/skills';
+import { generatePersonSchema } from 'src/infrastructure/structuredData';
+import { SITE_URL } from 'src/consts/SiteData';
 
 const latestPosts = (await getCollection('blog'))
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.sort(
+		(a: CollectionEntry<BlogPostFrontmatter>, b: CollectionEntry<BlogPostFrontmatter>) =>
+			b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+	)
 	.slice(0, 2)
-	.map((post) => ({
+	.map((post: CollectionEntry<BlogPostFrontmatter>) => ({
 		title: post.data.title,
 		description: post.data.description,
 		pubDate: new Date(post.data.pubDate),

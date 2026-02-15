@@ -2,14 +2,19 @@
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from 'src/consts/SiteData';
 import MainLayout from 'src/layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import BlogContainer from 'src/components/jsx/blog/BlogContainer/BlogContainer';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
 import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
 import { generateBlogIndexSchema } from 'src/utils/structuredData';
+import type { BlogPostFrontmatter } from 'src/types/astro.types';
 
 const posts = (await getCollection('blog'))
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.map((post) => ({
+	.sort(
+		(a: CollectionEntry<BlogPostFrontmatter>, b: CollectionEntry<BlogPostFrontmatter>) =>
+			b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+	)
+	.map((post: CollectionEntry<BlogPostFrontmatter>) => ({
 		...post,
 		data: {
 			...post.data,
@@ -18,9 +23,16 @@ const posts = (await getCollection('blog'))
 	}));
 
 // Get all unique tags from posts
-const allTags = [
-	...new Set(posts.flatMap((post) => post.data.tags || [])),
-].sort();
+const allTagsSet = new Set<string>();
+posts.forEach((post: CollectionEntry<BlogPostFrontmatter>) => {
+	const tags = post.data.tags ?? [];
+	tags.forEach((tag: unknown) => {
+		if (typeof tag === 'string') {
+			allTagsSet.add(tag);
+		}
+	});
+});
+const allTags: string[] = Array.from(allTagsSet).sort();
 
 const structuredData = generateBlogIndexSchema(posts, SITE_URL);
 ---
