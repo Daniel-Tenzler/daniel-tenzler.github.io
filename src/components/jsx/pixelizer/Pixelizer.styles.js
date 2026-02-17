@@ -82,7 +82,7 @@ export const ButtonContainer = styled.div`
 	}
 `;
 
-export const ProcessButton = styled(BasePrimaryButton);
+export const ProcessButton = styled(BasePrimaryButton)``;
 
 export const OutputField = styled.textarea`
 	background-color: var(--gray-2d2d2d);

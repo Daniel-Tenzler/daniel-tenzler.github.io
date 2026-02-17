@@ -123,6 +123,6 @@ export const ButtonContainer = styled.div`
 
 const BaseButton = BaseSmallButton;
 
-export const DecodeButton = styled(BaseButton);
+export const DecodeButton = styled(BaseButton)``;
 
-export const EncodeButton = styled(BaseButton);
+export const EncodeButton = styled(BaseButton)``;

@@ -242,9 +242,9 @@ export const FormatButton = styled(BaseSmallButton)`
 	background-color: var(--gray-383838);
 `;
 
-export const CopyButton = styled(FormatButton);
+export const CopyButton = styled(FormatButton)``;
 
-export const ImportButton = styled(FormatButton);
+export const ImportButton = styled(FormatButton)``;
 
 export const ButtonsContainer = styled.div`
 	display: flex;

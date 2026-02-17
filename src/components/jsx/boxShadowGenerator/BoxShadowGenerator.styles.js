@@ -309,9 +309,9 @@ export const ToggleButton = styled(BaseToggleButton)`
 	text-align: center;
 `;
 
-export const AddLayerButton = styled(BaseMediumButton);
+export const AddLayerButton = styled(BaseMediumButton)``;
 
-export const RemoveLayerButton = styled(BaseMediumButton);
+export const RemoveLayerButton = styled(BaseMediumButton)``;
 
 export const PresetsSection = styled.div`
 	display: flex;

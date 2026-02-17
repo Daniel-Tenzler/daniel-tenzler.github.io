@@ -348,17 +348,26 @@ export const LineContent = styled.span`
 `;
 
 export const Addition = styled.span`
+	flex: 1;
+	white-space: pre-wrap;
+	word-break: break-all;
 	background-color: #16a34a33;
 	color: #4ade80;
 `;
 
 export const Deletion = styled.span`
+	flex: 1;
+	white-space: pre-wrap;
+	word-break: break-all;
 	background-color: #dc26261a;
 	color: #f87171;
 	text-decoration: line-through;
 `;
 
 export const NoChange = styled.span`
+	flex: 1;
+	white-space: pre-wrap;
+	word-break: break-all;
 	color: var(--color-text-emphasis);
 `;
 

@@ -22,7 +22,6 @@ import {
 	ResultHeader,
 	ResultContent,
 	Line,
-	LineContent,
 	Addition,
 	Deletion,
 	NoChange,
@@ -105,7 +104,7 @@ const DiffChecker = () => {
 				const lineElement = (
 					<Line key={`diff-line-${lineIdCounter++}`}>
 						<LineNumber>{lineNumber}</LineNumber>
-						<LineContent as={LineComponent}>{line}</LineContent>
+						<LineComponent>{line}</LineComponent>
 					</Line>
 				);
 
