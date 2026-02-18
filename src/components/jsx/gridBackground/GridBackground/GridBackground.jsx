@@ -175,3 +175,5 @@ export default function GridBackground() {
 
 	return <Canvas ref={canvasRef} />;
 }
+
+GridBackground.propTypes = {};

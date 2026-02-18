@@ -81,3 +81,5 @@ export default function MobileMenuComponent() {
 		</>
 	);
 }
+
+MobileMenuComponent.propTypes = {};

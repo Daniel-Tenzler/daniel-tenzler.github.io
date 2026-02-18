@@ -7,6 +7,6 @@ const baseUrl = import.meta.env.BASE_URL || 'https://daniel-tenzler.github.io';
 ---
 
 <MainLayout title="URL Encoder Tool" description="Encode and decode URLs with this free online URL encoder tool by Daniel Tenzler">
-	<GridBackground client:load />
+	<GridBackground client:visible />
 	<UrlEncoder initialValue={baseUrl} client:load />
 </MainLayout>

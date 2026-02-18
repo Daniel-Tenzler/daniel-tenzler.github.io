@@ -57,4 +57,6 @@ const DarkModeToggle = () => {
 	);
 };
 
+DarkModeToggle.propTypes = {};
+
 export default DarkModeToggle;

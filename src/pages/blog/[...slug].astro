@@ -28,6 +28,6 @@ const title = `${post.data.title}`;
 ---
 
 <BlogPostLayout {...post.data} title={title} headings={headings}>
-	<GridBackground client:load />
+	<GridBackground client:visible />
 	<Content />
 </BlogPostLayout>

@@ -26,7 +26,7 @@ const structuredData = generateBlogIndexSchema(posts, SITE_URL);
 ---
 
 <MainLayout title={`${SITE_TITLE}`} description={SITE_DESCRIPTION} structuredData={structuredData}>
-	<GridBackground client:load />
+	<GridBackground client:visible />
 	<ContentContainer client:load>
 		<BlogContainer client:load posts={posts} allTags={allTags} />
 	</ContentContainer>

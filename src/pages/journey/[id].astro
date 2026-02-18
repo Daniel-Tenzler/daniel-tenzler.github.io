@@ -27,7 +27,7 @@ const { Content } = await journeyEntry.render();
 ---
 
 <MainLayout title={`${item.title} | My Journey`}>
-	<GridBackground client:load />
+	<GridBackground client:visible />
 	<ContentContainer client:load>
 		<JourneyDetailsPageContent client:load item={item}>
 			<Content />

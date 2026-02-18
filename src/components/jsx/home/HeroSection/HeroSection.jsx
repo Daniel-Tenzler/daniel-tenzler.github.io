@@ -38,3 +38,5 @@ export default function HeroSection() {
 		</Section>
 	);
 }
+
+HeroSection.propTypes = {};

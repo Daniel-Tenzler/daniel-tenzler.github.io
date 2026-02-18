@@ -20,6 +20,6 @@ const structuredData = generatePortfolioItemSchema(item, SITE_URL);
 ---
 
 <PortfolioLayout title={`${item.title} | Portfolio | Daniel Tenzler`} structuredData={structuredData}>
-	<GridBackground client:load />
+	<GridBackground client:visible />
 	<Project client:load item={item} />
 </PortfolioLayout> 
