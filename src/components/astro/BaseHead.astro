@@ -5,17 +5,21 @@ interface Props {
 	title: string;
 	description: string;
 	image?: string;
-	structuredData?: object;
+	structuredData?: object | null;
+	canonicalUrl?: string;
 }
-
-const canonicalURL = new URL('https://daniel-tenzler.de');
 
 const {
 	title,
 	description,
 	image = '/blog-placeholder-1.jpg',
 	structuredData,
+	canonicalUrl,
 } = Astro.props;
+
+const canonicalURL = canonicalUrl
+	? new URL(canonicalUrl)
+	: new URL('https://daniel-tenzler.de');
 
 // GitHub Pages redirect to private server for SEO
 const isGitHub = import.meta.env.PUBLIC_ENV === 'github';
@@ -78,9 +82,6 @@ const redirectUrl = isGitHub ? `https://daniel-tenzler.de${Astro.url.pathname}` 
 <!-- Structured Data (JSON-LD) -->
 {
 	structuredData && (
-		<script
-			type="application/ld+json"
-			set:html={JSON.stringify(structuredData)}
-		/>
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 	)
 }

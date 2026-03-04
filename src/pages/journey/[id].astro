@@ -1,10 +1,10 @@
 ---
 import MainLayout from 'src/layouts/MainLayout.astro';
-import { journeyData } from 'src/data/journey/journey.js';
+import { journeyData } from 'src/data/journey/journey.ts';
 import { getEntry } from 'astro:content';
-import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer.jsx';
+import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
-import JourneyDetailsPageContent from 'src/components/jsx/journey/JourneyDetailsPageContent/JourneyDetailsPageContent.jsx';
+import JourneyDetailsPageContent from 'src/components/jsx/journey/JourneyDetailsPageContent/JourneyDetailsPageContent';
 
 export function getStaticPaths() {
 	const journeyItems = journeyData.filter((item) => item.id && item.link);
