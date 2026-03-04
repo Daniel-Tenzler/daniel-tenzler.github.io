@@ -29,3 +29,48 @@ export const Paragraph = styled.p`
 		margin-bottom: 0;
 	}
 `;
+
+export const StyledResumeButton = styled.a`
+	display: inline-flex;
+	align-items: center;
+	padding: 12px 24px;
+	margin-top: 24px;
+	background: var(--color-accent-brand);
+	color: white;
+	border-radius: 8px;
+	font-weight: 600;
+	font-size: 16px;
+	text-decoration: none;
+	transition: background 0.2s ease, transform 0.2s ease;
+	cursor: pointer;
+
+	&:hover {
+		background: #1e3a8a;
+		transform: translateY(-2px);
+	}
+
+	&:focus {
+		outline: 2px solid #1e3a8a;
+		outline-offset: 2px;
+	}
+
+	&:focus-visible {
+		outline: 2px solid #1e3a8a;
+		outline-offset: 2px;
+	}
+
+	&:active {
+		transform: translateY(0);
+	}
+
+	/* Ensure focus ring remains visible in :active state */
+	&:active:focus-visible {
+		outline: 2px solid #1e3a8a;
+		outline-offset: 2px;
+	}
+
+	@media (max-width: 768px) {
+		padding: 10px 20px;
+		font-size: 14px;
+	}
+`;

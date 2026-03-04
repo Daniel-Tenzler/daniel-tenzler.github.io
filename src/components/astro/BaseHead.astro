@@ -6,16 +6,20 @@ interface Props {
 	description: string;
 	image?: string;
 	structuredData?: object | null;
+	canonicalUrl?: string;
 }
-
-const canonicalURL = new URL('https://daniel-tenzler.de');
 
 const {
 	title,
 	description,
 	image = '/blog-placeholder-1.jpg',
 	structuredData,
+	canonicalUrl,
 } = Astro.props;
+
+const canonicalURL = canonicalUrl
+	? new URL(canonicalUrl)
+	: new URL('https://daniel-tenzler.de');
 
 // GitHub Pages redirect to private server for SEO
 const isGitHub = import.meta.env.PUBLIC_ENV === 'github';

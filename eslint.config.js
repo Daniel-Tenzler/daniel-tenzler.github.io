@@ -64,6 +64,10 @@ export default [
 				requestIdleCallback: 'readonly',
 				IntersectionObserver: 'readonly',
 				cancelAnimationFrame: 'readonly',
+				navigator: 'readonly',
+				localStorage: 'readonly',
+				sessionStorage: 'readonly',
+				NodeJS: 'readonly',
 			},
 		},
 		settings: {
@@ -151,6 +155,10 @@ export default [
 				requestIdleCallback: 'readonly',
 				IntersectionObserver: 'readonly',
 				cancelAnimationFrame: 'readonly',
+				navigator: 'readonly',
+				localStorage: 'readonly',
+				sessionStorage: 'readonly',
+				NodeJS: 'readonly',
 			},
 		},
 		settings: {

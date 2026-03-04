@@ -50,6 +50,7 @@
 		"@babel/plugin-transform-react-jsx-self": "^7.27.1",
 		"@babel/plugin-transform-react-jsx-source": "^7.27.1",
 		"@babel/preset-react": "^7.27.1",
+		"@babel/preset-typescript": "^7.28.5",
 		"@emotion/babel-plugin": "^11.13.5",
 		"@rollup/plugin-babel": "^6.0.4",
 		"@types/eslint-plugin-jsx-a11y": "^6.10.1",

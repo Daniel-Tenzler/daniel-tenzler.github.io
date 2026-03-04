@@ -10,9 +10,11 @@ interface Props {
 	title: string;
 	description?: string;
 	structuredData?: object;
+	canonicalUrl?: string;
+	ogImage?: string;
 }
 
-const { title, description = "Daniel Tenzler's personal website and blog", structuredData } =
+const { title, description = "Daniel Tenzler's personal website and blog", structuredData, canonicalUrl, ogImage } =
 	Astro.props;
 ---
 
@@ -25,7 +27,8 @@ const { title, description = "Daniel Tenzler's personal website and blog", struc
 		<BaseHead
 			title={title}
 			description={description}
-			image="/images/portfolio/blog-placeholder-2.jpg"
+			image={ogImage || "/images/portfolio/blog-placeholder-2.jpg"}
+			canonicalUrl={canonicalUrl}
 			structuredData={structuredData || {
 				'@context': 'https://schema.org',
 				'@type': 'WebPage',

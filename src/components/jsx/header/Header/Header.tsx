@@ -32,6 +32,7 @@ export default function Header({ id }: HeaderProps) {
 						<NavLink href="/portfolio">Portfolio</NavLink>
 						<NavLink href="/blog">Blog</NavLink>
 						<NavLink href="/tools">Tools</NavLink>
+						<NavLink href="/contact">Contact</NavLink>
 						<DesktopDarkModeWrapper>
 							<DarkModeToggle client:visible />
 						</DesktopDarkModeWrapper>

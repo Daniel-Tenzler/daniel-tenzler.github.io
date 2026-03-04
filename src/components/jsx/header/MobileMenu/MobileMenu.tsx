@@ -77,6 +77,9 @@ export default function MobileMenuComponent() {
 				<MobileNavLink href="/tools" onClick={toggleMobileMenu}>
 					<NavlinkCard>Tools</NavlinkCard>
 				</MobileNavLink>
+				<MobileNavLink href="/contact" onClick={toggleMobileMenu}>
+					<NavlinkCard>Contact</NavlinkCard>
+				</MobileNavLink>
 			</MobileMenu>
 		</>
 	);
