@@ -24,7 +24,7 @@ const contactMethods = [
 	{
 		label: 'LinkedIn',
 		value: 'linkedin.com/in/danieltenzler',
-		href: 'https://linkedin.com/in/danieltenzler',
+		href: 'https://www.linkedin.com/in/daniel-patrick-tenzler-89a44a319/',
 		ariaLabel: 'Visit LinkedIn profile (opens in new tab)',
 		action: 'Connect',
 		external: true,
