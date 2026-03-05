@@ -70,26 +70,30 @@ export const MenuIcon = styled.svg<MenuIconProps>`
 		transform 0.3s ease-in-out,
 		opacity 0.3s ease-in-out;
 	color: var(--color-text-emphasis);
+`;
 
-	& .top-bar {
-		transform-origin: center;
-		transform: ${(props) =>
-			props.$isMenuOpen ? 'rotate(45deg) translateY(6px)' : 'none'};
-		transition: transform 0.3s ease-in-out;
-	}
+interface MenuIconBarProps {
+	$isMenuOpen?: boolean;
+}
 
-	& .middle-bar {
-		transform-origin: center;
-		opacity: ${(props) => (props.$isMenuOpen ? 0 : 1)};
-		transition: opacity 0.3s ease-in-out;
-	}
+export const MenuIconTopBar = styled.path<MenuIconBarProps>`
+	transform-origin: center;
+	transform: ${(props) =>
+		props.$isMenuOpen ? 'rotate(45deg) translateY(6px)' : 'none'};
+	transition: transform 0.3s ease-in-out;
+`;
 
-	& .bottom-bar {
-		transform-origin: center;
-		transform: ${(props) =>
-			props.$isMenuOpen ? 'rotate(-45deg) translateY(-6px)' : 'none'};
-		transition: transform 0.3s ease-in-out;
-	}
+export const MenuIconMiddleBar = styled.path<MenuIconBarProps>`
+	transform-origin: center;
+	opacity: ${(props) => (props.$isMenuOpen ? 0 : 1)};
+	transition: opacity 0.3s ease-in-out;
+`;
+
+export const MenuIconBottomBar = styled.path<MenuIconBarProps>`
+	transform-origin: center;
+	transform: ${(props) =>
+		props.$isMenuOpen ? 'rotate(-45deg) translateY(-6px)' : 'none'};
+	transition: transform 0.3s ease-in-out;
 `;
 
 interface MobileMenuProps {
@@ -119,7 +123,7 @@ export const MobileNavLink = styled.a`
 	display: block;
 	color: var(--color-text-emphasis);
 	padding: 14px 16px;
-	border-radius: 6px;
+	border-radius: 8px;
 	font-size: 18px;
 	font-weight: 500;
 	text-decoration: none;
@@ -141,7 +145,7 @@ export const NavlinkCard = styled.div`
 	background-color: var(--color-bg-tertiary);
 	width: fit-content;
 	padding: 10px 24px;
-	border-radius: 99px;
+	border-radius: 999px;
 	box-shadow: 2px 2px 4px var(--gray-292929);
 `;
 

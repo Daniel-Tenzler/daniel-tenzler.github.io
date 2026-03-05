@@ -20,13 +20,22 @@ export const PresetGrid = styled.div`
 	width: 100%;
 `;
 
-export const PresetButton = styled.button`
+interface PresetButtonProps {
+	$isActive?: boolean;
+}
+
+export const PresetButton = styled.button<PresetButtonProps>`
 	padding: 12px 8px;
 	border: 1px solid var(--color-border-light);
 	border-radius: 4px;
-	background-color: var(--gray-2a2a2a);
-	color: var(--color-text-primary);
+	background-color: ${(props) =>
+		props.$isActive ? 'var(--color-accent-brand)' : 'var(--gray-2a2a2a)'};
+	color: ${(props) =>
+		props.$isActive ? 'var(--gray-2a2a2a)' : 'var(--color-text-primary)'};
+	border-color: ${(props) =>
+		props.$isActive ? 'var(--color-accent-brand)' : 'var(--color-border-light)'};
 	font-size: 14px;
+	font-weight: ${(props) => (props.$isActive ? '500' : '400')};
 	cursor: pointer;
 	transition: all 0.2s;
 	text-align: center;
@@ -35,8 +44,10 @@ export const PresetButton = styled.button`
 	text-overflow: ellipsis;
 
 	&:hover:not(:disabled) {
-		background-color: var(--gray-383838);
-		border-color: var(--color-accent-brand);
+		background-color: ${(props) =>
+			props.$isActive ? 'var(--color-accent-brand)' : 'var(--gray-383838)'};
+		border-color: ${(props) =>
+			props.$isActive ? 'var(--color-accent-brand)' : 'var(--color-accent-brand)'};
 		transform: scale(1.02);
 	}
 
@@ -52,13 +63,6 @@ export const PresetButton = styled.button`
 	&:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
-	}
-
-	&.active {
-		background-color: var(--color-accent-brand);
-		color: var(--gray-2a2a2a);
-		border-color: var(--color-accent-brand);
-		font-weight: 500;
 	}
 `;
 

@@ -18,6 +18,7 @@ export const Grid = styled.div`
 	grid-template-columns: 1fr;
 	gap: 24px;
 	width: 100%;
+	align-items: stretch;
 
 	@media (min-width: 768px) {
 		grid-template-columns: repeat(2, 1fr);
@@ -41,6 +42,9 @@ export const ProjectCard = styled.div<ProjectCardProps>`
 	cursor: pointer;
 	animation: fadeInUp 0.6s ease-out backwards;
 	animation-delay: ${(props) => props.$animationDelay || '0s'};
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 
 	@keyframes fadeInUp {
 		from {
@@ -72,6 +76,14 @@ export const ProjectImage = styled.img`
 
 export const Content = styled.div`
 	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+`;
+
+// Wrapper for middle content that can expand to push links down
+export const ContentBody = styled.div`
+	flex: 1;
 `;
 
 export const ProjectTitle = styled.h3`
@@ -100,7 +112,7 @@ export const TechStack = styled.div`
 export const TechTag = styled.span`
 	padding: 4px 12px;
 	background-color: var(--black-0f1219-80);
-	border-radius: 9999px;
+	border-radius: 999px;
 	font-size: 14px;
 	color: var(--color-text-muted);
 `;

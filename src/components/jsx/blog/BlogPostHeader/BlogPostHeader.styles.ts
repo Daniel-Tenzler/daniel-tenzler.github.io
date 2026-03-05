@@ -34,7 +34,7 @@ export const TagsContainer = styled.div`
 export const Tag = styled.span`
 	padding: 4px 12px;
 	background-color: var(--black-0f1219-80);
-	border-radius: 9999px;
+	border-radius: 999px;
 	font-size: 14px;
 	color: var(--color-text-muted);
 `;

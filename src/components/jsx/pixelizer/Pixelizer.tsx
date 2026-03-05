@@ -19,6 +19,13 @@ import {
 	ProcessingMessage,
 	FileInput,
 	UploadHint,
+	UploadText,
+	SliderLabel,
+	SliderContainer,
+	SliderInput,
+	SizeValue,
+	ImageWrapper,
+	ImageLabel,
 } from './Pixelizer.styles';
 
 const Pixelizer = () => {
@@ -181,7 +188,8 @@ const Pixelizer = () => {
 			<ControlsSection>
 				<FileUploadZone
 					htmlFor="file-upload"
-					className={`${isDragOver ? 'drag-over' : ''} ${originalImage ? 'has-file' : ''}`}
+					$isDragOver={isDragOver}
+					$hasFile={!!originalImage}
 					onDragOver={handleDragOver}
 					onDragLeave={handleDragLeave}
 					onDrop={handleDrop}
@@ -211,22 +219,22 @@ const Pixelizer = () => {
 									d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
 								/>
 							</svg>
-							<div className="upload-text">
+							<UploadText>
 								<strong>Click to upload</strong> or drag and
 								drop
 								<br />
 								<UploadHint>
 									JPG, PNG, GIF, WebP (max 10MB)
 								</UploadHint>
-							</div>
+							</UploadText>
 						</>
 					) : (
-						<div className="upload-text">
+						<UploadText $hasFile={true}>
 							<strong>Current file:</strong>{' '}
 							{getFileDisplayName()}
 							<br />
 							<UploadHint>Click or drag to replace</UploadHint>
-						</div>
+						</UploadText>
 					)}
 					<FileInput
 						id="file-upload"
@@ -239,13 +247,12 @@ const Pixelizer = () => {
 				</FileUploadZone>
 
 				<PixelSizeSlider>
-					<label className="slider-label" htmlFor="pixel-size">
+					<SliderLabel htmlFor="pixel-size">
 						Pixel Size: {pixelSize}
-					</label>
-					<div className="slider-container">
-						<input
+					</SliderLabel>
+					<SliderContainer>
+						<SliderInput
 							id="pixel-size"
-							className="slider"
 							type="range"
 							min="1"
 							max="32"
@@ -254,8 +261,8 @@ const Pixelizer = () => {
 							disabled={!originalImage || isProcessing}
 							aria-label="Adjust pixel size from 1 to 32"
 						/>
-						<span className="size-value">{pixelSize}px</span>
-					</div>
+						<SizeValue>{pixelSize}px</SizeValue>
+					</SliderContainer>
 				</PixelSizeSlider>
 
 				<ActionButtons>
@@ -292,15 +299,15 @@ const Pixelizer = () => {
 			{originalImage && (
 				<ComparisonSection>
 					<ImageCard>
-						<div className="image-wrapper">
+						<ImageWrapper>
 							<img
 								ref={originalImageRef}
 								src={originalImage}
 								alt="Original uploaded file"
 								loading="lazy"
 							/>
-						</div>
-						<div className="image-label">
+						</ImageWrapper>
+						<ImageLabel>
 							Original
 							{originalImageRef.current && (
 								<span>
@@ -309,27 +316,27 @@ const Pixelizer = () => {
 									{originalImageRef.current.height})
 								</span>
 							)}
-						</div>
+						</ImageLabel>
 					</ImageCard>
 
 					{pixelatedCanvas && (
 						<ImageCard>
-							<div className="image-wrapper">
+							<ImageWrapper>
 								{/* Convert canvas to display */}
 								<img
 									src={pixelatedCanvas.toDataURL('image/png')}
 									alt="Pixelated version"
 									loading="lazy"
 								/>
-							</div>
-							<div className="image-label">
+							</ImageWrapper>
+							<ImageLabel>
 								Pixelated ({pixelSize}px blocks)
 								<span>
 									{' '}
 									({pixelatedCanvas.width}×
 									{pixelatedCanvas.height})
 								</span>
-							</div>
+							</ImageLabel>
 						</ImageCard>
 					)}
 				</ComparisonSection>

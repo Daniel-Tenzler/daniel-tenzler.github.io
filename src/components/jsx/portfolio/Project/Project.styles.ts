@@ -30,7 +30,7 @@ export const TechList = styled.div`
 export const TechTag = styled.span`
 	padding: 4px 12px;
 	background-color: var(--black-0f1219-80);
-	border-radius: 9999px;
+	border-radius: 999px;
 	font-size: 14px;
 	color: var(--color-text-muted);
 `;
@@ -50,7 +50,7 @@ export const StyledLink = styled.a`
 
 export const ProjectImage = styled.img`
 	width: 100%;
-	border-radius: 8px;
+	border-radius: 16px;
 	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 	margin-bottom: 32px;
 `;

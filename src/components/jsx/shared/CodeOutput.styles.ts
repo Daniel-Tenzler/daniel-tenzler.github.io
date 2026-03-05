@@ -19,12 +19,20 @@ export const CodeLabel = styled.label`
 	color: var(--color-text-secondary);
 `;
 
-export const CopyButton = styled.button`
+interface CopyButtonProps {
+	$copied?: boolean;
+}
+
+export const CopyButton = styled.button<CopyButtonProps>`
 	padding: 6px 13px;
 	border: 1px solid var(--color-border-light);
 	border-radius: 4px;
-	background-color: var(--gray-2a2a2a);
-	color: var(--color-text-primary);
+	background-color: ${(props) =>
+		props.$copied ? 'var(--green-86efac)' : 'var(--gray-2a2a2a)'};
+	color: ${(props) =>
+		props.$copied ? 'var(--gray-2a2a2a)' : 'var(--color-text-primary)'};
+	border-color: ${(props) =>
+		props.$copied ? 'var(--green-86efac)' : 'var(--color-border-light)'};
 	font-size: 14px;
 	cursor: pointer;
 	transition: all 0.2s;
@@ -33,8 +41,10 @@ export const CopyButton = styled.button`
 	gap: 6px;
 
 	&:hover:not(:disabled) {
-		background-color: var(--gray-383838);
-		border-color: var(--color-accent-brand);
+		background-color: ${(props) =>
+			props.$copied ? 'var(--green-86efac)' : 'var(--gray-383838)'};
+		border-color: ${(props) =>
+			props.$copied ? 'var(--green-86efac)' : 'var(--color-accent-brand)'};
 	}
 
 	&:active:not(:disabled) {
@@ -49,12 +59,6 @@ export const CopyButton = styled.button`
 	&:focus-visible {
 		outline: 2px solid var(--color-text-secondary);
 		outline-offset: 2px;
-	}
-
-	&.copied {
-		background-color: var(--green-86efac);
-		color: var(--gray-2a2a2a);
-		border-color: var(--green-86efac);
 	}
 `;
 

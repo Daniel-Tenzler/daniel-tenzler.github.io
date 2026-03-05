@@ -82,7 +82,7 @@ const blogPostingSchema = generateBlogPostingSchema(SITE_URL, {
 				<div class="blog-layout-wrapper">
 					<div class="blog-content">
 						<Breadcrumb
-							client:only="react"
+							client:load
 							items={[
 								{ label: 'Home', href: '/' },
 								{ label: 'Blog', href: '/blog' },

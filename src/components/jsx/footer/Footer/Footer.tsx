@@ -10,6 +10,7 @@ import {
 	FooterLinks,
 	FooterLink,
 	Container,
+	SrOnly,
 } from './Footer.styles';
 
 export default function Footer() {
@@ -36,7 +37,7 @@ export default function Footer() {
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<span className="sr-only">GitHub</span>
+							<SrOnly>GitHub</SrOnly>
 							<SocialIcon fill="currentColor" viewBox="0 0 24 24">
 								<path
 									fillRule="evenodd"
@@ -50,7 +51,7 @@ export default function Footer() {
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<span className="sr-only">LinkedIn</span>
+							<SrOnly>LinkedIn</SrOnly>
 							<SocialIcon fill="currentColor" viewBox="0 0 24 24">
 								<path
 									fillRule="evenodd"

@@ -8,6 +8,7 @@ import {
 	ImageContainer,
 	ProjectImage as ProjectImageStyled,
 	Content,
+	ContentBody,
 	ProjectTitle,
 	Description,
 	TechStack,
@@ -100,12 +101,14 @@ const PortfolioPreviewContent = ({
 						</ImageContainer>
 						<Content>
 							<ProjectTitle>{project.title}</ProjectTitle>
-							<Description>{project.description}</Description>
-							<TechStack>
-								{project.technologies.map((tech) => (
-									<TechTag key={tech}>{tech}</TechTag>
-								))}
-							</TechStack>
+							<ContentBody>
+								<Description>{project.description}</Description>
+								<TechStack>
+									{project.technologies.map((tech) => (
+										<TechTag key={tech}>{tech}</TechTag>
+									))}
+								</TechStack>
+							</ContentBody>
 							<Links>
 								{project.githubUrl && (
 									<Link

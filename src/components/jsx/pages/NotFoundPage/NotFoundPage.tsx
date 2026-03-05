@@ -42,6 +42,4 @@ const NotFoundPage = () => {
 	);
 };
 
-NotFoundPage.propTypes = {};
-
 export default NotFoundPage;

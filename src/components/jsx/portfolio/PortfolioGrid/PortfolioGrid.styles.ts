@@ -18,7 +18,7 @@ export const Grid = styled.div`
 
 export const Card = styled.article`
 	background: var(--color-bg-tertiary);
-	border-radius: 8px;
+	border-radius: 16px;
 	box-shadow: 0 4px 6px var(--gray-292929-1a);
 	overflow: hidden;
 	transition: transform 0.3s ease;
@@ -68,7 +68,7 @@ export const TechContainer = styled.div`
 export const TechTag = styled.span`
 	padding: 4px 12px;
 	background-color: var(--black-0f1219-80);
-	border-radius: 9999px;
+	border-radius: 999px;
 	font-size: 14px;
 	color: var(--color-text-muted);
 `;

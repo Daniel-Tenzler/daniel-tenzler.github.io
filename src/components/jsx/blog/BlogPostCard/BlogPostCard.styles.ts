@@ -8,7 +8,7 @@ export const Card = styled.a<CardProps>`
 	display: block;
 	background: var(--color-bg-tertiary);
 	border-radius: ${({ $noTopBorderRadius }) =>
-		$noTopBorderRadius ? '0 0 8px 8px' : '8px'};
+		$noTopBorderRadius ? '0 0 16px 16px' : '16px'};
 	overflow: hidden;
 	box-shadow: 0 1px 3px var(--gray-292929-1a);
 	transition: all 0.2s ease;
@@ -60,7 +60,7 @@ export const Tags = styled.div`
 export const Tag = styled.span`
 	padding: 4px 12px;
 	background-color: var(--black-0f1219-80);
-	border-radius: 9999px;
+	border-radius: 999px;
 	font-size: 14px;
 	color: var(--color-text-muted);
 `;

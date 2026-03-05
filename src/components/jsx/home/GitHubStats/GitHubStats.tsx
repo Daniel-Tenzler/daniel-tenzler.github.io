@@ -13,6 +13,8 @@ import {
 	LanguageLegend,
 	LanguageBadge,
 	LanguageCount,
+	LanguageDot,
+	LanguageName,
 	SectionDivider,
 	StatsWrapper,
 	GlowEffect,
@@ -149,8 +151,8 @@ export default function GitHubStats({
 									LANGUAGE_CSS_VARS[lang] || undefined;
 								return (
 									<LanguageBadge key={lang} $color={cssVar}>
-										<span className="dot" />
-										<span className="name">{lang}</span>
+										<LanguageDot $color={cssVar} />
+										<LanguageName>{lang}</LanguageName>
 										<LanguageCount>{count}</LanguageCount>
 									</LanguageBadge>
 								);

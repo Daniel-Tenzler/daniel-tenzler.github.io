@@ -325,134 +325,81 @@ export const ControlsSection = styled.div`
 	}
 `;
 
-export const FileUploadZone = styled.label`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 16px;
-	padding: 48px 32px;
-	border: 2px dashed var(--gray-383838);
-	border-radius: 8px;
-	background-color: var(--gray-2d2d2d);
-	cursor: pointer;
-	transition: all 0.2s ease;
-	min-height: 200px;
-
-	&:hover {
-		border-color: var(--color-text-muted);
-		background-color: var(--gray-333847);
-	}
-
-	&.drag-over {
-		border-color: #14b8a6;
-		background-color: rgba(20, 184, 166, 0.1);
-	}
-
-	&.has-file {
-		border-color: #14b8a6;
-		background-color: var(--gray-474747);
-		padding: 24px;
-	}
-
-	svg {
-		width: 48px;
-		height: 48px;
-		color: var(--color-text-muted);
-	}
-
-	.upload-text {
-		color: var(--color-text-muted);
-		font-size: 16px;
-		text-align: center;
-	}
-
-	&.has-file .upload-text {
-		font-size: 14px;
-		color: var(--color-text-emphasis);
-	}
-
-	@media (max-width: 768px) {
-		padding: 32px 16px;
-		min-height: 150px;
-	}
-`;
-
 export const PixelSizeSlider = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 16px;
+`;
 
-	.slider-container {
-		display: flex;
-		align-items: center;
-		gap: 16px;
-		width: 100%;
-	}
+export const SliderLabel = styled.label`
+	color: var(--color-text-muted);
+	font-size: 15px;
+	font-weight: 500;
+	text-align: center;
+`;
 
-	slider {
-		flex: 1;
-		height: 6px;
-		border-radius: 3px;
-		background: var(--gray-383838);
-		outline: none;
+export const SliderContainer = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	width: 100%;
+`;
+
+export const SliderInput = styled.input`
+	flex: 1;
+	height: 6px;
+	border-radius: 3px;
+	background: var(--gray-383838);
+	outline: none;
+	cursor: pointer;
+
+	&::-webkit-slider-thumb {
+		appearance: none;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: #14b8a6;
 		cursor: pointer;
+		border: 2px solid var(--gray-383838);
+		transition: all 0.2s ease;
 
-		&::-webkit-slider-thumb {
-			appearance: none;
-			width: 20px;
-			height: 20px;
-			border-radius: 50%;
-			background: #14b8a6;
-			cursor: pointer;
-			border: 2px solid var(--gray-383838);
-			transition: all 0.2s ease;
-
-			&:hover {
-				background: #0d9488;
-				transform: scale(1.1);
-			}
-		}
-
-		&::-moz-range-thumb {
-			width: 20px;
-			height: 20px;
-			border-radius: 50%;
-			background: #14b8a6;
-			cursor: pointer;
-			border: 2px solid var(--gray-383838);
-			transition: all 0.2s ease;
-
-			&:hover {
-				background: #0d9488;
-				transform: scale(1.1);
-			}
-		}
-
-		&:focus-visible {
-			outline: 2px solid var(--color-text-muted);
-			outline-offset: 2px;
+		&:hover {
+			background: #0d9488;
+			transform: scale(1.1);
 		}
 	}
 
-	.size-value {
-		background-color: var(--gray-383838);
-		color: var(--color-text-emphasis);
-		padding: 8px 16px;
-		border-radius: 6px;
-		font-size: 15px;
-		font-weight: 500;
-		min-width: 60px;
-		text-align: center;
+	&::-moz-range-thumb {
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: #14b8a6;
+		cursor: pointer;
+		border: 2px solid var(--gray-383838);
+		transition: all 0.2s ease;
+
+		&:hover {
+			background: #0d9488;
+			transform: scale(1.1);
+		}
 	}
 
-	.slider-label {
-		color: var(--color-text-muted);
-		font-size: 15px;
-		font-weight: 500;
-		text-align: center;
+	&:focus-visible {
+		outline: 2px solid var(--color-text-muted);
+		outline-offset: 2px;
 	}
+`;
+
+export const SizeValue = styled.span`
+	background-color: var(--gray-383838);
+	color: var(--color-text-emphasis);
+	padding: 8px 16px;
+	border-radius: 6px;
+	font-size: 15px;
+	font-weight: 500;
+	min-width: 60px;
+	text-align: center;
 `;
 
 export const ActionButtons = styled.div`
@@ -491,46 +438,116 @@ export const ImageCard = styled.div`
 	gap: 16px;
 	flex: 1;
 
-	.image-wrapper {
-		position: relative;
+	@media (max-width: 768px) {
+		flex: 1 1 100%;
+	}
+`;
+
+export const ImageWrapper = styled.div`
+	position: relative;
+	width: 100%;
+	max-width: 400px;
+	border-radius: 8px;
+	overflow: hidden;
+	border: 2px solid var(--gray-383838);
+	box-shadow: 0 4px 8px #00000033;
+
+	img {
 		width: 100%;
-		max-width: 400px;
-		border-radius: 8px;
-		overflow: hidden;
-		border: 2px solid var(--gray-383838);
-		box-shadow: 0 4px 8px #00000033;
-
-		img {
-			width: 100%;
-			height: auto;
-			display: block;
-		}
-
-		canvas {
-			width: 100%;
-			height: auto;
-			display: block;
-		}
+		height: auto;
+		display: block;
 	}
 
-	.image-label {
-		color: var(--color-text-muted);
-		font-size: 15px;
-		font-weight: 500;
-		text-align: center;
-		padding: 0 16px;
+	canvas {
+		width: 100%;
+		height: auto;
+		display: block;
 	}
 
 	@media (max-width: 768px) {
-		.image-wrapper {
-			max-width: 100%;
-		}
+		max-width: 100%;
 	}
+`;
+
+export const ImageLabel = styled.div`
+	color: var(--color-text-muted);
+	font-size: 15px;
+	font-weight: 500;
+	text-align: center;
+	padding: 0 16px;
 `;
 
 export const UploadHint = styled.span`
 	font-size: 0.85em;
 	opacity: 0.7;
+`;
+
+interface FileUploadZoneProps {
+	$isDragOver?: boolean;
+	$hasFile?: boolean;
+}
+
+export const FileUploadZone = styled.label<FileUploadZoneProps>`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	padding: 48px 32px;
+	border: 2px dashed var(--gray-383838);
+	border-radius: 8px;
+	background-color: var(--gray-2d2d2d);
+	cursor: pointer;
+	transition: all 0.2s ease;
+	min-height: 200px;
+
+	&:hover {
+		border-color: var(--color-text-muted);
+		background-color: var(--gray-333847);
+	}
+
+	${(props) =>
+		props.$isDragOver &&
+		`
+		border-color: #14b8a6;
+		background-color: rgba(20, 184, 166, 0.1);
+	`}
+
+	${(props) =>
+		props.$hasFile &&
+		`
+		border-color: #14b8a6;
+		background-color: var(--gray-474747);
+		padding: 24px;
+	`}
+
+	svg {
+		width: 48px;
+		height: 48px;
+		color: var(--color-text-muted);
+	}
+
+	@media (max-width: 768px) {
+		padding: 32px 16px;
+		min-height: 150px;
+	}
+`;
+
+interface UploadTextProps {
+	$hasFile?: boolean;
+}
+
+export const UploadText = styled.div<UploadTextProps>`
+	color: var(--color-text-muted);
+	font-size: 16px;
+	text-align: center;
+
+	${(props) =>
+		props.$hasFile &&
+		`
+		font-size: 14px;
+		color: var(--color-text-emphasis);
+	`}
 `;
 
 export const ProcessingMessage = styled.div`

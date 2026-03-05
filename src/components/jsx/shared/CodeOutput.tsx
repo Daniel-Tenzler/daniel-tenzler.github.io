@@ -58,7 +58,7 @@ const CodeOutput = ({ code, language = 'CSS', label }: CodeOutputProps) => {
 				<CopyButton
 					onClick={handleCopy}
 					disabled={copied || !code}
-					className={copied ? 'copied' : ''}
+					$copied={copied}
 					aria-label="Copy code to clipboard"
 					type="button"
 				>

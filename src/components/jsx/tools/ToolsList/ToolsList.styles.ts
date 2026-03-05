@@ -62,7 +62,7 @@ export const ToolCard = styled.a`
 	display: block;
 	background-color: var(--gray-2d2d2d);
 	border: 1px solid var(--gray-383838);
-	border-radius: 12px;
+	border-radius: 16px;
 	padding: 24px;
 	text-decoration: none;
 	transition: all 0.2s ease;

@@ -208,7 +208,7 @@ export const LanguageBadge = styled.div<LanguageBadgeProps>`
 			$color
 				? `color-mix(in srgb, var(${$color}) 30%, transparent)`
 				: 'rgba(96, 115, 159, 0.3)'};
-	border-radius: 9999px;
+	border-radius: 999px;
 	transition: border-color 0.2s ease;
 	cursor: default;
 
@@ -218,21 +218,25 @@ export const LanguageBadge = styled.div<LanguageBadgeProps>`
 				? `color-mix(in srgb, var(${$color}) 60%, transparent)`
 				: 'rgba(96, 115, 159, 0.6)'};
 	}
+`;
 
-	.dot {
-		width: 8px;
-		height: 8px;
-		border-radius: 50%;
-		background-color: ${(props) =>
-			props.$color ? `var(${props.$color})` : '#60739f'};
-		flex-shrink: 0;
-	}
+interface LanguageDotProps {
+	$color?: string;
+}
 
-	.name {
-		font-size: 13px;
-		font-weight: 500;
-		color: var(--color-text-emphasis);
-	}
+export const LanguageDot = styled.span<LanguageDotProps>`
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: ${(props) =>
+		props.$color ? `var(${props.$color})` : '#60739f'};
+	flex-shrink: 0;
+`;
+
+export const LanguageName = styled.span`
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--color-text-emphasis);
 `;
 
 // Count badge within language badge
@@ -242,7 +246,7 @@ export const LanguageCount = styled.span`
 	color: var(--color-text-muted);
 	background: var(--gray-474747-cc);
 	padding: 2px 8px;
-	border-radius: 9999px;
+	border-radius: 999px;
 	min-width: 24px;
 	text-align: center;
 `;

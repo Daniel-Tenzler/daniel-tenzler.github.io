@@ -17,7 +17,7 @@ export const BaseSmallButton = styled.button`
 	color: var(--color-text-emphasis);
 	padding: 0.5em 1em;
 	border: 1px solid var(--gray-474747);
-	border-radius: 6px;
+	border-radius: 8px;
 	font-weight: 500;
 	font-size: 13px;
 	cursor: pointer;
@@ -51,7 +51,7 @@ export const BaseMediumButton = styled.button`
 	color: var(--color-text-emphasis);
 	padding: 0.6em 1em;
 	border: 1px solid var(--gray-474747);
-	border-radius: 6px;
+	border-radius: 8px;
 	font-size: 13px;
 	font-weight: 500;
 	cursor: pointer;
@@ -133,7 +133,7 @@ export const BaseToggleButton = styled.button<BaseToggleButtonProps>`
 	color: var(--color-text-emphasis);
 	padding: 0.6em 1em;
 	border: 1px solid var(--gray-474747);
-	border-radius: 6px;
+	border-radius: 8px;
 	font-size: 13px;
 	cursor: pointer;
 	transition:

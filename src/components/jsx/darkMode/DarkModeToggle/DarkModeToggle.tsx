@@ -50,6 +50,4 @@ const DarkModeToggle = (_props: DarkModeToggleProps): React.ReactElement => {
 	);
 };
 
-DarkModeToggle.propTypes = {};
-
 export default DarkModeToggle;

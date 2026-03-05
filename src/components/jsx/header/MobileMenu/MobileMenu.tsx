@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import {
 	MobileMenuButton,
 	MenuIcon,
+	MenuIconTopBar,
+	MenuIconMiddleBar,
+	MenuIconBottomBar,
 	SrOnly,
 	MobileMenu,
 	MobileNavLink,
@@ -41,26 +44,26 @@ export default function MobileMenuComponent() {
 					aria-hidden="true"
 					$isMenuOpen={isMobileMenuOpen}
 				>
-					<path
-						className="top-bar"
+					<MenuIconTopBar
 						strokeLinecap="round"
 						strokeLinejoin="round"
 						strokeWidth={2}
 						d="M4 6h16"
+						$isMenuOpen={isMobileMenuOpen}
 					/>
-					<path
-						className="middle-bar"
+					<MenuIconMiddleBar
 						strokeLinecap="round"
 						strokeLinejoin="round"
 						strokeWidth={2}
 						d="M4 12h16"
+						$isMenuOpen={isMobileMenuOpen}
 					/>
-					<path
-						className="bottom-bar"
+					<MenuIconBottomBar
 						strokeLinecap="round"
 						strokeLinejoin="round"
 						strokeWidth={2}
 						d="M4 18h16"
+						$isMenuOpen={isMobileMenuOpen}
 					/>
 				</MenuIcon>
 			</MobileMenuButton>
@@ -84,5 +87,3 @@ export default function MobileMenuComponent() {
 		</>
 	);
 }
-
-MobileMenuComponent.propTypes = {};

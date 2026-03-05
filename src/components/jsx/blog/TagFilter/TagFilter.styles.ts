@@ -14,7 +14,7 @@ interface TagButtonProps {
 export const TagButton = styled.button<TagButtonProps>`
 	padding: 8px 16px;
 	border: 1px solid var(--black-0f1219);
-	border-radius: 9999px;
+	border-radius: 999px;
 	background: ${(props) =>
 		props.active
 			? 'var(--color-accent-brand-dark)'

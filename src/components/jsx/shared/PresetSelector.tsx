@@ -42,7 +42,7 @@ const PresetSelector = ({
 					<PresetButton
 						key={preset.id}
 						onClick={() => handlePresetClick(preset)}
-						className={activePresetId === preset.id ? 'active' : ''}
+						$isActive={activePresetId === preset.id}
 						type="button"
 						aria-pressed={activePresetId === preset.id}
 						aria-label={`Select ${preset.name} preset`}

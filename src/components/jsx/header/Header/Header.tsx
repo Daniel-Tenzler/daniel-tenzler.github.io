@@ -9,9 +9,9 @@ import {
 	MobileLeftSection,
 	DesktopDarkModeWrapper,
 } from './Header.styles';
-import MobileMenuComponent from '../MobileMenu/MobileMenu';
-import ScrollProgressBar from '../../ui/ScrollProgressBar/ScrollProgressBar';
-import DarkModeToggle from '../../darkMode/DarkModeToggle/DarkModeToggle';
+import MobileMenuComponent from '@/components/jsx/header/MobileMenu/MobileMenu';
+import ScrollProgressBar from '@/components/jsx/ui/ScrollProgressBar/ScrollProgressBar';
+import DarkModeToggle from '@/components/jsx/darkMode/DarkModeToggle/DarkModeToggle';
 
 export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
 	id?: string;

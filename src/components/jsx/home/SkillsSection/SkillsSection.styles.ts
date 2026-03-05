@@ -77,7 +77,7 @@ export const SkillBubble = styled.span<SkillBubbleProps>`
 		`color-mix(in srgb, var(${$color}) 10%, transparent)`};
 	border: 1.5px solid
 		${({ $color }) => `color-mix(in srgb, var(${$color}) 30%, transparent)`};
-	border-radius: 9999px;
+	border-radius: 999px;
 	font-size: 13px;
 	color: var(--color-text-emphasis);
 	font-weight: 500;

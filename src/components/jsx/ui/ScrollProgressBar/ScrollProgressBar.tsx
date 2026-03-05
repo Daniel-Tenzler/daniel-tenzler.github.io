@@ -36,5 +36,3 @@ export default function ScrollProgressBar(_props: ScrollProgressBarProps) {
 		</ProgressBar>
 	);
 }
-
-ScrollProgressBar.propTypes = {};

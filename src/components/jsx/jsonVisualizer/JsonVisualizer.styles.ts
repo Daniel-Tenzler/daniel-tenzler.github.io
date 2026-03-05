@@ -275,7 +275,7 @@ export const Separator = styled('div', {
 		width: 4px;
 		height: 150px;
 		background-color: var(--gray-474747);
-		border-radius: 100px;
+		border-radius: 999px;
 		transition: all 0.2s ease;
 	}
 

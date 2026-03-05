@@ -5,7 +5,7 @@ export const ImageContainer = styled.div<React.HTMLAttributes<HTMLDivElement>>`
 	width: 100%;
 	padding-top: 56.25%; /* 16:9 aspect ratio */
 	overflow: hidden;
-	border-radius: 8px 8px 0 0;
+	border-radius: 16px 16px 0 0;
 `;
 
 export const Image = styled.img`
