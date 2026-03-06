@@ -9,36 +9,12 @@ import {
 	Tags,
 	Tag,
 } from './BlogPostCard.styles';
+import type {
+	StandardHTMLAttributes,
+} from './BlogPostCard.types';
+import type { BlogPostCardProps } from './BlogPostCard.types';
 
-export interface BlogPostCardProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-	title: string;
-	description: string;
-	pubDate: Date;
-	slug: string;
-	readTime?: string;
-	tags?: string[];
-	noTopBorderRadius?: boolean;
-	'client:load'?: boolean;
-	'client:visible'?: boolean;
-	'client:idle'?: boolean;
-	'client:only'?: boolean;
-}
-
-// Extract standard HTML attributes from BlogPostCardProps
-type StandardHTMLAttributes = Omit<
-	BlogPostCardProps,
-	| 'client:load'
-	| 'client:visible'
-	| 'client:idle'
-	| 'client:only'
-	| 'title'
-	| 'description'
-	| 'pubDate'
-	| 'slug'
-	| 'readTime'
-	| 'tags'
-	| 'noTopBorderRadius'
->;
+export type { BlogPostCardProps };
 
 export default function BlogPostCard({
 	title,

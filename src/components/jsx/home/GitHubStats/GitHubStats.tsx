@@ -19,6 +19,7 @@ import {
 	StatsWrapper,
 	GlowEffect,
 } from './GitHubStats.styles';
+import type { GitHubStatsProps } from './GitHubStats.types';
 
 // Mapping of language names to CSS variable names
 const LANGUAGE_CSS_VARS: Record<string, string> = {
@@ -40,24 +41,6 @@ const LANGUAGE_CSS_VARS: Record<string, string> = {
 	Swift: '--lang-swift',
 	Dart: '--lang-dart',
 };
-
-export interface GitHubMetadata {
-	stars: number;
-	forks: number;
-	description: string;
-	lastUpdated: string;
-}
-
-export interface LanguageStats {
-	total: number;
-	languages: Record<string, number>;
-}
-
-export interface GitHubStatsProps {
-	metadata: GitHubMetadata;
-	commitCount: number;
-	languageStats?: LanguageStats;
-}
 
 export default function GitHubStats({
 	metadata,

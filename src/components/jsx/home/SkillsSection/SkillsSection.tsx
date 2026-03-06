@@ -9,25 +9,14 @@ import {
 	SkillsGrid,
 	SkillBubble,
 } from './SkillsSection.styles';
+import type {
+	Skill,
+	SkillCategoryInfo,
+	SkillCategories,
+	SkillsSectionProps,
+} from './SkillsSection.types';
 
-export interface Skill {
-	name: string;
-	category: string;
-}
-
-export interface SkillCategoryInfo {
-	label: string;
-	colorVar: string;
-}
-
-export interface SkillCategories {
-	[key: string]: SkillCategoryInfo;
-}
-
-export interface SkillsSectionProps {
-	skills: Skill[];
-	categories: SkillCategories;
-}
+export type { Skill, SkillCategoryInfo, SkillCategories, SkillsSectionProps };
 
 export default function SkillsSection({
 	skills,

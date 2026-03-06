@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import type { CopyButtonProps } from './CodeOutput.types';
 
 export const CodeOutputWrapper = styled.div`
 	display: flex;
@@ -18,10 +19,6 @@ export const CodeLabel = styled.label`
 	font-weight: 500;
 	color: var(--color-text-secondary);
 `;
-
-interface CopyButtonProps {
-	$copied?: boolean;
-}
 
 export const CopyButton = styled.button<CopyButtonProps>`
 	padding: 6px 13px;

@@ -1,11 +1,6 @@
 import React from 'react';
 import { FilterContainer, TagButton } from './TagFilter.styles';
-
-export interface TagFilterProps {
-	allTags: string[];
-	selectedTags: string[];
-	onTagSelect: (tags: string[]) => void;
-}
+import type { TagFilterProps } from './TagFilter.types';
 
 const TagFilter = ({ allTags, selectedTags, onTagSelect }: TagFilterProps) => {
 	const handleTagClick = (tag: string) => {

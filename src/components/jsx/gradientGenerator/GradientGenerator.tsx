@@ -25,23 +25,13 @@ import {
 } from 'src/components/jsx/shared';
 import {
 	generateGradientCSS,
-	type GradientState,
-	type LinearGradientConfig,
-	type RadialGradientConfig,
-	type ConicGradientConfig,
 } from 'src/infrastructure/cssUtils';
 import {
 	GRADIENT_TYPES,
 	DEFAULT_GRADIENT_CONFIG,
 	GRADIENT_PRESETS,
 } from 'src/data/gradientPresets';
-
-// Ensure gradient state always has all configs
-type CompleteGradientState = GradientState & {
-	linear: LinearGradientConfig;
-	radial: RadialGradientConfig;
-	conic: ConicGradientConfig;
-};
+import type { CompleteGradientState } from './GradientGenerator.types';
 
 const GradientGenerator = () => {
 	const [gradient, setGradient] = useState<CompleteGradientState>(

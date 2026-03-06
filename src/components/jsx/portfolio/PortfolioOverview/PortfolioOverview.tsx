@@ -1,11 +1,7 @@
 import React from 'react';
-import type { PortfolioItem } from 'src/data/portfolio/portfolio.types';
+import type { PortfolioOverviewProps } from './PortfolioOverview.types';
 import PortfolioGrid from '@/components/jsx/portfolio/PortfolioGrid/PortfolioGrid';
 import { StyledMain, StyledHeading } from './PortfolioOverview.styles';
-
-export interface PortfolioOverviewProps {
-	items: PortfolioItem[];
-}
 
 const PortfolioOverview = ({ items }: PortfolioOverviewProps) => {
 	return (

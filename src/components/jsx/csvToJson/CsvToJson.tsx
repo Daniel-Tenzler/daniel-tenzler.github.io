@@ -15,11 +15,7 @@ import {
 	StatLabel,
 	StatValue,
 } from './CsvToJson.styles';
-
-interface DelimiterOption {
-	value: string;
-	label: string;
-}
+import type { DelimiterOption } from './CsvToJson.types';
 
 const DELIMITERS: DelimiterOption[] = [
 	{ value: ',', label: 'Comma (,)' },

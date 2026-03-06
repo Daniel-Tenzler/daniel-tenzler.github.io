@@ -1,9 +1,6 @@
 import React from 'react';
 import { Button } from './ClearButton.styles';
-
-export interface ClearButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	onClear: () => void;
-}
+import type { ClearButtonProps } from './ClearButton.types';
 
 const ClearButton = ({ onClear, ...props }: ClearButtonProps) => {
 	return (

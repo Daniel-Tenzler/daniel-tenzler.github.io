@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { diffLines, diffWords, diffChars } from 'diff';
+import type { DiffMode, DiffResult } from './DiffChecker.types';
 import {
 	Container,
 	ContentWrapper,
@@ -27,14 +28,6 @@ import {
 	NoChange,
 	ErrorMessage,
 } from './DiffChecker.styles';
-
-type DiffMode = 'lines' | 'words' | 'chars';
-
-interface DiffResult {
-	value: string;
-	added?: boolean;
-	removed?: boolean;
-}
 
 const DiffChecker = () => {
 	const [originalText, setOriginalText] = useState('');

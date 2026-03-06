@@ -1,8 +1,5 @@
 import styled from '@emotion/styled';
-
-interface CardProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-	$noTopBorderRadius?: boolean;
-}
+import type { CardProps } from './BlogPostCard.types';
 
 export const Card = styled.a<CardProps>`
 	display: block;

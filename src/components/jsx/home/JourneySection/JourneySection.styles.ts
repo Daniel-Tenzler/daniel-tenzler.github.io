@@ -1,5 +1,11 @@
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
+import type {
+	TimelineWrapperProps,
+	TimelineContentAreaProps,
+	TimelineLineProps,
+	TimelineMarkerProps,
+} from './JourneySection.types';
 
 const fadeIn = keyframes`
 	from {
@@ -29,10 +35,6 @@ export const Title = styled.h2`
 	width: 100%;
 `;
 
-interface TimelineWrapperProps {
-	$isMobile?: boolean;
-}
-
 export const TimelineWrapper = styled.div<TimelineWrapperProps>`
 	position: relative;
 	padding: 20px;
@@ -47,10 +49,6 @@ export const TimelineWrapper = styled.div<TimelineWrapperProps>`
 	);
 	border-radius: 16px;
 `;
-
-interface TimelineContentAreaProps {
-	$isMobile?: boolean;
-}
 
 export const TimelineContentArea = styled.div<TimelineContentAreaProps>(
 	({ $isMobile }) => ({
@@ -74,10 +72,6 @@ export const TimelineContentArea = styled.div<TimelineContentAreaProps>(
 		}),
 	})
 );
-
-interface TimelineLineProps {
-	$isMobile?: boolean;
-}
 
 export const TimelineLine = styled.div<TimelineLineProps>`
 	position: absolute;
@@ -141,10 +135,6 @@ export const TimelineContent = styled.div`
 		}
 	}
 `;
-
-interface TimelineMarkerProps {
-	$type?: string;
-}
 
 export const TimelineMarker = styled.div<TimelineMarkerProps>`
 	position: absolute;

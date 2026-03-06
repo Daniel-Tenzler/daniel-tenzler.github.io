@@ -1,10 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { StyledPanel } from './SettingsPanel.styles';
 import usePanelHover from './Hooks/usePanelHover';
-
-export interface SettingsPanelProps {
-	children: React.ReactNode;
-}
+import type { SettingsPanelProps } from './SettingsPanel.types';
 
 const SettingsPanel = ({ children }: SettingsPanelProps) => {
 	const [isHovered, setIsHovered] = useState(false);

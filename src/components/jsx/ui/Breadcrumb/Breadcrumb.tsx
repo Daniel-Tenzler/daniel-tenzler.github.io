@@ -1,15 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { COLORS } from '@/consts/Colors';
-
-export interface BreadcrumbItem {
-	label: string;
-	href?: string;
-}
-
-export interface BreadcrumbProps {
-	items: BreadcrumbItem[];
-}
+import type { BreadcrumbProps } from './Breadcrumb.types';
 
 const BreadcrumbContainer = styled.nav`
 	aria-label: Breadcrumb navigation;

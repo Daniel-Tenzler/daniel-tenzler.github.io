@@ -1,18 +1,13 @@
 import React from 'react';
 import { Button } from './CopyButton.styles';
-
-export interface CopyButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	text: string;
-	onCopy?: () => void;
-	copied?: boolean;
-}
+import type { CopyButtonProps } from './CopyButton.types';
 
 const CopyButton = ({
 	text,
 	onCopy,
 	copied = false,
 	...props
-}: CopyButtonProps) => {
+}: CopyButtonProps): React.JSX.Element => {
 	const handleClick = async () => {
 		try {
 			await navigator.clipboard.writeText(text);
@@ -29,4 +24,5 @@ const CopyButton = ({
 	);
 };
 
+export type { CopyButtonProps };
 export default CopyButton;

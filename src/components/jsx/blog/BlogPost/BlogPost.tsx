@@ -6,17 +6,7 @@ import {
 	HeroImage,
 	ContentContainer as StyledContentContainer,
 } from './BlogPost.styles';
-
-export interface BlogPostProps {
-	title: string;
-	pubDate: Date;
-	updatedDate?: Date;
-	heroImage?: string;
-	readTime?: string;
-	tags?: string[];
-	author?: string;
-	children: React.ReactNode;
-}
+import type { BlogPostProps } from './BlogPost.types';
 
 export default function BlogPost({
 	title,

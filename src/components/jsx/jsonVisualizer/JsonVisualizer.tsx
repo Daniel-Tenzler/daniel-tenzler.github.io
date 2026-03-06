@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import type { JsonVisualizerProps } from './JsonVisualizer.types';
 import {
 	Container,
 	OutputSection,
@@ -14,10 +15,6 @@ import {
 	SectionHeader,
 	FullscreenButton,
 } from './JsonVisualizer.styles';
-
-export interface JsonVisualizerProps {
-	initialValue?: string;
-}
 
 const JsonVisualizer = ({ initialValue = '' }: JsonVisualizerProps) => {
 	const [outputValue, setOutputValue] = useState('');

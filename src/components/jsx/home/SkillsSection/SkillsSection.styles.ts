@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import type { CategoryTitleProps, SkillBubbleProps } from './SkillsSection.types';
 
 export const Section = styled.section`
 	margin-bottom: 48px;
@@ -37,10 +38,6 @@ export const CategorySection = styled.div`
 	}
 `;
 
-interface CategoryTitleProps {
-	$color: string;
-}
-
 export const CategoryTitle = styled.h3<CategoryTitleProps>`
 	font-size: 16px;
 	font-weight: 600;
@@ -64,10 +61,6 @@ export const SkillsGrid = styled.div`
 	flex-wrap: wrap;
 	gap: 8px;
 `;
-
-interface SkillBubbleProps {
-	$color?: string;
-}
 
 export const SkillBubble = styled.span<SkillBubbleProps>`
 	display: inline-flex;

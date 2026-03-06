@@ -1,14 +1,10 @@
 import type { RefObject } from 'react';
 
-type RGBMatrix = number[][][]; // [y][x][rgb]
-
-interface ProcessImageResult {
-	matrix: RGBMatrix;
-	matrixString: string;
-	processed: RGBMatrix;
-}
-
-type ProcessingMode = 'smooth' | 'spread';
+import type {
+	ProcessImageResult,
+	ProcessingMode,
+	RGBMatrix,
+} from './useImageProcessing.types';
 
 const useImageProcessing = () => {
 	const imageToRGBMatrix = (imageElement: HTMLImageElement): RGBMatrix => {

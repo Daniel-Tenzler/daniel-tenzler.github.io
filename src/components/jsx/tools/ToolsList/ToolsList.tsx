@@ -1,4 +1,6 @@
 import React from 'react';
+import type { Tool } from '@/data/tools/tools.types';
+import type { ToolsListProps } from './ToolsList.types';
 import {
 	CategorySection,
 	CategoryTitle,
@@ -11,19 +13,6 @@ import {
 	ToolsGrid,
 	ToolTitle,
 } from './ToolsList.styles';
-
-export interface Tool {
-	id: string;
-	title: string;
-	description: string;
-	path: string;
-	icon: string;
-	category: string;
-}
-
-export interface ToolsListProps {
-	tools: Tool[];
-}
 
 const ToolsList = ({ tools }: ToolsListProps) => {
 	const toolsByCategory = tools.reduce<Record<string, Tool[]>>(

@@ -6,10 +6,7 @@ import {
 	Paragraph,
 	StyledResumeButton,
 } from './AboutSection.styles';
-
-export interface AboutSectionProps {
-	paragraphs: string[];
-}
+import type { AboutSectionProps } from './AboutSection.types';
 
 export default function AboutSection({ paragraphs }: AboutSectionProps) {
 	return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import type { JourneyDetailsPageContentProps } from './JourneyDetailsPageContent.types';
 import {
 	JourneyDetailsContainer,
 	Title,
@@ -6,14 +7,6 @@ import {
 	Details,
 	BackButton,
 } from './JourneyDetailsPageContent.styles';
-
-export interface JourneyDetailsPageContentProps {
-	item: {
-		title: string;
-		date: string;
-	};
-	children: React.ReactNode;
-}
 
 const JourneyDetailsPageContent = ({
 	item,

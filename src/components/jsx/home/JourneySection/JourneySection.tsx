@@ -15,19 +15,9 @@ import {
 	Title,
 } from './JourneySection.styles';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import type { JourneySectionProps } from './JourneySection.types';
 
-export interface JourneySectionItem {
-	id: string;
-	title: string;
-	description: string;
-	date: string;
-	type?: string;
-	link?: string;
-}
-
-export interface JourneySectionProps {
-	data: JourneySectionItem[] | null;
-}
+export type { JourneySectionItem } from './JourneySection.types';
 
 const JourneySection = ({ data }: JourneySectionProps) => {
 	const { isMobile } = useIsMobile();

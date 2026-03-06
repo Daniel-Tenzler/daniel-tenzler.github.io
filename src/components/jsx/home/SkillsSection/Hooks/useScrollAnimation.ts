@@ -1,31 +1,10 @@
 import { useRef, useEffect } from 'react';
-import type { RefObject } from 'react';
-
-interface DragState {
-	isDragging: boolean;
-	pointerId: number | null;
-	startX: number;
-	baseOffsetX: number;
-	target: EventTarget | null;
-}
-
-interface AnimationState {
-	requestId: number | null;
-	lastTimestamp: number;
-}
-
-interface PositionState {
-	first: number;
-	second: number;
-}
-
-interface UseScrollAnimationReturn {
-	firstTrackRef: RefObject<HTMLDivElement | null>;
-	secondTrackRef: RefObject<HTMLDivElement | null>;
-	handlePointerDown: (e: React.PointerEvent, w: 'first' | 'second') => void;
-	handlePointerMove: (e: React.PointerEvent) => void;
-	endDrag: () => void;
-}
+import type {
+	DragState,
+	AnimationState,
+	PositionState,
+	UseScrollAnimationReturn,
+} from './useScrollAnimation.types';
 
 export const useScrollAnimation = (
 	isMobile: boolean

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import type { ToggleButtonProps, LineContentProps } from './DiffChecker.types';
 
 export const Container = styled.div`
 	width: 90%;
@@ -97,10 +98,6 @@ export const DiffModeToggle = styled.div`
 		flex: 1;
 	}
 `;
-
-interface ToggleButtonProps {
-	$active?: boolean;
-}
 
 export const ToggleButton = styled.button<ToggleButtonProps>`
 	padding: 0.6em 1em;
@@ -347,10 +344,6 @@ export const LineNumber = styled.span`
 	user-select: none;
 	opacity: 0.7;
 `;
-
-interface LineContentProps {
-	$as?: React.ElementType;
-}
 
 export const LineContent = styled.span<LineContentProps>`
 	flex: 1;

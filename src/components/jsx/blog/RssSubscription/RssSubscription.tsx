@@ -1,12 +1,9 @@
 import React from 'react';
+import type { RssSubscriptionProps } from './RssSubscription.types';
 import {
 	StyledRssButton,
 	StyledRssSubscriptionContainer,
 } from './RssSubscription.styles';
-
-export interface RssSubscriptionProps {
-	feedUrl: string;
-}
 
 const RssSubscription = ({ feedUrl }: RssSubscriptionProps) => {
 	return (

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import type { UrlEncoderProps } from './UrlEncoder.types';
 import {
 	Container,
 	ContentWrapper,
@@ -11,10 +12,6 @@ import {
 	DecodeButton,
 	EncodeButton,
 } from './UrlEncoder.styles';
-
-export interface UrlEncoderProps {
-	initialValue?: string;
-}
 
 const UrlEncoder = ({ initialValue = '' }: UrlEncoderProps) => {
 	const [value, setValue] = useState(initialValue || '');

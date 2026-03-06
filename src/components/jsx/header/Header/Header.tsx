@@ -12,11 +12,7 @@ import {
 import MobileMenuComponent from '@/components/jsx/header/MobileMenu/MobileMenu';
 import ScrollProgressBar from '@/components/jsx/ui/ScrollProgressBar/ScrollProgressBar';
 import DarkModeToggle from '@/components/jsx/darkMode/DarkModeToggle/DarkModeToggle';
-
-export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
-	id?: string;
-	[key: string]: unknown; // Allow Astro client directives
-}
+import type { HeaderProps } from './Header.types';
 
 export default function Header({ id }: HeaderProps) {
 	return (

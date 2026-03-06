@@ -7,19 +7,9 @@ import {
 	ViewAllLink,
 	Link,
 } from './LatestPostsSection.styles';
+import type { LatestPostsSectionProps } from './LatestPostsSection.types';
 
-export interface LatestPostData {
-	title: string;
-	description: string;
-	pubDate: Date;
-	slug: string;
-	readTime: string;
-	tags: string[];
-}
-
-export interface LatestPostsSectionProps {
-	posts: LatestPostData[];
-}
+export type { LatestPostData } from './LatestPostsSection.types';
 
 export default function LatestPostsSection({ posts }: LatestPostsSectionProps) {
 	return (

@@ -1,11 +1,8 @@
 import styled from '@emotion/styled';
+import type { WithFullscreenProp } from './JsonVisualizer.types';
 import { BaseSmallButton } from 'src/components/jsx/ui/Button.styles';
 
 const hideFullscreenProp = (prop: string) => prop !== 'isFullscreen';
-
-interface WithFullscreenProp {
-	isFullscreen?: boolean;
-}
 
 export const Container = styled('div', {
 	shouldForwardProp: hideFullscreenProp,

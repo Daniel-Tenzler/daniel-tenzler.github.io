@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import type {PresetButtonProps, PresetPreviewProps} from './PresetSelector.types';
 
 export const PresetSelectorWrapper = styled.div`
 	display: flex;
@@ -19,10 +20,6 @@ export const PresetGrid = styled.div`
 	gap: 8px;
 	width: 100%;
 `;
-
-interface PresetButtonProps {
-	$isActive?: boolean;
-}
 
 export const PresetButton = styled.button<PresetButtonProps>`
 	padding: 12px 8px;
@@ -65,10 +62,6 @@ export const PresetButton = styled.button<PresetButtonProps>`
 		cursor: not-allowed;
 	}
 `;
-
-interface PresetPreviewProps {
-	$preview: string;
-}
 
 export const PresetPreview = styled.div<PresetPreviewProps>`
 	width: 100%;

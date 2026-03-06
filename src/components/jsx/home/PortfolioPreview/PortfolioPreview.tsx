@@ -17,31 +17,7 @@ import {
 	Link,
 } from './PortfolioPreview.styles';
 
-export interface ProjectImageData {
-	jpeg: {
-		src: string;
-		srcset: string;
-	};
-	webp: {
-		src: string;
-		srcset: string;
-	};
-	sizes: string;
-}
-
-export interface ProjectData {
-	id: string;
-	title: string;
-	description: string;
-	technologies: string[];
-	responsiveImage: ProjectImageData;
-	githubUrl?: string;
-	liveUrl?: string;
-}
-
-export interface PortfolioPreviewContentProps {
-	projects: ProjectData[];
-}
+import type { ProjectImageData, ProjectData, PortfolioPreviewContentProps } from './PortfolioPreview.types';
 
 const PortfolioPreviewContent = ({
 	projects,

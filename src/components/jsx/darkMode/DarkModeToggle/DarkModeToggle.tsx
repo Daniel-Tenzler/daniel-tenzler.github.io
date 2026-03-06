@@ -6,10 +6,9 @@ import {
 	MoonIcon,
 } from './DarkModeToggle.styles';
 import { useTheme } from '@/hooks/useTheme';
+import type { DarkModeToggleProps } from './DarkModeToggle.types';
 
-export interface DarkModeToggleProps extends React.HTMLAttributes<HTMLButtonElement> {
-	[key: string]: unknown; // Allow Astro client directives
-}
+export type { DarkModeToggleProps };
 
 const DarkModeToggle = (_props: DarkModeToggleProps): React.ReactElement => {
 	const { isDark, toggleTheme } = useTheme();

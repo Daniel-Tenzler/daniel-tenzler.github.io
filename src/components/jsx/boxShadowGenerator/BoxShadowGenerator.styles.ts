@@ -3,6 +3,12 @@ import {
 	BaseMediumButton,
 	BaseToggleButton,
 } from 'src/components/jsx/ui/Button.styles';
+import type {
+	PreviewSectionProps,
+	PreviewBoxProps,
+	LayerItemProps,
+	ToggleButtonProps,
+} from './BoxShadowGenerator.types';
 
 export const Container = styled.div`
 	width: 90%;
@@ -73,10 +79,6 @@ export const SectionHeader = styled.div`
 	min-height: 40px;
 `;
 
-interface PreviewSectionProps {
-	$backgroundColor?: string;
-}
-
 export const PreviewSection = styled.div<PreviewSectionProps>`
 	display: flex;
 	justify-content: center;
@@ -91,11 +93,6 @@ export const PreviewSection = styled.div<PreviewSectionProps>`
 		padding: 1.5em;
 	}
 `;
-
-interface PreviewBoxProps {
-	$boxShadow?: string;
-	$backgroundColor?: string;
-}
 
 export const PreviewBox = styled.div<PreviewBoxProps>`
 	width: 150px;
@@ -133,10 +130,6 @@ export const LayersList = styled.div`
 		justify-content: center;
 	}
 `;
-
-interface LayerItemProps {
-	$active?: boolean;
-}
 
 export const LayerItem = styled(BaseToggleButton)<LayerItemProps>`
 	padding: 0.6em 1em;
@@ -326,10 +319,6 @@ export const OpacitySlider = styled.input`
 		border-radius: 4px;
 	}
 `;
-
-interface ToggleButtonProps {
-	$active?: boolean;
-}
 
 export const ToggleButton = styled(BaseToggleButton)<ToggleButtonProps>`
 	padding: 0.6em 1.2em;

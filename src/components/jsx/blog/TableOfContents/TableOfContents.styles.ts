@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import type { TOCItemProps, TOCLinkProps } from './TableOfContents.types';
 
 export const TOCContainer = styled.nav`
 	align-self: start;
@@ -32,10 +33,6 @@ export const TOCList = styled.ul`
 	margin: 0;
 `;
 
-interface TOCItemProps {
-	depth: number;
-}
-
 export const TOCItem = styled.li<TOCItemProps>`
 	margin-bottom: 8px;
 	padding-left: ${(props) => (props.depth - 1) * 1}rem;
@@ -45,10 +42,6 @@ export const TOCItem = styled.li<TOCItemProps>`
 		padding-left: ${(props) => (props.depth - 1) * 0.75}rem;
 	}
 `;
-
-interface TOCLinkProps {
-	isActive: boolean;
-}
 
 export const TOCLink = styled.a<TOCLinkProps>`
 	display: block;

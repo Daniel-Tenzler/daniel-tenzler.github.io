@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import type { ToggleButtonProps } from './YamlConverter.types';
 
 export const ControlsContainer = styled.div`
 	display: flex;
@@ -26,10 +27,6 @@ export const DirectionToggle = styled.div`
 		flex-direction: column;
 	}
 `;
-
-interface ToggleButtonProps {
-	$active?: boolean;
-}
 
 export const ToggleButton = styled.button<ToggleButtonProps>`
 	flex: 1;

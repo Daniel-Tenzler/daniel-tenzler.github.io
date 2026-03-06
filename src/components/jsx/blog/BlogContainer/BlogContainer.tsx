@@ -2,23 +2,9 @@ import React, { useState, useEffect } from 'react';
 import BlogHeader from '@/components/jsx/blog/BlogHeader/BlogHeader';
 import BlogPostGrid from '@/components/jsx/blog/BlogPostGrid/BlogPostGrid';
 import { Container } from './BlogContainer.styles';
+import type { BlogContainerProps } from './BlogContainer.types';
 
-export interface BlogPostData {
-	id: string;
-	data: {
-		title: string;
-		description: string;
-		pubDate: Date;
-		heroImage?: string;
-		readTime?: string;
-		tags?: string[];
-	};
-}
-
-export interface BlogContainerProps {
-	posts: BlogPostData[];
-	allTags: string[];
-}
+export type { BlogPostData } from './BlogContainer.types';
 
 const BlogContainer = ({ posts, allTags }: BlogContainerProps) => {
 	const [selectedTags, setSelectedTags] = useState<string[]>([]);

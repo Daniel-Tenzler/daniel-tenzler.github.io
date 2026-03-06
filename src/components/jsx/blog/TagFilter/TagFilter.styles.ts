@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import type { TagButtonProps } from './TagFilter.types';
 
 export const FilterContainer = styled.div`
 	display: flex;
@@ -6,10 +7,6 @@ export const FilterContainer = styled.div`
 	gap: 8px;
 	margin-bottom: 32px;
 `;
-
-interface TagButtonProps {
-	active?: boolean;
-}
 
 export const TagButton = styled.button<TagButtonProps>`
 	padding: 8px 16px;

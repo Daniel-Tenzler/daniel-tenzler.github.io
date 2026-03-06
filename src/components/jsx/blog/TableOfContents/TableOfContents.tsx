@@ -5,16 +5,9 @@ import {
 	TOCItem,
 	TOCLink,
 } from './TableOfContents.styles';
+import type { TableOfContentsProps } from './TableOfContents.types';
 
-export interface Heading {
-	depth: number;
-	slug: string;
-	text: string;
-}
-
-export interface TableOfContentsProps {
-	headings?: Heading[];
-}
+export type { Heading } from './TableOfContents.types';
 
 export default function TableOfContents({ headings }: TableOfContentsProps) {
 	const [activeId, setActiveId] = useState('');

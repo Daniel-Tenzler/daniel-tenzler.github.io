@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ProgressBar, ProgressFill } from './ScrollProgressBar.styles';
-
-export interface ScrollProgressBarProps extends React.HTMLAttributes<HTMLDivElement> {
-	[key: string]: unknown; // Allow Astro client directives
-}
+import type { ScrollProgressBarProps } from './ScrollProgressBar.types';
 
 export default function ScrollProgressBar(_props: ScrollProgressBarProps) {
 	const [scrollProgress, setScrollProgress] = useState(0);

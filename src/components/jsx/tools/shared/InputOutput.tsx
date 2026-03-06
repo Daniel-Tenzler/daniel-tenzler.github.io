@@ -1,4 +1,5 @@
 import React from 'react';
+import type { InputOutputProps } from './InputOutput.types';
 import {
 	Container,
 	ContentWrapper,
@@ -12,21 +13,7 @@ import {
 	ErrorMessage,
 } from './InputOutput.styles';
 
-export interface InputOutputProps {
-	title: string;
-	children?: React.ReactNode;
-	inputValue: string;
-	inputLabel: string;
-	outputValue?: string;
-	outputLabel?: string;
-	onInputChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-	onOutputChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-	inputReadOnly?: boolean;
-	outputReadOnly?: boolean;
-	inputPlaceholder?: string;
-	outputPlaceholder?: string;
-	error?: string;
-}
+export type { InputOutputProps };
 
 const InputOutput = ({
 	title,

@@ -7,13 +7,7 @@ import {
 	Description,
 	HeaderContent,
 } from './BlogHeader.styles';
-
-export interface BlogHeaderProps {
-	allTags: string[];
-	selectedTags: string[];
-	onTagSelect: (tags: string[]) => void;
-	feedUrl: string;
-}
+import type { BlogHeaderProps } from './BlogHeader.types';
 
 const BlogHeader = ({
 	allTags,

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import type { ColorPickerButtonProps, PreviewSwatchProps } from './ColorInput.types';
 
 export const ColorInputWrapper = styled.div`
 	display: flex;
@@ -35,10 +36,6 @@ export const HexInput = styled.input`
 		color: var(--color-text-muted);
 	}
 `;
-
-interface ColorPickerButtonProps {
-	$color?: string;
-}
 
 export const ColorPickerButton = styled.button<ColorPickerButtonProps>`
 	width: 40px;
@@ -141,10 +138,6 @@ export const SliderInput = styled.input`
 		outline-offset: 2px;
 	}
 `;
-
-interface PreviewSwatchProps {
-	$backgroundColor?: string;
-}
 
 export const PreviewSwatch = styled.div<PreviewSwatchProps>`
 	width: 100%;

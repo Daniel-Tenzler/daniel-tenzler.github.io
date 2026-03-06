@@ -12,15 +12,9 @@ import {
 	Label,
 } from './ColorInput.styles';
 import { hexToRgb, isValidHex } from '@/infrastructure/cssUtils';
+import type { ColorInputProps } from './ColorInput.types';
 
-export interface ColorInputProps {
-	hex: string;
-	opacity: number;
-	onHexChange: (v: string) => void;
-	onOpacityChange: (v: number) => void;
-	label?: string;
-	showPreview?: boolean;
-}
+export type { ColorInputProps };
 
 const ColorInput = ({
 	hex,

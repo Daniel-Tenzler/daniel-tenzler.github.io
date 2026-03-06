@@ -13,8 +13,7 @@ import {
 	Checkbox,
 	ButtonsContainer,
 } from './YamlConverter.styles';
-
-type Direction = 'yamlToJson' | 'jsonToYaml';
+import type { Direction } from './YamlConverter.types';
 
 const YamlConverter = () => {
 	const [direction, setDirection] = useState<Direction>('yamlToJson');

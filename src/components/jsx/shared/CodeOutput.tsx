@@ -7,12 +7,9 @@ import {
 	CodeBlock,
 	CopyIcon,
 } from './CodeOutput.styles';
+import type { CodeOutputProps } from './CodeOutput.types';
 
-export interface CodeOutputProps {
-	code: string;
-	language?: string;
-	label?: string;
-}
+export type { CodeOutputProps };
 
 const CodeOutput = ({ code, language = 'CSS', label }: CodeOutputProps) => {
 	const [copied, setCopied] = useState(false);

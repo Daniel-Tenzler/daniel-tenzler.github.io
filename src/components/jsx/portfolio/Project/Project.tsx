@@ -11,19 +11,9 @@ import {
 	ProjectImage,
 	Description,
 } from './Project.styles';
+import type { ProjectItem, ProjectProps } from './Project.types';
 
-export interface ProjectItem {
-	title: string;
-	technologies: string[];
-	githubUrl?: string;
-	liveUrl?: string;
-	image?: string;
-	description: string;
-}
-
-export interface ProjectProps {
-	item: ProjectItem;
-}
+export type { ProjectItem, ProjectProps };
 
 const Project = ({ item }: ProjectProps) => {
 	return (

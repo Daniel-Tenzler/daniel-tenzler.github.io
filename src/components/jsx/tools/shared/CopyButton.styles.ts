@@ -1,9 +1,6 @@
 import styled from '@emotion/styled';
 import { BaseSmallButton } from 'src/components/jsx/ui/Button.styles';
-
-interface ButtonProps {
-	$copied?: boolean;
-}
+import type { ButtonProps } from './CopyButton.types';
 
 export const Button = styled(BaseSmallButton)<ButtonProps>`
 	${(props) =>
