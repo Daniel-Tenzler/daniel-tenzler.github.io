@@ -25,14 +25,16 @@ import {
 } from 'src/components/jsx/shared';
 import {
 	generateGradientCSS,
-	GRADIENT_TYPES,
-	DEFAULT_GRADIENT_CONFIG,
-	GRADIENT_PRESETS,
 	type GradientState,
 	type LinearGradientConfig,
 	type RadialGradientConfig,
 	type ConicGradientConfig,
 } from 'src/infrastructure/cssUtils';
+import {
+	GRADIENT_TYPES,
+	DEFAULT_GRADIENT_CONFIG,
+	GRADIENT_PRESETS,
+} from 'src/data/gradientPresets';
 
 // Ensure gradient state always has all configs
 type CompleteGradientState = GradientState & {

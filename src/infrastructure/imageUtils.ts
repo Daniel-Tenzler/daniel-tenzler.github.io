@@ -1,4 +1,4 @@
-import { IMAGE_TYPES } from '../../images.config.js';
+import { IMAGE_TYPES } from 'images.config.js';
 
 const { widths: PORTFOLIO_IMAGE_WIDTHS, sizes: PORTFOLIO_IMAGE_SIZES } =
 	IMAGE_TYPES.portfolio;

@@ -6,7 +6,7 @@ import type { CollectionEntry } from 'astro:content';
 import BlogContainer from 'src/components/jsx/blog/BlogContainer/BlogContainer';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
 import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
-import { generateBlogIndexSchema } from 'src/utils/structuredData';
+import { generateBlogIndexSchema } from 'src/infrastructure/structuredData';
 
 const posts = (await getCollection('blog'))
 	.sort(

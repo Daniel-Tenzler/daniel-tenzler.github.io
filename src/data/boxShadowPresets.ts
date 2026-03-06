@@ -3,18 +3,14 @@
  * Shared preset configurations for box shadow effects
  */
 
+import type { BoxShadowLayerBase } from 'src/infrastructure/cssUtils';
+
 /**
  * Interface for a box shadow layer configuration
+ * Extends the base CSS layer type with an ID for layer management
  */
-export interface BoxShadowLayer {
+export interface BoxShadowLayer extends BoxShadowLayerBase {
 	id: string;
-	offsetX: number;
-	offsetY: number;
-	blur: number;
-	spread: number;
-	color: string;
-	opacity: number;
-	inset: boolean;
 }
 
 /**
@@ -41,7 +37,7 @@ export const DEFAULT_LAYER: BoxShadowLayer = {
 	blur: 20,
 	spread: 0,
 	color: '#000000',
-	opacity: 0.2,
+	opacity: 20,
 	inset: false,
 };
 
@@ -58,7 +54,7 @@ export const BOX_SHADOW_PRESETS: BoxShadowPresets = {
 			blur: 4,
 			spread: 0,
 			color: '#000000',
-			opacity: 0.1,
+			opacity: 10,
 			inset: false,
 		},
 	],
@@ -70,7 +66,7 @@ export const BOX_SHADOW_PRESETS: BoxShadowPresets = {
 			blur: 12,
 			spread: 0,
 			color: '#000000',
-			opacity: 0.15,
+			opacity: 15,
 			inset: false,
 		},
 		{
@@ -80,7 +76,7 @@ export const BOX_SHADOW_PRESETS: BoxShadowPresets = {
 			blur: 4,
 			spread: 0,
 			color: '#000000',
-			opacity: 0.1,
+			opacity: 10,
 			inset: false,
 		},
 	],
@@ -92,7 +88,7 @@ export const BOX_SHADOW_PRESETS: BoxShadowPresets = {
 			blur: 40,
 			spread: 0,
 			color: '#000000',
-			opacity: 0.3,
+			opacity: 30,
 			inset: false,
 		},
 	],
@@ -104,7 +100,7 @@ export const BOX_SHADOW_PRESETS: BoxShadowPresets = {
 			blur: 4,
 			spread: 0,
 			color: '#000000',
-			opacity: 0.2,
+			opacity: 20,
 			inset: true,
 		},
 	],

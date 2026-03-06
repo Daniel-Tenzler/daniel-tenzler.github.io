@@ -3,7 +3,7 @@ import Project from 'src/components/jsx/portfolio/Project/Project';
 import { getPortfolioItems } from 'src/data/portfolio/portfolio';
 import PortfolioLayout from 'src/layouts/PortfolioLayout.astro';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
-import { generatePortfolioItemSchema } from 'src/utils/structuredData';
+import { generatePortfolioItemSchema } from 'src/infrastructure/structuredData';
 import { SITE_URL } from 'src/consts/SiteData';
 
 export const getStaticPaths = async () => {

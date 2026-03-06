@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState } from 'react';
 import {
 	Container,
 	ContentWrapper,
@@ -29,82 +29,25 @@ import {
 	PresetsGrid,
 	PresetButton,
 } from './BoxShadowGenerator.styles';
-import {
-	DEFAULT_LAYER,
-	BOX_SHADOW_PRESETS,
-	generateLayerId,
-} from 'src/data/boxShadowPresets';
-import { hexToRgba } from 'src/infrastructure/colorUtils';
+import { useBoxShadowLayers } from './hooks/useBoxShadowLayers';
 
 const BoxShadowGenerator = () => {
-	const [layers, setLayers] = useState([DEFAULT_LAYER]);
-	const [activeLayerIndex, setActiveLayerIndex] = useState(0);
 	const [copied, setCopied] = useState(false);
 	const [objectColor, setObjectColor] = useState('#ffffff');
 	const [backgroundColor, setBackgroundColor] = useState('#383838');
 
-	const activeLayer = layers[activeLayerIndex] || DEFAULT_LAYER;
-
-	const generateBoxShadowCSS = useCallback((layersArray: typeof layers) => {
-		return layersArray
-			.map((layer) => {
-				const {
-					offsetX,
-					offsetY,
-					blur,
-					spread,
-					color,
-					opacity,
-					inset,
-				} = layer;
-				const rgbaColor = hexToRgba(color, opacity);
-				const insetPrefix = inset ? 'inset ' : '';
-				return `${insetPrefix}${offsetX}px ${offsetY}px ${blur}px ${spread}px ${rgbaColor}`;
-			})
-			.join(', ');
-	}, []);
-
-	const boxShadowCSS = useMemo(
-		() => generateBoxShadowCSS(layers),
-		[layers, generateBoxShadowCSS]
-	);
-
-	const handleLayerChange = (
-		property: keyof typeof DEFAULT_LAYER,
-		value: string | number | boolean
-	) => {
-		setLayers((prev) =>
-			prev.map((layer, index) =>
-				index === activeLayerIndex
-					? { ...layer, [property]: value }
-					: layer
-			)
-		);
-	};
-
-	const handleAddLayer = () => {
-		if (layers.length < 5) {
-			setLayers((prev) => [
-				...prev,
-				{ ...DEFAULT_LAYER, id: generateLayerId() },
-			]);
-			setActiveLayerIndex(layers.length);
-		}
-	};
-
-	const handleRemoveLayer = () => {
-		if (layers.length > 1) {
-			setLayers((prev) =>
-				prev.filter((_, index) => index !== activeLayerIndex)
-			);
-			setActiveLayerIndex((prev) => Math.max(0, prev - 1));
-		}
-	};
-
-	const handleApplyPreset = (preset: keyof typeof BOX_SHADOW_PRESETS) => {
-		setLayers(BOX_SHADOW_PRESETS[preset]);
-		setActiveLayerIndex(0);
-	};
+	const {
+		layers,
+		activeLayer,
+		activeLayerIndex,
+		boxShadowCSS,
+		handleLayerChange,
+		handleAddLayer,
+		handleRemoveLayer,
+		handleApplyPreset,
+		handleSetActiveLayerIndex,
+		MAX_LAYERS,
+	} = useBoxShadowLayers();
 
 	const handleCopy = async () => {
 		try {
@@ -217,7 +160,7 @@ const BoxShadowGenerator = () => {
 							<LayerItem
 								key={layer.id}
 								$active={index === activeLayerIndex}
-								onClick={() => setActiveLayerIndex(index)}
+								onClick={() => handleSetActiveLayerIndex(index)}
 								aria-label={`Layer ${index + 1}`}
 							>
 								<LayerHeader>Layer {index + 1}</LayerHeader>
@@ -225,7 +168,7 @@ const BoxShadowGenerator = () => {
 						))}
 					</LayersList>
 
-					{layers.length < 5 && (
+					{layers.length < MAX_LAYERS && (
 						<AddLayerButton
 							onClick={handleAddLayer}
 							aria-label="Add shadow layer"
@@ -346,8 +289,8 @@ const BoxShadowGenerator = () => {
 							id="opacity"
 							type="range"
 							min="0"
-							max="1"
-							step="0.01"
+							max="100"
+							step="1"
 							value={activeLayer.opacity}
 							onChange={(e) =>
 								handleLayerChange(
