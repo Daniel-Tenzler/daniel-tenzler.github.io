@@ -20,8 +20,8 @@ export default defineConfig({
 	site: baseUrl,
 	base: baseUrl === 'https://daniel-tenzler.github.io' ? '/' : '/',
 
-	// Inline small stylesheets to avoid render-blocking CSS requests
-	inlineStylesheets: 'auto',
+	// Inline all stylesheets to eliminate render-blocking CSS
+	inlineStylesheets: 'always',
 
 	build: {
 		assetsInlineLimit: 0,

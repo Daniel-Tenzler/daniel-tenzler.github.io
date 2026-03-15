@@ -161,7 +161,6 @@
 	--gray-2d2d2d-cc: #2d2d2dcc;
 	--blue-2337ff-4d: #2337ff4d;
 	--blue-2337ff-99: #2337ff99;
-	--blue-000d8a-1a: #000d8a1a;
 }
 
 [data-theme='light'] {
@@ -302,7 +301,6 @@
 	--gray-2d2d2d-cc: #e4e6ebcc;
 	--blue-2337ff-4d: #2337ff4d;
 	--blue-2337ff-99: #2337ff99;
-	--blue-000d8a-1a: #64679e1a;
 }
 
 /* === Base Body Styles === */
