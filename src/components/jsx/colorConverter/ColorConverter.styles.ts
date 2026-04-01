@@ -88,8 +88,11 @@ export const ColorInput = styled.input`
 	padding: 0.75em 1em;
 	border: 1px solid var(--gray-474747);
 	border-radius: 8px;
-	font-size: 14px;
-	font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+	font-size: 15px;
+	font-family:
+		ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas,
+		'Liberation Mono', 'Courier New', monospace;
+	line-height: 1.5;
 	outline: none;
 	transition:
 		border-color 0.2s ease,
@@ -109,7 +112,7 @@ export const ColorInput = styled.input`
 	}
 
 	@media (max-width: 768px) {
-		font-size: 13px;
+		font-size: 14px;
 		padding: 0.6em 0.8em;
 	}
 `;
@@ -200,14 +203,23 @@ export const FormatsGrid = styled.div`
 	}
 `;
 
-export const FormatCard = styled.div`
+interface FormatCardProps {
+	$isActive?: boolean;
+}
+
+export const FormatCard = styled.div<FormatCardProps>`
 	background-color: var(--gray-383838);
-	border: 1px solid var(--gray-474747);
+	border: 1px solid
+		${(props) =>
+			props.$isActive
+				? 'var(--color-border-light)'
+				: 'var(--gray-474747)'};
 	border-radius: 8px;
 	padding: 1em;
 	display: flex;
 	flex-direction: column;
 	gap: 0.5em;
+	cursor: pointer;
 	transition:
 		background-color 0.2s ease,
 		border-color 0.2s ease;
@@ -216,32 +228,39 @@ export const FormatCard = styled.div`
 		border-color: var(--color-border-light);
 	}
 
+	&:focus-visible {
+		outline: 2px solid var(--color-border-light);
+		outline-offset: 2px;
+	}
+
 	@media (max-width: 768px) {
 		padding: 0.8em;
 	}
 `;
 
 export const FormatLabel = styled.div`
-	font-size: 12px;
+	font-size: 13px;
 	font-weight: 600;
-	color: var(--color-text-primary);
+	color: var(--color-text-emphasis);
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 
 	@media (max-width: 768px) {
-		font-size: 11px;
+		font-size: 12px;
 	}
 `;
 
 export const FormatValue = styled.div`
-	font-size: 13px;
-	font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+	font-size: 15px;
+	font-family:
+		ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas,
+		'Liberation Mono', 'Courier New', monospace;
 	color: var(--color-text-emphasis);
 	word-break: break-all;
-	line-height: 1.4;
+	line-height: 1.6;
 
 	@media (max-width: 768px) {
-		font-size: 12px;
+		font-size: 14px;
 	}
 `;
 

@@ -15,15 +15,39 @@ import {
 	CopyButton,
 	ErrorMessage,
 } from './ColorConverter.styles';
-import { parseColor, convertToAllFormats } from 'src/infrastructure/colorUtils';
+import {
+	parseColor,
+	convertToAllFormats,
+	validators,
+} from 'src/infrastructure/colorUtils';
+
+const FORMAT_ORDER = ['hex', 'rgb', 'hsl', 'hsv', 'hwb', 'cmyk'] as const;
+type FormatKey = (typeof FORMAT_ORDER)[number];
+
+const INPUT_PLACEHOLDERS: Record<FormatKey, string> = {
+	hex: '#ff6b6b',
+	rgb: 'rgb(255, 107, 107)',
+	hsl: 'hsl(0, 100%, 70%)',
+	hsv: 'hsv(0, 58%, 100%)',
+	hwb: 'hwb(0, 42%, 0%)',
+	cmyk: 'cmyk(0%, 58%, 58%, 0%)',
+};
 
 const ColorConverter = () => {
-	const [input, setInput] = useState('#ff6b6b');
+	const [inputState, setInputState] = useState<{
+		input: string;
+		sourceFormat: FormatKey;
+	}>({
+		input: '#ff6b6b',
+		sourceFormat: 'hex',
+	});
 	const [formats, setFormats] = useState<ReturnType<
 		typeof convertToAllFormats
 	> | null>(null);
 	const [error, setError] = useState('');
 	const [copiedFormat, setCopiedFormat] = useState<string | null>(null);
+
+	const { input, sourceFormat } = inputState;
 
 	useEffect(() => {
 		if (!input.trim()) {
@@ -32,7 +56,17 @@ const ColorConverter = () => {
 			return;
 		}
 
-		const parsed = parseColor(input);
+		const trimmedInput = input.trim().toLowerCase();
+		const sourceValidator = validators[sourceFormat];
+
+		if (!sourceValidator.test(trimmedInput)) {
+			setError(
+				`Invalid ${sourceFormat.toUpperCase()} format. Try ${INPUT_PLACEHOLDERS[sourceFormat]}.`
+			);
+			return;
+		}
+
+		const parsed = parseColor(trimmedInput);
 		if (parsed) {
 			setFormats(convertToAllFormats(parsed));
 			setError('');
@@ -41,15 +75,33 @@ const ColorConverter = () => {
 				'Invalid color format. Try HEX, RGB, HSL, HSV, HWB, or CMYK.'
 			);
 		}
-	}, [input]);
+	}, [input, sourceFormat]);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setInput(e.target.value);
+		setInputState((prev) => ({
+			...prev,
+			input: e.target.value,
+		}));
 	};
 
 	const handleColorPicker = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const hex = e.target.value;
-		setInput(hex);
+		setInputState({
+			input: hex,
+			sourceFormat: 'hex',
+		});
+	};
+
+	const handleFormatCardClick = (format: FormatKey) => {
+		if (!formats) {
+			return;
+		}
+
+		setInputState({
+			input: formats[format],
+			sourceFormat: format,
+		});
+		setError('');
 	};
 
 	const handleCopy = async (format: string, value: string) => {
@@ -63,9 +115,10 @@ const ColorConverter = () => {
 	};
 
 	const formatEntries = formats
-		? (Object.entries(formats) as Array<[string, string]>).map(
-				([key, value]) => ({ key, value })
-			)
+		? FORMAT_ORDER.map((key) => ({
+				key,
+				value: formats[key],
+			}))
 		: [];
 
 	return (
@@ -80,7 +133,7 @@ const ColorConverter = () => {
 						type="text"
 						value={input}
 						onChange={handleInputChange}
-						placeholder="Enter a color (e.g., #ff6b6b, rgb(255, 107, 107), hsl(0, 100%, 70%))"
+						placeholder={`Enter ${sourceFormat.toUpperCase()} (e.g., ${INPUT_PLACEHOLDERS[sourceFormat]})`}
 						aria-label="Color input"
 						aria-invalid={!!error}
 						aria-describedby={error ? 'color-error' : undefined}
@@ -110,13 +163,34 @@ const ColorConverter = () => {
 
 						<FormatsGrid>
 							{formatEntries.map(({ key, value }) => (
-								<FormatCard key={key}>
+								<FormatCard
+									key={key}
+									$isActive={sourceFormat === key}
+									onClick={() => handleFormatCardClick(key)}
+									onKeyDown={(e) => {
+										if (
+											e.key === 'Enter' ||
+											e.key === ' '
+										) {
+											e.preventDefault();
+											handleFormatCardClick(key);
+										}
+									}}
+									tabIndex={0}
+									role="button"
+									aria-pressed={sourceFormat === key}
+									aria-label={`Use ${key} as input format`}
+								>
 									<FormatLabel>
 										{key.toUpperCase()}
+										{sourceFormat === key ? ' (input)' : ''}
 									</FormatLabel>
 									<FormatValue>{value}</FormatValue>
 									<CopyButton
-										onClick={() => handleCopy(key, value)}
+										onClick={(e) => {
+											e.stopPropagation();
+											void handleCopy(key, value);
+										}}
 										aria-label={`Copy ${key} value: ${value}`}
 									>
 										{copiedFormat === key

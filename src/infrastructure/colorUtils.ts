@@ -339,7 +339,7 @@ export const formatHsv = (rgb: RGBA): string => {
 export const rgbToHwb = ({ r, g, b, a }: RGBA): HWB => {
 	const hsv = rgbToHsv({ r, g, b, a });
 	const w = ((1 - hsv.s / 100) * hsv.v) / 100;
-	const bVal = (1 - hsv.v) / 100;
+	const bVal = 1 - hsv.v / 100;
 
 	return {
 		h: hsv.h,

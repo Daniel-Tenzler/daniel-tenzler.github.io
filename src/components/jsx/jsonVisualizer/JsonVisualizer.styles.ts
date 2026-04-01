@@ -7,12 +7,12 @@ const hideFullscreenProp = (prop: string) => prop !== 'isFullscreen';
 export const Container = styled('div', {
 	shouldForwardProp: hideFullscreenProp,
 })<WithFullscreenProp>`
-	width: 90%;
-	max-width: 1600px;
+	width: 97%;
+	max-width: 1920px;
 	height: 100%;
-	min-height: calc(100vh - 246px);
+	min-height: calc(100vh - 180px);
 	margin: 0 auto;
-	padding: 1.5em 0;
+	padding: 0.5em 0;
 	display: flex;
 	gap: 0;
 	align-items: stretch;
@@ -40,8 +40,8 @@ export const Container = styled('div', {
 
 	@media (max-width: 768px) {
 		flex-direction: column;
-		gap: 1.5em;
-		width: 95%;
+		gap: 0.75em;
+		width: 98%;
 	}
 `;
 
@@ -99,7 +99,7 @@ export const SectionTitle = styled.h3`
 	font-weight: 600;
 	margin: 0;
 	text-align: center;
-	padding: 0.8em 0 0.4em 0;
+	padding: 0.45em 0 0.2em 0;
 	z-index: 1;
 
 	@media (max-width: 768px) {
@@ -155,7 +155,7 @@ export const InputField = styled('textarea', {
 })<WithFullscreenProp>`
 	background-color: transparent;
 	color: var(--color-text-emphasis);
-	padding: 0.5em 1em 1em 1em;
+	padding: 0.4em 0.7em 0.7em 0.7em;
 	flex: 1;
 	width: 100%;
 	height: 100%;
@@ -171,7 +171,7 @@ export const InputField = styled('textarea', {
 	@media (max-width: 768px) {
 		font-size: 13px;
 		height: 300px;
-		padding: 0.5em 0.8em 0.8em 0.8em;
+		padding: 0.4em 0.6em 0.6em 0.6em;
 	}
 `;
 
@@ -180,7 +180,7 @@ export const OutputField = styled('div', {
 })<WithFullscreenProp>`
 	background-color: transparent;
 	color: var(--color-text-emphasis);
-	padding: 0.5em 1em 1em 1em;
+	padding: 0.4em 0.7em 0.7em 0.7em;
 	flex: 1;
 	width: 100%;
 	height: 100%;
@@ -197,7 +197,7 @@ export const OutputField = styled('div', {
 	@media (max-width: 768px) {
 		font-size: 13px;
 		height: 300px;
-		padding: 0.5em 0.8em 0.8em 0.8em;
+		padding: 0.4em 0.6em 0.6em 0.6em;
 	}
 `;
 
@@ -211,6 +211,14 @@ export const ErrorMessage = styled.div`
 	line-height: 1.4;
 `;
 
+export const ErrorHint = styled.span`
+	display: block;
+	margin-top: 0.4em;
+	font-size: 12px;
+	opacity: 0.8;
+	font-style: italic;
+`;
+
 export const SuccessMessage = styled.div`
 	background-color: rgba(34, 197, 94, 0.1);
 	color: var(--color-status-success);
@@ -221,10 +229,6 @@ export const SuccessMessage = styled.div`
 	line-height: 1.4;
 `;
 
-export const FormatButton = styled(BaseSmallButton)`
-	background-color: var(--gray-383838);
-`;
-
 export const CopyButton = styled(BaseSmallButton)`
 	background-color: var(--gray-383838);
 `;
@@ -233,21 +237,78 @@ export const ImportButton = styled(BaseSmallButton)`
 	background-color: var(--gray-383838);
 `;
 
+export const ToolbarButton = styled(BaseSmallButton)`
+	background-color: var(--gray-383838);
+	padding: 0.35em 0.7em;
+	font-size: 12px;
+
+	@media (max-width: 768px) {
+		font-size: 11px;
+		padding: 0.3em 0.5em;
+	}
+`;
+
+export const ToolbarContainer = styled.div`
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 0.3em 0.6em;
+	gap: 0.5em;
+	border-top: 1px solid var(--gray-383838);
+	background-color: transparent;
+`;
+
+export const ToolbarSeparator = styled.span`
+	width: 1px;
+	height: 20px;
+	background-color: var(--gray-474747);
+	flex: none;
+`;
+
+export const IndentSelect = styled.select`
+	background-color: var(--gray-383838);
+	color: var(--color-text-emphasis);
+	border: 1px solid var(--gray-474747);
+	border-radius: 8px;
+	padding: 0.35em 0.6em;
+	font-size: 12px;
+	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease;
+
+	&:hover {
+		background-color: var(--gray-404040);
+		border-color: var(--color-border-light);
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--gray-222939);
+		outline-offset: 2px;
+	}
+
+	@media (max-width: 768px) {
+		font-size: 11px;
+		padding: 0.3em 0.5em;
+	}
+`;
+
 export const ButtonsContainer = styled.div`
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
+	flex-wrap: wrap;
 	padding: 0.5em 1em;
-	gap: 1em;
+	gap: 0.6em;
 	background-color: transparent;
 `;
 
 export const MessagesContainer = styled.div`
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
-	padding: 0.5em 1em;
-	min-height: 3em;
+	padding: 0.35em 0.6em;
+	min-height: 2.5em;
 	gap: 1em;
 	background-color: transparent;
 `;
@@ -257,7 +318,6 @@ export const Separator = styled('div', {
 })<WithFullscreenProp>`
 	width: 16px;
 	flex: none;
-	cursor: col-resize;
 	background: transparent;
 	display: flex;
 	align-items: center;
@@ -269,18 +329,10 @@ export const Separator = styled('div', {
 
 	&::after {
 		content: '';
-		width: 4px;
+		width: 2px;
 		height: 150px;
 		background-color: var(--gray-474747);
 		border-radius: 999px;
-		transition: all 0.2s ease;
-	}
-
-	&:hover::after,
-	&.dragging::after {
-		background-color: var(--color-accent-brand);
-		height: 364px;
-		box-shadow: 2px 2px 12px #2337ff66;
 	}
 
 	@media (max-width: 768px) {
