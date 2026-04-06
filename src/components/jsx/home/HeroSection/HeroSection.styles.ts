@@ -17,19 +17,19 @@ export const ContentWrapper = styled.div`
 
 export const Name = styled.h1`
 	font-size: clamp(40px, 5vw, 64px);
-	font-weight: 800;
+	font-weight: 500;
+	font-family:
+		'Segoe UI Variable', 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue',
+		Arial, sans-serif;
 	line-height: 1.1;
 	margin: 0 0 8px 0;
-	background: linear-gradient(
-		135deg,
-		var(--color-text-emphasis) 0%,
-		var(--color-text-muted) 60%
-	);
-	-webkit-background-clip: text;
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
-	letter-spacing: -0.02em;
+	position: relative;
+	display: inline-block;
+	color: transparent;
+	letter-spacing: 0;
 	animation: fadeInUp 0.8s ease-out;
+	font-kerning: none;
+	font-variant-ligatures: none;
 
 	@keyframes fadeInUp {
 		from {
@@ -43,6 +43,67 @@ export const Name = styled.h1`
 	@media (max-width: 720px) {
 		font-size: clamp(32px, 8vw, 48px);
 	}
+`;
+
+export const NameAccessible = styled.span`
+	position: absolute;
+	left: 0;
+	top: 0;
+	white-space: pre;
+	opacity: 0;
+	pointer-events: none;
+	user-select: none;
+`;
+
+export const NameVisual = styled.span`
+	position: relative;
+	display: inline-flex;
+	align-items: flex-start;
+	white-space: pre;
+`;
+
+export const LetterSlot = styled.span<{ $width: string }>`
+	position: relative;
+	display: inline-block;
+	width: ${(props) => props.$width};
+	z-index: 1;
+`;
+
+export const SpaceSlot = styled.span`
+	display: inline-block;
+	width: 0.36em;
+`;
+
+const sharedTitleLayerStyles = `
+	display: block;
+	letter-spacing: 0;
+	text-rendering: geometricPrecision;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: linear-gradient(
+		135deg,
+		var(--color-text-emphasis) 0%,
+		var(--color-text-muted) 70%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	pointer-events: none;
+`;
+
+export const TitleTop = styled.span`
+	${sharedTitleLayerStyles}
+	font-weight: 500;
+	clip-path: inset(0 0 35% 0);
+`;
+
+export const TitleBottom = styled.span`
+	${sharedTitleLayerStyles}
+	position: absolute;
+	left: 0;
+	top: 0;
+	font-weight: 300;
+	clip-path: inset(65% 0 0 0);
 `;
 
 export const Title = styled.h2`
