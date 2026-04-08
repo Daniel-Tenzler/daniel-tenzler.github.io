@@ -21,10 +21,10 @@ export const Card = styled.article`
 	border-radius: 16px;
 	box-shadow: 0 4px 6px var(--gray-292929-1a);
 	overflow: hidden;
-	transition: transform 0.3s ease;
+	transition: box-shadow 0.2s ease;
 
 	&:hover {
-		transform: scale(1.05);
+		box-shadow: 0 8px 16px var(--gray-292929-33);
 	}
 `;
 

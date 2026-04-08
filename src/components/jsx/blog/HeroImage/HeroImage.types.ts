@@ -1,6 +1,4 @@
-import type { ImgHTMLAttributes } from 'react';
-
-export interface HeroImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+export interface HeroImageProps {
 	src: string;
 	alt: string;
 	'client:load'?: boolean;
@@ -8,13 +6,3 @@ export interface HeroImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 	'client:idle'?: boolean;
 	'client:only'?: boolean;
 }
-
-export type StandardHTMLAttributes = Omit<
-	HeroImageProps,
-	| 'client:load'
-	| 'client:visible'
-	| 'client:idle'
-	| 'client:only'
-	| 'src'
-	| 'alt'
->;

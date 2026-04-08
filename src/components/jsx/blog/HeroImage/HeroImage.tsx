@@ -1,11 +1,10 @@
 import { ImageContainer, Image } from './HeroImage.styles';
-import type { HeroImageProps, StandardHTMLAttributes } from './HeroImage.types';
+import type { HeroImageProps } from './HeroImage.types';
 
-export default function HeroImage({ src, alt, ...props }: HeroImageProps) {
-	const standardProps: StandardHTMLAttributes = props;
+export default function HeroImage({ src, alt }: HeroImageProps) {
 	return (
-		<ImageContainer {...standardProps}>
-			<Image src={src} alt={alt} loading="lazy" {...standardProps} />
+		<ImageContainer>
+			<Image src={src} alt={alt} loading="lazy" />
 		</ImageContainer>
 	);
 }

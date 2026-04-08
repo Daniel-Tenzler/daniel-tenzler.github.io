@@ -48,6 +48,7 @@
 
 	/* Status Colors */
 	--color-status-success: var(--green-86efac);
+	--color-status-success-dark: #15803d;
 	--color-status-error: var(--red-fca5a5);
 
 	/* Language Colors (for GitHub stats) */
@@ -85,16 +86,10 @@
 	--gray-gradient: #e5e9f080, #ffffff;
 	--box-shadow:
 		0 2px 6px #60739f40, 0 8px 24px #60739f54, 0 16px 32px #60739f54;
-	--main-surface-background: #212121e6;
 	--semi-surface-primary: #303030;
 	--surface-blend-1: #383838;
 	--surface-blend-2: #404040;
 	--outer-surface-background: #474747;
-	--message-surface: #323232d9;
-	--composer-blue-bg: #2a4a6d;
-	--composer-blue-hover: #1a416a;
-	--composer-blue-text: #48aaff;
-	--composer-surface-primary: #303030;
 
 	/* === Full color palette (hex format) === */
 
@@ -240,8 +235,6 @@
 	--surface-blend-1: #ebebeb;
 	--surface-blend-2: #e0e0e0;
 	--outer-surface-background: #ffffff;
-	--main-surface-background: #d1d1d1;
-	--message-surface: #f0f0f0d9;
 	--box-shadow:
 		0 2px 6px #78829626, 0 8px 24px #78829633, 0 16px 32px #78829633;
 

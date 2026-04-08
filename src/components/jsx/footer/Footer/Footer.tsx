@@ -10,8 +10,8 @@ import {
 	FooterLinks,
 	FooterLink,
 	Container,
-	SrOnly,
 } from './Footer.styles';
+import { SrOnly } from '@/components/jsx/ui/SrOnly.styles';
 
 export default function Footer() {
 	const currentYear = new Date().getFullYear();

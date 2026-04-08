@@ -65,8 +65,8 @@ export const StyledContactCard = styled.a`
 	justify-content: space-between;
 	min-height: 180px;
 	transition:
-		transform 0.3s ease,
-		box-shadow 0.3s ease;
+		box-shadow 0.2s ease,
+		background-color 0.2s ease;
 	position: relative;
 	overflow: hidden;
 
@@ -80,11 +80,10 @@ export const StyledContactCard = styled.a`
 		background: var(--color-accent-brand);
 		transform: scaleX(0);
 		transform-origin: left;
-		transition: transform 0.3s ease;
+		transition: transform 0.2s ease;
 	}
 
 	&:hover {
-		transform: scale(1.02);
 		box-shadow: 0 8px 16px var(--gray-292929-33);
 
 		&::before {
@@ -95,7 +94,6 @@ export const StyledContactCard = styled.a`
 	&:focus-visible {
 		outline: 2px solid var(--color-text-secondary);
 		outline-offset: 4px;
-		border-radius: 16px;
 	}
 
 	@media (min-width: 768px) {
@@ -130,7 +128,7 @@ export const StyledAction = styled.span`
 	align-items: center;
 	gap: 4px;
 	margin-top: auto;
-	transition: color 0.3s ease;
+	transition: color 0.2s ease;
 
 	${StyledContactCard}:hover &::after {
 		width: 24px;

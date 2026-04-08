@@ -1,5 +1,8 @@
 import styled from '@emotion/styled';
-import type { CategoryTitleProps, SkillBubbleProps } from './SkillsSection.types';
+import type {
+	CategoryTitleProps,
+	SkillBubbleProps,
+} from './SkillsSection.types';
 
 export const Section = styled.section`
 	margin-bottom: 48px;
@@ -74,14 +77,16 @@ export const SkillBubble = styled.span<SkillBubbleProps>`
 	font-size: 13px;
 	color: var(--color-text-emphasis);
 	font-weight: 500;
-	transition: all 0.2s ease;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
 	cursor: default;
 
 	&:hover {
 		background-color: ${({ $color }) =>
 			`color-mix(in srgb, var(${$color}) 20%, transparent)`};
 		border-color: ${({ $color }) => `var(${$color})`};
-		transform: scale(1.05);
 		box-shadow: 0 0 12px
 			${({ $color }) =>
 				`color-mix(in srgb, var(${$color}) 40%, transparent)`};

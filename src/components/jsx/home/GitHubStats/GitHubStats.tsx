@@ -17,7 +17,6 @@ import {
 	LanguageName,
 	SectionDivider,
 	StatsWrapper,
-	GlowEffect,
 } from './GitHubStats.styles';
 import type { GitHubStatsProps } from './GitHubStats.types';
 
@@ -62,7 +61,6 @@ export default function GitHubStats({
 
 	return (
 		<StatsWrapper>
-			<GlowEffect />
 			<Title>Repository Statistics</Title>
 			<Description>{metadata.description}</Description>
 

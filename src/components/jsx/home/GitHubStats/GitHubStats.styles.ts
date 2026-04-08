@@ -7,13 +7,8 @@ export const StatsWrapper = styled.div`
 	max-width: 900px;
 
 	@media (max-width: 768px) {
-		padding: 0px 0px;
+		padding: 0;
 	}
-`;
-
-// Placeholder for compatibility (no glow effect)
-export const GlowEffect = styled.div`
-	display: none;
 `;
 
 export const Title = styled.h2`
@@ -112,7 +107,7 @@ export const SectionDivider = styled.div`
 	height: 2px;
 	background: var(--white-ffffff-26);
 	margin: 48px auto;
-	
+
 	@media (max-width: 768px) {
 		display: none;
 	}

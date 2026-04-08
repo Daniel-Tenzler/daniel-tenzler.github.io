@@ -6,13 +6,13 @@ export const Button = styled(BaseSmallButton)<ButtonProps>`
 	${(props) =>
 		props.$copied &&
 		`
-			background-color: #16a34a;
-			border-color: #16a34a;
-			color: white;
+			background-color: var(--color-status-success);
+			border-color: var(--color-status-success);
+			color: var(--gray-2d2d2d);
 
 			&:hover {
-				background-color: #15803d;
-				border-color: #15803d;
+				background-color: var(--color-status-success-dark);
+				border-color: var(--color-status-success-dark);
 			}
 	`}
 `;

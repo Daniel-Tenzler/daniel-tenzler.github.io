@@ -14,7 +14,7 @@ export const ToggleWrapper = styled.button`
 	color: var(--color-text-primary);
 	font-size: 16px;
 	box-shadow: 0 2px 8px #00000014;
-	transition: all 0.2s;
+	transition: background-color 0.2s ease;
 	gap: 12px;
 	/* Minimum touch target size (48x48px) for accessibility */
 	min-height: 48px;

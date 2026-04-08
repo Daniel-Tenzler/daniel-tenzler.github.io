@@ -4,7 +4,6 @@ import { COLORS } from '@/consts/Colors';
 import type { BreadcrumbProps } from './Breadcrumb.types';
 
 const BreadcrumbContainer = styled.nav`
-	aria-label: Breadcrumb navigation;
 	padding: 12px 0;
 	margin-bottom: 16px;
 `;
@@ -74,7 +73,7 @@ const Breadcrumb = ({ items }: BreadcrumbProps) => {
 	};
 
 	return (
-		<BreadcrumbContainer>
+		<BreadcrumbContainer aria-label="Breadcrumb navigation">
 			<BreadcrumbList>{renderBreadcrumbItems()}</BreadcrumbList>
 		</BreadcrumbContainer>
 	);

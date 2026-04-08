@@ -25,23 +25,33 @@ export const CopyButton = styled.button<CopyButtonProps>`
 	border: 1px solid var(--color-border-light);
 	border-radius: 4px;
 	background-color: ${(props) =>
-		props.$copied ? 'var(--green-86efac)' : 'var(--gray-2a2a2a)'};
+		props.$copied ? 'var(--color-status-success)' : 'var(--gray-2d2d2d)'};
 	color: ${(props) =>
-		props.$copied ? 'var(--gray-2a2a2a)' : 'var(--color-text-primary)'};
+		props.$copied ? 'var(--gray-2d2d2d)' : 'var(--color-text-primary)'};
 	border-color: ${(props) =>
-		props.$copied ? 'var(--green-86efac)' : 'var(--color-border-light)'};
+		props.$copied
+			? 'var(--color-status-success)'
+			: 'var(--color-border-light)'};
 	font-size: 14px;
 	cursor: pointer;
-	transition: all 0.2s;
+	transition:
+		background-color 0.2s,
+		border-color 0.2s,
+		color 0.2s,
+		transform 0.1s;
 	display: flex;
 	align-items: center;
 	gap: 6px;
 
 	&:hover:not(:disabled) {
 		background-color: ${(props) =>
-			props.$copied ? 'var(--green-86efac)' : 'var(--gray-383838)'};
+			props.$copied
+				? 'var(--color-status-success)'
+				: 'var(--gray-383838)'};
 		border-color: ${(props) =>
-			props.$copied ? 'var(--green-86efac)' : 'var(--color-accent-brand)'};
+			props.$copied
+				? 'var(--color-status-success)'
+				: 'var(--color-accent-brand)'};
 	}
 
 	&:active:not(:disabled) {
@@ -65,7 +75,7 @@ export const CodeBlock = styled.pre`
 	padding: 16px;
 	border: 1px solid var(--color-border-light);
 	border-radius: 4px;
-	background-color: var(--gray-2a2a2a);
+	background-color: var(--gray-2d2d2d);
 	color: var(--color-text-primary);
 	font-family: 'Courier New', monospace;
 	font-size: 14px;

@@ -10,7 +10,6 @@ export const Section = styled.section`
 `;
 
 export const ContentWrapper = styled.div`
-	max-width: 100%;
 	position: relative;
 	z-index: 2;
 `;
@@ -50,9 +49,11 @@ export const NameAccessible = styled.span`
 	left: 0;
 	top: 0;
 	white-space: pre;
-	opacity: 0;
-	pointer-events: none;
-	user-select: none;
+	color: transparent;
+	-webkit-text-fill-color: transparent;
+	pointer-events: auto;
+	user-select: text;
+	z-index: 2;
 `;
 
 export const NameVisual = styled.span`
@@ -60,6 +61,8 @@ export const NameVisual = styled.span`
 	display: inline-flex;
 	align-items: flex-start;
 	white-space: pre;
+	pointer-events: none;
+	user-select: none;
 `;
 
 export const LetterSlot = styled.span<{ $width: string }>`
@@ -88,13 +91,14 @@ const sharedTitleLayerStyles = `
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
-	pointer-events: none;
 `;
 
 export const TitleTop = styled.span`
 	${sharedTitleLayerStyles}
 	font-weight: 500;
-	clip-path: inset(0 0 35% 0);
+	clip-path: inset(0 0 38% 0);
+	pointer-events: none;
+	user-select: none;
 `;
 
 export const TitleBottom = styled.span`
@@ -102,8 +106,10 @@ export const TitleBottom = styled.span`
 	position: absolute;
 	left: 0;
 	top: 0;
-	font-weight: 300;
+	font-weight: 200;
 	clip-path: inset(65% 0 0 0);
+	pointer-events: none;
+	user-select: none;
 `;
 
 export const Title = styled.h2`
@@ -122,7 +128,8 @@ export const Title = styled.h2`
 `;
 
 export const AccentLine = styled.div`
-	width: 360px;
+	--accent-line-width: 360px;
+	width: var(--accent-line-width);
 	height: 3px;
 	background: linear-gradient(
 		90deg,
@@ -140,24 +147,14 @@ export const AccentLine = styled.div`
 			opacity: 0;
 		}
 		to {
-			width: 360px;
+			width: var(--accent-line-width);
 			opacity: 1;
 		}
 	}
 
 	@media (max-width: 720px) {
+		--accent-line-width: 200px;
 		margin-bottom: 24px;
-		width: 200px;
-		@keyframes expandWidth {
-			from {
-				width: 0;
-				opacity: 0;
-			}
-			to {
-				width: 200px;
-				opacity: 1;
-			}
-		}
 	}
 `;
 
@@ -217,34 +214,18 @@ export const PrimaryButton = styled.a`
 		var(--color-bg-secondary) 100%
 	);
 	text-decoration: none;
-	transition: all 0.3s ease;
-	position: relative;
-	overflow: hidden;
+	transition:
+		box-shadow 0.2s ease,
+		background 0.2s ease;
 	box-shadow: 0 4px 20px var(--black-0f1219-66);
-
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: -100%;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(
-			90deg,
-			transparent,
-			var(--white-ffffff-33),
-			transparent
-		);
-		transition: left 0.6s ease;
-	}
 
 	&:hover {
 		box-shadow: 0 3px 20px var(--black-1a1a1a-e6);
-		transform: scale(1.05);
 	}
 
-	&:active {
-		transform: translateY(0);
+	&:focus-visible {
+		outline: 2px solid var(--color-text-secondary);
+		outline-offset: 2px;
 	}
 
 	@media (max-width: 720px) {
@@ -267,31 +248,19 @@ export const SecondaryButton = styled.a`
 	color: var(--color-text-emphasis);
 	background: var(--color-bg-secondary);
 	text-decoration: none;
-	transition: all 0.3s ease;
-	position: relative;
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
 	backdrop-filter: blur(10px);
 
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 0;
-		height: 100%;
-		background: var(--gray-292929-1a);
-		transition: width 0.3s ease;
-		z-index: -1;
-	}
-
 	&:hover {
-		transform: scale(1.05);
 		border-color: var(--color-bg-tertiary);
-		color: var(--color-text-emphasis);
 		box-shadow: 0 3px 20px var(--black-1a1a1a-e6);
 	}
 
-	&:active {
-		transform: translateY(0);
+	&:focus-visible {
+		outline: 2px solid var(--color-text-secondary);
+		outline-offset: 2px;
 	}
 
 	@media (max-width: 720px) {

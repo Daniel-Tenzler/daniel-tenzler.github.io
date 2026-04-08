@@ -41,12 +41,6 @@ export const Logo = styled.a`
 	color: var(--color-text-emphasis);
 	text-decoration: none;
 
-	&:focus {
-		outline: 2px solid var(--color-text-secondary);
-		outline-offset: 2px;
-		border-radius: 4px;
-	}
-
 	&:focus-visible {
 		outline: 2px solid var(--color-text-secondary);
 		outline-offset: 2px;

@@ -19,21 +19,15 @@ export const PostsGrid = styled.div`
 	}
 `;
 
-export const ViewAllLink = styled.div`
+export const ViewAllLink = styled.a`
+	display: block;
 	margin-top: 16px;
 	text-align: center;
-`;
-
-export const Link = styled.a`
 	color: var(--color-text-emphasis);
 	font-weight: 500;
 	text-decoration: none;
 	transition: color 0.2s ease;
 	text-underline-offset: 2px;
-
-	@media (prefers-reduced-motion: reduce) {
-		transition: none;
-	}
 
 	&:hover {
 		color: var(--color-text-primary);
@@ -43,6 +37,5 @@ export const Link = styled.a`
 	&:focus-visible {
 		outline: 2px solid currentColor;
 		outline-offset: 2px;
-		text-decoration: underline;
 	}
 `;

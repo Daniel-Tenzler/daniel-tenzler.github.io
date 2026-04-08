@@ -114,7 +114,6 @@ export const TimelineContent = styled.div`
 	padding: 16px 16px 16px 32px;
 	border-radius: 16px;
 	background: transparent;
-	transition: all 0.3s ease-in-out;
 	position: relative;
 	z-index: 1;
 	align-items: flex-start;
@@ -123,7 +122,6 @@ export const TimelineContent = styled.div`
 
 	@media (min-width: 1001px) {
 		&:hover {
-			transform: scale(1.01);
 			background: radial-gradient(
 				ellipse at center,
 				var(--white-ffffff-03) 0%,
@@ -131,7 +129,6 @@ export const TimelineContent = styled.div`
 				var(--white-ffffff-01) 100%
 			);
 			backdrop-filter: blur(2px);
-			box-shadow: 2px 2px 2px 2px #00000003;
 		}
 	}
 `;
@@ -159,7 +156,6 @@ export const TimelineTitle = styled.h3`
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	transition: all 0.3s ease-in-out;
 	font-size: 18px;
 `;
 
@@ -171,7 +167,6 @@ export const TimelineDate = styled.p`
 	overflow: hidden;
 	text-overflow: ellipsis;
 	margin: 0 0 8px 0;
-	transition: all 0.3s ease-in-out;
 	font-size: 16px;
 `;
 
@@ -182,7 +177,6 @@ export const TimelineDescription = styled.p`
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	transition: all 0.3s ease-in-out;
 	font-size: 16px;
 `;
 
@@ -192,9 +186,8 @@ export const StyledJourneyLink = styled.a`
 	font-size: 15px;
 	text-decoration: none;
 	margin-top: 10px;
+
 	&:hover {
 		color: var(--color-text-muted);
-		-webkit-box-shadow: 0px 0px 26px 7px #0000001a;
-		box-shadow: 0px 0px 26px 7px #0000001a;
 	}
 `;

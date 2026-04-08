@@ -47,30 +47,15 @@ export const StyledResumeButton = styled.a`
 	text-decoration: none;
 	transition:
 		background 0.2s ease,
-		transform 0.2s ease;
+		box-shadow 0.2s ease;
 	cursor: pointer;
 
 	&:hover {
-		transform: scale(1.02);
-	}
-
-	&:focus {
-		outline: 2px solid #4d4d4d;
-		outline-offset: 1px;
+		box-shadow: 0 2px 8px var(--black-0f1219-4d);
 	}
 
 	&:focus-visible {
-		outline: 2px solid #4d4d4d;
-		outline-offset: 1px;
-	}
-
-	&:active {
-		transform: scale(1);
-	}
-
-	/* Ensure focus ring remains visible in :active state */
-	&:active:focus-visible {
-		outline: 2px solid #1e3a8a;
+		outline: 2px solid var(--color-text-secondary);
 		outline-offset: 2px;
 	}
 

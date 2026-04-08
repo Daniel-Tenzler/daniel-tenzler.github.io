@@ -8,7 +8,7 @@ export const Card = styled.a<CardProps>`
 		$noTopBorderRadius ? '0 0 16px 16px' : '16px'};
 	overflow: hidden;
 	box-shadow: 0 1px 3px var(--gray-292929-1a);
-	transition: all 0.2s ease;
+	transition: box-shadow 0.2s ease;
 	text-decoration: none;
 	color: inherit;
 

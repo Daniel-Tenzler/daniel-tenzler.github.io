@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import {
 	CodeOutputWrapper,
 	CodeHeader,
@@ -13,9 +13,7 @@ export type { CodeOutputProps };
 
 const CodeOutput = ({ code, language = 'CSS', label }: CodeOutputProps) => {
 	const [copied, setCopied] = useState(false);
-	const [copyTimeout, setCopyTimeout] = useState<ReturnType<
-		typeof setTimeout
-	> | null>(null);
+	const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	const handleCopy = useCallback(() => {
 		if (copied) return;
@@ -24,29 +22,24 @@ const CodeOutput = ({ code, language = 'CSS', label }: CodeOutputProps) => {
 			navigator.clipboard.writeText(code).then(() => {
 				setCopied(true);
 
-				// Clear existing timeout if any
-				if (copyTimeout) {
-					clearTimeout(copyTimeout);
+				if (copyTimeoutRef.current) {
+					clearTimeout(copyTimeoutRef.current);
 				}
 
-				// Reset after 2 seconds
-				const timeout = setTimeout(() => {
+				copyTimeoutRef.current = setTimeout(() => {
 					setCopied(false);
 				}, 2000);
-
-				setCopyTimeout(timeout);
 			});
 		}
-	}, [code, copied, copyTimeout]);
+	}, [code, copied]);
 
-	// Cleanup timeout on unmount
 	useEffect(() => {
 		return () => {
-			if (copyTimeout) {
-				clearTimeout(copyTimeout);
+			if (copyTimeoutRef.current) {
+				clearTimeout(copyTimeoutRef.current);
 			}
 		};
-	}, [copyTimeout]);
+	}, []);
 
 	return (
 		<CodeOutputWrapper>

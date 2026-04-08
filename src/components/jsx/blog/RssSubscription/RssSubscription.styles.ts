@@ -1,11 +1,5 @@
 import styled from '@emotion/styled';
 
-export const StyledRssSubscriptionContainer = styled.div`
-	display: flex;
-	justify-content: flex-end;
-	margin-bottom: 16px;
-`;
-
 export const StyledRssButton = styled.a`
 	display: inline-flex;
 	align-items: center;
@@ -17,18 +11,15 @@ export const StyledRssButton = styled.a`
 	text-decoration: none;
 	font-weight: 500;
 	font-size: 12px;
-	transition: all 0.2s ease;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease;
 	border: none;
 	cursor: pointer;
 	margin-bottom: 16px;
-	text-decoration: none;
 
 	&:hover {
 		background-color: var(--color-accent-brand-dark);
-	}
-
-	&:active {
-		transform: translateY(0);
 	}
 `;
 

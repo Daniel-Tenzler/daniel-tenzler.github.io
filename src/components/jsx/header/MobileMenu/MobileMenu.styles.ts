@@ -11,7 +11,7 @@ export const MobileMenuButton = styled.button`
 	border-radius: 50%;
 	color: var(--color-text-emphasis);
 	background-color: var(--gray-474747);
-	transition: all 0.2s ease;
+	transition: background-color 0.2s ease;
 	cursor: pointer;
 	border: 2px solid transparent;
 
@@ -37,7 +37,10 @@ export const MobileMenuButton = styled.button`
 		bottom: -2px;
 		border-radius: 50%;
 		border: 2px solid transparent;
-		transition: all 0.3s ease-in-out;
+		transition:
+			transform 0.3s ease-in-out,
+			opacity 0.3s ease-in-out,
+			border-color 0.3s ease-in-out;
 		transform: scale(0.8);
 		opacity: 0;
 	}
@@ -46,14 +49,6 @@ export const MobileMenuButton = styled.button`
 		transform: scale(1);
 		opacity: 1;
 		border-color: var(--gray-383838);
-	}
-
-	&:focus {
-		outline: none;
-	}
-
-	&:focus-visible {
-		outline: none;
 	}
 
 	-webkit-tap-highlight-color: transparent;
@@ -107,7 +102,6 @@ export const MobileMenu = styled.div<MobileMenuProps>`
 	left: 0;
 	right: 0;
 	background-color: var(--gray-303030-cc);
-	backdrop-filter: blur(4px);
 	z-index: 9999;
 	border-bottom: 1px solid var(--gray-404040-cc);
 	padding: 16px;
@@ -120,15 +114,20 @@ export const MobileMenu = styled.div<MobileMenuProps>`
 `;
 
 export const MobileNavLink = styled.a`
-	display: block;
+	display: inline-flex;
+	align-items: center;
 	color: var(--color-text-emphasis);
-	padding: 14px 16px;
-	border-radius: 8px;
+	padding: 10px 24px;
+	border-radius: 999px;
+	background-color: var(--color-bg-tertiary);
 	font-size: 18px;
 	font-weight: 500;
 	text-decoration: none;
-	transition: all 0.2s ease;
-	-webkit-tap-highlight-color: transparent; /* for removing the highlight */
+	box-shadow: 2px 2px 4px var(--gray-292929);
+	transition:
+		color 0.2s ease,
+		background-color 0.2s ease;
+	-webkit-tap-highlight-color: transparent;
 	/* Minimum touch target size (48px height) for accessibility */
 	min-height: 48px;
 
@@ -136,27 +135,4 @@ export const MobileNavLink = styled.a`
 		color: var(--color-text-primary);
 		background-color: var(--gray-222939);
 	}
-`;
-
-export const NavlinkCard = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	background-color: var(--color-bg-tertiary);
-	width: fit-content;
-	padding: 10px 24px;
-	border-radius: 999px;
-	box-shadow: 2px 2px 4px var(--gray-292929);
-`;
-
-export const SrOnly = styled.span`
-	position: absolute !important;
-	width: 1px !important;
-	height: 1px !important;
-	padding: 0 !important;
-	margin: -1px !important;
-	overflow: hidden !important;
-	clip: rect(0, 0, 0, 0) !important;
-	white-space: nowrap !important;
-	border: 0 !important;
 `;

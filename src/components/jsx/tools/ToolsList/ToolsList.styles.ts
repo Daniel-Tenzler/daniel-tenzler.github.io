@@ -65,17 +65,15 @@ export const ToolCard = styled.a`
 	border-radius: 16px;
 	padding: 24px;
 	text-decoration: none;
-	transition: all 0.2s ease;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
 
 	&:hover {
 		background-color: var(--gray-303030);
 		border-color: var(--white-bfbfbf-33);
-		transform: scale(1.02);
 		box-shadow: 0 8px 25px #0000004d;
-	}
-
-	&:focus {
-		outline: none;
 	}
 
 	&:focus-visible {
@@ -87,7 +85,7 @@ export const ToolCard = styled.a`
 export const ToolIcon = styled.div`
 	max-width: 32px;
 	max-height: 32px;
-	margin-bottom: 0%.5;
+	margin-bottom: 4px;
 	display: flex;
 	align-items: center;
 	justify-content: center;

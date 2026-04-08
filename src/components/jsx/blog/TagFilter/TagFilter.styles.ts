@@ -19,7 +19,9 @@ export const TagButton = styled.button<TagButtonProps>`
 	color: var(--color-text-emphasis);
 	font-size: 14px;
 	cursor: pointer;
-	transition: all 0.2s ease;
+	transition:
+		background 0.2s ease,
+		border-color 0.2s ease;
 
 	&:hover {
 		background: ${(props) =>
@@ -32,8 +34,8 @@ export const TagButton = styled.button<TagButtonProps>`
 				: 'var(--color-border-light)'};
 	}
 
-	&:focus {
-		outline: none;
-		box-shadow: 0 0 0 2px var(--black-0f1219-33);
+	&:focus-visible {
+		outline: 2px solid var(--color-text-secondary);
+		outline-offset: 2px;
 	}
 `;

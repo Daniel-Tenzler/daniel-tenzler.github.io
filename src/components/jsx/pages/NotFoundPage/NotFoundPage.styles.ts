@@ -50,7 +50,10 @@ export const StyledNavLink = styled.a`
 	border-radius: 8px;
 	text-decoration: none;
 	font-weight: 500;
-	transition: all 0.3s ease;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
 	border: 2px solid transparent;
 	min-width: 200px;
 	display: inline-block;

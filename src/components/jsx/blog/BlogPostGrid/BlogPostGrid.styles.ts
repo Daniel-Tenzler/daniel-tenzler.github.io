@@ -13,12 +13,10 @@ export const PostWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 0;
-	transition:
-		box-shadow 0.2s,
-		transform 0.2s;
+	transition: box-shadow 0.2s ease;
+
 	&:hover {
 		box-shadow: 0 4px 16px #0000001f;
-		transform: scale(1.03);
 	}
 `;
 

@@ -5,11 +5,10 @@ import {
 	MenuIconTopBar,
 	MenuIconMiddleBar,
 	MenuIconBottomBar,
-	SrOnly,
 	MobileMenu,
 	MobileNavLink,
-	NavlinkCard,
 } from './MobileMenu.styles';
+import { SrOnly } from '@/components/jsx/ui/SrOnly.styles';
 import { useIsMobile } from '@/hooks/useIsMobile';
 
 export default function MobileMenuComponent() {
@@ -33,9 +32,7 @@ export default function MobileMenuComponent() {
 				aria-expanded={isMobileMenuOpen}
 				onClick={toggleMobileMenu}
 			>
-				<SrOnly>
-					{isMobileMenuOpen ? 'Menü schließen' : 'Menü öffnen'}
-				</SrOnly>
+				<SrOnly>{isMobileMenuOpen ? 'Close menu' : 'Open menu'}</SrOnly>
 				<MenuIcon
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -69,19 +66,19 @@ export default function MobileMenuComponent() {
 			</MobileMenuButton>
 			<MobileMenu $isOpen={isMobileMenuOpen} id="mobile-menu">
 				<MobileNavLink href="/" onClick={toggleMobileMenu}>
-					<NavlinkCard>Home</NavlinkCard>
+					Home
 				</MobileNavLink>
 				<MobileNavLink href="/portfolio" onClick={toggleMobileMenu}>
-					<NavlinkCard>Portfolio</NavlinkCard>
+					Portfolio
 				</MobileNavLink>
 				<MobileNavLink href="/blog" onClick={toggleMobileMenu}>
-					<NavlinkCard>Blog</NavlinkCard>
+					Blog
 				</MobileNavLink>
 				<MobileNavLink href="/tools" onClick={toggleMobileMenu}>
-					<NavlinkCard>Tools</NavlinkCard>
+					Tools
 				</MobileNavLink>
 				<MobileNavLink href="/contact" onClick={toggleMobileMenu}>
-					<NavlinkCard>Contact</NavlinkCard>
+					Contact
 				</MobileNavLink>
 			</MobileMenu>
 		</>

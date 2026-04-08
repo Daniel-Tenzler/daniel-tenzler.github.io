@@ -5,7 +5,6 @@ import {
 	Title,
 	PostsGrid,
 	ViewAllLink,
-	Link,
 } from './LatestPostsSection.styles';
 import type { LatestPostsSectionProps } from './LatestPostsSection.types';
 
@@ -28,9 +27,7 @@ export default function LatestPostsSection({ posts }: LatestPostsSectionProps) {
 					/>
 				))}
 			</PostsGrid>
-			<ViewAllLink>
-				<Link href="/blog">View all posts →</Link>
-			</ViewAllLink>
+			<ViewAllLink href="/blog">View all posts →</ViewAllLink>
 		</Section>
 	);
 }
