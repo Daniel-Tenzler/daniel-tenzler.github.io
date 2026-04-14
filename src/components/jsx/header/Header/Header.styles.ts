@@ -60,12 +60,19 @@ export const NavLinks = styled.div`
 	}
 `;
 
-export const NavLink = styled.a`
-	color: var(--color-text-primary);
+interface NavLinkProps {
+	$isActive?: boolean;
+}
+
+export const NavLink = styled.a<NavLinkProps>`
+	color: ${(props) =>
+		props.$isActive
+			? 'var(--color-text-emphasis)'
+			: 'var(--color-text-primary)'};
 	padding: 12px;
 	border-radius: 6px;
 	font-size: 16px;
-	font-weight: 500;
+	font-weight: ${(props) => (props.$isActive ? 600 : 500)};
 	text-decoration: none;
 	transition: color 0.2s ease;
 	/* Minimum touch target size (48x48px) for accessibility */

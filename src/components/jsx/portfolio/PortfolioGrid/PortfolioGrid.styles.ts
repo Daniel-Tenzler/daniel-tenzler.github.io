@@ -36,7 +36,6 @@ export const CardImage = styled.img`
 
 export const CardContent = styled.div`
 	padding: 24px;
-	height: 288px;
 `;
 
 export const CardTitle = styled.h2`

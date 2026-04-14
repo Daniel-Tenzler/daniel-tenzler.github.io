@@ -205,7 +205,7 @@ const blogPostingSchema = generateBlogPostingSchema(SITE_URL, {
 
 	.prose :global(pre) {
 		color: var(--gray-e5e9f0);
-		background-color: var(--gray-e5e9f0);
+		background-color: var(--gray-292929);
 		overflow-x: auto;
 		font-size: 0.875em;
 		line-height: 1.7142857;
@@ -247,18 +247,11 @@ const blogPostingSchema = generateBlogPostingSchema(SITE_URL, {
 	}
 
 	.prose :global(img) {
-		margin-top: 2em;
-		margin-bottom: 2em;
-		border-radius: 6px;
 		display: block;
-		margin-left: 50%;
-		transform: translateX(-50%);
-		width: 100vw;
-		max-width: 70vw;
-		position: relative;
-		left: 50%;
-		right: 50%;
-		margin: 0 auto;
+		max-width: 100%;
+		height: auto;
+		margin: 2em auto;
+		border-radius: 6px;
 	}
 
 	.prose :global(hr) {

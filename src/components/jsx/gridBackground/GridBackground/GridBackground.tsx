@@ -9,12 +9,17 @@ export default function GridBackground() {
 	const lastTimeRef = useRef(0);
 	const isVisibleRef = useRef(true);
 
-	// Throttled animation frame for better performance
-	const draw = useCallback((currentTime: number) => {
-		if (!isVisibleRef.current) {
-			animationIdRef.current = requestAnimationFrame(draw);
-			return;
+	const stopAnimation = useCallback(() => {
+		if (animationIdRef.current !== null) {
+			cancelAnimationFrame(animationIdRef.current);
+			animationIdRef.current = null;
 		}
+	}, []);
+
+	const draw = useCallback((currentTime: number) => {
+		animationIdRef.current = null;
+
+		if (!isVisibleRef.current) return;
 
 		// Limit to ~30fps for better performance
 		if (currentTime - lastTimeRef.current < 33) {
@@ -39,7 +44,6 @@ export default function GridBackground() {
 		const maxEffectDist = 200;
 		const gridColor = getRgbaColor(COLORS.WHITE_BFBFBF, 0.1);
 
-		// Optimize grid drawing with fewer calculations
 		const mouseDistance = {
 			x: mousePosRef.current.x,
 			y: mousePosRef.current.y,
@@ -60,7 +64,6 @@ export default function GridBackground() {
 				ctx.strokeStyle = gridColor;
 				ctx.stroke();
 			} else {
-				// Draw minimal lines for distant areas
 				ctx.beginPath();
 				ctx.moveTo(x, 0);
 				ctx.lineTo(x, height);
@@ -85,7 +88,6 @@ export default function GridBackground() {
 				ctx.strokeStyle = gridColor;
 				ctx.stroke();
 			} else {
-				// Draw minimal lines for distant areas
 				ctx.beginPath();
 				ctx.moveTo(0, y);
 				ctx.lineTo(width, y);
@@ -146,11 +148,21 @@ export default function GridBackground() {
 			}
 		};
 
-		// Intersection Observer for visibility optimization
+		// Intersection Observer — fully pause/resume animation loop
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
+					const wasVisible = isVisibleRef.current;
 					isVisibleRef.current = entry.isIntersecting;
+
+					if (!wasVisible && isVisibleRef.current) {
+						// Became visible — restart the loop
+						lastTimeRef.current = 0;
+						animationIdRef.current = requestAnimationFrame(draw);
+					} else if (wasVisible && !isVisibleRef.current) {
+						// Became hidden — stop the loop entirely
+						stopAnimation();
+					}
 				});
 			},
 			{ threshold: 0.1 }
@@ -165,14 +177,12 @@ export default function GridBackground() {
 			window.removeEventListener('resize', handleResize);
 			window.removeEventListener('mousemove', handleMouseMove);
 			observer.disconnect();
-			if (animationIdRef.current) {
-				cancelAnimationFrame(animationIdRef.current);
-			}
+			stopAnimation();
 			if (resizeTimeout) {
 				clearTimeout(resizeTimeout);
 			}
 		};
-	}, [draw]);
+	}, [draw, stopAnimation]);
 
 	return <Canvas ref={canvasRef} />;
 }

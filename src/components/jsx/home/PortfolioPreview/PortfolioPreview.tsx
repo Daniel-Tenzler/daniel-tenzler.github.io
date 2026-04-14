@@ -14,10 +14,10 @@ import {
 	TechStack,
 	TechTag,
 	Links,
-	Link,
+	ExternalLink,
 } from './PortfolioPreview.styles';
 
-import type { ProjectImageData, ProjectData, PortfolioPreviewContentProps } from './PortfolioPreview.types';
+import type { PortfolioPreviewContentProps } from './PortfolioPreview.types';
 
 const PortfolioPreviewContent = ({
 	projects,
@@ -87,7 +87,7 @@ const PortfolioPreviewContent = ({
 							</ContentBody>
 							<Links>
 								{project.githubUrl && (
-									<Link
+									<ExternalLink
 										href={project.githubUrl}
 										target="_blank"
 										rel="noopener noreferrer"
@@ -95,10 +95,10 @@ const PortfolioPreviewContent = ({
 										aria-label={`${project.title} GitHub repository (opens in new tab)`}
 									>
 										GitHub ↗
-									</Link>
+									</ExternalLink>
 								)}
 								{project.liveUrl && (
-									<Link
+									<ExternalLink
 										href={project.liveUrl}
 										target="_blank"
 										rel="noopener noreferrer"
@@ -106,7 +106,7 @@ const PortfolioPreviewContent = ({
 										aria-label={`${project.title} live demo (opens in new tab)`}
 									>
 										Live Demo ↗
-									</Link>
+									</ExternalLink>
 								)}
 							</Links>
 						</Content>

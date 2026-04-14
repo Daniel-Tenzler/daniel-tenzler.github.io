@@ -96,17 +96,33 @@ interface MobileMenuProps {
 }
 
 export const MobileMenu = styled.div<MobileMenuProps>`
-	display: ${(props) => (props.$isOpen ? 'block' : 'none')};
 	position: absolute;
 	top: 100%;
 	left: 0;
 	right: 0;
 	background-color: var(--gray-303030-cc);
+	backdrop-filter: blur(8px);
 	z-index: 9999;
 	border-bottom: 1px solid var(--gray-404040-cc);
 	padding: 16px;
 	box-shadow: 0 4px 6px -1px var(--black-0f1219-1a);
 	color: var(--color-text-emphasis);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	max-height: ${(props) => (props.$isOpen ? '400px' : '0')};
+	opacity: ${(props) => (props.$isOpen ? 1 : 0)};
+	visibility: ${(props) => (props.$isOpen ? 'visible' : 'hidden')};
+	pointer-events: ${(props) => (props.$isOpen ? 'auto' : 'none')};
+	padding-top: ${(props) => (props.$isOpen ? '16px' : '0')};
+	padding-bottom: ${(props) => (props.$isOpen ? '16px' : '0')};
+	transition:
+		visibility 0s ${(props) => (props.$isOpen ? '0s' : '0.25s')},
+		max-height 0.25s ease-out,
+		opacity 0.2s ease-out,
+		padding-top 0.25s ease-out,
+		padding-bottom 0.25s ease-out;
 
 	@media (min-width: 640px) {
 		display: none;

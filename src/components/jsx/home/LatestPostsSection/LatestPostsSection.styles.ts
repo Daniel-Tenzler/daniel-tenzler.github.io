@@ -20,22 +20,31 @@ export const PostsGrid = styled.div`
 `;
 
 export const ViewAllLink = styled.a`
-	display: block;
-	margin-top: 16px;
-	text-align: center;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 24px;
+	padding: 10px 24px;
+	font-size: 15px;
+	font-weight: 600;
 	color: var(--color-text-emphasis);
-	font-weight: 500;
+	background: var(--color-bg-tertiary);
+	border: 1px solid var(--gray-383838);
+	border-radius: 8px;
 	text-decoration: none;
-	transition: color 0.2s ease;
-	text-underline-offset: 2px;
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease,
+		color 0.2s ease;
 
 	&:hover {
 		color: var(--color-text-primary);
-		text-decoration: underline;
+		border-color: var(--color-text-secondary);
+		box-shadow: 0 2px 8px var(--black-0f1219-4d);
 	}
 
 	&:focus-visible {
-		outline: 2px solid currentColor;
+		outline: 2px solid var(--color-text-secondary);
 		outline-offset: 2px;
 	}
 `;

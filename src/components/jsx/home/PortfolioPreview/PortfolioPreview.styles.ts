@@ -45,6 +45,8 @@ export const ProjectCard = styled.div<ProjectCardProps>`
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+	text-decoration: none;
+	color: inherit;
 
 	@keyframes fadeInUp {
 		from {
@@ -121,19 +123,27 @@ export const Links = styled.div`
 	gap: 16px;
 `;
 
-export const Link = styled.a`
+export const ExternalLink = styled.a`
 	color: var(--color-text-emphasis);
+	background: none;
+	cursor: pointer;
+	padding: 12px;
+	min-height: 48px;
+	min-width: 48px;
+	font-size: inherit;
+	font-family: inherit;
 	text-decoration: none;
 	transition: color 0.2s ease;
-	/* Minimum touch target size (48x48px) for accessibility */
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 48px;
-	min-width: 48px;
-	padding: 12px;
 
 	&:hover {
 		color: var(--color-text-primary);
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--color-text-secondary);
+		outline-offset: 2px;
 	}
 `;
