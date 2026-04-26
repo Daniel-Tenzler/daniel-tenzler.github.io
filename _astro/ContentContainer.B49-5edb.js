@@ -1,0 +1,1 @@
+import{c as e,j as a}from"./emotion-styled-base.browser.esm.vm7rm1dd.js";import"./index.BxpEvDg1.js";const d=e("div",{target:"e1oqa06j0",label:"StyledMain"})({name:"1b8jsdc",styles:"width:70%;max-width:calc(100% - 2em);margin:auto;padding:1em 1em;@media (max-width: 720px){padding:1em;width:90%;}"}),i=({children:e})=>a.jsx(d,{children:e});export{i as default};
