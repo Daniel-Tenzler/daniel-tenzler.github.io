@@ -1,193 +1,128 @@
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
-import type {
-	TimelineWrapperProps,
-	TimelineContentAreaProps,
-	TimelineLineProps,
-	TimelineMarkerProps,
-} from './JourneySection.types';
+import type { JourneyTypeProps } from './JourneySection.types';
 
-const fadeIn = keyframes`
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-`;
-
-export const TimelineContainer = styled.section`
-	margin: 32px auto;
+export const Section = styled.section`
+	margin: 56px auto;
 	width: 100%;
 `;
 
-export const TimelineList = styled.ol`
-	list-style: none;
-	padding: 0;
-	margin: 0;
+export const Eyebrow = styled.p`
+	margin: 0 0 10px 0;
+	color: var(--color-text-emphasis);
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+`;
+
+export const Entry = styled.article`
+	display: grid;
+	grid-template-columns: 168px minmax(0, 1fr);
+	gap: 20px;
+	padding: 28px 0;
+	border-top: 1px solid var(--white-bfbfbf);
+
+	&:last-of-type {
+		border-bottom: 1px solid var(--gray-999999);
+	}
+
+	@media (max-width: 700px) {
+		grid-template-columns: 1fr;
+		gap: 14px;
+		padding: 24px 0;
+	}
+`;
+
+export const EntryMeta = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 40px;
-`;
-
-export const Title = styled.h2`
-	margin: 8px auto;
-	width: 100%;
-`;
-
-export const TimelineWrapper = styled.div<TimelineWrapperProps>`
-	position: relative;
-	padding: 20px;
-	display: flex;
-	justify-content: center;
-
-	background: radial-gradient(
-		ellipse at center,
-		var(--white-ffffff-03) 0%,
-		var(--white-ffffff-02) 50%,
-		var(--white-ffffff-01) 100%
-	);
-	border-radius: 16px;
-`;
-
-export const TimelineContentArea = styled.div<TimelineContentAreaProps>(
-	({ $isMobile }) => ({
-		display: 'flex',
-		flexDirection: 'column',
-		position: 'relative',
-		alignItems: 'flex-start',
-		// shared x-position for line and markers
-		['--line-x']: '30px',
-		['--gutter']: '30px',
-		['--marker-size']: '15px',
-		padding: '20px 20px 20px calc(var(--line-x) + var(--gutter))',
-		gap: '40px',
-		width: '100%',
-
-		...($isMobile && {
-			['--line-x']: '24px',
-			['--gutter']: '24px',
-			padding: '10px 10px 10px calc(var(--line-x) + var(--gutter))',
-			gap: '24px',
-		}),
-	})
-);
-
-export const TimelineLine = styled.div<TimelineLineProps>`
-	position: absolute;
-	top: 0;
-	left: var(--line-x);
-	width: 4px;
-	height: 100%;
-	background-color: var(--white-ffffff-b3);
-
-	-webkit-mask-image: linear-gradient(
-		to bottom,
-		transparent,
-		black 10%,
-		black 90%,
-		transparent
-	);
-	mask-image: linear-gradient(
-		to bottom,
-		transparent,
-		black 10%,
-		black 90%,
-		transparent
-	);
-`;
-
-export const TimelineItem = styled.li`
-	display: flex;
-	flex-direction: row;
 	align-items: flex-start;
-	position: relative;
-	z-index: 1;
-`;
+	gap: 12px;
 
-export const TimelineContent = styled.div`
-	text-align: left;
-	min-height: 120px;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	padding: 16px 16px 16px 32px;
-	border-radius: 16px;
-	background: transparent;
-	position: relative;
-	z-index: 1;
-	align-items: flex-start;
-	animation: ${fadeIn} 0.5s ease;
-	margin: 0;
-
-	@media (min-width: 1001px) {
-		&:hover {
-			background: radial-gradient(
-				ellipse at center,
-				var(--white-ffffff-03) 0%,
-				var(--white-ffffff-02) 50%,
-				var(--white-ffffff-01) 100%
-			);
-			backdrop-filter: blur(2px);
-		}
+	@media (max-width: 700px) {
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
 	}
 `;
 
-export const TimelineMarker = styled.div<TimelineMarkerProps>`
-	position: absolute;
-	left: calc(2px + (-1 * var(--gutter)));
-	top: 50%;
-	transform: translate(-50%, -50%);
-	width: var(--marker-size);
-	height: var(--marker-size);
-	border-radius: 50%;
-	background-color: ${(props) =>
-		props.$type === 'job'
-			? 'var(--color-accent-brand)'
-			: 'var(--color-accent-brand-dark)'};
-	border: 3px solid var(--color-text-emphasis);
-	z-index: 2;
+export const YearRange = styled.p`
+	margin: 0;
+	color: var(--color-text-primary);
+	font-size: clamp(18px, 2.4vw, 22px);
+	font-weight: 700;
+	letter-spacing: -0.035em;
+	line-height: 1.1;
+	padding-top: 10px;
 `;
 
-export const TimelineTitle = styled.h3`
-	margin: 0 0 8px 0;
-	display: -webkit-box;
-	-webkit-line-clamp: 3;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	font-size: 18px;
-`;
-
-export const TimelineDate = styled.p`
-	font-style: italic;
+export const TypeLabel = styled.span<JourneyTypeProps>`
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
 	color: var(--color-text-muted);
-	height: auto;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	margin: 0 0 8px 0;
-	font-size: 16px;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+
+	&::before {
+		content: '';
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: ${(props) =>
+			props.$type === 'job'
+				? 'var(--color-accent-brand)'
+				: 'var(--color-accent-brand-dark)'};
+	}
 `;
 
-export const TimelineDescription = styled.p`
+export const EntryContent = styled.div`
+	display: grid;
+	gap: 10px;
+	justify-items: start;
+`;
+
+export const EntryTitle = styled.h3`
+	max-width: 780px;
 	margin: 0;
-	display: -webkit-box;
-	-webkit-line-clamp: 5;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	color: var(--color-text-primary);
+	font-size: clamp(20px, 2.8vw, 26px);
+	font-weight: 500;
+	letter-spacing: -0.04em;
+	line-height: 1.1;
+`;
+
+export const Description = styled.p`
+	max-width: 880px;
+	margin: 0;
+	color: var(--white-ffffff-e6);
 	font-size: 16px;
+	line-height: 1.4;
 `;
 
 export const StyledJourneyLink = styled.a`
-	display: inline-block;
-	color: var(--color-text-subtle);
-	font-size: 15px;
+	display: inline-flex;
+	align-items: center;
+	min-height: 40px;
+	margin-top: 4px;
+	color: var(--color-text-emphasis);
+	font-size: 14px;
+	font-weight: 700;
 	text-decoration: none;
-	margin-top: 10px;
+	text-underline-offset: 5px;
+	transition: color 0.2s ease;
 
 	&:hover {
-		color: var(--color-text-muted);
+		color: var(--color-text-primary);
+		text-decoration: underline;
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--color-text-secondary);
+		outline-offset: 4px;
 	}
 `;

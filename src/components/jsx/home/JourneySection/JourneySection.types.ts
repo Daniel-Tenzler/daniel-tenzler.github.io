@@ -11,18 +11,6 @@ export interface JourneySectionProps {
 	data: JourneySectionItem[] | null;
 }
 
-export interface TimelineWrapperProps {
-	$isMobile?: boolean;
-}
-
-export interface TimelineContentAreaProps {
-	$isMobile?: boolean;
-}
-
-export interface TimelineLineProps {
-	$isMobile?: boolean;
-}
-
-export interface TimelineMarkerProps {
+export interface JourneyTypeProps {
 	$type?: string;
 }
