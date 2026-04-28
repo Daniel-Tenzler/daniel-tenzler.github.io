@@ -65,26 +65,99 @@ export const SectionHeader = styled.div`
 	min-height: 40px;
 `;
 
-export const InputField = styled('textarea')`
-	background-color: transparent;
-	color: var(--color-text-emphasis);
+const editorTextStyles = `
 	padding: 0.5em 1em 1em 1em;
-	flex: 1;
-	width: 100%;
-	height: 100%;
 	font-size: 14px;
 	font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
-	border: none;
-	resize: none;
 	line-height: 1.5;
-	min-height: 0;
-	outline: none;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
 	box-sizing: border-box;
 
 	@media (max-width: 768px) {
 		font-size: 13px;
-		height: 300px;
 		padding: 0.5em 0.8em 0.8em 0.8em;
+	}
+`;
+
+export const EditorWrapper = styled('div')`
+	position: relative;
+	flex: 1;
+	min-height: 0;
+	width: 100%;
+
+	@media (max-width: 768px) {
+		height: 300px;
+	}
+`;
+
+export const HighlightLayer = styled('div')`
+	${editorTextStyles}
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	overflow: hidden;
+	scrollbar-gutter: stable;
+	scrollbar-width: thin;
+	pointer-events: none;
+	color: var(--color-text-emphasis);
+`;
+
+export const HighlightedDomain = styled('mark')`
+	background-color: var(--blue-2337ff-4d);
+	color: var(--color-text-emphasis);
+	border-radius: 0.2em;
+	box-shadow: 0 0 0 1px var(--blue-2337ff-99);
+`;
+
+export const InputField = styled('textarea')`
+	${editorTextStyles}
+	position: relative;
+	z-index: 1;
+	background-color: transparent;
+	color: transparent;
+	caret-color: var(--color-text-emphasis);
+	width: 100%;
+	height: 100%;
+	border: none;
+	resize: none;
+	min-height: 0;
+	outline: none;
+	overflow: auto;
+	scrollbar-color: var(--gray-474747) var(--gray-292929);
+	scrollbar-gutter: stable;
+	scrollbar-width: thin;
+
+	&::placeholder {
+		color: var(--gray-989898);
+	}
+
+	&::selection {
+		background-color: var(--blue-2337ff-66);
+		color: transparent;
+	}
+
+	&::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: var(--gray-292929);
+		border-radius: 4px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: var(--gray-474747);
+		border-radius: 4px;
+
+		&:hover {
+			background: var(--gray-404040);
+		}
+	}
+
+	@media (max-width: 768px) {
+		height: 100%;
 	}
 `;
 
