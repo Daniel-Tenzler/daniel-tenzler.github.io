@@ -1,0 +1,1 @@
+import{c as t}from"./emotion-styled-base.browser.esm.Ce0TsbVN.js";const o=t("span",{target:"emkn0fv0",label:"SrOnly"})({name:"1r4oqlj",styles:"position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0, 0, 0, 0)!important;white-space:nowrap!important;border:0!important"});export{o as S};
