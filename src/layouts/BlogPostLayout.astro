@@ -1,13 +1,10 @@
 ---
-import BaseHead from 'src/components/astro/BaseHead.astro';
+import AppShell from 'src/layouts/AppShell.astro';
 import BlogPost from 'src/components/jsx/blog/BlogPost/BlogPost';
 import TableOfContents from 'src/components/jsx/blog/TableOfContents/TableOfContents';
 import Breadcrumb from 'src/components/jsx/ui/Breadcrumb/Breadcrumb';
-import Footer from 'src/components/jsx/footer/Footer/Footer';
-import Header from 'src/components/jsx/header/Header/Header';
 import { SITE_URL } from 'src/consts/SiteData.js';
 import { generateBlogPostingSchema } from 'src/infrastructure/structuredData.js';
-import '../styles/layouts-shared.css';
 
 type Props = {
 	title: string;
@@ -49,70 +46,43 @@ const blogPostingSchema = generateBlogPostingSchema(SITE_URL, {
 });
 ---
 
-<!doctype html>
-<html lang="en" data-theme="dark">
-	<head>
-		<BaseHead
-			title={title}
-			description={description}
-			image={
-				coverImage || heroImage || '/images/portfolio/blog-placeholder-2.jpg'
-			}
-			structuredData={blogPostingSchema}
-		/>
-
-		<!-- Inline script for no-flash dark mode -->
-		<script is:inline>
-			(function() {
-				const stored = localStorage.getItem('theme');
-				if (stored) {
-					document.documentElement.setAttribute('data-theme', stored);
-				} else {
-					const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-					document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-				}
-			})();
-		</script>
-	</head>
-	<body>
-		<a href="#main-content" class="skip-link">Skip to main content</a>
-		<div class="min-h-screen flex flex-col">
-			<Header id="navigation" client:visible />
-			<main id="main-content" class="flex-grow blog-layout">
-				<div class="blog-layout-wrapper">
-					<div class="blog-content">
-						<Breadcrumb
-							client:load
-							items={[
-								{ label: 'Home', href: '/' },
-								{ label: 'Blog', href: '/blog' },
-								{ label: title },
-							]}
-						/>
-						<BlogPost
-							client:visible
-							title={title}
-							pubDate={pubDate}
-							updatedDate={updatedDate}
-							heroImage={heroImage}
-							readTime={readTime}
-							tags={tags}
-							author={author}
-						>
-							<div class="prose">
-								<slot />
-							</div>
-						</BlogPost>
-					</div>
-					<aside class="toc-sidebar">
-						<TableOfContents client:idle headings={headings} />
-					</aside>
+<AppShell
+	title={title}
+	description={description}
+	image={coverImage || heroImage || '/images/portfolio/blog-placeholder-2.jpg'}
+	structuredData={blogPostingSchema ?? undefined}
+	mainClass="blog-layout"
+>
+	<div class="blog-layout-wrapper">
+		<div class="blog-content">
+			<Breadcrumb
+				client:load
+				items={[
+					{ label: 'Home', href: '/' },
+					{ label: 'Blog', href: '/blog' },
+					{ label: title },
+				]}
+			/>
+			<BlogPost
+				client:visible
+				title={title}
+				pubDate={pubDate}
+				updatedDate={updatedDate}
+				heroImage={heroImage}
+				readTime={readTime}
+				tags={tags}
+				author={author}
+			>
+				<div class="prose">
+					<slot />
 				</div>
-			</main>
-			<Footer client:idle />
+			</BlogPost>
 		</div>
-	</body>
-</html>
+		<aside class="toc-sidebar">
+			<TableOfContents client:idle headings={headings} />
+		</aside>
+	</div>
+</AppShell>
 
 <style is:global>
 	/* Blog post-specific layout overrides */
@@ -122,7 +92,7 @@ const blogPostingSchema = generateBlogPostingSchema(SITE_URL, {
 	}
 
 	main.blog-layout {
-		width: 920px;
+		width: 1080px;
 		max-width: calc(100% - 2em);
 		margin: auto;
 		padding: 2em 1em;
@@ -151,7 +121,7 @@ const blogPostingSchema = generateBlogPostingSchema(SITE_URL, {
 
 <style>
 	.prose {
-		max-width: 85ch;
+		max-width: 96ch;
 		color: var(--gray-e5e9f0);
 	}
 
@@ -261,7 +231,7 @@ const blogPostingSchema = generateBlogPostingSchema(SITE_URL, {
 	}
 
 	.blog-layout-wrapper {
-		width: 920px;
+		width: 1080px;
 		max-width: calc(100% - 2em);
 		margin: auto;
 		padding: 2em 1em;

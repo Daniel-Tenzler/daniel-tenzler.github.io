@@ -2,7 +2,7 @@
 import MainLayout from 'src/layouts/MainLayout.astro';
 import { journeyData } from 'src/data/journey/journey.ts';
 import { getEntry } from 'astro:content';
-import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
+import ContentContainer from 'src/components/jsx/layouts/ContentContainer/ContentContainer';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
 import JourneyDetailsPageContent from 'src/components/jsx/journey/JourneyDetailsPageContent/JourneyDetailsPageContent';
 
@@ -28,7 +28,7 @@ const { Content } = await journeyEntry.render();
 
 <MainLayout title={`${item.title} | My Journey`}>
 	<GridBackground client:visible />
-	<ContentContainer client:load>
+	<ContentContainer>
 		<JourneyDetailsPageContent client:load item={item}>
 			<Content />
 		</JourneyDetailsPageContent>

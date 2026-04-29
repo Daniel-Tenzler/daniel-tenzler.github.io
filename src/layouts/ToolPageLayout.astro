@@ -1,0 +1,16 @@
+---
+import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import MainLayout from 'src/layouts/MainLayout.astro';
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<MainLayout title={title} description={description}>
+	<GridBackground client:visible />
+	<slot />
+</MainLayout>

@@ -1,15 +1,11 @@
 ---
-import MainLayout from 'src/layouts/MainLayout.astro';
-import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
-import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import LegalPageLayout from 'src/layouts/LegalPageLayout.astro';
 
 const title = 'Impressum';
 const description = 'Legal notice and contact information for this website.';
 ---
 
-<MainLayout title={title} description={description}>
-	<GridBackground client:visible />
-	<ContentContainer client:load>
+<LegalPageLayout title={title} description={description} showBackground>
 		<div class="imprint-content">
 			<h1 class="imprint-title">Impressum</h1>
 
@@ -62,72 +58,4 @@ const description = 'Legal notice and contact information for this website.';
 				</section>
 			</div>
 		</div>
-	</ContentContainer>
-</MainLayout>
-
-<style>
-	.imprint-content {
-		width: 100%;
-		max-width: 800px;
-		margin: 0 auto;
-		padding: 32px;
-		background-color: var(--color-bg-tertiary);
-		border-radius: 8px;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	}
-
-	.imprint-detail {
-		padding-left: 16px;
-	}
-
-	.imprint-title {
-		font-size: 36px;
-		font-weight: 700;
-		margin-bottom: 32px;
-		margin-top: 0;
-		color: var(--color-text-emphasis);
-	}
-
-	.imprint-sections {
-		margin-top: 32px;
-	}
-
-	.imprint-section {
-		margin-bottom: 32px;
-	}
-
-	.imprint-section-title {
-		font-size: 24px;
-		font-weight: 600;
-		margin-bottom: 16px;
-		color: var(--color-text-emphasis);
-	}
-
-	.imprint-paragraph {
-		margin-bottom: 8px;
-		color: var(--color-text-primary);
-		line-height: 1.6;
-	}
-
-	.imprint-content-section {
-		display: flex;
-		flex-direction: column;
-		gap: 2px;
-	}
-
-	.imprint-content-section span {
-		color: var(--color-text-primary);
-		line-height: 1.6;
-	}
-
-	@media (max-width: 720px) {
-		.imprint-content {
-			padding: 16px;
-			width: 95%;
-		}
-
-		.imprint-title {
-			font-size: 30px;
-		}
-	}
-</style>
+</LegalPageLayout>

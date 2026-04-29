@@ -1,10 +1,5 @@
 ---
-import BaseHead from 'src/components/astro/BaseHead.astro';
-import Footer from 'src/components/jsx/footer/Footer/Footer';
-import Header from 'src/components/jsx/header/Header/Header';
-import '../styles/layouts-shared.css';
-
-const baseUrl = import.meta.env.BASE_URL || 'https://daniel-tenzler.github.io';
+import AppShell from 'src/layouts/AppShell.astro';
 
 interface Props {
 	title: string;
@@ -14,77 +9,22 @@ interface Props {
 	ogImage?: string;
 }
 
-const { title, description = "Daniel Tenzler's personal website and blog", structuredData, canonicalUrl, ogImage } =
-	Astro.props;
+const {
+	title,
+	description = "Daniel Tenzler's personal website and blog",
+	structuredData,
+	canonicalUrl,
+	ogImage,
+} = Astro.props;
 ---
 
-<!doctype html>
-<html lang="en" data-theme="dark">
-	<head>
-		<!-- Performance optimizations: DNS prefetch for external resources -->
-		<link rel="dns-prefetch" href="//api.github.com" />
-
-		<BaseHead
-			title={title}
-			description={description}
-			image={ogImage || "/images/portfolio/blog-placeholder-2.jpg"}
-			canonicalUrl={canonicalUrl}
-			structuredData={structuredData || {
-				'@context': 'https://schema.org',
-				'@type': 'WebPage',
-				name: title,
-				description: description,
-				url: Astro.url.href,
-				author: {
-					'@type': 'Person',
-					name: 'Daniel Tenzler',
-					url: baseUrl,
-				},
-				publisher: {
-					'@type': 'Organization',
-					name: 'Daniel Tenzler',
-					logo: {
-						'@type': 'ImageObject',
-						url: '/icons/favicon.svg',
-					},
-				},
-				mainEntity: {
-					'@type': 'Person',
-					name: 'Daniel Tenzler',
-					jobTitle: 'Software Developer',
-					url: baseUrl,
-				},
-				// dateModified: new Date().toISOString(), // Removed to prevent hydration mismatch
-				inLanguage: 'en-US',
-			}}
-		/>
-
-		<!-- Inline script for no-flash dark mode -->
-		<script is:inline>
-			(function () {
-				const stored = localStorage.getItem('theme');
-				if (stored) {
-					document.documentElement.setAttribute('data-theme', stored);
-				} else {
-					const prefersDark = window.matchMedia(
-						'(prefers-color-scheme: dark)'
-					).matches;
-					document.documentElement.setAttribute(
-						'data-theme',
-						prefersDark ? 'dark' : 'light'
-					);
-				}
-			})();
-		</script>
-	</head>
-	<body>
-		<a href="#main-content" class="skip-link">Skip to main content</a>
-		<div class="min-h-screen flex flex-col">
-			<Header id="navigation" client:visible />
-			<main id="main-content" class="flex-grow">
-				<slot />
-			</main>
-			<Footer client:idle />
-		</div>
-	</body>
-</html>
+<AppShell
+	title={title}
+	description={description}
+	structuredData={structuredData}
+	canonicalUrl={canonicalUrl}
+	image={ogImage}
+>
+	<slot name="head" slot="head" />
+	<slot />
+</AppShell>

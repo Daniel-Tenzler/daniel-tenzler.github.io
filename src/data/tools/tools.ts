@@ -93,3 +93,13 @@ export const getToolsByCategory = (): Record<string, Tool[]> => {
 	});
 	return categories;
 };
+
+export const getToolByPath = (path: string): Tool => {
+	const tool = tools.find((item) => item.path === path);
+
+	if (!tool) {
+		throw new Error(`Tool metadata not found for path: ${path}`);
+	}
+
+	return tool;
+};

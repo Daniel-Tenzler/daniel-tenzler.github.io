@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import BlogContainer from 'src/components/jsx/blog/BlogContainer/BlogContainer';
 import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
-import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
+import ContentContainer from 'src/components/jsx/layouts/ContentContainer/ContentContainer';
 import { generateBlogIndexSchema } from 'src/infrastructure/structuredData';
 
 const posts = (await getCollection('blog'))
@@ -31,7 +31,7 @@ const structuredData = generateBlogIndexSchema(posts, SITE_URL);
 
 <MainLayout title={`${SITE_TITLE}`} description={SITE_DESCRIPTION} structuredData={structuredData}>
 	<GridBackground client:visible />
-	<ContentContainer client:load>
+	<ContentContainer>
 		<BlogContainer client:load posts={posts} allTags={allTags} />
 	</ContentContainer>
 </MainLayout>

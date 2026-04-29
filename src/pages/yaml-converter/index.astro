@@ -1,13 +1,11 @@
 ---
-import MainLayout from 'src/layouts/MainLayout.astro';
-import GridBackground from 'src/components/jsx/gridBackground/GridBackground/GridBackground';
+import { getToolByPath } from 'src/data/tools/tools';
+import ToolPageLayout from 'src/layouts/ToolPageLayout.astro';
 import YamlConverter from 'src/components/jsx/yamlConverter/YamlConverter';
+
+const tool = getToolByPath('/yaml-converter');
 ---
 
-<MainLayout
-	title="YAML Converter Tool"
-	description="Convert between YAML and JSON formats bidirectionally"
->
-	<GridBackground client:visible />
+<ToolPageLayout title={tool.title} description={tool.description}>
 	<YamlConverter client:load />
-</MainLayout>
+</ToolPageLayout>

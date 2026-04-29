@@ -1,6 +1,5 @@
 ---
-import MainLayout from 'src/layouts/MainLayout.astro';
-import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
+import LegalPageLayout from 'src/layouts/LegalPageLayout.astro';
 
 const title = 'Privacy Policy';
 const description = 'Privacy policy and data protection information for this website.';
@@ -8,8 +7,7 @@ const publicEnv = import.meta.env.PUBLIC_ENV;
 const isGitHubHosted = publicEnv === 'github';
 ---
 
-<MainLayout title={title} description={description}>
-	<ContentContainer client:load>
+<LegalPageLayout title={title} description={description}>
 		<div class="privacy-content">
 			<h1 class="privacy-title">Privacy Policy</h1>
 
@@ -132,80 +130,4 @@ const isGitHubHosted = publicEnv === 'github';
 				</section>
 			</div>
 		</div>
-	</ContentContainer>
-</MainLayout>
-
-<style>
-	.privacy-content {
-		width: 100%;
-		max-width: 800px;
-		margin: 0 auto;
-		padding: 32px;
-		background-color: var(--color-bg-tertiary);
-		border-radius: 8px;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	}
-
-	.privacy-title {
-		font-size: 36px;
-		font-weight: 700;
-		margin-bottom: 32px;
-		text-align: center;
-		color: var(--color-text-emphasis);
-	}
-
-	.privacy-sections {
-		margin-top: 32px;
-	}
-
-	.privacy-section {
-		margin-bottom: 32px;
-	}
-
-	.privacy-section-title {
-		font-size: 24px;
-		font-weight: 600;
-		margin-bottom: 16px;
-		color: var(--color-text-emphasis);
-	}
-
-	.privacy-paragraph {
-		margin-bottom: 8px;
-		color: var(--color-text-primary);
-		line-height: 1.6;
-	}
-
-	.privacy-content-section {
-		display: flex;
-		flex-direction: column;
-		gap: 2px;
-		margin-bottom: 16px;
-	}
-
-	.privacy-content-section span {
-		color: var(--color-text-primary);
-		line-height: 1.6;
-	}
-
-	.privacy-list {
-		margin-bottom: 16px;
-		padding-left: 24px;
-		color: var(--color-text-primary);
-		line-height: 1.6;
-	}
-
-	.privacy-list li {
-		margin-bottom: 8px;
-	}
-
-	@media (max-width: 720px) {
-		.privacy-content {
-			padding: 16px;
-			width: 95%;
-		}
-		
-		.privacy-title {
-			font-size: 30px;
-		}
-	}
-</style>
+</LegalPageLayout>

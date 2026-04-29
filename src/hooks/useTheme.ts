@@ -1,5 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import type { Theme } from '@/types/global.types';
+
+const getDocumentTheme = (): Theme => {
+	if (typeof document === 'undefined') return 'dark';
+
+	return (
+		(document.documentElement.getAttribute('data-theme') as Theme) || 'dark'
+	);
+};
 
 /**
  * Custom hook for managing theme via CSS variables on the html element.
@@ -23,50 +31,43 @@ export const useTheme = (): {
 	setTheme: (t: Theme) => void;
 	isDark: boolean;
 } => {
+	const [theme, setThemeState] = useState<Theme>('dark');
+
 	useEffect(() => {
+		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
 		// Read from localStorage, otherwise use system preference
 		const stored = localStorage.getItem('theme') as Theme | null;
 		if (stored) {
 			document.documentElement.setAttribute('data-theme', stored);
-			return;
+			setThemeState(stored);
+		} else {
+			// No stored preference - use system preference
+			const systemTheme = mediaQuery.matches ? 'dark' : 'light';
+			document.documentElement.setAttribute('data-theme', systemTheme);
+			setThemeState(systemTheme);
 		}
 
-		// No stored preference - use system preference
-		const prefersDark = window.matchMedia(
-			'(prefers-color-scheme: dark)'
-		).matches;
-		document.documentElement.setAttribute(
-			'data-theme',
-			prefersDark ? 'dark' : 'light'
-		);
-
 		// Listen for system preference changes (only if user hasn't set preference)
-		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 		const handleSystemChange = (e: MediaQueryListEvent) => {
 			if (!localStorage.getItem('theme')) {
-				document.documentElement.setAttribute(
-					'data-theme',
-					e.matches ? 'dark' : 'light'
-				);
+				const nextTheme = e.matches ? 'dark' : 'light';
+				document.documentElement.setAttribute('data-theme', nextTheme);
+				setThemeState(nextTheme);
 			}
 		};
+		const handleThemeChange = () => {
+			setThemeState(getDocumentTheme());
+		};
+
 		mediaQuery.addEventListener('change', handleSystemChange);
+		window.addEventListener('themeChange', handleThemeChange);
 
-		return () =>
+		return () => {
 			mediaQuery.removeEventListener('change', handleSystemChange);
+			window.removeEventListener('themeChange', handleThemeChange);
+		};
 	}, []);
-
-	/**
-	 * Get the current theme value
-	 * @returns {Theme} Current theme ('dark' | 'light')
-	 */
-	const getTheme = (): Theme => {
-		if (typeof document === 'undefined') return 'dark';
-		return (
-			(document.documentElement.getAttribute('data-theme') as Theme) ||
-			'dark'
-		);
-	};
 
 	/**
 	 * Toggle between dark and light theme
@@ -74,7 +75,7 @@ export const useTheme = (): {
 	 */
 	const toggleTheme = (): void => {
 		if (typeof document === 'undefined') return;
-		const current = getTheme();
+		const current = getDocumentTheme();
 		const next: Theme = current === 'dark' ? 'light' : 'dark';
 		setTheme(next);
 	};
@@ -88,10 +89,10 @@ export const useTheme = (): {
 		if (typeof document === 'undefined') return;
 		document.documentElement.setAttribute('data-theme', theme);
 		localStorage.setItem('theme', theme);
+		setThemeState(theme);
 		window.dispatchEvent(new Event('themeChange'));
 	};
 
-	const theme = getTheme();
 	const isDark = theme === 'dark';
 
 	return { theme, toggleTheme, setTheme, isDark };

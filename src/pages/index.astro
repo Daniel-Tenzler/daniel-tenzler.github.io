@@ -8,99 +8,22 @@ import AboutSection from 'src/components/jsx/home/AboutSection/AboutSection';
 import JourneySection from 'src/components/jsx/home/JourneySection/JourneySection';
 import SkillsSection from 'src/components/jsx/home/SkillsSection/SkillsSection';
 import GitHubStats from 'src/components/jsx/home/GitHubStats/GitHubStats';
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
-import portfolioData from 'src/data/portfolio/portfolio.json';
 import PortfolioPreview from 'src/components/jsx/home/PortfolioPreview/PortfolioPreview';
-import {
-	prepareResponsiveImageData,
-	PORTFOLIO_IMAGE_WIDTHS,
-	PORTFOLIO_IMAGE_SIZES,
-} from 'src/infrastructure/imageUtils';
-import {
-	getRepoMetadata,
-	getCommitCount,
-	fetchRepositories,
-	getLanguageStats,
-} from 'src/lib/github';
-import ContentContainer from 'src/components/jsx/blog/ContentContainer/ContentContainer';
-import { journeyData } from 'src/data/journey/journey';
-import { skillsData, skillCategories } from 'src/data/skills/skills';
-import { generatePersonSchema } from 'src/infrastructure/structuredData';
-import { SITE_URL } from 'src/consts/SiteData';
+import ContentContainer from 'src/components/jsx/layouts/ContentContainer/ContentContainer';
+import { getHomePageData } from 'src/data/home/getHomePageData';
 
-const latestPosts = (await getCollection('blog'))
-	.sort(
-		(a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
-			b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-	)
-	.slice(0, 2)
-	.map((post: CollectionEntry<'blog'>) => ({
-		title: post.data.title,
-		description: post.data.description,
-		pubDate: new Date(post.data.pubDate),
-		heroImage: post.data.heroImage ?? undefined,
-		slug: post.id,
-		readTime: post.data.readTime ?? '',
-		tags: post.data.tags ?? [],
-	}));
-
-const aboutParagraphs = [
-	"I'm a full-stack web developer focused on building fast, accessible, and user-friendly apps. This site is where I test out new web technologies when I have the time.",
-];
-
-const featuredProjects = portfolioData.projects
-	.filter((project) => project.featured)
-	.map((project) => ({
-		...project,
-		responsiveImage: prepareResponsiveImageData(
-			project.image,
-			PORTFOLIO_IMAGE_WIDTHS,
-			PORTFOLIO_IMAGE_SIZES
-		),
-	}));
-
-// GitHub data fetching
-const startTime = Date.now();
-
-let metadata = null;
-let commitCount = null;
-let languageStats = null;
-
-try {
-	const [apiMetadata, apiCommitCount, repos] = await Promise.all([
-		getRepoMetadata().catch((err) => {
-			console.warn('Repo metadata failed, using null:', err.message);
-			return null;
-		}),
-		getCommitCount().catch((err) => {
-			console.warn('Commit count failed, using null:', err.message);
-			return null;
-		}),
-		fetchRepositories('daniel-tenzler').catch((err) => {
-			console.warn('Repository fetch failed, using null:', err.message);
-			return null;
-		}),
-	]);
-
-	metadata = apiMetadata;
-	commitCount = apiCommitCount;
-	languageStats = repos ? getLanguageStats(repos) : null;
-
-	const endTime = Date.now();
-	console.log(
-		`Parallel GitHub API calls completed in ${endTime - startTime}ms`
-	);
-} catch (error) {
-	console.error('Unexpected error in GitHub API calls:', error);
-}
-
-// Generate Person schema for the homepage
-const personSchema = generatePersonSchema(SITE_URL, {
-	jobTitle: 'Full-Stack Web Developer',
-	description: SITE_DESCRIPTION,
-	sameAs: ['https://github.com/daniel-tenzler'],
-});
+const {
+	latestPosts,
+	aboutParagraphs,
+	featuredProjects,
+	journeyData,
+	skillsData,
+	skillCategories,
+	personSchema,
+	metadata,
+	commitCount,
+	languageStats,
+} = await getHomePageData();
 ---
 
 <MainLayout
