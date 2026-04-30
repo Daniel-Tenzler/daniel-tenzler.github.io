@@ -68,16 +68,15 @@ export default function HeroSection() {
 						})}
 					</NameVisual>
 				</Name>
-				<Title>Software Developer</Title>
+				<Title>Software developer</Title>
 				<AccentLine />
 				<Tagline>
-					Building reliable web applications with modern technologies
+					Building practical web projects and learning in public.
 				</Tagline>
 				<Description>
-					Designing and implementing responsive, performant web
-					applications. Focused on full-stack development, with an
-					emphasis on maintainable code, clear architecture, and
-					practical user experience.
+					I like turning random ideas into small projects.
+					This site collects my projects, technical notes, and
+					experiments as I keep improving as a developer.
 				</Description>
 				<ButtonContainer>
 					<PrimaryButton href="/portfolio">

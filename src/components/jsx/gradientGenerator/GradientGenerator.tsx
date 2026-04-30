@@ -4,6 +4,17 @@ import {
 	ContentWrapper,
 	SectionHeader,
 	SectionTitle,
+	StudioLayout,
+	PreviewPanel,
+	PreviewHeader,
+	PreviewFrame,
+	GradientPreview,
+	GradientTypeBadge,
+	PreviewMeta,
+	MetaCard,
+	ControlsPanel,
+	ControlCard,
+	ControlCardHeader,
 	ControlsSection,
 	TypeTabs,
 	TypeTab,
@@ -261,6 +272,21 @@ const GradientGenerator = () => {
 		preview: generateGradientCSS(preset.config),
 	}));
 
+	const gradientLabel = `${gradient.type.charAt(0).toUpperCase()}${gradient.type.slice(1)}`;
+	const colorStopSummary = `${gradient.colorStops.length} stop${gradient.colorStops.length === 1 ? '' : 's'}`;
+	const detailSummary = (() => {
+		switch (gradient.type) {
+			case GRADIENT_TYPES.LINEAR:
+				return `${gradient.linear.angle}deg`;
+			case GRADIENT_TYPES.RADIAL:
+				return `${gradient.radial.shape} at ${gradient.radial.posX}%`;
+			case GRADIENT_TYPES.CONIC:
+				return `${gradient.conic.angle}deg at ${gradient.conic.posX}%`;
+			default:
+				return 'Custom';
+		}
+	})();
+
 	return (
 		<Container>
 			<ContentWrapper>
@@ -268,121 +294,168 @@ const GradientGenerator = () => {
 					<SectionTitle>Gradient Generator</SectionTitle>
 				</SectionHeader>
 
-				<TypeTabs role="tablist" aria-label="Gradient type selection">
-					<TypeTab
-						$active={gradient.type === GRADIENT_TYPES.LINEAR}
-						onClick={() => handleTypeChange(GRADIENT_TYPES.LINEAR)}
-						role="tab"
-						aria-selected={gradient.type === GRADIENT_TYPES.LINEAR}
-						type="button"
-					>
-						Linear
-					</TypeTab>
-					<TypeTab
-						$active={gradient.type === GRADIENT_TYPES.RADIAL}
-						onClick={() => handleTypeChange(GRADIENT_TYPES.RADIAL)}
-						role="tab"
-						aria-selected={gradient.type === GRADIENT_TYPES.RADIAL}
-						type="button"
-					>
-						Radial
-					</TypeTab>
-					<TypeTab
-						$active={gradient.type === GRADIENT_TYPES.CONIC}
-						onClick={() => handleTypeChange(GRADIENT_TYPES.CONIC)}
-						role="tab"
-						aria-selected={gradient.type === GRADIENT_TYPES.CONIC}
-						type="button"
-					>
-						Conic
-					</TypeTab>
-				</TypeTabs>
+				<StudioLayout>
+					<PreviewPanel>
+						<PreviewHeader>
+							<div>
+								<h3>{gradientLabel} gradient</h3>
+							</div>
+							<GradientTypeBadge>{gradient.type}</GradientTypeBadge>
+						</PreviewHeader>
+						<PreviewFrame>
+							<GradientPreview
+								$gradient={gradientCSS}
+								role="img"
+								aria-label={`${gradientLabel} gradient preview`}
+							/>
+						</PreviewFrame>
+						<PreviewMeta>
+							<MetaCard>
+								<span>Type</span>
+								<strong>{gradientLabel}</strong>
+							</MetaCard>
+							<MetaCard>
+								<span>Detail</span>
+								<strong>{detailSummary}</strong>
+							</MetaCard>
+							<MetaCard>
+								<span>Colors</span>
+								<strong>{colorStopSummary}</strong>
+							</MetaCard>
+						</PreviewMeta>
+						<ControlCard>
+							<PresetSelector
+								presets={presetsWithIds}
+								onSelect={handlePresetSelect}
+								label="Presets"
+								activePresetId={activePresetId}
+							/>
+						</ControlCard>
 
-				<ControlsSection>
-					{renderTypeSpecificControls()}
-				</ControlsSection>
+						<CodeOutput
+							code={`background: ${gradientCSS};`}
+							language="CSS"
+							label="CSS Output"
+						/>
+					</PreviewPanel>
+					
 
-				<ColorStopsSection>
-					<ColorStopsHeader>
-						<h4>Color Stops</h4>
-						<AddStopButton
-							onClick={handleAddColorStop}
-							disabled={gradient.colorStops.length >= 10}
-							type="button"
-							aria-label="Add color stop"
-						>
-							+ Add Stop
-						</AddStopButton>
-					</ColorStopsHeader>
-					<ColorStopsList role="list" aria-label="Color stops list">
-						{gradient.colorStops.map((stop, index) => (
-							<ColorStopItem key={stop.id} role="listitem">
-								<ColorStopControls>
-									<ColorInput
-										label={`Stop ${index + 1}`}
-										hex={stop.color.replace('#', '')}
-										opacity={stop.opacity ?? 100}
-										onHexChange={(value) =>
-											handleColorStopChange(
-												index,
-												'color',
-												`#${value}`
-											)
-										}
-										onOpacityChange={(value) =>
-											handleColorStopChange(
-												index,
-												'opacity',
-												value
-											)
-										}
-										showPreview={true}
-									/>
-									<RangeSlider
-										label="Position"
-										value={stop.position}
-										min={0}
-										max={100}
-										step={1}
-										unit="%"
-										onChange={(value) =>
-											handleColorStopChange(
-												index,
-												'position',
-												value
-											)
-										}
-									/>
-									<RemoveStopButton
-										onClick={() =>
-											handleRemoveColorStop(stop.id)
-										}
-										disabled={
-											gradient.colorStops.length <= 2
-										}
+					<ControlsPanel>
+						<ControlCard>
+							<ControlCardHeader>
+								<div>
+									<h3>Gradient Type</h3>
+								</div>
+							</ControlCardHeader>
+							<TypeTabs role="tablist" aria-label="Gradient type selection">
+								<TypeTab
+									$active={gradient.type === GRADIENT_TYPES.LINEAR}
+									onClick={() => handleTypeChange(GRADIENT_TYPES.LINEAR)}
+									role="tab"
+									aria-selected={gradient.type === GRADIENT_TYPES.LINEAR}
+									type="button"
+								>
+									Linear
+								</TypeTab>
+								<TypeTab
+									$active={gradient.type === GRADIENT_TYPES.RADIAL}
+									onClick={() => handleTypeChange(GRADIENT_TYPES.RADIAL)}
+									role="tab"
+									aria-selected={gradient.type === GRADIENT_TYPES.RADIAL}
+									type="button"
+								>
+									Radial
+								</TypeTab>
+								<TypeTab
+									$active={gradient.type === GRADIENT_TYPES.CONIC}
+									onClick={() => handleTypeChange(GRADIENT_TYPES.CONIC)}
+									role="tab"
+									aria-selected={gradient.type === GRADIENT_TYPES.CONIC}
+									type="button"
+								>
+									Conic
+								</TypeTab>
+							</TypeTabs>
+							<ControlsSection>
+								{renderTypeSpecificControls()}
+							</ControlsSection>
+						</ControlCard>
+
+						<ControlCard>
+							<ColorStopsSection>
+								<ColorStopsHeader>
+									<div>
+										<h4>Color Stops</h4>
+									</div>
+									<AddStopButton
+										onClick={handleAddColorStop}
+										disabled={gradient.colorStops.length >= 10}
 										type="button"
-										aria-label={`Remove color stop ${index + 1}`}
+										aria-label="Add color stop"
 									>
-										Remove
-									</RemoveStopButton>
-								</ColorStopControls>
-							</ColorStopItem>
-						))}
-					</ColorStopsList>
-				</ColorStopsSection>
+										+ Add Stop
+									</AddStopButton>
+								</ColorStopsHeader>
+								<ColorStopsList role="list" aria-label="Color stops list">
+									{gradient.colorStops.map((stop, index) => (
+										<ColorStopItem key={stop.id} role="listitem">
+											<ColorStopControls>
+												<ColorInput
+													label={`Stop ${index + 1}`}
+													hex={stop.color.replace('#', '')}
+													opacity={stop.opacity ?? 100}
+													onHexChange={(value) =>
+														handleColorStopChange(
+															index,
+															'color',
+															`#${value}`
+														)
+													}
+													onOpacityChange={(value) =>
+														handleColorStopChange(
+															index,
+															'opacity',
+															value
+														)
+													}
+													showPreview={true}
+												/>
+												<RangeSlider
+													label="Position"
+													value={stop.position}
+													min={0}
+													max={100}
+													step={1}
+													unit="%"
+													onChange={(value) =>
+														handleColorStopChange(
+															index,
+															'position',
+															value
+														)
+													}
+												/>
+												<RemoveStopButton
+													onClick={() =>
+														handleRemoveColorStop(stop.id)
+													}
+													disabled={
+														gradient.colorStops.length <= 2
+													}
+													type="button"
+													aria-label={`Remove color stop ${index + 1}`}
+												>
+													Remove
+												</RemoveStopButton>
+											</ColorStopControls>
+										</ColorStopItem>
+									))}
+								</ColorStopsList>
+							</ColorStopsSection>
+						</ControlCard>
 
-				<PresetSelector
-					presets={presetsWithIds}
-					onSelect={handlePresetSelect}
-					label="Presets"
-					activePresetId={activePresetId}
-				/>
-
-				<CodeOutput
-					code={`background: ${gradientCSS};`}
-					language="CSS"
-					label="CSS Output"
-				/>
+					</ControlsPanel>
+				</StudioLayout>
 			</ContentWrapper>
 		</Container>
 	);

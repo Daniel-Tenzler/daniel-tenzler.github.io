@@ -20,7 +20,9 @@ const JourneySection = ({ data }: JourneySectionProps) => {
 
 	return (
 		<Section aria-labelledby="journey-heading">
-			<Eyebrow>Journey</Eyebrow>
+			<Eyebrow as="h2" id="journey-heading">
+				Journey
+			</Eyebrow>
 
 			{items.map((item) => (
 				<Entry key={item.id + item.title}>

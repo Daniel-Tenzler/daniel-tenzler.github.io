@@ -7,7 +7,6 @@ import LatestPostsSection from 'src/components/jsx/home/LatestPostsSection/Lates
 import AboutSection from 'src/components/jsx/home/AboutSection/AboutSection';
 import JourneySection from 'src/components/jsx/home/JourneySection/JourneySection';
 import SkillsSection from 'src/components/jsx/home/SkillsSection/SkillsSection';
-import GitHubStats from 'src/components/jsx/home/GitHubStats/GitHubStats';
 import PortfolioPreview from 'src/components/jsx/home/PortfolioPreview/PortfolioPreview';
 import ContentContainer from 'src/components/jsx/layouts/ContentContainer/ContentContainer';
 import { getHomePageData } from 'src/data/home/getHomePageData';
@@ -20,9 +19,6 @@ const {
 	skillsData,
 	skillCategories,
 	personSchema,
-	metadata,
-	commitCount,
-	languageStats,
 } = await getHomePageData();
 ---
 
@@ -34,7 +30,7 @@ const {
 	<GridBackground client:visible />
 
 	<ContentContainer>
-		<HeroSection client:visible />
+		<HeroSection />
 
 		<PortfolioPreview client:visible projects={featuredProjects} />
 
@@ -42,18 +38,8 @@ const {
 
 		<AboutSection paragraphs={aboutParagraphs} />
 
-		<JourneySection client:idle data={journeyData} />
+		<JourneySection data={journeyData} />
 
 		<SkillsSection skills={skillsData} categories={skillCategories} />
-
-		{
-			metadata && commitCount !== null && languageStats && (
-				<GitHubStats
-					metadata={metadata}
-					commitCount={commitCount}
-					languageStats={languageStats}
-				/>
-			)
-		}
 	</ContentContainer>
 </MainLayout>

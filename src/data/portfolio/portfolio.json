@@ -1,17 +1,6 @@
 {
 	"projects": [
 		{
-			"id": "personal-website",
-			"title": "Personal Website & Blog",
-			"description": "A personal website and blog built with Astro, React and Emotion-Styled-Components. Features a short overview of my personal projects, skills and work experience.",
-			"technologies": ["Astro", "React", "Emotion"],
-			"image": "/images/portfolio/blog-placeholder-2.jpg",
-			"githubUrl": "https://github.com/daniel-tenzler/daniel-tenzler.github.io",
-			"liveUrl": "https://daniel-tenzler.github.io",
-			"featured": true,
-			"date": "2025-05"
-		},
-		{
 			"id": "task-set-generator",
 			"title": "Task Set Generator for evaluating distributed, real-time scheduling algorithms",
 			"description": "A comprehensive task set generator designed for evaluating distributed, real-time scheduling algorithms. This bachelor's thesis project enables researchers and developers to generate configurable task sets with precise control over parameters such as task periods, deadlines, execution times, and resource requirements. The tool supports various scheduling algorithm evaluation scenarios, helping validate the performance and feasibility of novel scheduling approaches in distributed computing environments. Built with Java and integrates Google-OR-Tools for optimization problems and Integer Linear Programming (ILP) for complex constraint solving.",
@@ -32,6 +21,39 @@
 			"liveUrl": "",
 			"featured": true,
 			"date": "2024-06"
+		},
+		{
+			"id": "sitemap-explorer",
+			"title": "Small webapp for displaying a websites sitemap in tree-view",
+			"description": "",
+			"technologies": ["Node.js", "React"],
+			"image": "/images/portfolio/blog-placeholder-4.jpg",
+			"githubUrl": "https://github.com/Daniel-Tenzler/sitemapExplorer",
+			"liveUrl": "https://sitemap.daniel-tenzler.de",
+			"featured": true,
+			"date": "2026-04"
+		},
+		{
+			"id": "dod-worldtheater",
+			"title": "Victoria 2 mod - rebalanced version of DOD-PUIR for single- and multiplayer balance",
+			"description": "",
+			"technologies": ["Vic2"],
+			"image": "/images/portfolio/blog-placeholder-2.jpg",
+			"githubUrl": "https://github.com/Daniel-Tenzler/dodWorldTheater",
+			"liveUrl": "",
+			"featured": false,
+			"date": "2025-05"
+		},
+		{
+			"id": "doppelkopf-calculator",
+			"title": "A points calculator for the popular card game Doppelkopf",
+			"description": "",
+			"technologies": ["React"],
+			"image": "/images/portfolio/blog-placeholder-1.jpg",
+			"githubUrl": "https://github.com/Daniel-Tenzler/doppelkopfCalculator",
+			"liveUrl": "https://doppelkopf.daniel-tenzler.de",
+			"featured": false,
+			"date": "2025-12"
 		}
 	]
 }

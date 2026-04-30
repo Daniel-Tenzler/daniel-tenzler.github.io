@@ -50,8 +50,17 @@ export const tools: Tool[] = [
 		id: 'gradient-generator',
 		title: 'Gradient Generator',
 		description:
-			'Create beautiful CSS gradients with linear, radial, and conic options.',
+			'Create CSS gradients.',
 		path: '/gradient-generator',
+		icon: '/icons/link.svg',
+		category: 'Color & Design',
+	},
+	{
+		id: 'grainy-gradient-generator',
+		title: 'Grainy Gradient Generator',
+		description:
+			'Create diffused, grainy gradient backgrounds.',
+		path: '/grainy-gradient-generator',
 		icon: '/icons/link.svg',
 		category: 'Color & Design',
 	},

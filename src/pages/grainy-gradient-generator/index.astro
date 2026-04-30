@@ -1,0 +1,11 @@
+---
+import GrainyGradientGenerator from 'src/components/jsx/grainyGradientGenerator/GrainyGradientGenerator';
+import { getToolByPath } from 'src/data/tools/tools';
+import ToolPageLayout from 'src/layouts/ToolPageLayout.astro';
+
+const tool = getToolByPath('/grainy-gradient-generator');
+---
+
+<ToolPageLayout title={tool.title} description={tool.description}>
+	<GrainyGradientGenerator client:only="react" />
+</ToolPageLayout>

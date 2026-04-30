@@ -10,12 +10,6 @@ import {
 	PORTFOLIO_IMAGE_SIZES,
 } from 'src/infrastructure/imageUtils';
 import { generatePersonSchema } from 'src/infrastructure/structuredData';
-import {
-	getRepoMetadata,
-	getCommitCount,
-	fetchRepositories,
-	getLanguageStats,
-} from 'src/lib/github';
 
 const getLatestPosts = async () => {
 	return (await getCollection('blog'))
@@ -48,69 +42,22 @@ const getFeaturedProjects = () => {
 		}));
 };
 
-const getGitHubStats = async () => {
-	const startTime = Date.now();
-
-	try {
-		const [metadata, commitCount, repos] = await Promise.all([
-			getRepoMetadata().catch((err) => {
-				console.warn('Repo metadata failed, using null:', err.message);
-				return null;
-			}),
-			getCommitCount().catch((err) => {
-				console.warn('Commit count failed, using null:', err.message);
-				return null;
-			}),
-			fetchRepositories('daniel-tenzler').catch((err) => {
-				console.warn(
-					'Repository fetch failed, using null:',
-					err.message
-				);
-				return null;
-			}),
-		]);
-
-		const endTime = Date.now();
-		console.log(
-			`Parallel GitHub API calls completed in ${endTime - startTime}ms`
-		);
-
-		return {
-			metadata,
-			commitCount,
-			languageStats: repos ? getLanguageStats(repos) : null,
-		};
-	} catch (error) {
-		console.error('Unexpected error in GitHub API calls:', error);
-
-		return {
-			metadata: null,
-			commitCount: null,
-			languageStats: null,
-		};
-	}
-};
-
 export const getHomePageData = async () => {
-	const [latestPosts, githubStats] = await Promise.all([
-		getLatestPosts(),
-		getGitHubStats(),
-	]);
+	const latestPosts = await getLatestPosts();
 
 	return {
 		latestPosts,
 		aboutParagraphs: [
-			"I'm a full-stack web developer focused on building fast, accessible, and user-friendly apps. This site is where I test out new web technologies when I have the time.",
+			"I'm a software developer interested in building fast, accessible, and understandable web applications. This site is where I collect projects, notes, and experiments while I keep learning by building.",
 		],
 		featuredProjects: getFeaturedProjects(),
 		journeyData,
 		skillsData,
 		skillCategories,
 		personSchema: generatePersonSchema(SITE_URL, {
-			jobTitle: 'Full-Stack Web Developer',
+			jobTitle: 'Software Developer',
 			description: SITE_DESCRIPTION,
 			sameAs: ['https://github.com/daniel-tenzler'],
 		}),
-		...githubStats,
 	};
 };

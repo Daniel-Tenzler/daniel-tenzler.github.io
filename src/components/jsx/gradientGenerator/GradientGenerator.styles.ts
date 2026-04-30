@@ -11,11 +11,11 @@ export {
 // GradientGenerator uses a wider max-width than the shared default
 export const Container = styled.div`
 	width: 90%;
-	max-width: 1200px;
+	max-width: 1520px;
 	height: 100%;
 	min-height: calc(100vh - 246px);
 	margin: 0 auto;
-	padding: 1.5em 0;
+	padding: 1.5em 0 3em;
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -25,11 +25,87 @@ export const Container = styled.div`
 	}
 `;
 
+export const StudioLayout = styled.div`
+	display: grid;
+	grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+	gap: 1.25rem;
+	align-items: start;
+
+	@media (max-width: 1024px) {
+		grid-template-columns: 1fr;
+	}
+`;
+
+export const PreviewPanel = styled.section`
+	position: sticky;
+	top: 5.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 1rem;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 24px;
+	background:
+		linear-gradient(135deg, rgba(34, 211, 238, 0.12), transparent 42%),
+		linear-gradient(315deg, rgba(85, 96, 247, 0.1), transparent 48%),
+		var(--gray-383838);
+	box-shadow:
+		0 24px 80px rgba(0, 0, 0, 0.28),
+		inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+	@media (max-width: 1024px) {
+		position: static;
+	}
+`;
+
+export const PreviewHeader = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 1rem;
+
+	span {
+		color: var(--color-text-muted);
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	h3 {
+		margin: 0.2rem 0 0;
+		color: var(--color-text-emphasis);
+		font-size: 1.25rem;
+	}
+`;
+
+export const GradientTypeBadge = styled.div`
+	padding: 0.45rem 0.7rem;
+	border: 1px solid rgba(34, 211, 238, 0.35);
+	border-radius: 999px;
+	background: rgba(34, 211, 238, 0.1);
+	color: var(--color-text-emphasis);
+	font-size: 0.78rem;
+	font-weight: 800;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+`;
+
+export const PreviewFrame = styled.div`
+	position: relative;
+	overflow: hidden;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	border-radius: 20px;
+	background-color: var(--gray-222939);
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+`;
+
 export const TypeTabs = styled.div`
 	display: flex;
 	gap: 0.5em;
-	background-color: var(--gray-383838);
-	border-radius: 8px;
+	background-color: rgba(2, 6, 23, 0.28);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 14px;
 	padding: 0.25em;
 
 	@media (max-width: 480px) {
@@ -47,16 +123,17 @@ export const TypeTab = styled.button<TypeTabProps>`
 	background-color: transparent;
 	color: var(--color-text-emphasis);
 	border: none;
-	border-radius: 6px;
-	font-weight: 500;
+	border-radius: 11px;
+	font-weight: 700;
 	font-size: 14px;
+	letter-spacing: 0.04em;
 	cursor: pointer;
 	transition:
 		background-color 0.2s ease,
 		color 0.2s ease;
 
 	&:hover {
-		background-color: var(--gray-474747);
+		background-color: rgba(255, 255, 255, 0.08);
 	}
 
 	&:focus-visible {
@@ -67,9 +144,10 @@ export const TypeTab = styled.button<TypeTabProps>`
 	${(props) =>
 		props.$active &&
 		`
-		background-color: var(--gray-474747);
-		color: var(--color-text-emphasis);
-		font-weight: 600;
+		background: linear-gradient(135deg, #22d3ee, #a855f7);
+		box-shadow: 0 10px 28px rgba(34, 211, 238, 0.18);
+		color: #020617;
+		font-weight: 800;
 	`}
 
 	@media (max-width: 768px) {
@@ -90,22 +168,114 @@ interface GradientPreviewProps {
 
 export const GradientPreview = styled.div<GradientPreviewProps>`
 	width: 100%;
-	height: 120px;
-	border-radius: 8px;
-	border: 1px solid var(--gray-474747);
+	min-height: 420px;
+	border-radius: 20px;
 	background: ${(props) =>
 		props.$gradient || 'linear-gradient(90deg, #000000, #ffffff)'};
 	transition: background 0.2s ease;
 
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+		background-size: 48px 48px;
+		mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), transparent);
+		pointer-events: none;
+	}
+
 	@media (max-width: 480px) {
-		height: 100px;
+		min-height: 280px;
+	}
+`;
+
+export const PreviewMeta = styled.div`
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.75rem;
+
+	@media (max-width: 640px) {
+		grid-template-columns: 1fr;
+	}
+`;
+
+export const MetaCard = styled.div`
+	padding: 0.75rem;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 14px;
+	background: rgba(2, 6, 23, 0.22);
+
+	span {
+		display: block;
+		margin-bottom: 0.25rem;
+		color: var(--color-text-muted);
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	strong {
+		color: var(--color-text-emphasis);
+		font-size: 0.95rem;
+	}
+`;
+
+export const ControlsPanel = styled.section`
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+`;
+
+export const ControlCard = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 1rem;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 18px;
+	background:
+		linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent),
+		var(--gray-383838);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+`;
+
+export const ControlCardHeader = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+
+	h3,
+	h4 {
+		margin: 0;
+		color: var(--color-text-emphasis);
+		font-size: 1rem;
+	}
+
+	p {
+		margin: 0.25rem 0 0;
+		color: var(--color-text-muted);
+		font-size: 0.84rem;
+		line-height: 1.45;
+	}
+
+	@media (max-width: 480px) {
+		align-items: stretch;
+		flex-direction: column;
 	}
 `;
 
 export const ControlsSection = styled.section`
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 1em;
+
+	@media (max-width: 640px) {
+		grid-template-columns: 1fr;
+	}
 `;
 
 export const ControlsGroup = styled.div`
@@ -154,31 +324,10 @@ export const ControlsGroup = styled.div`
 export const ColorStopsSection = styled.section`
 	display: flex;
 	flex-direction: column;
-	gap: 0.8em;
-`;
-
-export const ColorStopsHeader = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	gap: 1em;
-
-	h4 {
-		margin: 0;
-		font-size: 14px;
-		font-weight: 600;
-		color: var(--color-text-emphasis);
-
-		@media (max-width: 768px) {
-			font-size: 13px;
-		}
-	}
-
-	@media (max-width: 480px) {
-		flex-direction: column;
-		align-items: stretch;
-	}
 `;
+
+export const ColorStopsHeader = ControlCardHeader;
 
 export const ColorStopsList = styled.div`
 	display: flex;
@@ -191,9 +340,9 @@ export const ColorStopsList = styled.div`
 `;
 
 export const ColorStopItem = styled.div`
-	background-color: var(--gray-383838);
-	border: 1px solid var(--gray-474747);
-	border-radius: 8px;
+	background-color: rgba(2, 6, 23, 0.22);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 14px;
 	padding: 1em;
 	display: flex;
 	flex-direction: column;
@@ -203,7 +352,7 @@ export const ColorStopItem = styled.div`
 		border-color 0.2s ease;
 
 	&:hover {
-		border-color: var(--color-border-light);
+		border-color: rgba(34, 211, 238, 0.34);
 	}
 
 	@media (max-width: 768px) {
@@ -213,11 +362,13 @@ export const ColorStopItem = styled.div`
 `;
 
 export const ColorStopControls = styled.div`
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr) auto;
+	align-items: end;
 	gap: 1em;
 
 	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
 		gap: 0.8em;
 	}
 `;
