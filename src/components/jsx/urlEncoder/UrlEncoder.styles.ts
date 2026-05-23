@@ -96,11 +96,25 @@ export const HighlightLayer = styled('div')`
 	position: absolute;
 	inset: 0;
 	z-index: 0;
-	overflow: hidden;
+	overflow: auto;
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
+	scrollbar-color: transparent transparent;
 	pointer-events: none;
 	color: var(--color-text-emphasis);
+
+	&::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: transparent;
+	}
 `;
 
 export const HighlightedDomain = styled('mark')`
