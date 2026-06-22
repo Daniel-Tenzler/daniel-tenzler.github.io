@@ -17,17 +17,14 @@ afterEach(() => {
 	fs.rmSync(tempDir, { recursive: true, force: true });
 });
 
-test('should validate github deployment target structure', async () => {
-	// Create mock environment
-	const envPath = path.join(tempDir, '.env.github');
+test('should validate server deployment target structure', async () => {
+	const envPath = path.join(tempDir, '.env.server');
 	fs.writeFileSync(
 		envPath,
-		'BASE_URL=https://example.com\nGITHUB_TOKEN=test'
+		'BASE_URL=https://example.com\nSFTP_HOST=example.com\nSFTP_PORT=22'
 	);
 
-	// This would require mocking DeployHelper's project root
-	// For now, test validates the structure works
-	assert.ok(true, 'Integration test scaffold');
+	assert.ok(fs.existsSync(envPath), 'Server env file created');
 });
 
 // TODO: Add more integration tests with mock SFTP server

@@ -37,9 +37,9 @@ class DeployHelper {
 	}
 
 	async validateTarget() {
-		if (!['github', 'server'].includes(this.target)) {
+		if (this.target !== 'server') {
 			throw new Error(
-				`Invalid deployment target: ${this.target}. Must be 'github' or 'server'.`
+				`Invalid deployment target: ${this.target}. Must be 'server'.`
 			);
 		}
 	}
@@ -201,31 +201,7 @@ class DeployHelper {
 	}
 
 	async deploy() {
-		if (this.target === 'github') {
-			await this.deployToGitHub();
-		} else if (this.target === 'server') {
-			await this.deployToServer();
-		}
-	}
-
-	async deployToGitHub() {
-		await this.log('Deploying to GitHub Pages...');
-		if (this.dryRun) {
-			await this.log(
-				'[DRY RUN] Would run: gh-pages -d dist -b gh-pages --dotfiles --nojekyll',
-				'info'
-			);
-			return;
-		}
-		try {
-			execSync('npx gh-pages -d dist -b gh-pages --dotfiles --nojekyll', {
-				cwd: this.projectRoot,
-				stdio: 'inherit',
-			});
-			await this.log('Successfully deployed to GitHub Pages!', 'success');
-		} catch (error) {
-			throw new Error(`GitHub deployment failed: ${error.message}`);
-		}
+		await this.deployToServer();
 	}
 
 	async deployToServer() {
@@ -367,7 +343,7 @@ async function main() {
 	if (!target) {
 		console.error(chalk.red('Error: Deployment target is required'));
 		console.error(
-			chalk.yellow('Usage: node scripts/deploy-helper.js [github|server]')
+			chalk.yellow('Usage: node scripts/deploy-helper.js server')
 		);
 		process.exit(1);
 	}

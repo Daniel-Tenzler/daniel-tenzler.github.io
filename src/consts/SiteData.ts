@@ -3,7 +3,7 @@ import type { SiteData } from './SiteData.types';
 export const SITE_TITLE = 'Daniel Tenzler';
 export const SITE_DESCRIPTION =
 	"Personal website of Daniel Tenzler, a software developer sharing projects, technical notes, and experiments.";
-export const SITE_URL = 'https://daniel-tenzler.github.io';
+export const SITE_URL = 'https://daniel-tenzler.de';
 
 export const siteData: SiteData = {
 	metadata: {

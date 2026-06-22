@@ -33,7 +33,6 @@ export const DEPLOY_CONFIG = {
 	allowedEnvVars: [
 		'BASE_URL',
 		'DEPLOY_TARGET',
-		'GITHUB_TOKEN',
 		'PUBLIC_ENV',
 		'SFTP_HOST',
 		'SFTP_PORT',

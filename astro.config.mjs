@@ -12,13 +12,13 @@ import babel from '@rollup/plugin-babel';
 config();
 
 // https://astro.build/config
-const baseUrl = process.env.BASE_URL || 'https://daniel-tenzler.github.io';
+const baseUrl = process.env.BASE_URL || 'https://daniel-tenzler.de';
 
 export default defineConfig({
 	outDir: './dist',
 	output: 'static',
 	site: baseUrl,
-	base: baseUrl === 'https://daniel-tenzler.github.io' ? '/' : '/',
+	base: '/',
 
 	// Inline all stylesheets to eliminate render-blocking CSS
 	inlineStylesheets: 'always',
