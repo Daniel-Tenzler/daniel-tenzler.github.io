@@ -19,6 +19,7 @@ class DeployHelper {
 		this.sourceEnvFile = path.join(this.projectRoot, `.env.${target}`);
 		this.dryRun = process.argv.includes('--dry-run');
 		this.originalRobotsTxt = null;
+		this.envLoadedFromFile = false;
 	}
 
 	async log(message, type = 'info') {
@@ -41,18 +42,6 @@ class DeployHelper {
 				`Invalid deployment target: ${this.target}. Must be 'github' or 'server'.`
 			);
 		}
-
-		if (!fs.existsSync(this.sourceEnvFile)) {
-			throw new Error(
-				`Environment file not found: ${this.sourceEnvFile}`
-			);
-		}
-
-		// Check if environment file contains required variables
-		const content = fs.readFileSync(this.sourceEnvFile, 'utf8');
-		if (this.target === 'github' && !content.includes('GITHUB_TOKEN=')) {
-			throw new Error(`GITHUB_TOKEN not found in ${this.sourceEnvFile}`);
-		}
 	}
 
 	async preFlightChecks() {
@@ -67,15 +56,12 @@ class DeployHelper {
 			);
 		}
 
-		// Check 2: Verify environment file exists
-		if (!fs.existsSync(this.sourceEnvFile)) {
-			throw new DeployError(
-				ErrorCodes.ENV_FILE_NOT_FOUND,
-				`Environment file not found: ${this.sourceEnvFile}`,
-				'Ensure .env.github or .env.server exists'
-			);
+		// Check 2: Verify environment source
+		if (this.envLoadedFromFile) {
+			await this.log('[CHECK] Environment file exists', 'success');
+		} else {
+			await this.log('[CHECK] Environment provided inline', 'success');
 		}
-		await this.log('[CHECK] Environment file exists', 'success');
 
 		// Check 3: For server deployment, verify SSH key
 		if (this.target === 'server') {
@@ -108,19 +94,22 @@ class DeployHelper {
 		);
 
 		try {
-			// Validate environment file content before copying
-			await this.validateEnvironmentFile(this.sourceEnvFile);
-
-			// Copy the appropriate environment file to .env
-			fs.copyFileSync(this.sourceEnvFile, this.envFile);
-
-			// Load environment variables into process.env
-			dotenv.config({ path: this.envFile });
-
-			await this.log(
-				`Environment loaded from ${chalk.cyan(this.sourceEnvFile)}`,
-				'success'
-			);
+			if (fs.existsSync(this.sourceEnvFile)) {
+				await this.validateEnvironmentFile(this.sourceEnvFile);
+				fs.copyFileSync(this.sourceEnvFile, this.envFile);
+				dotenv.config({ path: this.envFile });
+				this.envLoadedFromFile = true;
+				await this.log(
+					`Environment loaded from ${chalk.cyan(this.sourceEnvFile)}`,
+					'success'
+				);
+			} else {
+				this.envLoadedFromFile = false;
+				await this.log(
+					'Using inline environment (process.env)',
+					'success'
+				);
+			}
 		} catch (error) {
 			throw new Error(`Failed to load environment: ${error.message}`);
 		}
@@ -185,7 +174,7 @@ class DeployHelper {
 		try {
 			execSync('npm run clean', {
 				cwd: this.projectRoot,
-				stdio: 'pipe',
+				stdio: 'inherit',
 			});
 			await this.log('Build directory cleaned', 'success');
 		} catch (error) {
@@ -203,7 +192,7 @@ class DeployHelper {
 
 			execSync('npx astro build', {
 				cwd: this.projectRoot,
-				stdio: 'pipe',
+				stdio: 'inherit',
 			});
 			await this.log('Project built successfully', 'success');
 		} catch (error) {
@@ -231,7 +220,7 @@ class DeployHelper {
 		try {
 			execSync('npx gh-pages -d dist -b gh-pages --dotfiles --nojekyll', {
 				cwd: this.projectRoot,
-				stdio: 'pipe',
+				stdio: 'inherit',
 			});
 			await this.log('Successfully deployed to GitHub Pages!', 'success');
 		} catch (error) {
@@ -321,8 +310,8 @@ class DeployHelper {
 			}
 		}
 
-		// Remove the temporary .env file
-		if (fs.existsSync(this.envFile)) {
+		// Remove the temporary .env file (only if created from .env.{target})
+		if (this.envLoadedFromFile && fs.existsSync(this.envFile)) {
 			fs.unlinkSync(this.envFile);
 			await this.log('Temporary environment file cleaned up', 'gray');
 		}

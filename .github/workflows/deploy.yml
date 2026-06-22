@@ -1,0 +1,46 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-vps
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Write SSH private key
+        env:
+          SFTP_PRIVATE_KEY: ${{ secrets.SFTP_PRIVATE_KEY }}
+        run: |
+          printf '%s\n' "$SFTP_PRIVATE_KEY" > ./deploy_key
+          chmod 600 ./deploy_key
+
+      - name: Build and deploy
+        env:
+          BASE_URL: https://daniel-tenzler.de
+          DEPLOY_TARGET: server
+          PUBLIC_ENV: production
+          SFTP_HOST: ${{ secrets.SFTP_HOST }}
+          SFTP_PORT: ${{ secrets.SFTP_PORT }}
+          SFTP_USER: ${{ secrets.SFTP_USER }}
+          SFTP_PRIVATE_KEY_PATH: ./deploy_key
+          SFTP_REMOTE_DIR: public_html
+        run: node scripts/deploy-helper.js server

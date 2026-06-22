@@ -43,6 +43,7 @@ GEMINI.md
 # Deployment
 hetzner_sftp.ppk
 hetzner_sftp_openssh
+deploy_key
 
 # Claude
 .claude
