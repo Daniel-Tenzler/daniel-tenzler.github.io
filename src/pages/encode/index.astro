@@ -3,7 +3,7 @@ import { getToolByPath } from 'src/data/tools/tools';
 import ToolPageLayout from 'src/layouts/ToolPageLayout.astro';
 import UrlEncoder from 'src/components/jsx/urlEncoder/UrlEncoder';
 
-const baseUrl = import.meta.env.BASE_URL || 'https://daniel-tenzler.de';
+const baseUrl = Astro.site?.href ?? 'https://daniel-tenzler.de';
 const tool = getToolByPath('/encode');
 ---
 

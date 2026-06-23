@@ -17,9 +17,10 @@ const {
 	canonicalUrl,
 } = Astro.props;
 
+const siteUrl = Astro.site ?? new URL('https://daniel-tenzler.de');
 const canonicalURL = canonicalUrl
-	? new URL(canonicalUrl)
-	: new URL('https://daniel-tenzler.de');
+	? new URL(canonicalUrl, siteUrl)
+	: new URL(Astro.url.pathname, siteUrl);
 
 // GitHub Pages redirect to private server for SEO
 const isGitHub = import.meta.env.PUBLIC_ENV === 'github';

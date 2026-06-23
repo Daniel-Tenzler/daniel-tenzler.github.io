@@ -2,7 +2,7 @@
 import RedirectPage from 'src/components/astro/RedirectPage.astro';
 
 const targetPath = '/imprint';
-const canonicalUrl = 'https://daniel-tenzler.de/imprint';
+const canonicalUrl = new URL(targetPath, Astro.site).toString();
 ---
 
 <RedirectPage
