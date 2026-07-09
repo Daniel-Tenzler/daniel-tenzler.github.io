@@ -117,6 +117,13 @@ export const HighlightLayer = styled('div')`
 	}
 `;
 
+export const HighlightNotice = styled.div`
+	color: var(--gray-989898);
+	font-size: 13px;
+	line-height: 1.4;
+	text-align: center;
+`;
+
 export const HighlightedDomain = styled('mark')`
 	background-color: var(--blue-2337ff-4d);
 	color: var(--color-text-emphasis);
@@ -129,7 +136,7 @@ export const InputField = styled('textarea')`
 	position: relative;
 	z-index: 1;
 	background-color: transparent;
-	color: transparent;
+	color: var(--color-text-emphasis);
 	caret-color: var(--color-text-emphasis);
 	width: 100%;
 	height: 100%;
@@ -146,7 +153,11 @@ export const InputField = styled('textarea')`
 		color: var(--gray-989898);
 	}
 
-	&::selection {
+	&[data-highlight-active='true'] {
+		color: transparent;
+	}
+
+	&[data-highlight-active='true']::selection {
 		background-color: var(--blue-2337ff-66);
 		color: transparent;
 	}

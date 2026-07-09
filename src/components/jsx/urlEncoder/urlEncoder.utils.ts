@@ -15,8 +15,8 @@ const ENCODED_SLASH = '%(?:25)*2f';
 const ENCODED_DOT = '%(?:25)*2e';
 const LABEL = '[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?';
 const DOMAIN = `${LABEL}(?:(?:\\.|${ENCODED_DOT})${LABEL})+`;
-const SLASH_PAIR = `(?:\\/\\/|${ENCODED_SLASH}${ENCODED_SLASH})`;
-const URL_PREFIX = `(?:(?:https?|ftp)(?::|${ENCODED_COLON})${SLASH_PAIR}|\\/\\/|${ENCODED_SLASH}${ENCODED_SLASH})`;
+const SLASH_PAIR = `(?:\\/|${ENCODED_SLASH})(?:\\/|${ENCODED_SLASH})`;
+const URL_PREFIX = `(?:(?:https?|ftp)(?::|${ENCODED_COLON})${SLASH_PAIR}|${SLASH_PAIR})`;
 const URL_DOMAIN_REGEX = new RegExp(
 	`${URL_PREFIX}(?:[^\\s/?#%]*@)?(${DOMAIN})`,
 	'gi'
