@@ -8,6 +8,7 @@ import {
 	EditorWrapper,
 	HighlightLayer,
 	HighlightedDomain,
+	HighlightNotice,
 	InputField,
 	ErrorMessage,
 	MessagesContainer,
@@ -16,6 +17,8 @@ import {
 	EncodeButton,
 } from './UrlEncoder.styles';
 import { buildHighlightedUrlParts } from './urlEncoder.utils';
+
+const MAX_HIGHLIGHTED_INPUT_LENGTH = 100000;
 
 const UrlEncoder = ({ initialValue = '' }: UrlEncoderProps) => {
 	const [value, setValue] = useState(initialValue || '');
@@ -51,19 +54,24 @@ const UrlEncoder = ({ initialValue = '' }: UrlEncoderProps) => {
 		highlightLayerRef.current.scrollLeft = e.currentTarget.scrollLeft;
 	};
 
+	const isHighlightActive = value.length <= MAX_HIGHLIGHTED_INPUT_LENGTH;
 	let highlightOffset = 0;
-	const highlightedText = buildHighlightedUrlParts(value).map((part) => {
-		const key = `${highlightOffset}-${part.text.length}`;
-		highlightOffset += part.text.length;
+	const highlightedText = isHighlightActive
+		? buildHighlightedUrlParts(value).map((part) => {
+				const key = `${highlightOffset}-${part.text.length}`;
+				highlightOffset += part.text.length;
 
-		if (part.highlighted) {
-			return (
-				<HighlightedDomain key={key}>{part.text}</HighlightedDomain>
-			);
-		}
+				if (part.highlighted) {
+					return (
+						<HighlightedDomain key={key}>
+							{part.text}
+						</HighlightedDomain>
+					);
+				}
 
-		return <React.Fragment key={key}>{part.text}</React.Fragment>;
-	});
+				return <React.Fragment key={key}>{part.text}</React.Fragment>;
+			})
+		: null;
 
 	return (
 		<Container>
@@ -72,9 +80,14 @@ const UrlEncoder = ({ initialValue = '' }: UrlEncoderProps) => {
 					<SectionTitle>URL Encoder/Decoder</SectionTitle>
 				</SectionHeader>
 				<EditorWrapper>
-					<HighlightLayer ref={highlightLayerRef} aria-hidden="true">
-						{highlightedText}
-					</HighlightLayer>
+					{isHighlightActive && (
+						<HighlightLayer
+							ref={highlightLayerRef}
+							aria-hidden="true"
+						>
+							{highlightedText}
+						</HighlightLayer>
+					)}
 					<InputField
 						value={value}
 						onChange={handleChange}
@@ -82,13 +95,23 @@ const UrlEncoder = ({ initialValue = '' }: UrlEncoderProps) => {
 						placeholder="Enter text to encode or decode..."
 						aria-label="URL text to encode or decode"
 						aria-invalid={!!error}
-						aria-describedby={error ? 'url-encoder-error' : undefined}
+						aria-describedby={
+							error ? 'url-encoder-error' : undefined
+						}
 						spellCheck={false}
 						autoComplete="off"
 						autoCapitalize="off"
+						data-highlight-active={
+							isHighlightActive ? 'true' : 'false'
+						}
 					/>
 				</EditorWrapper>
 				<MessagesContainer>
+					{!isHighlightActive && (
+						<HighlightNotice>
+							Domain highlighting is paused for large inputs.
+						</HighlightNotice>
+					)}
 					{error && (
 						<ErrorMessage id="url-encoder-error" role="alert">
 							{error}

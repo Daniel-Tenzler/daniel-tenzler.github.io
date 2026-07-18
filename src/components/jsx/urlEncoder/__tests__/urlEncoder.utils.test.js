@@ -30,8 +30,7 @@ describe('findDomainHighlights', () => {
 	});
 
 	test('finds URL-encoded domains with encoded dots', () => {
-		const input =
-			'callback=https%3A%2F%2Fapi%2Eexample%2Edev%2Fdone';
+		const input = 'callback=https%3A%2F%2Fapi%2Eexample%2Edev%2Fdone';
 
 		const highlights = findDomainHighlights(input);
 
@@ -43,8 +42,7 @@ describe('findDomainHighlights', () => {
 	});
 
 	test('finds domains in double-encoded nested URLs', () => {
-		const input =
-			'callback=https%253A%252F%252Ftwice.example.net%252Fdone';
+		const input = 'callback=https%253A%252F%252Ftwice.example.net%252Fdone';
 
 		const highlights = findDomainHighlights(input);
 
@@ -53,6 +51,22 @@ describe('findDomainHighlights', () => {
 			['twice.example.net']
 		);
 		assert.strictEqual(highlights[0].encoded, true);
+	});
+
+	test('finds domains in partially decoded URLs', () => {
+		const input =
+			'first=https%3A//mixed.example.dev/next second=https:%2F%2Fsplit.example.org%2Fdone third=/%2Fprotocol.example.net';
+
+		const highlights = findDomainHighlights(input);
+
+		assert.deepStrictEqual(
+			highlights.map((highlight) => highlight.text),
+			['mixed.example.dev', 'split.example.org', 'protocol.example.net']
+		);
+		assert.deepStrictEqual(
+			highlights.map((highlight) => highlight.encoded),
+			[true, true, true]
+		);
 	});
 });
 
@@ -74,8 +88,6 @@ describe('buildHighlightedUrlParts', () => {
 
 		const parts = buildHighlightedUrlParts(input);
 
-		assert.deepStrictEqual(parts, [
-			{ text: input, highlighted: false },
-		]);
+		assert.deepStrictEqual(parts, [{ text: input, highlighted: false }]);
 	});
 });
