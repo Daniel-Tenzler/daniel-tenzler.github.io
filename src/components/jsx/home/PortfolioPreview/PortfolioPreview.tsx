@@ -39,6 +39,7 @@ const PortfolioPreviewContent = ({
 				{projects.map((project, index) => (
 					<ProjectCard
 						key={project.id}
+						data-cursor-glow
 						$animationDelay={`${index * 0.1}s`}
 						onClick={() => handleCardClick(project.id)}
 						onKeyDown={(e) => {

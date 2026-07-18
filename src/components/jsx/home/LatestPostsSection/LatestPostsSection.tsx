@@ -18,6 +18,7 @@ export default function LatestPostsSection({ posts }: LatestPostsSectionProps) {
 				{posts.map((post) => (
 					<BlogPostCard
 						key={post.slug}
+						data-cursor-glow
 						title={post.title}
 						description={post.description}
 						pubDate={post.pubDate}

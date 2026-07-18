@@ -32,14 +32,6 @@ export const StyledTitle = styled.h1`
 	letter-spacing: -0.02em;
 `;
 
-export const StyledDescription = styled.p`
-	font-size: clamp(16px, 2vw, 18px);
-	line-height: 1.6;
-	color: var(--color-text-primary);
-	max-width: 560px;
-	margin: 0 auto;
-`;
-
 export const StyledGrid = styled.div`
 	display: grid;
 	grid-template-columns: 1fr;

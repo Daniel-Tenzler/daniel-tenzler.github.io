@@ -14,7 +14,7 @@ import type { AboutSectionProps } from './AboutSection.types';
 export default function AboutSection({ paragraphs }: AboutSectionProps) {
 	return (
 		<Section>
-			<CalloutCard>
+			<CalloutCard data-cursor-glow>
 				<Monogram aria-hidden="true">DT</Monogram>
 				<Content>
 					<Title>About Me</Title>

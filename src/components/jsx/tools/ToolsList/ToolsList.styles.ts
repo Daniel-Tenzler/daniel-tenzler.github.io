@@ -41,7 +41,6 @@ export const CategoryTitle = styled.h2`
 	font-weight: 600;
 	color: var(--color-text-emphasis);
 	margin-bottom: 8px;
-	border-bottom: 2px solid var(--divider);
 `;
 
 export const ToolsGrid = styled.div`

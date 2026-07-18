@@ -5,7 +5,6 @@ import {
 	StyledContainer,
 	StyledHeader,
 	StyledTitle,
-	StyledDescription,
 	StyledGrid,
 	StyledContactCard,
 	StyledLabel,
@@ -45,12 +44,7 @@ export default function ContactSection() {
 			<GridBackground />
 			<StyledContainer>
 				<StyledHeader>
-					<StyledTitle>Get In Touch</StyledTitle>
-					<StyledDescription>
-						I&apos;m always open to discussing new projects,
-						opportunities, or just having a chat about technology
-						and design.
-					</StyledDescription>
+					<StyledTitle>Contact</StyledTitle>
 				</StyledHeader>
 
 				<StyledGrid>

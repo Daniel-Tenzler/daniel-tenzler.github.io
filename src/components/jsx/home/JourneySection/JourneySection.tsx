@@ -29,13 +29,11 @@ const JourneySection = ({ data }: JourneySectionProps) => {
 						<EntryMeta>
 							<YearRange>{item.date}</YearRange>
 							<TypeLabel $type={item.type}>
-								{item.type === 'job'
-									? 'Work'
-									: 'Education'}
+								{item.type === 'job' ? 'Work' : 'Education'}
 							</TypeLabel>
 						</EntryMeta>
 
-						<EntryContent>
+						<EntryContent data-cursor-glow>
 							<EntryTitle>{item.title}</EntryTitle>
 							<Description>{item.description}</Description>
 							{item.link && (

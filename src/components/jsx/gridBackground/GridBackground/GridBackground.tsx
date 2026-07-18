@@ -11,10 +11,10 @@ const GRID_SPACING = 40;
 const SEGMENT_SIZE = 16;
 const MIN_LINE_WIDTH = 0.5;
 const MAX_LINE_WIDTH = 1.35;
-const MAX_EFFECT_DIST = 200;
+const MAX_EFFECT_DIST = 320;
 const WARP_OPTIONS = {
 	maxWarp: 6,
-	warpRadius: 220,
+	warpRadius: 340,
 };
 
 export default function GridBackground() {

@@ -36,10 +36,7 @@ export default function SkillsSection({
 
 	return (
 		<Section>
-			<SectionHeader
-				title="Toolbox"
-				titleId="skills-heading"
-			/>
+			<SectionHeader title="Toolbox" titleId="skills-heading" />
 			<Grid>
 				{CATEGORY_ORDER.map((categoryKey) => {
 					const category = categories[categoryKey];
@@ -48,7 +45,7 @@ export default function SkillsSection({
 					const categorySkills = groupedSkills[categoryKey] ?? [];
 
 					return (
-						<CategoryCard key={categoryKey}>
+						<CategoryCard key={categoryKey} data-cursor-glow>
 							<CategoryTitle $color={category.colorVar}>
 								{category.label}
 							</CategoryTitle>
