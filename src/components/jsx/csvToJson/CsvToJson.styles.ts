@@ -5,9 +5,9 @@ export const ControlsContainer = styled.div`
 	flex-direction: column;
 	gap: 1em;
 	padding: 1em;
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 	border-radius: 8px;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 
 	@media (max-width: 768px) {
 		gap: 0.8em;
@@ -42,10 +42,10 @@ export const OptionLabel = styled.label`
 `;
 
 export const Select = styled.select`
-	background-color: var(--gray-292929);
+	background-color: var(--card-bg);
 	color: var(--color-text-emphasis);
 	padding: 0.4em 0.6em;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 4px;
 	font-size: 13px;
 	cursor: pointer;
@@ -57,7 +57,7 @@ export const Select = styled.select`
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 	}
 
@@ -73,7 +73,7 @@ export const Checkbox = styled.input`
 	accent-color: var(--color-border-light);
 
 	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 	}
 `;
@@ -88,9 +88,9 @@ export const StatsContainer = styled.div`
 	display: flex;
 	gap: 1.5em;
 	padding: 0.6em 1em;
-	background-color: var(--gray-292929);
+	background-color: var(--card-bg);
 	border-radius: 6px;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 
 	@media (max-width: 480px) {
 		gap: 1em;

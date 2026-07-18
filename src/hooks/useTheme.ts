@@ -9,6 +9,21 @@ const getDocumentTheme = (): Theme => {
 	);
 };
 
+let themeTransitionTimeout: ReturnType<typeof setTimeout> | null = null;
+
+const THEME_TRANSITION_MS = 450;
+
+const applyThemeAttribute = (theme: Theme): void => {
+	const root = document.documentElement;
+	root.classList.add('theme-transition');
+	root.setAttribute('data-theme', theme);
+	if (themeTransitionTimeout) clearTimeout(themeTransitionTimeout);
+	themeTransitionTimeout = setTimeout(() => {
+		root.classList.remove('theme-transition');
+		themeTransitionTimeout = null;
+	}, THEME_TRANSITION_MS);
+};
+
 /**
  * Custom hook for managing theme via CSS variables on the html element.
  * This approach works across all Astro islands since CSS variables are global.
@@ -52,7 +67,7 @@ export const useTheme = (): {
 		const handleSystemChange = (e: MediaQueryListEvent) => {
 			if (!localStorage.getItem('theme')) {
 				const nextTheme = e.matches ? 'dark' : 'light';
-				document.documentElement.setAttribute('data-theme', nextTheme);
+				applyThemeAttribute(nextTheme);
 				setThemeState(nextTheme);
 			}
 		};
@@ -87,7 +102,7 @@ export const useTheme = (): {
 	 */
 	const setTheme = (theme: Theme): void => {
 		if (typeof document === 'undefined') return;
-		document.documentElement.setAttribute('data-theme', theme);
+		applyThemeAttribute(theme);
 		localStorage.setItem('theme', theme);
 		setThemeState(theme);
 		window.dispatchEvent(new Event('themeChange'));

@@ -39,24 +39,23 @@ export const SectionTitle = styled.h3`
 export const ContentWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	background-color: var(--gray-292929);
-	border-radius: 8px;
+	background: var(--card-bg);
+	border: var(--card-border);
+	border-radius: var(--card-radius);
 	flex: 1;
 	min-height: 0;
 	overflow: hidden;
-	border: 2px solid transparent;
 	transition:
-		background-color 0.2s ease,
-		border-color 0.2s ease;
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
 	box-sizing: border-box;
 	position: relative;
 	gap: 1em;
 	padding: 1em;
 
 	&:focus-within {
-		border-color: var(--gray-474747);
-		outline: 1px solid var(--gray-474747);
-		outline-offset: 2px;
+		border-color: var(--card-hover-border);
+		box-shadow: var(--card-hover-shadow);
 	}
 
 	@media (max-width: 768px) {

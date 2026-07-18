@@ -113,7 +113,7 @@ const BaseContentWrapper = styled('div', {
 })<WithFullscreenProp>`
 	display: flex;
 	flex-direction: column;
-	background-color: var(--gray-292929);
+	background-color: var(--card-bg);
 	border-radius: 8px;
 	flex: 1;
 	min-height: 0;
@@ -137,10 +137,10 @@ export const InputContentWrapper = styled(BaseContentWrapper)`
 	&:focus-within {
 		${({ isFullscreen }) =>
 			isFullscreen
-				? `background-color: var(--gray-2d2d2d);`
+				? `background-color: var(--control-bg);`
 				: `
-					border-color: var(--gray-474747);
-					outline: 1px solid var(--gray-474747);
+					border-color: var(--control-border);
+					outline: 1px solid var(--control-border);
 					outline-offset: 2px;
 				`}
 	}
@@ -230,15 +230,15 @@ export const SuccessMessage = styled.div`
 `;
 
 export const CopyButton = styled(BaseSmallButton)`
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 `;
 
 export const ImportButton = styled(BaseSmallButton)`
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 `;
 
 export const ToolbarButton = styled(BaseSmallButton)`
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 	padding: 0.35em 0.7em;
 	font-size: 12px;
 
@@ -254,21 +254,21 @@ export const ToolbarContainer = styled.div`
 	flex-wrap: wrap;
 	padding: 0.3em 0.6em;
 	gap: 0.5em;
-	border-top: 1px solid var(--gray-383838);
+	border-top: 1px solid var(--control-border);
 	background-color: transparent;
 `;
 
 export const ToolbarSeparator = styled.span`
 	width: 1px;
 	height: 20px;
-	background-color: var(--gray-474747);
+	background-color: var(--control-border);
 	flex: none;
 `;
 
 export const IndentSelect = styled.select`
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 	color: var(--color-text-emphasis);
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 8px;
 	padding: 0.35em 0.6em;
 	font-size: 12px;
@@ -278,12 +278,12 @@ export const IndentSelect = styled.select`
 		border-color 0.2s ease;
 
 	&:hover {
-		background-color: var(--gray-404040);
+		background-color: var(--control-bg-hover);
 		border-color: var(--color-border-light);
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 	}
 
@@ -331,7 +331,7 @@ export const Separator = styled('div', {
 		content: '';
 		width: 2px;
 		height: 150px;
-		background-color: var(--gray-474747);
+		background-color: var(--control-border);
 		border-radius: 999px;
 	}
 
@@ -356,7 +356,7 @@ export const FullscreenButton = styled.button`
 	transform: translateY(-50%);
 	background: var(--color-border-light);
 	color: var(--color-text-emphasis);
-	border: 1px solid var(--gray-404040);
+	border: 1px solid var(--control-border);
 	border-radius: 8px;
 	padding: 0.4em 0.9em;
 	font-size: 14px;
@@ -367,12 +367,12 @@ export const FullscreenButton = styled.button`
 	z-index: 2;
 
 	&:hover {
-		background: var(--gray-404040);
-		border-color: var(--gray-474747);
+		background: var(--control-bg-hover);
+		border-color: var(--control-border);
 	}
 
 	&:active {
-		background: var(--gray-383838);
+		background: var(--control-bg);
 	}
 
 	&:focus-visible {

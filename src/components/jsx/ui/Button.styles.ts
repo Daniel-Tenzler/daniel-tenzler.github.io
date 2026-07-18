@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 // Base focus-visible style shared across all buttons
 const focusVisibleStyle = `
 	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 	}
 `;
@@ -13,10 +13,10 @@ const focusVisibleStyle = `
  * Common in: ColorConverter, BoxShadowGenerator, DiffChecker, etc.
  */
 export const BaseSmallButton = styled.button`
-	background-color: var(--gray-404040);
+	background-color: var(--control-bg);
 	color: var(--color-text-emphasis);
 	padding: 0.5em 1em;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 8px;
 	font-weight: 500;
 	font-size: 13px;
@@ -26,12 +26,12 @@ export const BaseSmallButton = styled.button`
 		border-color 0.2s ease;
 
 	&:hover {
-		background-color: var(--gray-474747);
+		background-color: var(--control-bg-hover);
 		border-color: var(--color-border-light);
 	}
 
 	&:active {
-		background-color: var(--gray-383838);
+		background-color: var(--control-bg);
 	}
 
 	${focusVisibleStyle}
@@ -47,10 +47,10 @@ export const BaseSmallButton = styled.button`
  * Used in: BoxShadowGenerator
  */
 export const BaseMediumButton = styled.button`
-	background-color: var(--gray-404040);
+	background-color: var(--control-bg);
 	color: var(--color-text-emphasis);
 	padding: 0.6em 1em;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 8px;
 	font-size: 13px;
 	font-weight: 500;
@@ -61,12 +61,12 @@ export const BaseMediumButton = styled.button`
 	width: fit-content;
 
 	&:hover {
-		background-color: var(--gray-474747);
+		background-color: var(--control-bg-hover);
 		border-color: var(--color-border-light);
 	}
 
 	&:active {
-		background-color: var(--gray-383838);
+		background-color: var(--control-bg);
 	}
 
 	${focusVisibleStyle}
@@ -86,7 +86,7 @@ export const BasePrimaryButton = styled.button`
 	padding: 0.75em 2em;
 	border: none;
 	border-radius: 8px;
-	background-color: var(--gray-2d2d2d);
+	background-color: var(--control-bg);
 	font-weight: 500;
 	font-size: 15px;
 	cursor: pointer;
@@ -96,12 +96,12 @@ export const BasePrimaryButton = styled.button`
 		box-shadow 0.2s ease;
 
 	&:hover:not(:disabled) {
-		background-color: var(--gray-222939);
+		background-color: var(--control-bg-hover);
 		box-shadow: 0 2px 4px #0000001a;
 	}
 
 	&:active:not(:disabled) {
-		background-color: var(--gray-383838);
+		background-color: var(--control-bg);
 		box-shadow: none;
 	}
 
@@ -129,10 +129,10 @@ interface BaseToggleButtonProps {
 
 export const BaseToggleButton = styled.button<BaseToggleButtonProps>`
 	background-color: ${(props) =>
-		props.$active ? 'var(--gray-474747)' : 'var(--gray-383838)'};
+		props.$active ? 'var(--control-bg-hover)' : 'var(--control-bg)'};
 	color: var(--color-text-emphasis);
 	padding: 0.6em 1em;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 8px;
 	font-size: 13px;
 	cursor: pointer;
@@ -141,12 +141,12 @@ export const BaseToggleButton = styled.button<BaseToggleButtonProps>`
 		border-color 0.2s ease;
 
 	&:hover {
-		background-color: var(--gray-474747);
+		background-color: var(--control-bg-hover);
 		border-color: var(--color-border-light);
 	}
 
 	&:active {
-		background-color: var(--gray-404040);
+		background-color: var(--control-bg);
 	}
 
 	${focusVisibleStyle}

@@ -44,7 +44,7 @@ export const SectionTitle = styled.h3`
 export const ContentWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	background-color: var(--gray-292929);
+	background-color: var(--card-bg);
 	border-radius: 8px;
 	flex: 1;
 	min-height: 0;
@@ -59,8 +59,8 @@ export const ContentWrapper = styled.div`
 	padding: 1.5em;
 
 	&:focus-within {
-		border-color: var(--gray-474747);
-		outline: 1px solid var(--gray-474747);
+		border-color: var(--control-border);
+		outline: 1px solid var(--control-border);
 		outline-offset: 2px;
 		border-radius: 8px;
 	}
@@ -85,9 +85,9 @@ export const PreviewSection = styled.div<PreviewSectionProps>`
 	align-items: center;
 	padding: 2em;
 	background-color: ${(props) =>
-		props.$backgroundColor || 'var(--gray-383838)'};
+		props.$backgroundColor || 'var(--control-bg)'};
 	border-radius: 8px;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 
 	@media (max-width: 768px) {
 		padding: 1.5em;
@@ -103,7 +103,7 @@ export const PreviewBox = styled.div<PreviewBoxProps>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: var(--gray-292929);
+	color: var(--card-bg);
 	font-weight: 600;
 	box-shadow: ${(props) => props.$boxShadow || 'none'};
 	transition: box-shadow 0.2s ease;
@@ -167,10 +167,10 @@ export const ControlLabel = styled.label`
 `;
 
 export const ControlInput = styled.input`
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 	color: var(--color-text-emphasis);
-	padding: 0.6em 0.8em;
-	border: 1px solid var(--gray-474747);
+	padding: 0.8em;
+	border: 1px solid var(--control-border);
 	border-radius: 6px;
 	font-size: 14px;
 	outline: none;
@@ -180,11 +180,11 @@ export const ControlInput = styled.input`
 
 	&:focus {
 		border-color: var(--color-border-light);
-		box-shadow: 0 0 0 2px var(--gray-474747);
+		box-shadow: var(--control-focus-ring);
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 		border-radius: 6px;
 	}
@@ -209,7 +209,7 @@ export const ColorPicker = styled.input`
 	width: 50px;
 	height: 40px;
 	min-width: 50px;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 6px;
 	cursor: pointer;
 	background-color: transparent;
@@ -230,7 +230,7 @@ export const ColorPicker = styled.input`
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 		border-radius: 6px;
 	}
@@ -243,10 +243,10 @@ export const ColorPicker = styled.input`
 
 export const ColorHexInput = styled.input`
 	flex: 1;
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 	color: var(--color-text-emphasis);
 	padding: 0.6em 0.8em;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 6px;
 	font-size: 14px;
 	font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
@@ -257,11 +257,11 @@ export const ColorHexInput = styled.input`
 
 	&:focus {
 		border-color: var(--color-border-light);
-		box-shadow: 0 0 0 2px var(--gray-474747);
+		box-shadow: var(--control-focus-ring);
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 		border-radius: 6px;
 	}
@@ -279,7 +279,7 @@ export const ColorHexInput = styled.input`
 export const OpacitySlider = styled.input`
 	height: 6px;
 	border-radius: 3px;
-	background: var(--gray-474747);
+	background: var(--control-border);
 	outline: none;
 	-webkit-appearance: none;
 	appearance: none;
@@ -314,7 +314,7 @@ export const OpacitySlider = styled.input`
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 		border-radius: 4px;
 	}
@@ -372,10 +372,10 @@ export const OutputSection = styled.div`
 
 export const OutputCode = styled.textarea`
 	min-height: 60px;
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 	color: var(--color-text-emphasis);
-	padding: 0.8em;
-	border: 1px solid var(--gray-474747);
+	padding: 0.6em 0.8em;
+	border: 1px solid var(--control-border);
 	border-radius: 8px;
 	font-size: 13px;
 	font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
@@ -388,11 +388,11 @@ export const OutputCode = styled.textarea`
 
 	&:focus {
 		border-color: var(--color-border-light);
-		box-shadow: 0 0 0 2px var(--gray-474747);
+		box-shadow: var(--control-focus-ring);
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 		border-radius: 8px;
 	}

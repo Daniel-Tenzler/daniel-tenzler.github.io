@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Grid = styled.div`
 	display: grid;
 	grid-template-columns: 1fr;
-	gap: 24px;
+	gap: var(--grid-gap);
 	padding: 0px 16px;
 	width: 100%;
 
@@ -17,14 +17,18 @@ export const Grid = styled.div`
 `;
 
 export const Card = styled.article`
-	background: var(--color-bg-tertiary);
-	border-radius: 16px;
-	box-shadow: 0 4px 6px var(--gray-292929-1a);
+	background: var(--card-bg);
+	border: var(--card-border);
+	border-radius: var(--card-radius);
 	overflow: hidden;
-	transition: box-shadow 0.2s ease;
+	box-shadow: var(--card-shadow);
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
 
 	&:hover {
-		box-shadow: 0 8px 16px var(--gray-292929-33);
+		border-color: var(--card-hover-border);
+		box-shadow: var(--card-hover-shadow);
 	}
 `;
 
@@ -35,7 +39,7 @@ export const CardImage = styled.img`
 `;
 
 export const CardContent = styled.div`
-	padding: 24px;
+	padding: var(--card-padding);
 `;
 
 export const CardTitle = styled.h2`
@@ -50,7 +54,7 @@ export const CardTitle = styled.h2`
 `;
 
 export const CardDescription = styled.p`
-	color: var(--color-text-primary);
+	color: var(--white-ffffff-b3);
 	margin-bottom: 16px;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
@@ -61,15 +65,20 @@ export const CardDescription = styled.p`
 export const TechContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	gap: 8px;
+	gap: 6px;
 `;
 
 export const TechTag = styled.span`
-	padding: 4px 12px;
-	background-color: var(--black-0f1219-80);
-	border-radius: 999px;
-	font-size: 14px;
+	display: inline-flex;
+	align-items: center;
+	height: var(--chip-height);
+	padding: 0 10px;
+	border-radius: var(--chip-radius);
+	font-size: 0.75rem;
+	font-weight: 500;
 	color: var(--color-text-muted);
+	background: var(--chip-bg);
+	border: 1px solid var(--chip-border);
 `;
 
 export const StyledLinkArea = styled.a`

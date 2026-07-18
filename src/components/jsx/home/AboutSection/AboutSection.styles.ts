@@ -1,66 +1,85 @@
 import styled from '@emotion/styled';
 
 export const Section = styled.section`
-	margin-bottom: 48px;
+	padding: var(--section-gap) 0;
+
+	@media (max-width: 720px) {
+		padding: 40px 0;
+	}
 `;
 
-export const Title = styled.h2`
-	margin-bottom: 16px;
-	color: var(--color-text-primary);
+export const CalloutCard = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 28px;
+	background: var(--card-bg);
+	border: var(--card-border);
+	border-radius: var(--card-radius);
+	padding: 28px;
+	backdrop-filter: blur(6px);
+	box-shadow: var(--card-shadow);
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: flex-start;
+		text-align: left;
+	}
+`;
+
+export const Monogram = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 72px;
+	height: 72px;
+	border-radius: 18px;
+	font-size: 26px;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	color: #fff;
+	background: linear-gradient(
+		135deg,
+		var(--color-accent-brand) 0%,
+		var(--blue-000d8a) 100%
+	);
+	box-shadow: 0 4px 16px var(--blue-2337ff-66);
+
+	@media (max-width: 768px) {
+		width: 56px;
+		height: 56px;
+		font-size: 20px;
+		border-radius: 14px;
+	}
 `;
 
 export const Content = styled.div`
-	background-color: var(--color-bg-tertiary);
-	padding: 24px;
-	border-radius: 16px;
-	box-shadow: 0 1px 2px var(--black-0f1219-0a);
+	flex: 1;
+	min-width: 0;
+`;
+
+export const Title = styled.h2`
+	margin: 0 0 8px;
+	font-size: 20px;
+	font-weight: 700;
+	color: var(--color-text-emphasis);
 `;
 
 export const Paragraph = styled.p`
-	color: var(--color-text-emphasis);
-	margin-bottom: 16px;
-	font-size: 16px;
+	margin: 0;
+	font-size: 15px;
+	line-height: 1.6;
+	color: var(--white-ffffff-b3);
 
-	&:first-child {
-		margin-top: 0;
-	}
-
-	&:last-child {
-		margin-bottom: 0;
+	& + & {
+		margin-top: 12px;
 	}
 `;
 
-export const StyledResumeButton = styled.a`
-	display: inline-flex;
-	align-items: center;
-	padding: 12px 24px;
-	margin-top: 24px;
-	color: var(--color-text-emphasis);
-	background: linear-gradient(
-		135deg,
-		var(--color-bg-tertiary) 0%,
-		var(--color-bg-secondary) 100%
-	);
-	border-radius: 8px;
-	font-weight: 600;
-	font-size: 16px;
-	text-decoration: none;
-	transition:
-		background 0.2s ease,
-		box-shadow 0.2s ease;
-	cursor: pointer;
-
-	&:hover {
-		box-shadow: 0 2px 8px var(--black-0f1219-4d);
-	}
-
-	&:focus-visible {
-		outline: 2px solid var(--color-text-secondary);
-		outline-offset: 2px;
-	}
+export const ActionColumn = styled.div`
+	flex-shrink: 0;
 
 	@media (max-width: 768px) {
-		padding: 10px 20px;
-		font-size: 14px;
+		width: 100%;
 	}
 `;

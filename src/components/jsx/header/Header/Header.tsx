@@ -4,13 +4,13 @@ import {
 	Nav,
 	NavContainer,
 	Logo,
+	LogoDot,
 	NavLinks,
 	NavLink,
 	MobileLeftSection,
 	DesktopDarkModeWrapper,
 } from './Header.styles';
 import MobileMenuComponent from '@/components/jsx/header/MobileMenu/MobileMenu';
-import ScrollProgressBar from '@/components/jsx/ui/ScrollProgressBar/ScrollProgressBar';
 import DarkModeToggle from '@/components/jsx/darkMode/DarkModeToggle/DarkModeToggle';
 import type { HeaderProps } from './Header.types';
 
@@ -46,7 +46,10 @@ export default function Header({ id }: HeaderProps) {
 			<Nav aria-label="Main navigation">
 				<NavContainer>
 					<MobileLeftSection>
-						<Logo href="/">Daniel Tenzler</Logo>
+						<Logo href="/">
+							Daniel Tenzler
+							<LogoDot />
+						</Logo>
 						<DarkModeToggle client:visible />
 					</MobileLeftSection>
 					<NavLinks>
@@ -69,7 +72,6 @@ export default function Header({ id }: HeaderProps) {
 					<MobileMenuComponent />
 				</NavContainer>
 			</Nav>
-			<ScrollProgressBar client:visible />
 		</StyledHeader>
 	);
 }

@@ -1,29 +1,37 @@
 import React from 'react';
 import {
 	Section,
-	Title,
+	CalloutCard,
+	Monogram,
 	Content,
+	Title,
 	Paragraph,
-	StyledResumeButton,
+	ActionColumn,
 } from './AboutSection.styles';
+import { PrimaryButtonAnchor } from '@/components/jsx/ui/AnchorButtons.styles';
 import type { AboutSectionProps } from './AboutSection.types';
 
 export default function AboutSection({ paragraphs }: AboutSectionProps) {
 	return (
 		<Section>
-			<Title>About Me</Title>
-			<Content>
-				{paragraphs.map((paragraph) => (
-					<Paragraph key={paragraph}>{paragraph}</Paragraph>
-				))}
-				<StyledResumeButton
-					href="/resume-daniel-tenzler.pdf"
-					download
-					aria-label="Download resume as PDF"
-				>
-					Download Resume
-				</StyledResumeButton>
-			</Content>
+			<CalloutCard>
+				<Monogram aria-hidden="true">DT</Monogram>
+				<Content>
+					<Title>About Me</Title>
+					{paragraphs.map((paragraph) => (
+						<Paragraph key={paragraph}>{paragraph}</Paragraph>
+					))}
+				</Content>
+				<ActionColumn>
+					<PrimaryButtonAnchor
+						href="/resume-daniel-tenzler.pdf"
+						download
+						aria-label="Download resume as PDF"
+					>
+						Download Resume
+					</PrimaryButtonAnchor>
+				</ActionColumn>
+			</CalloutCard>
 		</Section>
 	);
 }

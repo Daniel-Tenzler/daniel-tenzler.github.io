@@ -19,7 +19,7 @@ export const HexInput = styled.input`
 	padding: 8px 12px;
 	border: 1px solid var(--color-border-light);
 	border-radius: 4px;
-	background-color: var(--gray-2a2a2a);
+	background-color: var(--control-bg);
 	color: var(--color-text-primary);
 	font-family: 'Courier New', monospace;
 	font-size: 14px;
@@ -99,7 +99,7 @@ export const SliderInput = styled.input`
 	width: 100%;
 	height: 6px;
 	border-radius: 3px;
-	background: var(--gray-383838);
+	background: var(--control-bg);
 	outline: none;
 	-webkit-appearance: none;
 	appearance: none;

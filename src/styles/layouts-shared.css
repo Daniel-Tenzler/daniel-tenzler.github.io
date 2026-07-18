@@ -46,6 +46,37 @@
 	--color-border-default: var(--gray-292929);
 	--color-border-light: var(--gray-303030);
 
+	/* === Design System Layout Tokens === */
+	--content-max-width: 1120px;
+	--content-padding-x: 32px;
+	--section-gap: 48px;
+	--card-radius: 24px;
+	--card-radius-lg: 28px;
+	--button-radius: 12px;
+	--card-padding: 24px;
+	--grid-gap: 24px;
+	--card-border: 1px solid rgba(255, 255, 255, 0.1);
+	--card-bg: rgba(14, 18, 28, 0.72);
+	--card-shadow: 0 0 transparent;
+	--card-hover-border: rgba(255, 255, 255, 0.2);
+	--card-hover-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+	--chip-radius: 999px;
+	--chip-height: 26px;
+	--chip-bg: rgba(255, 255, 255, 0.05);
+	--chip-border: rgba(255, 255, 255, 0.08);
+	--accent-glow: 0 0 40px rgba(35, 55, 255, 0.18);
+	--surface-header-bg: rgba(14, 18, 28, 0.92);
+	--surface-header-border: rgba(255, 255, 255, 0.08);
+	--divider: rgba(255, 255, 255, 0.06);
+	--btn-secondary-border: rgba(255, 255, 255, 0.15);
+	--grid-line: rgba(191, 191, 191, 0.1);
+
+	/* === Control / Input Tokens === */
+	--control-bg: var(--black-0f1219);
+	--control-bg-hover: rgba(255, 255, 255, 0.06);
+	--control-border: var(--chip-border);
+	--control-focus-ring: 0 0 0 2px var(--blue-2337ff-4d);
+
 	/* Status Colors */
 	--color-status-success: var(--green-86efac);
 	--color-status-success-dark: #15803d;
@@ -86,10 +117,10 @@
 	--gray-gradient: #e5e9f080, #ffffff;
 	--box-shadow:
 		0 2px 6px #60739f40, 0 8px 24px #60739f54, 0 16px 32px #60739f54;
-	--semi-surface-primary: #303030;
-	--surface-blend-1: #383838;
-	--surface-blend-2: #404040;
-	--outer-surface-background: #474747;
+	--semi-surface-primary: #0f1219;
+	--surface-blend-1: #0d0f15;
+	--surface-blend-2: #0a0c11;
+	--outer-surface-background: #07080c;
 
 	/* === Full color palette (hex format) === */
 
@@ -198,6 +229,27 @@
 	--color-border-default: var(--gray-292929);
 	--color-border-light: var(--gray-303030);
 
+	/* === Design System Layout Tokens (Light) === */
+	--card-border: 1px solid rgba(0, 0, 0, 0.09);
+	--card-bg: rgba(255, 255, 255, 0.82);
+	--card-shadow: 0 1px 2px rgba(60, 70, 90, 0.06);
+	--card-hover-border: rgba(35, 55, 255, 0.4);
+	--card-hover-shadow: 0 10px 30px rgba(60, 70, 90, 0.14);
+	--chip-bg: rgba(15, 23, 42, 0.035);
+	--chip-border: rgba(0, 0, 0, 0.09);
+	--accent-glow: 0 0 40px rgba(35, 55, 255, 0.12);
+	--surface-header-bg: rgba(255, 255, 255, 0.82);
+	--surface-header-border: rgba(0, 0, 0, 0.08);
+	--divider: rgba(0, 0, 0, 0.08);
+	--btn-secondary-border: rgba(0, 0, 0, 0.14);
+	--grid-line: rgba(40, 50, 80, 0.07);
+
+	/* === Control / Input Tokens (Light) === */
+	--control-bg: var(--black-0f1219);
+	--control-bg-hover: rgba(15, 23, 42, 0.05);
+	--control-border: var(--chip-border);
+	--control-focus-ring: 0 0 0 2px var(--blue-2337ff-4d);
+
 	/* Status Colors */
 	--color-status-success: var(--green-86efac);
 	--color-status-error: var(--red-fca5a5);
@@ -232,10 +284,10 @@
 	--shadow-card: var(--box-shadow);
 
 	--gray-gradient: #1e232d80, #f0f0f0;
-	--semi-surface-primary: #f5f5f7;
-	--surface-blend-1: #ebebeb;
-	--surface-blend-2: #e0e0e0;
-	--outer-surface-background: #ffffff;
+	--semi-surface-primary: #e9ecf2;
+	--surface-blend-1: #e2e6ee;
+	--surface-blend-2: #eef0f5;
+	--outer-surface-background: #f7f8fb;
 	--box-shadow:
 		0 2px 6px #78829626, 0 8px 24px #78829633, 0 16px 32px #78829633;
 
@@ -364,6 +416,30 @@ body {
 	outline: 2px solid var(--color-text-secondary);
 	outline-offset: 2px;
 	border-radius: 4px;
+}
+
+/* === Theme Switch Transition === */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+	transition:
+		background-color 0.4s ease,
+		border-color 0.4s ease,
+		color 0.4s ease,
+		fill 0.4s ease,
+		stroke 0.4s ease,
+		box-shadow 0.4s ease,
+		outline-color 0.4s ease !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.theme-transition,
+	.theme-transition *,
+	.theme-transition *::before,
+	.theme-transition *::after {
+		transition: none !important;
+	}
 }
 
 /* === Responsive Base Styles === */

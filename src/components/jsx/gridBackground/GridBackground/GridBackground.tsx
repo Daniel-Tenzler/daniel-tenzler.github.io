@@ -1,5 +1,4 @@
 import { useEffect, useRef, useCallback } from 'react';
-import { COLORS, getRgbaColor } from '@/consts/Colors';
 import {
 	CURSOR_EASE,
 	calculateEasedPoint,
@@ -26,6 +25,15 @@ export default function GridBackground() {
 	const animationIdRef = useRef<number | null>(null);
 	const lastTimeRef = useRef(0);
 	const isVisibleRef = useRef(true);
+	const gridColorRef = useRef<string>('rgba(191, 191, 191, 0.1)');
+
+	const updateGridColor = useCallback(() => {
+		if (typeof document === 'undefined') return;
+		const value = window.getComputedStyle(document.documentElement)
+			.getPropertyValue('--grid-line')
+			.trim();
+		if (value) gridColorRef.current = value;
+	}, []);
 
 	const stopAnimation = useCallback(() => {
 		if (animationIdRef.current !== null) {
@@ -56,7 +64,7 @@ export default function GridBackground() {
 
 		ctx.clearRect(0, 0, width, height);
 
-		const gridColor = getRgbaColor(COLORS.WHITE_BFBFBF, 0.1);
+		const gridColor = gridColorRef.current;
 		easedMousePosRef.current = hasMousePositionRef.current
 			? calculateEasedPoint(
 					easedMousePosRef.current,
@@ -144,6 +152,13 @@ export default function GridBackground() {
 		const canvas = canvasRef.current;
 		if (!canvas) return;
 
+		updateGridColor();
+
+		const handleThemeChange = () => {
+			updateGridColor();
+		};
+		window.addEventListener('themeChange', handleThemeChange);
+
 		const resizeCanvas = () => {
 			canvas.width = window.innerWidth;
 			canvas.height = window.innerHeight;
@@ -221,6 +236,7 @@ export default function GridBackground() {
 		return () => {
 			window.removeEventListener('resize', handleResize);
 			window.removeEventListener('mousemove', handleMouseMove);
+			window.removeEventListener('themeChange', handleThemeChange);
 			observer.disconnect();
 			stopAnimation();
 			if (mouseFrame !== null) {
@@ -233,7 +249,7 @@ export default function GridBackground() {
 				clearTimeout(resizeTimeout);
 			}
 		};
-	}, [draw, stopAnimation]);
+	}, [draw, stopAnimation, updateGridColor]);
 
 	return <Canvas ref={canvasRef} />;
 }

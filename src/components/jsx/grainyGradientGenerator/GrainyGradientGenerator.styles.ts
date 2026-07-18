@@ -87,7 +87,7 @@ export const PreviewSurface = styled.div<PreviewSurfaceProps>`
 	aspect-ratio: ${(props) => props.$aspectRatio};
 	width: 100%;
 	overflow: hidden;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 24px;
 	background: ${(props) => props.$background};
 	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
@@ -267,7 +267,7 @@ export const ExportPanel = styled.aside`
 		background: linear-gradient(
 			90deg,
 			var(--control-accent),
-			var(--gray-222939)
+			var(--color-accent-brand)
 		);
 	}
 
@@ -341,14 +341,14 @@ export const ControlCard = styled.div<ControlCardProps>`
 			color-mix(in srgb, var(--control-accent) 6%, transparent),
 			transparent 92%
 		),
-		var(--gray-383838);
+		var(--control-bg);
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 
 	input[type='range'] {
 		background: linear-gradient(
 			90deg,
 			var(--control-accent),
-			var(--gray-222939)
+			var(--color-accent-brand)
 		);
 	}
 
@@ -409,7 +409,7 @@ export const ExportField = styled.label`
 			var(--color-border-light)
 		);
 		border-radius: 10px;
-		background: var(--gray-2a2a2a);
+		background: var(--control-bg);
 		color: var(--color-text-emphasis);
 		font-family: 'Courier New', monospace;
 		font-size: 0.95rem;
@@ -436,7 +436,7 @@ export const DownloadButton = styled.button`
 			color-mix(in srgb, var(--control-accent) 34%, transparent),
 			transparent
 		),
-		var(--gray-222939);
+		var(--color-accent-brand);
 	color: var(--color-text-emphasis);
 	font-size: 0.9rem;
 	font-weight: 800;
@@ -531,7 +531,7 @@ export const CssOutputField = styled.textarea`
 	border-radius: 16px;
 	background:
 		linear-gradient(135deg, rgba(34, 211, 238, 0.08), transparent 36%),
-		var(--gray-2d2d2d);
+		var(--control-bg);
 	color: var(--color-text-primary);
 	font-family: 'Courier New', monospace;
 	font-size: 0.88rem;
@@ -558,7 +558,7 @@ export const Writeup = styled.section`
 	flex-direction: column;
 	gap: 1em;
 	padding: 1.25em;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 12px;
 	background-color: rgba(56, 56, 56, 0.72);
 	color: var(--color-text-primary);
@@ -587,7 +587,7 @@ export const Writeup = styled.section`
 	code {
 		padding: 0.1rem 0.3rem;
 		border-radius: 4px;
-		background-color: var(--gray-222939);
+		background-color: var(--color-accent-brand);
 		color: var(--color-text-emphasis);
 	}
 `;

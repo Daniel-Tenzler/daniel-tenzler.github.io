@@ -26,9 +26,9 @@ export const PresetButton = styled.button<PresetButtonProps>`
 	border: 1px solid var(--color-border-light);
 	border-radius: 4px;
 	background-color: ${(props) =>
-		props.$isActive ? 'var(--color-accent-brand)' : 'var(--gray-2a2a2a)'};
+		props.$isActive ? 'var(--color-accent-brand)' : 'var(--control-bg)'};
 	color: ${(props) =>
-		props.$isActive ? 'var(--gray-2a2a2a)' : 'var(--color-text-primary)'};
+		props.$isActive ? 'var(--control-bg)' : 'var(--color-text-primary)'};
 	border-color: ${(props) =>
 		props.$isActive ? 'var(--color-accent-brand)' : 'var(--color-border-light)'};
 	font-size: 14px;
@@ -42,7 +42,7 @@ export const PresetButton = styled.button<PresetButtonProps>`
 
 	&:hover:not(:disabled) {
 		background-color: ${(props) =>
-			props.$isActive ? 'var(--color-accent-brand)' : 'var(--gray-383838)'};
+			props.$isActive ? 'var(--color-accent-brand)' : 'var(--control-bg)'};
 		border-color: ${(props) =>
 			props.$isActive ? 'var(--color-accent-brand)' : 'var(--color-accent-brand)'};
 		transform: scale(1.02);

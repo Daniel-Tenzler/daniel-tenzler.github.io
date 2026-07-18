@@ -2,16 +2,30 @@ import React from 'react';
 import {
 	StyledFooter,
 	FooterContainer,
-	FooterContent,
+	FooterTop,
+	FooterBrand,
+	Logo,
+	Tagline,
+	FooterNav,
+	FooterNavLink,
+	FooterBottom,
+	LegalRow,
 	Copyright,
+	FooterLinks,
+	FooterLink,
 	SocialLinks,
 	SocialLink,
 	SocialIcon,
-	FooterLinks,
-	FooterLink,
-	Container,
 } from './Footer.styles';
 import { SrOnly } from '@/components/jsx/ui/SrOnly.styles';
+
+const FOOTER_NAV_ITEMS = [
+	{ href: '/', label: 'Home' },
+	{ href: '/portfolio', label: 'Portfolio' },
+	{ href: '/blog', label: 'Blog' },
+	{ href: '/tools', label: 'Tools' },
+	{ href: '/contact', label: 'Contact' },
+] as const;
 
 export default function Footer() {
 	const currentYear = new Date().getFullYear();
@@ -19,18 +33,32 @@ export default function Footer() {
 	return (
 		<StyledFooter>
 			<FooterContainer>
-				<FooterContent>
-					<Container>
+				<FooterTop>
+					<FooterBrand>
+						<Logo>Daniel Tenzler</Logo>
+						<Tagline>Software developer</Tagline>
+					</FooterBrand>
+					<FooterNav aria-label="Footer navigation">
+						{FOOTER_NAV_ITEMS.map(({ href, label }) => (
+							<FooterNavLink key={href} href={href}>
+								{label}
+							</FooterNavLink>
+						))}
+					</FooterNav>
+				</FooterTop>
+
+				<FooterBottom>
+					<LegalRow>
 						<Copyright>
-							© {currentYear} Daniel Tenzler. All rights reserved.
+							© {currentYear} Daniel Tenzler
 						</Copyright>
 						<FooterLinks>
 							<FooterLink href="/imprint">Imprint</FooterLink>
 							<FooterLink href="/privacy">
-								Privacy Policy
+								Privacy
 							</FooterLink>
 						</FooterLinks>
-					</Container>
+					</LegalRow>
 					<SocialLinks>
 						<SocialLink
 							href="https://github.com/daniel-tenzler"
@@ -61,7 +89,7 @@ export default function Footer() {
 							</SocialIcon>
 						</SocialLink>
 					</SocialLinks>
-				</FooterContent>
+				</FooterBottom>
 			</FooterContainer>
 		</StyledFooter>
 	);

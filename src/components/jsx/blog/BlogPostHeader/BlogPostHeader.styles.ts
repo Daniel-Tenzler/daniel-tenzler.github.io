@@ -26,17 +26,22 @@ export const Title = styled.h1`
 export const TagsContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	gap: 8px;
+	gap: 6px;
 	justify-content: center;
 	margin-bottom: 24px;
 `;
 
 export const Tag = styled.span`
-	padding: 4px 12px;
-	background-color: var(--black-0f1219-80);
-	border-radius: 999px;
-	font-size: 14px;
+	display: inline-flex;
+	align-items: center;
+	height: var(--chip-height);
+	padding: 0 10px;
+	border-radius: var(--chip-radius);
+	font-size: 0.75rem;
+	font-weight: 500;
 	color: var(--color-text-muted);
+	background: var(--chip-bg);
+	border: 1px solid var(--chip-border);
 `;
 
 export const UpdateInfo = styled.div`

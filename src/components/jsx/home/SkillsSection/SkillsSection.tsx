@@ -1,12 +1,11 @@
 import React from 'react';
+import SectionHeader from '@/components/jsx/ui/SectionHeader/SectionHeader';
 import {
 	Section,
-	Title,
-	SkillsContainer,
-	SkillsColumn,
-	CategorySection,
+	Grid,
+	CategoryCard,
 	CategoryTitle,
-	SkillsGrid,
+	SkillsList,
 	SkillBubble,
 } from './SkillsSection.styles';
 import type {
@@ -18,11 +17,12 @@ import type {
 
 export type { Skill, SkillCategoryInfo, SkillCategories, SkillsSectionProps };
 
+const CATEGORY_ORDER = ['languages', 'frameworks', 'tools', 'testing'] as const;
+
 export default function SkillsSection({
 	skills,
 	categories,
 }: SkillsSectionProps) {
-	// Group skills by category
 	const groupedSkills = skills.reduce<Record<string, Skill[]>>(
 		(acc, skill) => {
 			if (!acc[skill.category]) {
@@ -34,48 +34,38 @@ export default function SkillsSection({
 		{}
 	);
 
-	// Convert to array for splitting
-	const categoryEntries = Object.entries(groupedSkills);
-	const midpoint = Math.ceil(categoryEntries.length / 2);
-	const firstColumnCategories = categoryEntries.slice(0, midpoint);
-	const secondColumnCategories = categoryEntries.slice(midpoint);
-
-	const renderCategories = (categoriesArray: Array<[string, Skill[]]>) => {
-		return categoriesArray.map(([categoryKey, categorySkills]) => {
-			const category = categories[categoryKey];
-			if (!category) return null;
-
-			return (
-				<CategorySection key={categoryKey}>
-					<CategoryTitle $color={category.colorVar}>
-						{category.label}
-					</CategoryTitle>
-					<SkillsGrid>
-						{categorySkills.map((skill) => (
-							<SkillBubble
-								key={skill.name}
-								$color={category.colorVar}
-							>
-								{skill.name}
-							</SkillBubble>
-						))}
-					</SkillsGrid>
-				</CategorySection>
-			);
-		});
-	};
-
 	return (
 		<Section>
-			<Title>Technologies & Skills</Title>
-			<SkillsContainer>
-				<SkillsColumn>
-					{renderCategories(firstColumnCategories)}
-				</SkillsColumn>
-				<SkillsColumn>
-					{renderCategories(secondColumnCategories)}
-				</SkillsColumn>
-			</SkillsContainer>
+			<SectionHeader
+				title="Toolbox"
+				titleId="skills-heading"
+			/>
+			<Grid>
+				{CATEGORY_ORDER.map((categoryKey) => {
+					const category = categories[categoryKey];
+					if (!category) return null;
+
+					const categorySkills = groupedSkills[categoryKey] ?? [];
+
+					return (
+						<CategoryCard key={categoryKey}>
+							<CategoryTitle $color={category.colorVar}>
+								{category.label}
+							</CategoryTitle>
+							<SkillsList>
+								{categorySkills.map((skill) => (
+									<SkillBubble
+										key={skill.name}
+										$color={category.colorVar}
+									>
+										{skill.name}
+									</SkillBubble>
+								))}
+							</SkillsList>
+						</CategoryCard>
+					);
+				})}
+			</Grid>
 		</Section>
 	);
 }
