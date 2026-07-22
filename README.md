@@ -54,6 +54,7 @@ yarn deploy:server -- --dry-run
 
 - `.env.github` - GitHub Pages environment variables
 - `.env.server` - Private server environment variables (git-ignored)
+- `PUBLIC_FEEDBACK_API_URL` - Optional service feedback endpoint override
 
 **Security Features:**
 

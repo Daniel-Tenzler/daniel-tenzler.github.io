@@ -1,0 +1,435 @@
+---
+const feedbackApiUrl =
+	import.meta.env.PUBLIC_FEEDBACK_API_URL ??
+	'https://ideastore.daniel-tenzler.de/api/public/feedback';
+---
+
+<button
+	type="button"
+	class="feedback-trigger"
+	aria-haspopup="dialog"
+	aria-controls="feedback-dialog"
+	data-feedback-open
+>
+	<svg aria-hidden="true" viewBox="0 0 24 24">
+		<path
+			d="M21 11.5a8.4 8.4 0 0 1-9 8.5 9.7 9.7 0 0 1-4-.8L3 21l1.7-4.5A8.3 8.3 0 0 1 3 11.5 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5Z"
+		/>
+	</svg>
+	<span>Feedback</span>
+</button>
+
+<dialog
+	id="feedback-dialog"
+	class="feedback-dialog"
+	aria-labelledby="feedback-title"
+	aria-describedby="feedback-description"
+	data-feedback-dialog
+>
+	<div class="feedback-header">
+		<div>
+			<h2 id="feedback-title">Send feedback</h2>
+			<p id="feedback-description">
+				Found an issue or have an idea? Let me know.
+			</p>
+		</div>
+		<button
+			type="button"
+			class="feedback-close"
+			aria-label="Close feedback form"
+			data-feedback-close
+		>
+			<svg aria-hidden="true" viewBox="0 0 24 24">
+				<path d="m6 6 12 12M18 6 6 18" />
+			</svg>
+		</button>
+	</div>
+
+	<form
+		class="feedback-form"
+		action={feedbackApiUrl}
+		method="POST"
+		data-feedback-form
+	>
+		<label for="feedback-category">What kind of feedback?</label>
+		<select id="feedback-category" name="category">
+			<option value="suggestion">Suggestion</option>
+			<option value="bug">Bug or broken page</option>
+			<option value="content">Content feedback</option>
+			<option value="other">Other</option>
+		</select>
+
+		<label for="feedback-message">Your feedback</label>
+		<textarea
+			id="feedback-message"
+			name="message"
+			rows="5"
+			maxlength="2000"
+			placeholder="What should I know?"
+			required
+			data-feedback-message
+		></textarea>
+
+		<label for="feedback-email">
+			Email <span class="optional">(optional)</span>
+		</label>
+		<input
+			id="feedback-email"
+			type="email"
+			name="email"
+			autocomplete="email"
+			placeholder="you@example.com"
+		/>
+
+		<div class="honeypot" aria-hidden="true">
+			<label for="feedback-website">Leave this field empty</label>
+			<input
+				id="feedback-website"
+				type="text"
+				name="website"
+				tabindex="-1"
+				autocomplete="off"
+			/>
+		</div>
+
+		<input type="hidden" name="pageUrl" data-feedback-page />
+
+		<p class="feedback-privacy">
+			Your submission is stored securely. See the
+			<a href="/privacy">privacy policy</a>.
+		</p>
+		<p class="feedback-status" role="status" aria-live="polite" data-feedback-status></p>
+
+		<button type="submit" class="feedback-submit" data-feedback-submit>
+			Send feedback
+		</button>
+	</form>
+</dialog>
+
+<script>
+	const openButton = document.querySelector('[data-feedback-open]');
+	const dialog = document.querySelector('[data-feedback-dialog]');
+	const closeButton = document.querySelector('[data-feedback-close]');
+	const form = document.querySelector('[data-feedback-form]');
+	const message = document.querySelector('[data-feedback-message]');
+	const page = document.querySelector('[data-feedback-page]');
+	const status = document.querySelector('[data-feedback-status]');
+	const submitButton = document.querySelector('[data-feedback-submit]');
+
+	if (
+		openButton instanceof HTMLButtonElement &&
+		dialog instanceof HTMLDialogElement &&
+		closeButton instanceof HTMLButtonElement &&
+		form instanceof HTMLFormElement &&
+		message instanceof HTMLTextAreaElement &&
+		page instanceof HTMLInputElement &&
+		status instanceof HTMLParagraphElement &&
+		submitButton instanceof HTMLButtonElement
+	) {
+		openButton.addEventListener('click', () => {
+			page.value = window.location.href;
+			status.textContent = '';
+			status.className = 'feedback-status';
+			dialog.showModal();
+			message.focus();
+		});
+
+		closeButton.addEventListener('click', () => dialog.close());
+
+		dialog.addEventListener('click', (event) => {
+			if (event.target === dialog) {
+				dialog.close();
+			}
+		});
+
+		dialog.addEventListener('close', () => openButton.focus());
+
+		form.addEventListener('submit', async (event) => {
+			event.preventDefault();
+			const formData = new FormData(form);
+
+			if (formData.get('website')) {
+				form.reset();
+				status.textContent = 'Thanks. Your feedback was sent.';
+				status.className = 'feedback-status success';
+				return;
+			}
+
+			submitButton.disabled = true;
+			submitButton.textContent = 'Sending...';
+			status.textContent = '';
+
+			try {
+				const email = formData.get('email');
+				const response = await fetch(form.action, {
+					method: 'POST',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						category: formData.get('category'),
+						message: formData.get('message'),
+						email: email || undefined,
+						pageUrl: formData.get('pageUrl'),
+						website: formData.get('website'),
+					}),
+				});
+
+				if (!response.ok) {
+					throw new Error('Feedback submission failed');
+				}
+
+				form.reset();
+				status.textContent = 'Thanks. Your feedback was sent.';
+				status.className = 'feedback-status success';
+			} catch {
+				status.textContent =
+					'Something went wrong. Please try again or email kontakt@daniel-tenzler.de.';
+				status.className = 'feedback-status error';
+			} finally {
+				submitButton.disabled = false;
+				submitButton.textContent = 'Send feedback';
+			}
+		});
+	}
+</script>
+
+<style>
+	.feedback-trigger {
+		position: fixed;
+		right: 1rem;
+		bottom: 1rem;
+		z-index: 1000;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		min-height: 2.75rem;
+		padding: 0.7rem 1rem;
+		border: 1px solid var(--blue-2337ff-66);
+		border-radius: 999px;
+		box-shadow: 0 0.5rem 1.5rem var(--black-000000-26);
+		background: var(--color-accent-brand);
+		color: #fff;
+		font: inherit;
+		font-size: 0.875rem;
+		font-weight: 700;
+		cursor: pointer;
+		transition:
+			transform 0.2s ease,
+			box-shadow 0.2s ease;
+	}
+
+	.feedback-trigger:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 0.75rem 1.75rem var(--black-000000-26);
+	}
+
+	.feedback-trigger svg {
+		width: 1.15rem;
+		height: 1.15rem;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 2;
+	}
+
+	.feedback-dialog {
+		position: fixed;
+		inset: auto 1rem 5.5rem auto;
+		width: min(25rem, calc(100vw - 2rem));
+		max-height: calc(100vh - 7rem);
+		margin: 0;
+		padding: 1.25rem;
+		overflow-y: auto;
+		border: 1px solid var(--color-border-light);
+		border-radius: 1rem;
+		box-shadow: 0 1.25rem 3rem var(--black-000000-26);
+		background: var(--color-bg-secondary);
+		color: var(--color-text-primary);
+	}
+
+	.feedback-dialog::backdrop {
+		background: var(--black-0f1219-66);
+		backdrop-filter: blur(2px);
+	}
+
+	.feedback-header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.feedback-header h2 {
+		margin: 0 0 0.35rem;
+		color: var(--color-text-emphasis);
+		font-size: 1.25rem;
+		line-height: 1.2;
+	}
+
+	.feedback-header p {
+		margin: 0;
+		color: var(--color-text-muted);
+		font-size: 0.875rem;
+		line-height: 1.5;
+	}
+
+	.feedback-close {
+		display: grid;
+		flex: 0 0 auto;
+		place-items: center;
+		width: 2rem;
+		height: 2rem;
+		padding: 0;
+		border: 0;
+		border-radius: 50%;
+		background: var(--color-bg-tertiary);
+		color: var(--color-text-emphasis);
+		cursor: pointer;
+	}
+
+	.feedback-close svg {
+		width: 1rem;
+		height: 1rem;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-width: 2;
+	}
+
+	.feedback-form {
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	.feedback-form label {
+		margin-top: 0.5rem;
+		color: var(--color-text-emphasis);
+		font-size: 0.8rem;
+		font-weight: 700;
+	}
+
+	.feedback-form .optional {
+		color: var(--color-text-muted);
+		font-weight: 400;
+	}
+
+	.feedback-form input,
+	.feedback-form select,
+	.feedback-form textarea {
+		box-sizing: border-box;
+		width: 100%;
+		border: 1px solid var(--color-border-light);
+		border-radius: 0.5rem;
+		background: var(--color-bg-tertiary);
+		color: var(--color-text-emphasis);
+		font: inherit;
+		font-size: 0.9rem;
+	}
+
+	.feedback-form input,
+	.feedback-form select {
+		height: 2.75rem;
+		padding: 0 0.75rem;
+	}
+
+	.feedback-form textarea {
+		min-height: 7rem;
+		padding: 0.75rem;
+		line-height: 1.5;
+		resize: vertical;
+	}
+
+	.feedback-form input::placeholder,
+	.feedback-form textarea::placeholder {
+		color: var(--color-text-muted);
+		opacity: 0.8;
+	}
+
+	.honeypot {
+		position: absolute;
+		left: -10000px;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+	}
+
+	.feedback-privacy,
+	.feedback-status {
+		margin: 0.4rem 0 0;
+		font-size: 0.75rem;
+		line-height: 1.45;
+	}
+
+	.feedback-privacy {
+		color: var(--color-text-muted);
+	}
+
+	.feedback-privacy a {
+		color: inherit;
+	}
+
+	.feedback-status:empty {
+		display: none;
+	}
+
+	.feedback-status.success {
+		color: var(--color-status-success);
+	}
+
+	.feedback-status.error {
+		color: var(--color-status-error);
+	}
+
+	.feedback-submit {
+		min-height: 2.75rem;
+		margin-top: 0.35rem;
+		padding: 0.7rem 1rem;
+		border: 0;
+		border-radius: 0.5rem;
+		background: var(--color-accent-brand);
+		color: #fff;
+		font: inherit;
+		font-size: 0.9rem;
+		font-weight: 700;
+		cursor: pointer;
+	}
+
+	.feedback-submit:disabled {
+		cursor: wait;
+		opacity: 0.65;
+	}
+
+	@media (max-width: 30rem) {
+		.feedback-trigger span {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			clip: rect(0, 0, 0, 0);
+			white-space: nowrap;
+		}
+
+		.feedback-trigger {
+			justify-content: center;
+			width: 3rem;
+			height: 3rem;
+			padding: 0;
+		}
+
+		.feedback-dialog {
+			inset: auto 0.75rem 5rem;
+			width: auto;
+			max-height: calc(100vh - 6rem);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.feedback-trigger {
+			transition: none;
+		}
+	}
+</style>

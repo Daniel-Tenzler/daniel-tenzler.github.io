@@ -1,5 +1,6 @@
 ---
 import BaseHead from 'src/components/astro/BaseHead.astro';
+import FeedbackWidget from 'src/components/astro/FeedbackWidget.astro';
 import Footer from 'src/components/jsx/footer/Footer/Footer';
 import Header from 'src/components/jsx/header/Header/Header';
 import '../styles/layouts-shared.css';
@@ -94,5 +95,6 @@ const {
 			</main>
 			<Footer client:idle />
 		</div>
+		<FeedbackWidget />
 	</body>
 </html>
