@@ -1,0 +1,116 @@
+---
+---
+
+<style is:global>
+	@media (hover: hover) and (pointer: fine) {
+		[data-cursor-glow] {
+			--cursor-glow-x: 50%;
+			--cursor-glow-y: 50%;
+			--cursor-glow-opacity: 0;
+			position: relative;
+			isolation: isolate;
+		}
+
+		[data-cursor-glow]::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			z-index: 2;
+			border-radius: inherit;
+			background:
+				radial-gradient(
+					8.5rem circle at var(--cursor-glow-x) var(--cursor-glow-y),
+					rgba(13, 26, 145, 0.28),
+					transparent 68%
+				),
+				radial-gradient(
+					6.5rem circle at calc(var(--cursor-glow-x) + 1.25rem)
+						calc(var(--cursor-glow-y) - 1rem),
+					rgba(18, 78, 155, 0.16),
+					transparent 72%
+				);
+			opacity: var(--cursor-glow-opacity);
+			pointer-events: none;
+			transition: opacity 180ms ease-out;
+		}
+
+		[data-theme='light'] [data-cursor-glow]::after {
+			background:
+				radial-gradient(
+					8.5rem circle at var(--cursor-glow-x) var(--cursor-glow-y),
+					rgba(13, 26, 145, 0.15),
+					transparent 68%
+				),
+				radial-gradient(
+					6.5rem circle at calc(var(--cursor-glow-x) + 1.25rem)
+						calc(var(--cursor-glow-y) - 1rem),
+					rgba(9, 65, 130, 0.1),
+					transparent 72%
+				);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		[data-cursor-glow]::after {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	import { calculateCursorGlow } from './CursorCardGlow.utils';
+
+	const ACTIVATION_DISTANCE = 120;
+	const finePointerQuery = window.matchMedia(
+		'(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)'
+	);
+
+	if (finePointerQuery.matches) {
+		const cards = Array.from(
+			document.querySelectorAll<HTMLElement>('[data-cursor-glow]')
+		);
+		let animationFrameId: number | null = null;
+		let pointer = { x: -9999, y: -9999 };
+
+		const updateCards = () => {
+			animationFrameId = null;
+
+			cards.forEach((card) => {
+				const glow = calculateCursorGlow(
+					pointer,
+					card.getBoundingClientRect(),
+					ACTIVATION_DISTANCE
+				);
+
+				card.style.setProperty('--cursor-glow-x', `${glow.x}px`);
+				card.style.setProperty('--cursor-glow-y', `${glow.y}px`);
+				card.style.setProperty(
+					'--cursor-glow-opacity',
+					glow.opacity.toFixed(3)
+				);
+			});
+		};
+
+		const queueUpdate = () => {
+			if (animationFrameId === null) {
+				animationFrameId = requestAnimationFrame(updateCards);
+			}
+		};
+
+		window.addEventListener(
+			'pointermove',
+			(event) => {
+				pointer = { x: event.clientX, y: event.clientY };
+				queueUpdate();
+			},
+			{ passive: true }
+		);
+		window.addEventListener('scroll', queueUpdate, { passive: true });
+		window.addEventListener('resize', queueUpdate, { passive: true });
+		window.addEventListener('blur', () => {
+			cards.forEach((card) => {
+				card.style.setProperty('--cursor-glow-opacity', '0');
+			});
+		});
+	}
+</script>

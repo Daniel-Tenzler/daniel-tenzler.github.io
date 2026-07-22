@@ -66,11 +66,11 @@ export const ColumnTitle = styled.div`
 export const Textarea = styled.textarea`
 	flex: 1;
 	min-height: 350px;
-	background-color: var(--gray-383838);
+	background-color: var(--black-0f1219);
 	color: var(--color-text-emphasis);
 	padding: 1em;
-	border: 1px solid var(--gray-474747);
-	border-radius: 8px;
+	border: 1px solid var(--chip-border);
+	border-radius: var(--button-radius);
 	font-size: 14px;
 	font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
 	outline: none;
@@ -86,8 +86,8 @@ export const Textarea = styled.textarea`
 	}
 
 	&:focus {
-		border-color: var(--color-border-light);
-		box-shadow: 0 0 0 2px var(--gray-474747);
+		border-color: var(--color-accent-brand);
+		box-shadow: 0 0 0 2px var(--blue-2337ff-4d);
 	}
 
 	&[readonly] {

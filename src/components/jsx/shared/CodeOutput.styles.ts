@@ -25,7 +25,7 @@ export const CopyButton = styled.button<CopyButtonProps>`
 	border: 1px solid var(--color-border-light);
 	border-radius: 4px;
 	background-color: ${(props) =>
-		props.$copied ? 'var(--color-status-success)' : 'var(--gray-2d2d2d)'};
+		props.$copied ? 'var(--color-status-success)' : 'var(--control-bg)'};
 	color: ${(props) =>
 		props.$copied ? 'var(--gray-2d2d2d)' : 'var(--color-text-primary)'};
 	border-color: ${(props) =>
@@ -47,7 +47,7 @@ export const CopyButton = styled.button<CopyButtonProps>`
 		background-color: ${(props) =>
 			props.$copied
 				? 'var(--color-status-success)'
-				: 'var(--gray-383838)'};
+				: 'var(--control-bg)'};
 		border-color: ${(props) =>
 			props.$copied
 				? 'var(--color-status-success)'
@@ -75,7 +75,7 @@ export const CodeBlock = styled.pre`
 	padding: 16px;
 	border: 1px solid var(--color-border-light);
 	border-radius: 4px;
-	background-color: var(--gray-2d2d2d);
+	background-color: var(--control-bg);
 	color: var(--color-text-primary);
 	font-family: 'Courier New', monospace;
 	font-size: 14px;

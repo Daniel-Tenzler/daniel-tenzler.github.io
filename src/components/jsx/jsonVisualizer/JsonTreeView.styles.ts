@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 export const TreeContainer = styled.div`
 	margin: 0.45em 0.6em;
 	padding: 0.55em;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 8px;
-	background: var(--gray-2d2d2d);
+	background: var(--control-bg);
 `;
 
 export const TreeHeader = styled.div`
@@ -25,9 +25,9 @@ export const TreeTitle = styled.h4`
 export const TreeSearch = styled.input`
 	flex: 1;
 	min-width: 160px;
-	background: var(--gray-383838);
+	background: var(--control-bg);
 	color: var(--color-text-emphasis);
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 6px;
 	padding: 0.35em 0.6em;
 	font-size: 12px;
@@ -70,14 +70,14 @@ export const TypeBadge = styled.span`
 	font-size: 10px;
 	padding: 0.15em 0.4em;
 	border-radius: 999px;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	color: var(--color-text-muted);
 `;
 
 export const CopyPathButton = styled.button`
 	margin-left: auto;
 	background: transparent;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 6px;
 	color: var(--color-text-muted);
 	font-size: 10px;

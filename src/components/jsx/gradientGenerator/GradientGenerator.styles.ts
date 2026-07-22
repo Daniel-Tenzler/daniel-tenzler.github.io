@@ -48,7 +48,7 @@ export const PreviewPanel = styled.section`
 	background:
 		linear-gradient(135deg, rgba(34, 211, 238, 0.12), transparent 42%),
 		linear-gradient(315deg, rgba(85, 96, 247, 0.1), transparent 48%),
-		var(--gray-383838);
+		var(--control-bg);
 	box-shadow:
 		0 24px 80px rgba(0, 0, 0, 0.28),
 		inset 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -96,7 +96,7 @@ export const PreviewFrame = styled.div`
 	overflow: hidden;
 	border: 1px solid rgba(255, 255, 255, 0.14);
 	border-radius: 20px;
-	background-color: var(--gray-222939);
+	background-color: var(--color-accent-brand);
 	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
 `;
 
@@ -137,7 +137,7 @@ export const TypeTab = styled.button<TypeTabProps>`
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 	}
 
@@ -238,7 +238,7 @@ export const ControlCard = styled.div`
 	border-radius: 18px;
 	background:
 		linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent),
-		var(--gray-383838);
+		var(--control-bg);
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 `;
 
@@ -286,9 +286,9 @@ export const ControlsGroup = styled.div`
 	select {
 		width: 100%;
 		padding: 0.75em 1em;
-		background-color: var(--gray-383838);
+		background-color: var(--control-bg);
 		color: var(--color-text-emphasis);
-		border: 1px solid var(--gray-474747);
+		border: 1px solid var(--control-border);
 		border-radius: 8px;
 		font-size: 14px;
 		cursor: pointer;
@@ -299,7 +299,7 @@ export const ControlsGroup = styled.div`
 
 		&:focus {
 			border-color: var(--color-border-light);
-			box-shadow: 0 0 0 2px var(--gray-474747);
+			box-shadow: var(--control-focus-ring);
 		}
 
 		@media (max-width: 768px) {

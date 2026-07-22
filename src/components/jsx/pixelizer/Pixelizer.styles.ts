@@ -20,16 +20,16 @@ export const FileInputLabel = styled.label`
 	font-weight: 500;
 	cursor: pointer;
 	padding: 0.75em 2em;
-	border: 2px solid var(--gray-383838);
+	border: 2px solid var(--control-border);
 	border-radius: 8px;
-	background-color: var(--gray-474747);
+	background-color: var(--control-bg);
 	transition: all 0.2s ease;
 	display: inline-block;
 	text-align: center;
 	min-width: 200px;
 
 	&:hover {
-		background-color: var(--gray-383838);
+		background-color: var(--control-bg-hover);
 		border-color: var(--color-text-muted);
 	}
 
@@ -62,7 +62,7 @@ export const ImagePreview = styled.img`
 	max-width: 100%;
 	max-height: 300px;
 	border-radius: 8px;
-	border: 2px solid var(--gray-383838);
+	border: 2px solid var(--control-border);
 	box-shadow: 0 4px 8px #00000033;
 
 	@media (max-width: 768px) {
@@ -87,11 +87,7 @@ export const ProcessButton = styled(BasePrimaryButton)`
 `;
 
 export const OutputField = styled.textarea`
-	background-color: var(--gray-2d2d2d);
-	color: var(--color-text-emphasis);
-	padding: 0.75em;
-	max-width: 90%;
-	width: 900px;
+	background-color: var(--control-bg);
 	max-height: 60vh;
 	height: 400px;
 	margin: 0 auto;
@@ -152,7 +148,7 @@ export const CanvasContainer = styled.div`
 		max-width: 100%;
 		max-height: 300px;
 		border-radius: 8px;
-		border: 2px solid var(--gray-383838);
+		border: 2px solid var(--control-border);
 		box-shadow: 0 4px 8px #00000033;
 
 		@media (max-width: 768px) {
@@ -167,9 +163,9 @@ export const ReductionControls = styled.div`
 	align-items: center;
 	gap: 1em;
 	padding: 1em;
-	background-color: var(--gray-474747);
+	background-color: var(--control-bg);
 	border-radius: 8px;
-	border: 1px solid var(--gray-383838);
+	border: 1px solid var(--control-border);
 	max-width: 400px;
 	margin-left: auto;
 	margin-right: auto;
@@ -186,7 +182,7 @@ export const ReductionSlider = styled.input`
 	width: 100%;
 	height: 6px;
 	border-radius: 3px;
-	background: var(--gray-383838);
+	background: var(--control-bg);
 	outline: none;
 	cursor: pointer;
 
@@ -197,7 +193,7 @@ export const ReductionSlider = styled.input`
 		border-radius: 50%;
 		background: var(--color-text-muted);
 		cursor: pointer;
-		border: 2px solid var(--gray-383838);
+		border: 2px solid var(--control-border);
 		transition: all 0.2s ease;
 
 		&:hover {
@@ -212,7 +208,7 @@ export const ReductionSlider = styled.input`
 		border-radius: 50%;
 		background: var(--color-text-muted);
 		cursor: pointer;
-		border: 2px solid var(--gray-383838);
+		border: 2px solid var(--control-border);
 		transition: all 0.2s ease;
 
 		&:hover {
@@ -233,9 +229,9 @@ export const ProcessingModeContainer = styled.div`
 	align-items: center;
 	gap: 1em;
 	padding: 1em;
-	background-color: var(--gray-474747);
+	background-color: var(--control-bg);
 	border-radius: 8px;
-	border: 1px solid var(--gray-383838);
+	border: 1px solid var(--control-border);
 	max-width: 400px;
 	margin-left: auto;
 	margin-right: auto;
@@ -249,9 +245,9 @@ export const ProcessingModeLabel = styled.label`
 `;
 
 export const ProcessingModeSelect = styled.select`
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 	color: var(--color-text-muted);
-	border: 2px solid var(--gray-383838);
+	border: 2px solid var(--control-border);
 	border-radius: 6px;
 	padding: 0.5em 1em;
 	font-size: 15px;
@@ -270,7 +266,7 @@ export const ProcessingModeSelect = styled.select`
 	}
 
 	option {
-		background-color: var(--gray-383838);
+		background-color: var(--control-bg);
 		color: var(--color-text-muted);
 	}
 `;
@@ -311,9 +307,9 @@ export const ControlsSection = styled.div`
 	flex-direction: column;
 	gap: 32px;
 	padding: 24px;
-	background-color: var(--gray-474747);
+	background-color: var(--control-bg);
 	border-radius: 8px;
-	border: 1px solid var(--gray-383838);
+	border: 1px solid var(--control-border);
 	max-width: 800px;
 	margin: 0 auto;
 	width: 100%;
@@ -350,7 +346,7 @@ export const SliderInput = styled.input`
 	flex: 1;
 	height: 6px;
 	border-radius: 3px;
-	background: var(--gray-383838);
+	background: var(--control-bg);
 	outline: none;
 	cursor: pointer;
 
@@ -361,7 +357,7 @@ export const SliderInput = styled.input`
 		border-radius: 50%;
 		background: #14b8a6;
 		cursor: pointer;
-		border: 2px solid var(--gray-383838);
+		border: 2px solid var(--control-border);
 		transition: all 0.2s ease;
 
 		&:hover {
@@ -376,7 +372,7 @@ export const SliderInput = styled.input`
 		border-radius: 50%;
 		background: #14b8a6;
 		cursor: pointer;
-		border: 2px solid var(--gray-383838);
+		border: 2px solid var(--control-border);
 		transition: all 0.2s ease;
 
 		&:hover {
@@ -392,7 +388,7 @@ export const SliderInput = styled.input`
 `;
 
 export const SizeValue = styled.span`
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 	color: var(--color-text-emphasis);
 	padding: 8px 16px;
 	border-radius: 6px;
@@ -415,9 +411,9 @@ export const ComparisonSection = styled.div`
 	flex-direction: column;
 	gap: 32px;
 	padding: 32px;
-	background-color: var(--gray-474747);
+	background-color: var(--control-bg);
 	border-radius: 8px;
-	border: 1px solid var(--gray-383838);
+	border: 1px solid var(--control-border);
 	margin-top: 32px;
 	width: 100%;
 	max-width: 1200px;
@@ -449,7 +445,7 @@ export const ImageWrapper = styled.div`
 	max-width: 400px;
 	border-radius: 8px;
 	overflow: hidden;
-	border: 2px solid var(--gray-383838);
+	border: 2px solid var(--control-border);
 	box-shadow: 0 4px 8px #00000033;
 
 	img {
@@ -494,9 +490,9 @@ export const FileUploadZone = styled.label<FileUploadZoneProps>`
 	justify-content: center;
 	gap: 16px;
 	padding: 48px 32px;
-	border: 2px dashed var(--gray-383838);
+	border: 2px dashed var(--control-border);
 	border-radius: 8px;
-	background-color: var(--gray-2d2d2d);
+	background-color: var(--control-bg);
 	cursor: pointer;
 	transition: all 0.2s ease;
 	min-height: 200px;
@@ -517,7 +513,7 @@ export const FileUploadZone = styled.label<FileUploadZoneProps>`
 		props.$hasFile &&
 		`
 		border-color: #14b8a6;
-		background-color: var(--gray-474747);
+		background-color: var(--control-bg);
 		padding: 24px;
 	`}
 
@@ -552,8 +548,8 @@ export const UploadText = styled.div<UploadTextProps>`
 
 export const ProcessingMessage = styled.div`
 	color: var(--color-text-muted);
-	background-color: var(--gray-474747);
-	border: 1px solid var(--gray-383838);
+	background-color: var(--control-bg);
+	border: 1px solid var(--control-border);
 	border-radius: 6px;
 	padding: 0.75em 1em;
 	margin: 0.5em auto;

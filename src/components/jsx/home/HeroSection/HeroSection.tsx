@@ -1,6 +1,8 @@
 import React from 'react';
 import {
 	Section,
+	Grid,
+	TextColumn,
 	Name,
 	NameAccessible,
 	NameVisual,
@@ -8,15 +10,14 @@ import {
 	SpaceSlot,
 	TitleTop,
 	TitleBottom,
-	Title,
-	Tagline,
+	Subtitle,
 	Description,
 	ButtonContainer,
-	PrimaryButton,
-	SecondaryButton,
-	AccentLine,
-	ContentWrapper,
 } from './HeroSection.styles';
+import {
+	PrimaryButtonAnchor,
+	SecondaryButtonAnchor,
+} from '@/components/jsx/ui/AnchorButtons.styles';
 
 const HERO_NAME = 'Daniel Tenzler';
 const HERO_NAME_CHARS = Array.from(HERO_NAME);
@@ -47,44 +48,44 @@ const LETTER_WIDTHS: Record<string, string> = {
 export default function HeroSection() {
 	return (
 		<Section>
-			<ContentWrapper>
-				<Name aria-label={HERO_NAME}>
-					<NameAccessible>{HERO_NAME}</NameAccessible>
-					<NameVisual aria-hidden="true">
-						{HERO_NAME_TOKENS.map(({ char, key }) => {
-							if (char === ' ') {
-								return <SpaceSlot key={key}>&nbsp;</SpaceSlot>;
-							}
+			<Grid>
+				<TextColumn>
+					<Name aria-label={HERO_NAME}>
+						<NameAccessible>{HERO_NAME}</NameAccessible>
+						<NameVisual aria-hidden="true">
+							{HERO_NAME_TOKENS.map(({ char, key }) => {
+								if (char === ' ') {
+									return <SpaceSlot key={key}>&nbsp;</SpaceSlot>;
+								}
 
-							return (
-								<LetterSlot
-									key={key}
-									$width={LETTER_WIDTHS[char] ?? '0.56em'}
-								>
-									<TitleTop>{char}</TitleTop>
-									<TitleBottom>{char}</TitleBottom>
-								</LetterSlot>
-							);
-						})}
-					</NameVisual>
-				</Name>
-				<Title>Software developer</Title>
-				<AccentLine />
-				<Tagline>
-					Building practical web projects and learning in public.
-				</Tagline>
-				<Description>
-					I like turning random ideas into small projects.
-					This site collects my projects, technical notes, and
-					experiments as I keep improving as a developer.
-				</Description>
-				<ButtonContainer>
-					<PrimaryButton href="/portfolio">
-						View Projects
-					</PrimaryButton>
-					<SecondaryButton href="/blog">Read Blog</SecondaryButton>
-				</ButtonContainer>
-			</ContentWrapper>
+								return (
+									<LetterSlot
+										key={key}
+										$width={LETTER_WIDTHS[char] ?? '0.56em'}
+									>
+										<TitleTop>{char}</TitleTop>
+										<TitleBottom>{char}</TitleBottom>
+									</LetterSlot>
+								);
+							})}
+						</NameVisual>
+					</Name>
+					<Subtitle>Software developer</Subtitle>
+					<Description>
+						I like turning random ideas into small
+						projects — this site collects my work, notes, and
+						experiments as I keep improving.
+					</Description>
+					<ButtonContainer>
+						<PrimaryButtonAnchor href="/portfolio">
+							View Projects
+						</PrimaryButtonAnchor>
+						<SecondaryButtonAnchor href="/blog">
+							Read Blog
+						</SecondaryButtonAnchor>
+					</ButtonContainer>
+				</TextColumn>
+			</Grid>
 		</Section>
 	);
 }

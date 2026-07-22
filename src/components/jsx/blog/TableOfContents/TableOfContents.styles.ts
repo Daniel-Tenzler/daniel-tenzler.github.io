@@ -6,11 +6,11 @@ export const TOCContainer = styled.nav`
 	max-height: calc(100vh - 128px);
 	overflow-y: auto;
 	padding: 24px 24px 24px 8px;
-	background-color: var(--gray-303030-cc);
+	background: var(--card-bg);
 	backdrop-filter: blur(10px);
-	border: 1px solid var(--gray-60739f-33);
-	border-radius: 16px;
-	box-shadow: 0 4px 6px var(--black-0f1219-1a);
+	border: var(--card-border);
+	border-radius: var(--card-radius);
+	box-shadow: var(--card-shadow);
 
 	@media (max-width: 768px) {
 		align-self: stretch;
@@ -49,13 +49,13 @@ export const TOCLink = styled.a<TOCLinkProps>`
 	color: ${(props) =>
 		props.isActive
 			? 'var(--color-text-emphasis)'
-			: 'var(--white-bfbfbf-b3)'};
+			: 'var(--color-text-muted)'};
 	text-decoration: none;
 	transition: color 0.2s ease;
 	line-height: 1.4;
 
 	&:hover {
-		color: var(--color-text-muted);
+		color: var(--color-text-emphasis);
 	}
 
 	@media (max-width: 768px) {

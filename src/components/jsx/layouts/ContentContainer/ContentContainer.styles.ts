@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
 
 export const StyledMain = styled.div`
-	width: 70%;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 1em 1em;
+	width: 100%;
+	max-width: var(--content-max-width);
+	margin: 0 auto;
+	padding: 0 var(--content-padding-x);
 
-	@media (max-width: 720px) {
-		padding: 1em;
-		width: 90%;
+	@media (max-width: 640px) {
+		padding: 0 20px;
 	}
 `;

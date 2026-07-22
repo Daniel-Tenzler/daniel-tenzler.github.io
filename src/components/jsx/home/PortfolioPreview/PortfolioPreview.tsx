@@ -1,8 +1,8 @@
 import React from 'react';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import SectionHeader from '@/components/jsx/ui/SectionHeader/SectionHeader';
 import {
 	Section,
-	Title,
 	Grid,
 	ProjectCard,
 	ImageContainer,
@@ -30,11 +30,16 @@ const PortfolioPreviewContent = ({
 
 	return (
 		<Section>
-			<Title>Featured Projects</Title>
+			<SectionHeader
+				title="Public Projects"
+				viewAllHref="/portfolio"
+				viewAllLabel="View all projects"
+			/>
 			<Grid>
 				{projects.map((project, index) => (
 					<ProjectCard
 						key={project.id}
+						data-cursor-glow
 						$animationDelay={`${index * 0.1}s`}
 						onClick={() => handleCardClick(project.id)}
 						onKeyDown={(e) => {
@@ -76,8 +81,8 @@ const PortfolioPreviewContent = ({
 							</picture>
 						</ImageContainer>
 						<Content>
-							<ProjectTitle>{project.title}</ProjectTitle>
 							<ContentBody>
+								<ProjectTitle>{project.title}</ProjectTitle>
 								<Description>{project.description}</Description>
 								<TechStack>
 									{project.technologies.map((tech) => (

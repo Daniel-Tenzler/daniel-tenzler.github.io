@@ -23,16 +23,22 @@ export const Title = styled.h1`
 
 export const TechList = styled.div`
 	display: flex;
-	gap: 16px;
+	flex-wrap: wrap;
+	gap: 6px;
 	margin-bottom: 16px;
 `;
 
 export const TechTag = styled.span`
-	padding: 4px 12px;
-	background-color: var(--black-0f1219-80);
-	border-radius: 999px;
-	font-size: 14px;
+	display: inline-flex;
+	align-items: center;
+	height: var(--chip-height);
+	padding: 0 10px;
+	border-radius: var(--chip-radius);
+	font-size: 0.75rem;
+	font-weight: 500;
 	color: var(--color-text-muted);
+	background: var(--chip-bg);
+	border: 1px solid var(--chip-border);
 `;
 
 export const LinkContainer = styled.div`
@@ -50,8 +56,8 @@ export const StyledLink = styled.a`
 
 export const ProjectImage = styled.img`
 	width: 100%;
-	border-radius: 16px;
-	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+	border-radius: var(--card-radius);
+	box-shadow: var(--card-hover-shadow);
 	margin-bottom: 32px;
 `;
 

@@ -1,36 +1,33 @@
 import styled from '@emotion/styled';
 
 export const Section = styled.section`
-	padding: 32px 0;
+	padding: 72px 0 0;
 	position: relative;
 
 	@media (max-width: 720px) {
-		padding: 24px 0;
+		padding: 48px 0 0;
 	}
 `;
 
-export const ContentWrapper = styled.div`
-	position: relative;
-	z-index: 2;
+export const Grid = styled.div`
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 48px;
+	align-items: center;
+
+	@media (max-width: 900px) {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
 `;
 
-export const Name = styled.h1`
-	font-size: clamp(40px, 5vw, 64px);
-	font-weight: 500;
-	font-family:
-		'Segoe UI Variable', 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue',
-		Arial, sans-serif;
-	line-height: 1.1;
-	margin: 0 0 8px 0;
-	position: relative;
-	display: inline-block;
-	color: transparent;
-	letter-spacing: 0;
-	animation: fadeInUp 0.8s ease-out;
-	font-kerning: none;
-	font-variant-ligatures: none;
+export const TextColumn = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	animation: fadeIn 0.7s ease-out;
 
-	@keyframes fadeInUp {
+	@keyframes fadeIn {
 		from {
 			opacity: 0;
 		}
@@ -38,6 +35,22 @@ export const Name = styled.h1`
 			opacity: 1;
 		}
 	}
+`;
+
+export const Name = styled.h1`
+	margin: 0 0 6px 0;
+	font-size: clamp(40px, 5vw, 64px);
+	font-weight: 500;
+	font-family:
+		'Segoe UI Variable', 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue',
+		Arial, sans-serif;
+	line-height: 1.1;
+	position: relative;
+	display: inline-block;
+	color: transparent;
+	letter-spacing: 0;
+	font-kerning: none;
+	font-variant-ligatures: none;
 
 	@media (max-width: 720px) {
 		font-size: clamp(32px, 8vw, 48px);
@@ -49,11 +62,9 @@ export const NameAccessible = styled.span`
 	left: 0;
 	top: 0;
 	white-space: pre;
-	color: transparent;
-	-webkit-text-fill-color: transparent;
-	pointer-events: auto;
-	user-select: text;
-	z-index: 2;
+	opacity: 0;
+	pointer-events: none;
+	user-select: none;
 `;
 
 export const NameVisual = styled.span`
@@ -61,8 +72,6 @@ export const NameVisual = styled.span`
 	display: inline-flex;
 	align-items: flex-start;
 	white-space: pre;
-	pointer-events: none;
-	user-select: none;
 `;
 
 export const LetterSlot = styled.span<{ $width: string }>`
@@ -91,14 +100,13 @@ const sharedTitleLayerStyles = `
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
+	pointer-events: none;
 `;
 
 export const TitleTop = styled.span`
 	${sharedTitleLayerStyles}
 	font-weight: 500;
-	clip-path: inset(0 0 38% 0);
-	pointer-events: none;
-	user-select: none;
+	clip-path: inset(0 0 35% 0);
 `;
 
 export const TitleBottom = styled.span`
@@ -106,167 +114,41 @@ export const TitleBottom = styled.span`
 	position: absolute;
 	left: 0;
 	top: 0;
-	font-weight: 200;
+	font-weight: 300;
 	clip-path: inset(65% 0 0 0);
-	pointer-events: none;
-	user-select: none;
 `;
 
-export const Title = styled.h2`
-	font-size: clamp(24px, 3vw, 32px);
-	font-weight: 600;
-	line-height: 1.3;
-	margin: 0 0 24px 0;
-	color: var(--color-text-muted);
-	letter-spacing: 0.01em;
-	animation: fadeInUp 0.8s ease-out 0.1s both;
-
-	@media (max-width: 720px) {
-		font-size: clamp(20px, 6vw, 24px);
-		margin-bottom: 16px;
-	}
-`;
-
-export const AccentLine = styled.div`
-	--accent-line-width: 360px;
-	width: var(--accent-line-width);
-	height: 3px;
-	background: linear-gradient(
-		90deg,
-		var(--gray-474747) 0%,
-		var(--color-text-emphasis) 20%,
-		var(--gray-474747) 100%
-	);
-	margin: 0 0 32px 0;
-	border-radius: 2px;
-	animation: expandWidth 0.8s ease-out 0.2s both;
-
-	@keyframes expandWidth {
-		from {
-			width: 0;
-			opacity: 0;
-		}
-		to {
-			width: var(--accent-line-width);
-			opacity: 1;
-		}
-	}
-
-	@media (max-width: 720px) {
-		--accent-line-width: 200px;
-		margin-bottom: 24px;
-	}
-`;
-
-export const Tagline = styled.p`
-	font-size: clamp(18px, 2vw, 20px);
+export const Subtitle = styled.p`
+	margin: 0 0 18px 0;
+	font-size: 19px;
 	font-weight: 500;
-	line-height: 1.4;
-	margin: 0 0 24px 0;
 	color: var(--color-text-muted);
-	animation: fadeInUp 0.8s ease-out 0.3s both;
 
 	@media (max-width: 720px) {
-		font-size: clamp(16px, 4vw, 18px);
-		margin-bottom: 16px;
+		font-size: 17px;
+		margin-bottom: 14px;
 	}
 `;
 
 export const Description = styled.p`
-	font-size: clamp(16px, 1.5vw, 18px);
+	margin: 0 0 28px 0;
+	font-size: 16px;
 	line-height: 1.7;
-	margin: 0 0 40px 0;
-	color: var(--white-ffffff-e6);
-	max-width: 600px;
-	animation: fadeInUp 0.8s ease-out 0.4s both;
+	color: var(--white-ffffff-b3);
+	max-width: 480px;
 
 	@media (max-width: 720px) {
-		font-size: clamp(15px, 3vw, 16px);
-		margin-bottom: 32px;
-		max-width: 100%;
+		font-size: 15px;
+		margin-bottom: 24px;
 	}
 `;
 
 export const ButtonContainer = styled.div`
 	display: flex;
-	gap: 16px;
+	gap: 12px;
 	flex-wrap: wrap;
-	animation: fadeInUp 0.8s ease-out 0.5s both;
 
 	@media (max-width: 720px) {
-		gap: 12px;
-	}
-`;
-
-export const PrimaryButton = styled.a`
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 12px 24px;
-	border: none;
-	font-size: 15px;
-	font-weight: 600;
-	border-radius: 16px;
-	color: var(--color-text-emphasis);
-	background: linear-gradient(
-		135deg,
-		var(--color-bg-tertiary) 0%,
-		var(--color-bg-secondary) 100%
-	);
-	text-decoration: none;
-	transition:
-		box-shadow 0.2s ease,
-		background 0.2s ease;
-	box-shadow: 0 4px 20px var(--black-0f1219-66);
-
-	&:hover {
-		box-shadow: 0 3px 20px var(--black-1a1a1a-e6);
-	}
-
-	&:focus-visible {
-		outline: 2px solid var(--color-text-secondary);
-		outline-offset: 2px;
-	}
-
-	@media (max-width: 720px) {
-		padding: 10px 20px;
-		font-size: 14px;
-		flex: 1;
-		min-width: 140px;
-	}
-`;
-
-export const SecondaryButton = styled.a`
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 12px 24px;
-	border: 1px solid var(--gray-292929-80);
-	font-size: 15px;
-	font-weight: 600;
-	border-radius: 16px;
-	color: var(--color-text-emphasis);
-	background: var(--color-bg-secondary);
-	text-decoration: none;
-	transition:
-		border-color 0.2s ease,
-		box-shadow 0.2s ease;
-	backdrop-filter: blur(10px);
-
-	&:hover {
-		border-color: var(--color-bg-tertiary);
-		box-shadow: 0 3px 20px var(--black-1a1a1a-e6);
-	}
-
-	&:focus-visible {
-		outline: 2px solid var(--color-text-secondary);
-		outline-offset: 2px;
-	}
-
-	@media (max-width: 720px) {
-		padding: 10px 20px;
-		font-size: 14px;
-		flex: 1;
-		min-width: 140px;
+		width: 100%;
 	}
 `;

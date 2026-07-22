@@ -9,6 +9,7 @@ import JourneySection from 'src/components/jsx/home/JourneySection/JourneySectio
 import SkillsSection from 'src/components/jsx/home/SkillsSection/SkillsSection';
 import PortfolioPreview from 'src/components/jsx/home/PortfolioPreview/PortfolioPreview';
 import ContentContainer from 'src/components/jsx/layouts/ContentContainer/ContentContainer';
+import CursorCardGlow from 'src/components/astro/CursorCardGlow/CursorCardGlow.astro';
 import { getHomePageData } from 'src/data/home/getHomePageData';
 
 const {
@@ -28,6 +29,7 @@ const {
 	structuredData={personSchema}
 >
 	<GridBackground client:visible />
+	<CursorCardGlow />
 
 	<ContentContainer>
 		<HeroSection />
@@ -36,10 +38,10 @@ const {
 
 		<LatestPostsSection posts={latestPosts} />
 
-		<AboutSection paragraphs={aboutParagraphs} />
-
 		<JourneySection data={journeyData} />
 
 		<SkillsSection skills={skillsData} categories={skillCategories} />
+
+		<AboutSection paragraphs={aboutParagraphs} />
 	</ContentContainer>
 </MainLayout>

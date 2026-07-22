@@ -5,61 +5,60 @@ import type {
 } from './SkillsSection.types';
 
 export const Section = styled.section`
-	margin-bottom: 48px;
-`;
+	padding: var(--section-gap) 0;
 
-export const Title = styled.h2`
-	margin-bottom: 32px;
-	color: var(--color-text-primary);
-`;
-
-export const SkillsContainer = styled.div`
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 32px;
-	background-color: var(--color-bg-tertiary);
-	border-radius: 16px;
-	padding: 24px;
-	box-shadow: 0 4px 6px var(--black-0f1219-1a);
-
-	@media (max-width: 768px) {
-		grid-template-columns: 1fr;
-		gap: 0;
+	@media (max-width: 720px) {
+		padding: 40px 0;
 	}
 `;
 
-export const SkillsColumn = styled.div`
+export const Grid = styled.div`
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--grid-gap);
+	align-items: start;
+
+	@media (min-width: 640px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (min-width: 1024px) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+`;
+
+export const CategoryCard = styled.div`
 	display: flex;
 	flex-direction: column;
-`;
-
-export const CategorySection = styled.div`
-	padding: 16px 0;
-
-	&:first-of-type {
-		padding-top: 0;
-	}
+	gap: 16px;
+	background: var(--card-bg);
+	border: var(--card-border);
+	border-radius: var(--card-radius);
+	padding: var(--card-padding);
+	box-shadow: var(--card-shadow);
 `;
 
 export const CategoryTitle = styled.h3<CategoryTitleProps>`
-	font-size: 16px;
-	font-weight: 600;
-	margin: 0 0 16px 0;
-	color: ${({ $color }) => `var(${$color})`};
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	margin: 0;
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--color-text-emphasis);
 
 	&::before {
 		content: '';
-		width: 3px;
+		width: 4px;
 		height: 16px;
-		background-color: ${({ $color }) => `var(${$color})`};
 		border-radius: 2px;
+		background-color: ${({ $color }) => `var(${$color})`};
+		box-shadow: 0 0 8px
+			${({ $color }) => `color-mix(in srgb, var(${$color}) 50%, transparent)`};
 	}
 `;
 
-export const SkillsGrid = styled.div`
+export const SkillsList = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
@@ -68,27 +67,23 @@ export const SkillsGrid = styled.div`
 export const SkillBubble = styled.span<SkillBubbleProps>`
 	display: inline-flex;
 	align-items: center;
-	padding: 6px 14px;
-	background-color: ${({ $color }) =>
-		`color-mix(in srgb, var(${$color}) 10%, transparent)`};
-	border: 1.5px solid
-		${({ $color }) => `color-mix(in srgb, var(${$color}) 30%, transparent)`};
-	border-radius: 999px;
-	font-size: 13px;
-	color: var(--color-text-emphasis);
+	height: var(--chip-height);
+	padding: 0 10px;
+	border-radius: var(--chip-radius);
+	font-size: 0.75rem;
 	font-weight: 500;
+	color: var(--color-text-muted);
+	background: var(--chip-bg);
+	border: 1px solid var(--chip-border);
 	transition:
 		background-color 0.2s ease,
-		border-color 0.2s ease,
-		box-shadow 0.2s ease;
+		border-color 0.2s ease;
 	cursor: default;
 
 	&:hover {
 		background-color: ${({ $color }) =>
-			`color-mix(in srgb, var(${$color}) 20%, transparent)`};
-		border-color: ${({ $color }) => `var(${$color})`};
-		box-shadow: 0 0 12px
-			${({ $color }) =>
-				`color-mix(in srgb, var(${$color}) 40%, transparent)`};
+			`color-mix(in srgb, var(${$color}) 12%, transparent)`};
+		border-color: ${({ $color }) =>
+			`color-mix(in srgb, var(${$color}) 40%, transparent)`};
 	}
 `;

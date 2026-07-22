@@ -32,14 +32,6 @@ export const StyledTitle = styled.h1`
 	letter-spacing: -0.02em;
 `;
 
-export const StyledDescription = styled.p`
-	font-size: clamp(16px, 2vw, 18px);
-	line-height: 1.6;
-	color: var(--color-text-primary);
-	max-width: 560px;
-	margin: 0 auto;
-`;
-
 export const StyledGrid = styled.div`
 	display: grid;
 	grid-template-columns: 1fr;
@@ -55,18 +47,19 @@ export const StyledGrid = styled.div`
 `;
 
 export const StyledContactCard = styled.a`
-	background-color: var(--color-bg-tertiary);
-	border-radius: 16px;
+	background: var(--card-bg);
+	border: var(--card-border);
+	border-radius: var(--card-radius);
 	padding: 32px 24px;
-	box-shadow: 0 4px 6px var(--gray-292929-1a);
+	box-shadow: var(--card-shadow);
 	text-decoration: none;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	min-height: 180px;
 	transition:
-		box-shadow 0.2s ease,
-		background-color 0.2s ease;
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
 	position: relative;
 	overflow: hidden;
 
@@ -84,7 +77,8 @@ export const StyledContactCard = styled.a`
 	}
 
 	&:hover {
-		box-shadow: 0 8px 16px var(--gray-292929-33);
+		border-color: var(--card-hover-border);
+		box-shadow: var(--card-hover-shadow);
 
 		&::before {
 			transform: scaleX(1);

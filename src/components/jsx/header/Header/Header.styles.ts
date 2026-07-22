@@ -8,22 +8,18 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
 	position: sticky;
 	top: 0;
 	z-index: 50;
-	background-color: var(--gray-303030-cc);
-	backdrop-filter: blur(4px);
-	border-bottom: 1px solid var(--gray-383838-cc);
+	background-color: var(--surface-header-bg);
+	backdrop-filter: blur(12px);
+	border-bottom: 1px solid var(--surface-header-border);
 `;
 
 export const Nav = styled.nav`
-	max-width: 896px;
+	max-width: var(--content-max-width);
 	margin: 0 auto;
-	padding: 0 16px;
+	padding: 0 var(--content-padding-x);
 
-	@media (min-width: 640px) {
-		padding: 0 24px;
-	}
-
-	@media (min-width: 1024px) {
-		padding: 0 32px;
+	@media (max-width: 640px) {
+		padding: 0 20px;
 	}
 `;
 
@@ -36,10 +32,13 @@ export const NavContainer = styled.div`
 
 export const Logo = styled.a`
 	flex-shrink: 0;
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: 700;
 	color: var(--color-text-emphasis);
 	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
 
 	&:focus-visible {
 		outline: 2px solid var(--color-text-secondary);
@@ -50,10 +49,18 @@ export const Logo = styled.a`
 	-webkit-tap-highlight-color: transparent;
 `;
 
+export const LogoDot = styled.span`
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--color-accent-brand);
+	box-shadow: 0 0 8px var(--blue-2337ff-66);
+`;
+
 export const NavLinks = styled.div`
 	display: none;
 	margin-left: 24px;
-	gap: 32px;
+	gap: 28px;
 
 	@media (min-width: 640px) {
 		display: flex;
@@ -65,24 +72,37 @@ interface NavLinkProps {
 }
 
 export const NavLink = styled.a<NavLinkProps>`
+	position: relative;
 	color: ${(props) =>
 		props.$isActive
 			? 'var(--color-text-emphasis)'
-			: 'var(--color-text-primary)'};
-	padding: 12px;
+			: 'var(--color-text-muted)'};
+	padding: 8px 0;
 	border-radius: 6px;
-	font-size: 16px;
-	font-weight: ${(props) => (props.$isActive ? 600 : 500)};
+	font-size: 15px;
+	font-weight: 500;
 	text-decoration: none;
 	transition: color 0.2s ease;
-	/* Minimum touch target size (48x48px) for accessibility */
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	min-height: 48px;
 
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 6px;
+		height: 2px;
+		border-radius: 2px;
+		background: var(--color-accent-brand);
+		opacity: ${(props) => (props.$isActive ? 1 : 0)};
+		transition: opacity 0.2s ease;
+	}
+
 	&:hover {
-		color: var(--color-text-secondary);
+		color: var(--color-text-emphasis);
 	}
 
 	&:focus-visible {
@@ -98,7 +118,6 @@ export const MobileLeftSection = styled.div`
 	flex-shrink: 0;
 
 	@media (min-width: 640px) {
-		/* Hide the mobile DarkModeToggle on desktop */
 		& > button:last-child {
 			display: none;
 		}

@@ -35,7 +35,7 @@ export const SectionTitle = styled.h3`
 export const ContentWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	background-color: var(--gray-292929);
+	background-color: var(--card-bg);
 	border-radius: 8px;
 	flex: 1;
 	min-height: 0;
@@ -50,8 +50,8 @@ export const ContentWrapper = styled.div`
 	padding: 1em;
 
 	&:focus-within {
-		border-color: var(--gray-474747);
-		outline: 1px solid var(--gray-474747);
+		border-color: var(--control-border);
+		outline: 1px solid var(--control-border);
 		outline-offset: 2px;
 		border-radius: 8px;
 	}
@@ -77,9 +77,9 @@ export const ControlsContainer = styled.div`
 	align-items: center;
 	flex-wrap: wrap;
 	padding: 1em;
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 	border-radius: 8px;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 
 	@media (max-width: 768px) {
 		padding: 0.8em;
@@ -90,7 +90,7 @@ export const ControlsContainer = styled.div`
 export const DiffModeToggle = styled.div`
 	display: flex;
 	gap: 0.5em;
-	background-color: var(--gray-292929);
+	background-color: var(--card-bg);
 	padding: 0.25em;
 	border-radius: 6px;
 
@@ -111,12 +111,12 @@ export const ToggleButton = styled.button<ToggleButtonProps>`
 	transition: all 0.2s ease;
 
 	&:hover {
-		background-color: var(--gray-383838);
+		background-color: var(--control-bg);
 		color: var(--color-text-emphasis);
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 		border-radius: 4px;
 	}
@@ -124,7 +124,7 @@ export const ToggleButton = styled.button<ToggleButtonProps>`
 	${(props) =>
 		props.$active &&
 		`
-		background-color: var(--gray-474747);
+		background-color: var(--control-border);
 		color: var(--color-text-emphasis);
 		font-weight: 600;
 	`}
@@ -159,7 +159,7 @@ export const Checkbox = styled.input`
 	accent-color: var(--color-border-light);
 
 	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 		border-radius: 2px;
 	}
@@ -201,10 +201,10 @@ export const ColumnTitle = styled.div`
 
 export const Textarea = styled.textarea`
 	min-height: 200px;
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 	color: var(--color-text-emphasis);
 	padding: 1em;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 8px;
 	font-size: 14px;
 	font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
@@ -221,7 +221,7 @@ export const Textarea = styled.textarea`
 
 	&:focus {
 		border-color: var(--color-border-light);
-		box-shadow: 0 0 0 2px var(--gray-474747);
+		box-shadow: var(--control-focus-ring);
 	}
 
 	@media (max-width: 768px) {
@@ -257,7 +257,7 @@ export const CompareButton = styled.button`
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 	}
 
@@ -289,8 +289,8 @@ export const ResultHeader = styled.div`
 `;
 
 export const ResultContent = styled.div`
-	background-color: var(--gray-383838);
-	border: 1px solid var(--gray-474747);
+	background-color: var(--control-bg);
+	border: 1px solid var(--control-border);
 	border-radius: 8px;
 	padding: 1em;
 	overflow-y: auto;
@@ -311,16 +311,16 @@ export const ResultContent = styled.div`
 	}
 
 	&::-webkit-scrollbar-track {
-		background: var(--gray-292929);
+		background: var(--card-bg);
 		border-radius: 4px;
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background: var(--gray-474747);
+		background: var(--control-border);
 		border-radius: 4px;
 
 		&:hover {
-			background: var(--gray-585858);
+			background: var(--control-bg-hover);
 		}
 	}
 `;
@@ -332,7 +332,7 @@ export const Line = styled.div`
 	line-height: 1.6;
 
 	&:hover {
-		background-color: var(--gray-474747);
+		background-color: var(--control-border);
 	}
 `;
 

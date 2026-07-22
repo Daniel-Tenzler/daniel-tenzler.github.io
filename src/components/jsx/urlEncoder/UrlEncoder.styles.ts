@@ -35,7 +35,7 @@ export const SectionTitle = styled.h3`
 const BaseContentWrapper = styled('div')`
 	display: flex;
 	flex-direction: column;
-	background-color: var(--gray-292929);
+	background-color: var(--card-bg);
 	border-radius: 8px;
 	flex: 1;
 	min-height: 0;
@@ -50,8 +50,8 @@ const BaseContentWrapper = styled('div')`
 
 export const ContentWrapper = styled(BaseContentWrapper)`
 	&:focus-within {
-		border-color: var(--gray-474747);
-		outline: 1px solid var(--gray-474747);
+		border-color: var(--control-border);
+		outline: 1px solid var(--control-border);
 		outline-offset: 2px;
 	}
 `;
@@ -145,7 +145,7 @@ export const InputField = styled('textarea')`
 	min-height: 0;
 	outline: none;
 	overflow: auto;
-	scrollbar-color: var(--gray-474747) var(--gray-292929);
+	scrollbar-color: var(--control-border) var(--card-bg);
 	scrollbar-gutter: stable;
 	scrollbar-width: thin;
 
@@ -168,16 +168,16 @@ export const InputField = styled('textarea')`
 	}
 
 	&::-webkit-scrollbar-track {
-		background: var(--gray-292929);
+		background: var(--card-bg);
 		border-radius: 4px;
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background: var(--gray-474747);
+		background: var(--control-border);
 		border-radius: 4px;
 
 		&:hover {
-			background: var(--gray-404040);
+			background: var(--control-bg-hover);
 		}
 	}
 

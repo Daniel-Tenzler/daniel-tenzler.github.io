@@ -22,10 +22,10 @@ export const InputSection = styled.div`
 
 export const ColorInput = styled.input`
 	flex: 1;
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 	color: var(--color-text-emphasis);
 	padding: 0.75em 1em;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 8px;
 	font-size: 15px;
 	font-family:
@@ -43,7 +43,7 @@ export const ColorInput = styled.input`
 
 	&:focus {
 		border-color: var(--color-border-light);
-		box-shadow: 0 0 0 2px var(--gray-474747);
+		box-shadow: var(--control-focus-ring);
 	}
 
 	&[aria-invalid='true'] {
@@ -60,7 +60,7 @@ export const ColorPickerButton = styled.input`
 	width: 50px;
 	height: 50px;
 	min-width: 50px;
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 8px;
 	cursor: pointer;
 	background-color: transparent;
@@ -81,7 +81,7 @@ export const ColorPickerButton = styled.input`
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--gray-222939);
+		outline: 2px solid var(--color-accent-brand);
 		outline-offset: 2px;
 		border-radius: 8px;
 	}
@@ -100,8 +100,7 @@ export const ColorPreview = styled.div<ColorPreviewProps>`
 	width: 100%;
 	height: 80px;
 	border-radius: 8px;
-	border: 1px solid var(--gray-474747);
-	background-color: ${(props) => props.$backgroundColor || 'transparent'};
+	border: 1px solid var(--control-border);
 	transition: background-color 0.2s ease;
 
 	@media (max-width: 480px) {
@@ -131,12 +130,12 @@ interface FormatCardProps {
 }
 
 export const FormatCard = styled.div<FormatCardProps>`
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 	border: 1px solid
 		${(props) =>
 			props.$isActive
 				? 'var(--color-border-light)'
-				: 'var(--gray-474747)'};
+				: 'var(--control-border)'};
 	border-radius: 8px;
 	padding: 1em;
 	display: flex;

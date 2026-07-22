@@ -8,6 +8,8 @@ import {
 	Meta,
 	Tags,
 	Tag,
+	CardFooter,
+	ReadLink,
 } from './BlogPostCard.styles';
 import type {
 	StandardHTMLAttributes,
@@ -50,6 +52,9 @@ export default function BlogPostCard({
 					</Tags>
 				)}
 			</Content>
+			<CardFooter>
+				<ReadLink>Read article →</ReadLink>
+			</CardFooter>
 		</Card>
 	);
 }

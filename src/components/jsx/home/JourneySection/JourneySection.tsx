@@ -1,15 +1,16 @@
 import React from 'react';
+import SectionHeader from '@/components/jsx/ui/SectionHeader/SectionHeader';
 import {
-	Description,
-	Entry,
-	EntryContent,
-	EntryMeta,
-	EntryTitle,
-	Eyebrow,
 	Section,
-	StyledJourneyLink,
+	Timeline,
+	Entry,
+	EntryMeta,
+	EntryContent,
+	EntryTitle,
+	Description,
 	TypeLabel,
 	YearRange,
+	StyledJourneyLink,
 } from './JourneySection.styles';
 import type { JourneySectionProps } from './JourneySection.types';
 
@@ -20,30 +21,30 @@ const JourneySection = ({ data }: JourneySectionProps) => {
 
 	return (
 		<Section aria-labelledby="journey-heading">
-			<Eyebrow as="h2" id="journey-heading">
-				Journey
-			</Eyebrow>
+			<SectionHeader title="Journey" titleId="journey-heading" />
 
-			{items.map((item) => (
-				<Entry key={item.id + item.title}>
-					<EntryMeta>
-						<YearRange>{item.date}</YearRange>
-						<TypeLabel $type={item.type}>
-							{item.type === 'job' ? 'Work' : 'Education'}
-						</TypeLabel>
-					</EntryMeta>
+			<Timeline>
+				{items.map((item) => (
+					<Entry key={item.id + item.title}>
+						<EntryMeta>
+							<YearRange>{item.date}</YearRange>
+							<TypeLabel $type={item.type}>
+								{item.type === 'job' ? 'Work' : 'Education'}
+							</TypeLabel>
+						</EntryMeta>
 
-					<EntryContent>
-						<EntryTitle>{item.title}</EntryTitle>
-						<Description>{item.description}</Description>
-						{item.link && (
-							<StyledJourneyLink href={item.link}>
-								Details
-							</StyledJourneyLink>
-						)}
-					</EntryContent>
-				</Entry>
-			))}
+						<EntryContent data-cursor-glow>
+							<EntryTitle>{item.title}</EntryTitle>
+							<Description>{item.description}</Description>
+							{item.link && (
+								<StyledJourneyLink href={item.link}>
+									Details →
+								</StyledJourneyLink>
+							)}
+						</EntryContent>
+					</Entry>
+				))}
+			</Timeline>
 		</Section>
 	);
 };

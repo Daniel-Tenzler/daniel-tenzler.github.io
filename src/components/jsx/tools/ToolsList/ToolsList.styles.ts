@@ -41,12 +41,11 @@ export const CategoryTitle = styled.h2`
 	font-weight: 600;
 	color: var(--color-text-emphasis);
 	margin-bottom: 8px;
-	border-bottom: 2px solid var(--gray-383838);
 `;
 
 export const ToolsGrid = styled.div`
 	display: grid;
-	gap: 16px;
+	gap: var(--grid-gap);
 	grid-template-columns: 1fr;
 
 	@media (min-width: 640px) {
@@ -60,24 +59,23 @@ export const ToolsGrid = styled.div`
 
 export const ToolCard = styled.a`
 	display: block;
-	background-color: var(--gray-2d2d2d);
-	border: 1px solid var(--gray-383838);
-	border-radius: 16px;
-	padding: 24px;
+	background: var(--card-bg);
+	border: var(--card-border);
+	border-radius: var(--card-radius);
+	padding: var(--card-padding);
 	text-decoration: none;
+	box-shadow: var(--card-shadow);
 	transition:
-		background-color 0.2s ease,
 		border-color 0.2s ease,
 		box-shadow 0.2s ease;
 
 	&:hover {
-		background-color: var(--gray-303030);
-		border-color: var(--white-bfbfbf-33);
-		box-shadow: 0 8px 25px #0000004d;
+		border-color: var(--card-hover-border);
+		box-shadow: var(--card-hover-shadow);
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--color-text-primary);
+		outline: 2px solid var(--color-text-secondary);
 		outline-offset: 2px;
 	}
 `;

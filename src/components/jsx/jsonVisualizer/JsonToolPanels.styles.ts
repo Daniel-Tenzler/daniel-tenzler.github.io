@@ -13,9 +13,9 @@ export const PanelsGrid = styled.div`
 `;
 
 export const Panel = styled.section`
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 8px;
-	background: var(--gray-2d2d2d);
+	background: var(--control-bg);
 	padding: 0.55em;
 	min-height: 150px;
 `;
@@ -41,9 +41,9 @@ export const PanelControls = styled.div`
 
 export const PanelInput = styled.input`
 	flex: 1;
-	background: var(--gray-383838);
+	background: var(--control-bg);
 	color: var(--color-text-emphasis);
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 6px;
 	padding: 0.35em 0.55em;
 	font-size: 12px;
@@ -52,9 +52,9 @@ export const PanelInput = styled.input`
 export const PanelTextarea = styled.textarea`
 	width: 100%;
 	min-height: 88px;
-	background: var(--gray-383838);
+	background: var(--control-bg);
 	color: var(--color-text-emphasis);
-	border: 1px solid var(--gray-474747);
+	border: 1px solid var(--control-border);
 	border-radius: 6px;
 	padding: 0.45em 0.55em;
 	font-size: 12px;
@@ -67,7 +67,7 @@ export const PanelTextarea = styled.textarea`
 export const PanelButton = styled(BaseSmallButton)`
 	padding: 0.35em 0.7em;
 	font-size: 12px;
-	background-color: var(--gray-383838);
+	background-color: var(--control-bg);
 `;
 
 export const PanelOutput = styled.pre`
