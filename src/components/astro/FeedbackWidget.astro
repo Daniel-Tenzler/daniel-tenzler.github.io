@@ -161,6 +161,7 @@ const feedbackApiUrl =
 
 			try {
 				const email = formData.get('email');
+				const website = formData.get('website');
 				const response = await fetch(form.action, {
 					method: 'POST',
 					headers: {
@@ -172,7 +173,7 @@ const feedbackApiUrl =
 						message: formData.get('message'),
 						email: email || undefined,
 						pageUrl: formData.get('pageUrl'),
-						website: formData.get('website'),
+						website: website || undefined,
 					}),
 				});
 

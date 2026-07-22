@@ -25,14 +25,22 @@ const canonicalURL = canonicalUrl
 // GitHub Pages redirect to private server for SEO
 const isGitHub = import.meta.env.PUBLIC_ENV === 'github';
 const redirectUrl = isGitHub ? `https://daniel-tenzler.de${Astro.url.pathname}` : null;
+const feedbackApiUrl =
+	import.meta.env.PUBLIC_FEEDBACK_API_URL ??
+	'https://ideastore.daniel-tenzler.de/api/public/feedback';
+const feedbackApiOrigin = new URL(feedbackApiUrl).origin;
+const contentSecurityPolicy =
+	`default-src 'self'; script-src 'self' 'unsafe-inline'; ` +
+	`style-src 'self' 'unsafe-inline'; img-src 'self' data:; ` +
+	`connect-src 'self' ${feedbackApiOrigin}; object-src 'none'; base-uri 'self';`;
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
-<meta
-	http-equiv="Content-Security-Policy"
-	content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self';"
-/>
+	<meta
+		http-equiv="Content-Security-Policy"
+		content={contentSecurityPolicy}
+	/>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
 <!-- Resource Preloading and DNS Prefetch -->
